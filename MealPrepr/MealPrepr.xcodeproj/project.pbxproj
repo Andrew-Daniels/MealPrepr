@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D421B74DE200D0E079 /* AppDelegate.swift */; };
+		310D30D721B74DE200D0E079 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D621B74DE200D0E079 /* ViewController.swift */; };
+		310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310D30D821B74DE200D0E079 /* Main.storyboard */; };
+		310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 310D30DB21B74DE300D0E079 /* MealPrepr.xcdatamodeld */; };
+		310D30DF21B74DE300D0E079 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 310D30DE21B74DE300D0E079 /* Assets.xcassets */; };
+		310D30E221B74DE300D0E079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310D30E021B74DE300D0E079 /* LaunchScreen.storyboard */; };
+		310D30ED21B74DE300D0E079 /* MealPreprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30EC21B74DE300D0E079 /* MealPreprTests.swift */; };
+		310D30F821B74FD900D0E079 /* RoundedUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30F721B74FD900D0E079 /* RoundedUIView.swift */; };
+		310D30FB21B757E000D0E079 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 310D30FA21B757E000D0E079 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		310D30E921B74DE300D0E079 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 310D30C921B74DE200D0E079 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 310D30D021B74DE200D0E079;
+			remoteInfo = MealPrepr;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		310D30D121B74DE200D0E079 /* MealPrepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPrepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		310D30D421B74DE200D0E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		310D30D621B74DE200D0E079 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		310D30D921B74DE200D0E079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		310D30DC21B74DE300D0E079 /* MealPrepr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealPrepr.xcdatamodel; sourceTree = "<group>"; };
+		310D30DE21B74DE300D0E079 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		310D30E121B74DE300D0E079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		310D30E321B74DE300D0E079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		310D30E821B74DE300D0E079 /* MealPreprTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MealPreprTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		310D30EC21B74DE300D0E079 /* MealPreprTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPreprTests.swift; sourceTree = "<group>"; };
+		310D30EE21B74DE300D0E079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		310D30F721B74FD900D0E079 /* RoundedUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedUIView.swift; sourceTree = "<group>"; };
+		310D30FA21B757E000D0E079 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		310D30CE21B74DE200D0E079 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		310D30E521B74DE300D0E079 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		310D30C821B74DE200D0E079 = {
+			isa = PBXGroup;
+			children = (
+				310D30D321B74DE200D0E079 /* MealPrepr */,
+				310D30EB21B74DE300D0E079 /* MealPreprTests */,
+				310D30D221B74DE200D0E079 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		310D30D221B74DE200D0E079 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				310D30D121B74DE200D0E079 /* MealPrepr.app */,
+				310D30E821B74DE300D0E079 /* MealPreprTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		310D30D321B74DE200D0E079 /* MealPrepr */ = {
+			isa = PBXGroup;
+			children = (
+				310D30F921B74FDF00D0E079 /* Classes */,
+				310D30D421B74DE200D0E079 /* AppDelegate.swift */,
+				310D30D621B74DE200D0E079 /* ViewController.swift */,
+				310D30D821B74DE200D0E079 /* Main.storyboard */,
+				310D30DE21B74DE300D0E079 /* Assets.xcassets */,
+				310D30E021B74DE300D0E079 /* LaunchScreen.storyboard */,
+				310D30E321B74DE300D0E079 /* Info.plist */,
+				310D30DB21B74DE300D0E079 /* MealPrepr.xcdatamodeld */,
+				310D30FA21B757E000D0E079 /* GoogleService-Info.plist */,
+			);
+			path = MealPrepr;
+			sourceTree = "<group>";
+		};
+		310D30EB21B74DE300D0E079 /* MealPreprTests */ = {
+			isa = PBXGroup;
+			children = (
+				310D30EC21B74DE300D0E079 /* MealPreprTests.swift */,
+				310D30EE21B74DE300D0E079 /* Info.plist */,
+			);
+			path = MealPreprTests;
+			sourceTree = "<group>";
+		};
+		310D30F921B74FDF00D0E079 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				310D30F721B74FD900D0E079 /* RoundedUIView.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		310D30D021B74DE200D0E079 /* MealPrepr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 310D30F121B74DE300D0E079 /* Build configuration list for PBXNativeTarget "MealPrepr" */;
+			buildPhases = (
+				310D30CD21B74DE200D0E079 /* Sources */,
+				310D30CE21B74DE200D0E079 /* Frameworks */,
+				310D30CF21B74DE200D0E079 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MealPrepr;
+			productName = MealPrepr;
+			productReference = 310D30D121B74DE200D0E079 /* MealPrepr.app */;
+			productType = "com.apple.product-type.application";
+		};
+		310D30E721B74DE300D0E079 /* MealPreprTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 310D30F421B74DE300D0E079 /* Build configuration list for PBXNativeTarget "MealPreprTests" */;
+			buildPhases = (
+				310D30E421B74DE300D0E079 /* Sources */,
+				310D30E521B74DE300D0E079 /* Frameworks */,
+				310D30E621B74DE300D0E079 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				310D30EA21B74DE300D0E079 /* PBXTargetDependency */,
+			);
+			name = MealPreprTests;
+			productName = MealPreprTests;
+			productReference = 310D30E821B74DE300D0E079 /* MealPreprTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		310D30C921B74DE200D0E079 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Andrew Daniels";
+				TargetAttributes = {
+					310D30D021B74DE200D0E079 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					310D30E721B74DE300D0E079 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 310D30D021B74DE200D0E079;
+					};
+				};
+			};
+			buildConfigurationList = 310D30CC21B74DE200D0E079 /* Build configuration list for PBXProject "MealPrepr" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 310D30C821B74DE200D0E079;
+			productRefGroup = 310D30D221B74DE200D0E079 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				310D30D021B74DE200D0E079 /* MealPrepr */,
+				310D30E721B74DE300D0E079 /* MealPreprTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		310D30CF21B74DE200D0E079 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				310D30E221B74DE300D0E079 /* LaunchScreen.storyboard in Resources */,
+				310D30DF21B74DE300D0E079 /* Assets.xcassets in Resources */,
+				310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */,
+				310D30FB21B757E000D0E079 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		310D30E621B74DE300D0E079 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		310D30CD21B74DE200D0E079 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				310D30F821B74FD900D0E079 /* RoundedUIView.swift in Sources */,
+				310D30D721B74DE200D0E079 /* ViewController.swift in Sources */,
+				310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */,
+				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		310D30E421B74DE300D0E079 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				310D30ED21B74DE300D0E079 /* MealPreprTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		310D30EA21B74DE300D0E079 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 310D30D021B74DE200D0E079 /* MealPrepr */;
+			targetProxy = 310D30E921B74DE300D0E079 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		310D30D821B74DE200D0E079 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				310D30D921B74DE200D0E079 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		310D30E021B74DE300D0E079 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				310D30E121B74DE300D0E079 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		310D30EF21B74DE300D0E079 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		310D30F021B74DE300D0E079 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		310D30F221B74DE300D0E079 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MealPrepr/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MealPrepr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		310D30F321B74DE300D0E079 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MealPrepr/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MealPrepr;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		310D30F521B74DE300D0E079 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MealPreprTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MealPreprTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MealPrepr.app/MealPrepr";
+			};
+			name = Debug;
+		};
+		310D30F621B74DE300D0E079 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MealPreprTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MealPreprTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MealPrepr.app/MealPrepr";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		310D30CC21B74DE200D0E079 /* Build configuration list for PBXProject "MealPrepr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				310D30EF21B74DE300D0E079 /* Debug */,
+				310D30F021B74DE300D0E079 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		310D30F121B74DE300D0E079 /* Build configuration list for PBXNativeTarget "MealPrepr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				310D30F221B74DE300D0E079 /* Debug */,
+				310D30F321B74DE300D0E079 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		310D30F421B74DE300D0E079 /* Build configuration list for PBXNativeTarget "MealPreprTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				310D30F521B74DE300D0E079 /* Debug */,
+				310D30F621B74DE300D0E079 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		310D30DB21B74DE300D0E079 /* MealPrepr.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				310D30DC21B74DE300D0E079 /* MealPrepr.xcdatamodel */,
+			);
+			currentVersion = 310D30DC21B74DE300D0E079 /* MealPrepr.xcdatamodel */;
+			path = MealPrepr.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 310D30C921B74DE200D0E079 /* Project object */;
+}
