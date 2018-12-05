@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class Login: UIViewController {
+class Login: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginBackView: RoundedUIView!
     @IBOutlet weak var guestBtn: UIButton!
@@ -51,31 +51,24 @@ class Login: UIViewController {
     @IBAction func guestBtnClicked(_ sender: UIButton) {
     }
     @IBAction func loginBtnClicked(_ sender: UIButton) {
-        var errorsExist = false;
         let email = emailTextField.text
         let password = passwordTextField.text
         
-        let emailError = ValidationHelper.validateEmail(email: email)
-        if let emailError = emailError {
-            let errorMsg = ErrorHelper.getEmailErrorMessage(error: emailError)
-            emailTextField.setError(errorMsg: errorMsg)
-            errorsExist = true;
-        } else {
-            emailTextField.removeError()
-        }
+        var errorKey = ValidationHelper.validateEmail(email: email)
+        var errorMsg = ErrorHelper.getErrorMsg(errorKey: errorKey)
+        emailTextField.setError(errorMsg: errorMsg)
         
-        let passwordError = ValidationHelper.validatePassword(password: password)
-        if let passwordError = passwordError {
-            let errorMsg = ErrorHelper.getPasswordErrorMessage(error: passwordError)
-            passwordTextField.setError(errorMsg: errorMsg)
-            errorsExist = true;
-        } else {
-            passwordTextField.removeError()
-        }
-        if (!errorsExist) {
+        errorKey = ValidationHelper.validatePassword(password: password)
+        errorMsg = ErrorHelper.getErrorMsg(errorKey: errorKey)
+        passwordTextField.setError(errorMsg: errorMsg)
+        
+        if (!emailTextField.hasError && !passwordTextField.hasError) {
             Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+                if let error = error {
+                    
+                }
                 if let u = user {
-                self.UID = u.user.uid
+                    self.UID = u.user.uid
                 }
             }
         }

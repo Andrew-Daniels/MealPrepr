@@ -10,45 +10,29 @@ import Foundation
 
 struct ErrorHelper {
     
-    public enum EmailError: Int {
-        case AccountNotCreated
+    public enum ErrorKey: Int {
         case IncorrectEmailFormat
-        case Empty
-    }
-    public enum PasswordError: Int {
         case EightCharMin
-        case Empty
-    }
-    public enum UsernameError: Int {
         case UsernameTaken
         case Empty
+        case NoErrors
     }
     
-    public static func getPasswordErrorMessage(error: PasswordError) -> String {
-        switch(error) {
+    public static func getErrorMsg(errorKey: ErrorKey) -> String? {
+        switch(errorKey) {
+        case .IncorrectEmailFormat:
+            return "Email is not the correct format"
+        case .UsernameTaken:
+            return "This username is already taken"
         case .EightCharMin:
             return "Password must be 8 characters minimum"
         case .Empty:
-            return "Password field cannot be left blank"
+            return "Field cannot be left blank"
+        case .NoErrors:
+            return nil
         }
     }
-    public static func getUsernameErrorMessage(error: UsernameError) -> String {
-        switch(error) {
-        case .UsernameTaken:
-            return "This username is already taken"
-        case .Empty:
-            return "Username field cannot be left blank"
-        }
-    }
-    public static func getEmailErrorMessage(error: EmailError) -> String {
-        switch(error) {
-        case .AccountNotCreated:
-            return "No account exists with this email"
-        case .IncorrectEmailFormat:
-            return "Email is not the correct format"
-        case .Empty:
-            return "Email field cannot be left blank"
-        }
-    }
-    
+//    public static func getFirebaseErrorMsg() -> String? {
+//
+//    }
 }

@@ -25,46 +25,58 @@
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1W-tj-46m" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                 <rect key="frame" x="208.5" y="278" width="417" height="556"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xta-zJ-j12">
+                                        <rect key="frame" x="172" y="50" width="74" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="74" id="GNS-WC-1XR"/>
+                                            <constraint firstAttribute="height" constant="74" id="c7h-3M-f1u"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-XS-Kcm">
+                                        <rect key="frame" x="221" y="292" width="112" height="30"/>
+                                        <state key="normal" title="forgot password">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forgotPasswordBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="23P-s8-8pe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-7h-9aK">
+                                        <rect key="frame" x="211" y="330" width="122" height="30"/>
+                                        <state key="normal" title="I need an account">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="needAnAccountBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="egl-0F-iR0"/>
+                                        </connections>
+                                    </button>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-sb-RQE" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="417" height="50"/>
+                                        <rect key="frame" x="83" y="174" width="250" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="JUf-e0-t2e"/>
                                             <constraint firstAttribute="height" constant="50" id="gcI-oJ-5N0"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Email"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-XS-Kcm">
-                                        <rect key="frame" x="71" y="321" width="112" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="forgot password"/>
-                                        <connections>
-                                            <action selector="forgotPasswordBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="23P-s8-8pe"/>
-                                        </connections>
-                                    </button>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uit-LP-7uh" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="70" width="417" height="50"/>
+                                        <rect key="frame" x="83" y="234" width="250" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="Hiq-Hf-m6d"/>
                                             <constraint firstAttribute="height" constant="50" id="pPh-no-6cg"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Password"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-7h-9aK">
-                                        <rect key="frame" x="208" y="321" width="122" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="I need an account"/>
-                                        <connections>
-                                            <action selector="needAnAccountBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="egl-0F-iR0"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-iH-P01">
-                                        <rect key="frame" x="208" y="399" width="38" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Login"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-iH-P01">
+                                        <rect key="frame" x="190" y="476" width="38" height="30"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jda-Yd-SJs"/>
                                         </connections>
@@ -72,14 +84,22 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.19215686274509802" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="uit-LP-7uh" firstAttribute="leading" secondItem="H1W-tj-46m" secondAttribute="leading" id="AKr-hg-XL8"/>
+                                    <constraint firstItem="IEu-sb-RQE" firstAttribute="top" secondItem="Xta-zJ-j12" secondAttribute="bottom" constant="50" id="AuL-q5-BE4"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="DJo-ub-hDd"/>
-                                    <constraint firstItem="IEu-sb-RQE" firstAttribute="top" secondItem="H1W-tj-46m" secondAttribute="top" id="dE9-lE-lC7"/>
-                                    <constraint firstAttribute="trailing" secondItem="uit-LP-7uh" secondAttribute="trailing" id="hrd-wY-SlU"/>
-                                    <constraint firstItem="IEu-sb-RQE" firstAttribute="leading" secondItem="H1W-tj-46m" secondAttribute="leading" id="l9e-Zq-U9N"/>
-                                    <constraint firstAttribute="trailing" secondItem="IEu-sb-RQE" secondAttribute="trailing" id="uZL-r0-yMx"/>
+                                    <constraint firstItem="nC9-XS-Kcm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H1W-tj-46m" secondAttribute="leading" constant="10" id="Dyx-bh-PMO"/>
+                                    <constraint firstItem="nC9-XS-Kcm" firstAttribute="trailing" secondItem="uit-LP-7uh" secondAttribute="trailing" id="E06-ms-qEG"/>
+                                    <constraint firstItem="fJE-iH-P01" firstAttribute="centerX" secondItem="H1W-tj-46m" secondAttribute="centerX" id="FQ6-yR-Geh"/>
+                                    <constraint firstItem="IEu-sb-RQE" firstAttribute="centerX" secondItem="H1W-tj-46m" secondAttribute="centerX" id="FSX-w1-mlp"/>
+                                    <constraint firstItem="uit-LP-7uh" firstAttribute="centerX" secondItem="H1W-tj-46m" secondAttribute="centerX" id="Lb4-hR-Q3T"/>
+                                    <constraint firstItem="Xta-zJ-j12" firstAttribute="centerX" secondItem="H1W-tj-46m" secondAttribute="centerX" id="PD6-gy-7Mt"/>
+                                    <constraint firstItem="Xta-zJ-j12" firstAttribute="top" secondItem="H1W-tj-46m" secondAttribute="top" constant="50" id="YPt-8Y-fh3"/>
+                                    <constraint firstAttribute="bottom" secondItem="fJE-iH-P01" secondAttribute="bottom" constant="50" id="dBU-B6-k20"/>
+                                    <constraint firstItem="GS5-7h-9aK" firstAttribute="trailing" secondItem="nC9-XS-Kcm" secondAttribute="trailing" id="dTt-Oe-I54"/>
+                                    <constraint firstItem="uit-LP-7uh" firstAttribute="top" secondItem="IEu-sb-RQE" secondAttribute="bottom" constant="10" id="to2-HF-dAX"/>
+                                    <constraint firstItem="nC9-XS-Kcm" firstAttribute="top" secondItem="uit-LP-7uh" secondAttribute="bottom" constant="8" id="uRW-ze-mpe"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="450" id="vnN-xh-Pyj"/>
-                                    <constraint firstItem="uit-LP-7uh" firstAttribute="top" secondItem="IEu-sb-RQE" secondAttribute="bottom" constant="20" id="xGe-u1-5nG"/>
+                                    <constraint firstItem="GS5-7h-9aK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H1W-tj-46m" secondAttribute="leading" constant="10" id="yra-D3-Ih8"/>
+                                    <constraint firstItem="GS5-7h-9aK" firstAttribute="top" secondItem="nC9-XS-Kcm" secondAttribute="bottom" constant="8" id="z4R-wm-AiQ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -87,10 +107,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-vh-V1A">
-                                <rect key="frame" x="372" y="857" width="124" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Continue as guest"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-vh-V1A">
+                                <rect key="frame" x="355" y="854" width="124" height="30"/>
+                                <state key="normal" title="Continue as guest">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="guestBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xEp-6W-qta"/>
                                 </connections>
@@ -102,10 +123,12 @@
                             <constraint firstItem="H1W-tj-46m" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" priority="999" id="Cm7-P2-qER"/>
                             <constraint firstItem="Seb-Lz-wGT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DuV-G8-E7l"/>
                             <constraint firstAttribute="bottom" secondItem="Seb-Lz-wGT" secondAttribute="bottom" id="FZ7-5w-jl3"/>
+                            <constraint firstItem="Mpd-vh-V1A" firstAttribute="top" secondItem="H1W-tj-46m" secondAttribute="bottom" constant="20" id="SjZ-rg-Izw"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SuC-Kt-hAr"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" priority="999" id="Z5R-qV-bbD"/>
                             <constraint firstAttribute="trailing" secondItem="Seb-Lz-wGT" secondAttribute="trailing" id="jrH-Li-ybl"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qGz-S1-ZZw"/>
+                            <constraint firstItem="Mpd-vh-V1A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xwo-Ji-j64"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

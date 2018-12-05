@@ -10,13 +10,19 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class MPTextField: UIView {
+class MPTextField: UIControl, UITextFieldDelegate {
 
     private var _text: String? {
         didSet {
             self.textField.text = self._text
         }
     }
+    
+    public var hasError: Bool {
+        get { return self._hasError }
+    }
+    
+    private var _hasError: Bool = false
     
     public var text: String? {
         get { return self.textField.text }
@@ -40,11 +46,14 @@ class MPTextField: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         self.addSubview(textField)
-        textField.borderStyle = .roundedRect
-        //setBottomBorderOnlyWith(color: UIColor.black.cgColor)
-        useUnderline()
         self.addSubview(errorLabel)
+        
+        self.textField.borderStyle = .roundedRect
+        self.textField.delegate = self
+        self.textField.textColor = UIColor.white
+        
         textField.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -59,36 +68,20 @@ class MPTextField: UIView {
         self.addConstraints([topConstraint, leadingConstraint, trailingConstraint])
     }
     
-    func setError(errorMsg: String) {
-        errorLabel.text = errorMsg
-        
-        isError(baseColor: UIColor.red.cgColor, numberOfShakes: 2.0, revert: true)
+    func setError(errorMsg: String?) {
+        if let errorMsg = errorMsg {
+            errorLabel.text = errorMsg
+            _hasError = true;
+            isError(baseColor: UIColor.red.cgColor, numberOfShakes: 2.0, revert: true)
+        }
     }
     
     func removeError() {
         errorLabel.text = ""
+        _hasError = false
     }
     
-    func setBottomBorderOnlyWith(color: CGColor) {
-        self.textField.borderStyle = .roundedRect
-        self.textField.layer.masksToBounds = false
-        self.textField.layer.shadowColor = color
-        self.textField.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        self.textField.layer.shadowOpacity = 1.0
-        self.textField.layer.shadowRadius = 0.0
-    }
-    
-    func useUnderline() {
-        let border = CALayer()
-        let borderWidth = CGFloat(1.0)
-        border.borderColor = UIColor.black.cgColor
-        border.frame = CGRect(x: 0, y: self.textField.frame.size.height - borderWidth, width: self.textField.frame.size.width, height: self.textField.frame.size.height)
-        border.borderWidth = borderWidth
-        self.textField.layer.addSublayer(border)
-        self.textField.layer.masksToBounds = true
-    }
-    
-    func isError(baseColor: CGColor, numberOfShakes shakes: Float, revert: Bool) {
+    private func isError(baseColor: CGColor, numberOfShakes shakes: Float, revert: Bool) {
         let animation: CABasicAnimation = CABasicAnimation(keyPath: "shadowColor")
         animation.fromValue = baseColor
         animation.toValue = UIColor.red.cgColor
@@ -104,4 +97,11 @@ class MPTextField: UIView {
         shake.toValue = NSValue(cgPoint: CGPoint(x: self.textField.center.x + 10, y: self.textField.center.y))
         self.textField.layer.add(shake, forKey: "position")
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.removeError()
+        return true
+    }
 }
+
+

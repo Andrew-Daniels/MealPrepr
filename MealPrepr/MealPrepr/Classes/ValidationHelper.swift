@@ -9,14 +9,14 @@ import Foundation
 
 struct ValidationHelper {
     
-    public static func validateEmail(email: String?) -> ErrorHelper.EmailError? {
+    public static func validateEmail(email: String?) -> ErrorHelper.ErrorKey {
         guard let email = email else {
-            return ErrorHelper.EmailError.Empty
+            return ErrorHelper.ErrorKey.Empty
         }
         
         let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
         if (trimmedEmail.isEmpty) {
-            return ErrorHelper.EmailError.Empty
+            return ErrorHelper.ErrorKey.Empty
         }
         
         let emailRegEx = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" +
@@ -31,23 +31,23 @@ struct ValidationHelper {
         let validEmailFormat = emailFormatTest.evaluate(with: email)
         
         if (!validEmailFormat) {
-            return ErrorHelper.EmailError.IncorrectEmailFormat
+            return ErrorHelper.ErrorKey.IncorrectEmailFormat
         }
         
-        return nil;
+        return ErrorHelper.ErrorKey.NoErrors
     }
     
-    public static func validatePassword(password: String?) -> ErrorHelper.PasswordError? {
+    public static func validatePassword(password: String?) -> ErrorHelper.ErrorKey {
         guard let password = password else {
-            return ErrorHelper.PasswordError.Empty
+            return ErrorHelper.ErrorKey.Empty
         }
         if (password.isEmpty) {
-            return ErrorHelper.PasswordError.Empty
+            return ErrorHelper.ErrorKey.Empty
         }
         if (password.count < 8) {
-            return ErrorHelper.PasswordError.EightCharMin
+            return ErrorHelper.ErrorKey.EightCharMin
         }
         
-        return nil;
+        return ErrorHelper.ErrorKey.NoErrors
     }
 }
