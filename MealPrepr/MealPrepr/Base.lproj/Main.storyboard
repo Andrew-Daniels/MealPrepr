@@ -25,30 +25,36 @@
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1W-tj-46m" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                 <rect key="frame" x="208.5" y="278" width="417" height="556"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ran-IK-OpP">
-                                        <rect key="frame" x="159.5" y="263" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Qn-U8-Zv3">
-                                        <rect key="frame" x="159.5" y="263" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-sb-RQE" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="417" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gcI-oJ-5N0"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Email"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-XS-Kcm">
-                                        <rect key="frame" x="187" y="283" width="112" height="30"/>
+                                        <rect key="frame" x="71" y="321" width="112" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="forgot password"/>
                                         <connections>
                                             <action selector="forgotPasswordBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="23P-s8-8pe"/>
                                         </connections>
                                     </button>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uit-LP-7uh" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="70" width="417" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="pPh-no-6cg"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Password"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-7h-9aK">
-                                        <rect key="frame" x="182" y="321" width="122" height="30"/>
+                                        <rect key="frame" x="208" y="321" width="122" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="I need an account"/>
                                         <connections>
@@ -56,7 +62,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-iH-P01">
-                                        <rect key="frame" x="224" y="376" width="38" height="30"/>
+                                        <rect key="frame" x="208" y="399" width="38" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
@@ -66,8 +72,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.19215686274509802" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="uit-LP-7uh" firstAttribute="leading" secondItem="H1W-tj-46m" secondAttribute="leading" id="AKr-hg-XL8"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="DJo-ub-hDd"/>
+                                    <constraint firstItem="IEu-sb-RQE" firstAttribute="top" secondItem="H1W-tj-46m" secondAttribute="top" id="dE9-lE-lC7"/>
+                                    <constraint firstAttribute="trailing" secondItem="uit-LP-7uh" secondAttribute="trailing" id="hrd-wY-SlU"/>
+                                    <constraint firstItem="IEu-sb-RQE" firstAttribute="leading" secondItem="H1W-tj-46m" secondAttribute="leading" id="l9e-Zq-U9N"/>
+                                    <constraint firstAttribute="trailing" secondItem="IEu-sb-RQE" secondAttribute="trailing" id="uZL-r0-yMx"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="450" id="vnN-xh-Pyj"/>
+                                    <constraint firstItem="uit-LP-7uh" firstAttribute="top" secondItem="IEu-sb-RQE" secondAttribute="bottom" constant="20" id="xGe-u1-5nG"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -76,7 +88,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-vh-V1A">
-                                <rect key="frame" x="355" y="860" width="124" height="30"/>
+                                <rect key="frame" x="372" y="857" width="124" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Continue as guest"/>
                                 <connections>
@@ -98,14 +110,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="ran-IK-OpP" id="aww-uX-pxq"/>
+                        <outlet property="emailTextField" destination="IEu-sb-RQE" id="NL3-oH-JNx"/>
                         <outlet property="guestBtn" destination="Mpd-vh-V1A" id="0UL-wd-UdT"/>
                         <outlet property="loginBackView" destination="H1W-tj-46m" id="L9b-Z6-oSt"/>
-                        <outlet property="passwordTextField" destination="1Qn-U8-Zv3" id="XJf-yp-mCr"/>
+                        <outlet property="passwordTextField" destination="uit-LP-7uh" id="NiQ-Sg-imk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="33.812949640287769" y="40.467625899280577"/>
         </scene>
     </scenes>
     <resources>

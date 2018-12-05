@@ -18,6 +18,7 @@
 		310D30FB21B757E000D0E079 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 310D30FA21B757E000D0E079 /* GoogleService-Info.plist */; };
 		310D30FE21B7618A00D0E079 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30FD21B7618A00D0E079 /* ValidationHelper.swift */; };
 		310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30FF21B7620500D0E079 /* ErrorHelper.swift */; };
+		310D310221B772E800D0E079 /* MPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D310121B772E800D0E079 /* MPTextField.swift */; };
 		4B29C891FBA5ADE1D7FBF6BD /* Pods_MealPrepr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */; };
 		FF5B7C81D5B545A2F2BE0E7E /* Pods_MealPreprTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		310D30FA21B757E000D0E079 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		310D30FD21B7618A00D0E079 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		310D30FF21B7620500D0E079 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		310D310121B772E800D0E079 /* MPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextField.swift; sourceTree = "<group>"; };
 		4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPrepr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4673EC337F19E9FD24459B69 /* Pods-MealPreprTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPreprTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPreprTests/Pods-MealPreprTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPreprTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 				310D30F721B74FD900D0E079 /* RoundedUIView.swift */,
 				310D30FD21B7618A00D0E079 /* ValidationHelper.swift */,
 				310D30FF21B7620500D0E079 /* ErrorHelper.swift */,
+				310D310121B772E800D0E079 /* MPTextField.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
+				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

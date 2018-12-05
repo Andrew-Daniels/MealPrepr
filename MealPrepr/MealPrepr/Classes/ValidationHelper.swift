@@ -6,11 +6,13 @@
 //  Copyright © 2018 Andrew Daniels. All rights reserved.
 //
 import Foundation
-import FirebaseAuth
 
 struct ValidationHelper {
     
-    public static func validateEmail(email: String) -> ErrorHelper.EmailError? {
+    public static func validateEmail(email: String?) -> ErrorHelper.EmailError? {
+        guard let email = email else {
+            return ErrorHelper.EmailError.Empty
+        }
         
         let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
         if (trimmedEmail.isEmpty) {
@@ -35,8 +37,10 @@ struct ValidationHelper {
         return nil;
     }
     
-    public static func validatePassword(password: String) -> ErrorHelper.PasswordError? {
-        
+    public static func validatePassword(password: String?) -> ErrorHelper.PasswordError? {
+        guard let password = password else {
+            return ErrorHelper.PasswordError.Empty
+        }
         if (password.isEmpty) {
             return ErrorHelper.PasswordError.Empty
         }

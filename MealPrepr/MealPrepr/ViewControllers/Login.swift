@@ -13,18 +13,20 @@ class Login: UIViewController {
     
     @IBOutlet weak var loginBackView: RoundedUIView!
     @IBOutlet weak var guestBtn: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: MPTextField!
+    @IBOutlet weak var emailTextField: MPTextField!
     var handle: AuthStateDidChangeListenerHandle!
 
+    var UID: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let email = "skaterphreak@gmail.com"
-        let password = "12345"
-        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            guard let _ = authResult?.user else { return }
-        }
+//        let email = "skaterphreak@gmail.com"
+//        let password = "123456"
+//        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+//            guard let _ = authResult?.user else { return }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,10 +51,32 @@ class Login: UIViewController {
     @IBAction func guestBtnClicked(_ sender: UIButton) {
     }
     @IBAction func loginBtnClicked(_ sender: UIButton) {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                print(user)
-                print(error)
+        var errorsExist = false;
+        let email = emailTextField.text
+        let password = passwordTextField.text
+        
+        let emailError = ValidationHelper.validateEmail(email: email)
+        if let emailError = emailError {
+            let errorMsg = ErrorHelper.getEmailErrorMessage(error: emailError)
+            emailTextField.setError(errorMsg: errorMsg)
+            errorsExist = true;
+        } else {
+            emailTextField.removeError()
+        }
+        
+        let passwordError = ValidationHelper.validatePassword(password: password)
+        if let passwordError = passwordError {
+            let errorMsg = ErrorHelper.getPasswordErrorMessage(error: passwordError)
+            passwordTextField.setError(errorMsg: errorMsg)
+            errorsExist = true;
+        } else {
+            passwordTextField.removeError()
+        }
+        if (!errorsExist) {
+            Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+                if let u = user {
+                self.UID = u.user.uid
+                }
             }
         }
     }
