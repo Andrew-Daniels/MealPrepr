@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class Login: UIViewController, UITextFieldDelegate {
+class Login: UIViewController, MPTextFieldDelegate {
     
     @IBOutlet weak var loginBackView: RoundedUIView!
     @IBOutlet weak var guestBtn: UIButton!
@@ -27,7 +27,8 @@ class Login: UIViewController, UITextFieldDelegate {
 //        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
 //            guard let _ = authResult?.user else { return }
 //        }
-        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,6 +112,16 @@ class Login: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func mpTextFieldShouldReturn(textField: MPTextField) {
+        
+        if (textField == self.emailTextField) {
+            let _ = self.passwordTextField.becomeFirstResponder()
+        }
+        else if (textField == self.passwordTextField) {
+            let _ = self.passwordTextField.resignFirstResponder()
+        }
     }
 }
 

@@ -48,6 +48,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
     
     var textField: UITextField = UITextField()
     var errorLabel: UILabel = UILabel()
+    var delegate: MPTextFieldDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -132,10 +133,24 @@ class MPTextField: UIControl, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (self.passwordField) {
-            self.endEditing(true)
+        if let delegate = self.delegate {
+            delegate.mpTextFieldShouldReturn(textField: self)
         }
         return true;
+    }
+    override func resignFirstResponder() -> Bool {
+        if (self.textField.isFirstResponder) {
+            self.textField.resignFirstResponder()
+            return true
+        }
+        return false
+    }
+    override func becomeFirstResponder() -> Bool {
+        if (!self.textField.isFirstResponder) {
+            self.textField.becomeFirstResponder()
+            return true
+        }
+        return false
     }
 }
 
