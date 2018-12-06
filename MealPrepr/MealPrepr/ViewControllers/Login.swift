@@ -29,6 +29,7 @@ class Login: UIViewController, MPTextFieldDelegate {
 //        }
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        loginBackView.effect = .dark
     }
 
     override func didReceiveMemoryWarning() {

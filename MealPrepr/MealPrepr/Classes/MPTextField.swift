@@ -22,8 +22,6 @@ class MPTextField: UIControl, UITextFieldDelegate {
         get { return self._hasError }
     }
     
-    private var _hasError: Bool = false
-    
     public var text: String? {
         get { return self.textField.text }
         set { self._text = text }
@@ -33,7 +31,8 @@ class MPTextField: UIControl, UITextFieldDelegate {
     public var placeholderText: String? {
         didSet {
             if let placeholder = self.placeholderText {
-                self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+                let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+                self.textField.attributedPlaceholder = attributedPlaceholder
             }
         }
     }
@@ -49,6 +48,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
     var textField: UITextField = UITextField()
     var errorLabel: UILabel = UILabel()
     var delegate: MPTextFieldDelegate?
+    private var _hasError: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,13 +69,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         }
     }
     
-    private func removeError() {
-        errorLabel.text = ""
-        _hasError = false
-    }
-    
     private func setError(numberOfShakes shakes: Float, revert: Bool) {
-
         let shake: CABasicAnimation = CABasicAnimation(keyPath: "position")
         shake.duration = 0.07
         shake.repeatCount = shakes
@@ -85,24 +79,33 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.textField.layer.add(shake, forKey: "position")
     }
     
+    private func removeError() {
+        errorLabel.text = ""
+        _hasError = false
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         self.removeError()
         return true
     }
     
     private func initMPTextField() {
+        //Add Textfield and ErrorLabel to MPTextField
         self.addSubview(textField)
         self.addSubview(errorLabel)
         
+        //Setup TextField
         self.textField.borderStyle = .none
         self.textField.delegate = self
         self.textField.textColor = UIColor.white
         self.textField.returnKeyType = .next
         
+        //Setup errorLabel
         let font = UIFont(name: "Helvetica", size: 12.0)
         self.errorLabel.font = font
         self.errorLabel.textColor = UIColor.white
         
+        //Setup constraints for TextField and ErrorLabel
         textField.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         

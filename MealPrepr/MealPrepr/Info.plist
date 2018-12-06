@@ -41,5 +41,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Phosphate.ttc</string>
+		<string>Nadeem.ttc</string>
+	</array>
 </dict>
 </plist>

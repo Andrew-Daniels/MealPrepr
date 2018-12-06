@@ -28,10 +28,14 @@ class RoundedUIView: UIView {
     
     public var effect: UIBlurEffectStyle = .dark {
         didSet {
+            self.backgroundColor = .clear
             let e = UIBlurEffect(style: self.effect)
         
             let v = UIVisualEffectView(effect: e)
-            self.addSubview(v)
+            v.frame = self.bounds
+            v.layer.cornerRadius = self.cornerRadius
+            self.insertSubview(v, at: 0)
+            v.clipsToBounds = true
         }
     }
 }
