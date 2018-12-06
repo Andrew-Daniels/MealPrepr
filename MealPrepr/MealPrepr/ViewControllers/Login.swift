@@ -27,6 +27,7 @@ class Login: UIViewController, UITextFieldDelegate {
 //        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
 //            guard let _ = authResult?.user else { return }
 //        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,6 +107,10 @@ class Login: UIViewController, UITextFieldDelegate {
         } else if (alert.actions[1].isEnabled) {
             alert.actions[1].isEnabled = false
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 

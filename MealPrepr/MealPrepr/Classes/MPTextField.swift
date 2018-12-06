@@ -32,7 +32,17 @@ class MPTextField: UIControl, UITextFieldDelegate {
     @IBInspectable
     public var placeholderText: String? {
         didSet {
-            self.textField.placeholder = self.placeholderText
+            if let placeholder = self.placeholderText {
+                self.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+            }
+        }
+    }
+    
+    @IBInspectable
+    public var passwordField: Bool = false {
+        didSet {
+            self.textField.isSecureTextEntry = passwordField
+            self.textField.returnKeyType = .done
         }
     }
     
@@ -83,9 +93,10 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.addSubview(textField)
         self.addSubview(errorLabel)
         
-        self.textField.borderStyle = .roundedRect
+        self.textField.borderStyle = .none
         self.textField.delegate = self
-        self.textField.textColor = UIColor.black
+        self.textField.textColor = UIColor.white
+        self.textField.returnKeyType = .next
         
         let font = UIFont(name: "Helvetica", size: 12.0)
         self.errorLabel.font = font
@@ -103,21 +114,30 @@ class MPTextField: UIControl, UITextFieldDelegate {
         leadingConstraint = (NSLayoutConstraint(item: errorLabel, attribute: .leading, relatedBy: .equal, toItem: textField, attribute: .leading, multiplier: 1.0, constant: 0.0))
         trailingConstraint = (NSLayoutConstraint(item: errorLabel, attribute: .trailing, relatedBy: .equal, toItem: textField, attribute: .trailing, multiplier: 1.0, constant: 0.0))
         self.addConstraints([topConstraint, leadingConstraint, trailingConstraint])
-        
-        //self.textField.useUnderline()
     }
-}
-extension UITextField {
     
-    func useUnderline() {
+    public func useUnderline() {
         let border = CALayer()
         let borderWidth = CGFloat(1.0)
-        border.borderColor = UIColor.black.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - borderWidth, width: self.frame.size.width, height: self.frame.size.height)
+        border.borderColor = UIColor.white.cgColor
+        border.frame = CGRect(x: 0, y: self.textField.frame.size.height - borderWidth, width: self.textField.frame.size.width, height: self.textField.frame.size.height)
         border.borderWidth = borderWidth
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
+        self.textField.layer.addSublayer(border)
+        self.textField.layer.masksToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.useUnderline()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (self.passwordField) {
+            self.endEditing(true)
+        }
+        return true;
     }
 }
+
 
 
