@@ -9,14 +9,14 @@ import Foundation
 
 struct ValidationHelper {
     
-    public static func validateEmail(email: String?) -> ErrorHelper.ErrorKey {
+    public static func validateEmail(email: String?) -> String? {
         guard let email = email else {
-            return ErrorHelper.ErrorKey.Empty
+            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
         }
         
         let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
         if (trimmedEmail.isEmpty) {
-            return ErrorHelper.ErrorKey.Empty
+            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
         }
         
         let emailRegEx = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" +
@@ -31,23 +31,23 @@ struct ValidationHelper {
         let validEmailFormat = emailFormatTest.evaluate(with: email)
         
         if (!validEmailFormat) {
-            return ErrorHelper.ErrorKey.IncorrectEmailFormat
+            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.IncorrectEmailFormat)
         }
         
-        return ErrorHelper.ErrorKey.NoErrors
+        return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.NoErrors)
     }
     
-    public static func validatePassword(password: String?) -> ErrorHelper.ErrorKey {
+    public static func validatePassword(password: String?) -> String? {
         guard let password = password else {
-            return ErrorHelper.ErrorKey.Empty
+            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
         }
         if (password.isEmpty) {
-            return ErrorHelper.ErrorKey.Empty
+            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
         }
         if (password.count < 8) {
-            return ErrorHelper.ErrorKey.EightCharMin
+            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.EightCharMin)
         }
         
-        return ErrorHelper.ErrorKey.NoErrors
+        return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.NoErrors)
     }
 }

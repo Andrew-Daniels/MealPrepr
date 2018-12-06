@@ -45,6 +45,23 @@ class Login: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func forgotPasswordBtnClicked(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Password Reset", message: "Enter email address associated with your account", preferredStyle: .alert)
+        let emailAction = UIAlertAction(title: "Send Email", style: .default) { (action) in
+            if let emailTextField = alert.textFields?.first, let email = emailTextField.text {
+                Auth.auth().sendPasswordReset(withEmail: email, completion: nil)
+            }
+        }
+        alert.addTextField { (emailTextField) in
+            emailTextField.placeholder = "Enter Email Address"
+            emailTextField.addTarget(self, action: #selector(self.emailTextFieldTextChanged(textField:)), for: .editingChanged)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        emailAction.isEnabled = false
+        alert.addAction(cancelAction)
+        alert.addAction(emailAction)
+        self.present(alert, animated: true, completion: nil)
     }
     @IBAction func needAnAccountBtnClicked(_ sender: UIButton) {
     }
@@ -54,23 +71,40 @@ class Login: UIViewController, UITextFieldDelegate {
         let email = emailTextField.text
         let password = passwordTextField.text
         
-        var errorKey = ValidationHelper.validateEmail(email: email)
-        var errorMsg = ErrorHelper.getErrorMsg(errorKey: errorKey)
+        var errorMsg = ValidationHelper.validateEmail(email: email)
         emailTextField.setError(errorMsg: errorMsg)
         
-        errorKey = ValidationHelper.validatePassword(password: password)
-        errorMsg = ErrorHelper.getErrorMsg(errorKey: errorKey)
+        errorMsg = ValidationHelper.validatePassword(password: password)
         passwordTextField.setError(errorMsg: errorMsg)
         
         if (!emailTextField.hasError && !passwordTextField.hasError) {
             Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
                 if let error = error {
-                    
+                    let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
                 }
                 if let u = user {
                     self.UID = u.user.uid
+                    //Perform segue to homescreen here
                 }
             }
+        }
+    }
+    
+    @objc func emailTextFieldTextChanged(textField: UITextField) {
+        var resp : UIResponder! = textField
+        while !(resp is UIAlertController) { resp = resp.next }
+        let alert = resp as! UIAlertController
+        
+        
+        let email = textField.text
+        let errorMsg = ValidationHelper.validateEmail(email: email)
+        if (errorMsg == nil) {
+            alert.actions[1].isEnabled = true
+        } else if (alert.actions[1].isEnabled) {
+            alert.actions[1].isEnabled = false
         }
     }
 }
