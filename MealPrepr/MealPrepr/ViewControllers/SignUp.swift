@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUp: UIViewController, MPTextFieldDelegate {
 
@@ -49,7 +50,26 @@ class SignUp: UIViewController, MPTextFieldDelegate {
         usernameTextField.setError(errorMsg: errorMsg)
         
         if (!emailTextField.hasError && !passwordTextField.hasError && !usernameTextField.hasError) {
+            //TODO: Check if username is taken first
+            
+            
+            
             //Try to create the account
+                Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
+                    if let error = error,
+                        let errorCode = AuthErrorCode(rawValue: error._code),
+                        let errorMsg = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode) {
+                        
+                        MPAlertController.show(title: "Uh oh", message: errorMsg, type: .Login, viewController: self)
+                        
+                    } else if let error = error {
+                        
+                        MPAlertController.show(title: "Register Error", message: error.localizedDescription, type: .Login, viewController: self)
+                        
+                    }
+                    guard let _ = authResult?.user else { return }
+                    
+                }
         }
     }
     

@@ -24,11 +24,6 @@ class Login: UIViewController, MPTextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        let email = "skaterphreak@gmail.com"
-//        let password = "123456"
-//        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-//            guard let _ = authResult?.user else { return }
-//        }
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -88,16 +83,12 @@ class Login: UIViewController, MPTextFieldDelegate {
                     let errorCode = AuthErrorCode(rawValue: error._code),
                     let errorMsg = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode) {
                     
-                    let alert = UIAlertController(title: "Uh oh", message: errorMsg, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
+                    MPAlertController.show(title: "Uh oh", message: errorMsg, type: .Login, viewController: self)
                     
                 } else if let error = error {
-                    let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
+                    
+                    MPAlertController.show(title: "Login Error", message: error.localizedDescription, type: .Login, viewController: self)
+                    
                 }
                 if let u = user {
                     self.UID = u.user.uid

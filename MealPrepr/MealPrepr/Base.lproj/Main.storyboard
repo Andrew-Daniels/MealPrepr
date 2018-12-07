@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina6_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,14 +23,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="Login" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home-Background" translatesAutoresizingMaskIntoConstraints="NO" id="Seb-Lz-wGT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                             </imageView>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1W-tj-46m" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                <rect key="frame" x="42" y="192" width="330" height="512"/>
+                                <rect key="frame" x="283" y="0.0" width="330" height="414"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Meal-Prepr-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Xta-zJ-j12">
                                         <rect key="frame" x="128" y="25" width="74" height="74"/>
@@ -40,7 +40,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-XS-Kcm">
-                                        <rect key="frame" x="148" y="267" width="142" height="40"/>
+                                        <rect key="frame" x="148" y="242" width="142" height="40"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="forgot password">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-7h-9aK">
-                                        <rect key="frame" x="132" y="315" width="158" height="40"/>
+                                        <rect key="frame" x="132" y="290" width="158" height="40"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="I need an account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,7 +60,7 @@
                                         </connections>
                                     </button>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-sb-RQE" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="149" width="250" height="50"/>
+                                        <rect key="frame" x="40" y="124" width="250" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="JUf-e0-t2e"/>
@@ -71,7 +71,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uit-LP-7uh" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="209" width="250" height="50"/>
+                                        <rect key="frame" x="40" y="184" width="250" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="Hiq-Hf-m6d"/>
@@ -83,7 +83,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-iH-P01">
-                                        <rect key="frame" x="122.66666666666666" y="439" width="85" height="48"/>
+                                        <rect key="frame" x="122.66666666666669" y="341" width="85" height="48"/>
                                         <fontDescription key="fontDescription" name="Phosphate-Solid" family="Phosphate" pointSize="30"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,7 +158,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-vh-V1A">
-                                <rect key="frame" x="126.66666666666669" y="724" width="161" height="40"/>
+                                <rect key="frame" x="96" y="353" width="161" height="40"/>
                                 <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                 <state key="normal" title="Continue as guest">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,7 +171,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="bottom" secondItem="lcR-Rl-ynz" secondAttribute="bottom" id="6xt-zQ-NAG"/>
-                            <constraint firstItem="Seb-Lz-wGT" firstAttribute="leading" secondItem="lcR-Rl-ynz" secondAttribute="leading" id="7id-c9-LYT"/>
+                            <constraint firstItem="Seb-Lz-wGT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7id-c9-LYT"/>
                             <constraint firstItem="Seb-Lz-wGT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DuV-G8-E7l"/>
                             <constraint firstAttribute="bottom" secondItem="Seb-Lz-wGT" secondAttribute="bottom" id="FZ7-5w-jl3"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="leading" secondItem="Mpd-vh-V1A" secondAttribute="trailing" constant="26" id="GKE-sS-CG0"/>
@@ -180,7 +180,7 @@
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="top" secondItem="H1W-tj-46m" secondAttribute="bottom" constant="20" id="SjZ-rg-Izw"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SuC-Kt-hAr"/>
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="bottom" secondItem="H1W-tj-46m" secondAttribute="bottom" constant="-15" id="Vl9-k4-fNw"/>
-                            <constraint firstItem="lcR-Rl-ynz" firstAttribute="trailing" secondItem="Seb-Lz-wGT" secondAttribute="trailing" id="jrH-Li-ybl"/>
+                            <constraint firstAttribute="trailing" secondItem="Seb-Lz-wGT" secondAttribute="trailing" id="jrH-Li-ybl"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="centerX" secondItem="lcR-Rl-ynz" secondAttribute="centerX" id="qGz-S1-ZZw"/>
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="centerX" secondItem="lcR-Rl-ynz" secondAttribute="centerX" id="xwo-Ji-j64"/>
                         </constraints>
@@ -223,14 +223,14 @@
             <objects>
                 <viewController id="nvJ-Aq-M9i" customClass="SignUp" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yar-sO-cYI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home-Background" translatesAutoresizingMaskIntoConstraints="NO" id="mAF-c5-Wgu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUs-WN-rAS" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                <rect key="frame" x="42" y="192" width="330" height="512"/>
+                                <rect key="frame" x="283" y="-49" width="330" height="512"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heK-cb-gEZ" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
                                         <rect key="frame" x="40" y="119" width="250" height="50"/>
@@ -276,7 +276,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhJ-L9-Lhe">
-                                        <rect key="frame" x="112.66666666666666" y="439" width="105" height="48"/>
+                                        <rect key="frame" x="112.66666666666669" y="439" width="105" height="48"/>
                                         <fontDescription key="fontDescription" name="Phosphate-Solid" family="Phosphate" pointSize="30"/>
                                         <state key="normal" title="SIGN UP">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
