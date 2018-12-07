@@ -11,12 +11,12 @@ struct ValidationHelper {
     
     public static func validateEmail(email: String?) -> String? {
         guard let email = email else {
-            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
         }
         
         let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
         if (trimmedEmail.isEmpty) {
-            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
         }
         
         let emailRegEx = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" +
@@ -31,23 +31,33 @@ struct ValidationHelper {
         let validEmailFormat = emailFormatTest.evaluate(with: email)
         
         if (!validEmailFormat) {
-            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.IncorrectEmailFormat)
+            return ErrorHelper.getErrorMsg(errorKey: .IncorrectEmailFormat)
         }
         
-        return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.NoErrors)
+        return ErrorHelper.getErrorMsg(errorKey: .NoErrors)
     }
     
     public static func validatePassword(password: String?) -> String? {
         guard let password = password else {
-            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
         }
         if (password.isEmpty) {
-            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.Empty)
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
         }
         if (password.count < 8) {
-            return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.EightCharMin)
+            return ErrorHelper.getErrorMsg(errorKey: .EightCharMin)
         }
         
-        return ErrorHelper.getErrorMsg(errorKey: ErrorHelper.ErrorKey.NoErrors)
+        return ErrorHelper.getErrorMsg(errorKey: .NoErrors)
+    }
+    
+    public static func validateUsername(username: String?) -> String? {
+        guard let username = username else {
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
+        }
+        if (username.isEmpty) {
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
+        }
+        return ErrorHelper.getErrorMsg(errorKey: .NoErrors)
     }
 }

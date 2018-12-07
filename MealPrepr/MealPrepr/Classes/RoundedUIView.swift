@@ -26,16 +26,29 @@ class RoundedUIView: UIView {
         }
     }
     
-    public var effect: UIBlurEffectStyle = .dark {
+    public var effect: UIBlurEffectStyle! {
         didSet {
+            if (self.effectView != nil) {
+                self.effectView.removeFromSuperview()
+            }
             self.backgroundColor = .clear
             let e = UIBlurEffect(style: self.effect)
         
-            let v = UIVisualEffectView(effect: e)
-            v.frame = self.bounds
-            v.layer.cornerRadius = self.cornerRadius
-            self.insertSubview(v, at: 0)
-            v.clipsToBounds = true
+            self.effectView = UIVisualEffectView(effect: e)
+            self.effectView.frame = self.bounds
+            self.effectView.layer.cornerRadius = self.cornerRadius
+            self.insertSubview(self.effectView, at: 0)
+            self.effectView.clipsToBounds = true
+        }
+    }
+    
+    private var effectView: UIVisualEffectView!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if (self.effect == nil) {
+            self.effect = .dark
         }
     }
 }

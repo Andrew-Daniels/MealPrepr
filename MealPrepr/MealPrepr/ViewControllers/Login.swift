@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 
+public let signUpSegueIdentifier = "SignUp"
+
 class Login: UIViewController, MPTextFieldDelegate {
     
     @IBOutlet weak var loginBackView: RoundedUIView!
@@ -29,7 +31,6 @@ class Login: UIViewController, MPTextFieldDelegate {
 //        }
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        loginBackView.effect = .dark
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +68,7 @@ class Login: UIViewController, MPTextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     @IBAction func needAnAccountBtnClicked(_ sender: UIButton) {
+        performSegue(withIdentifier: signUpSegueIdentifier, sender: sender)
     }
     @IBAction func guestBtnClicked(_ sender: UIButton) {
     }
@@ -123,6 +125,9 @@ class Login: UIViewController, MPTextFieldDelegate {
         else if (textField == self.passwordTextField) {
             let _ = self.passwordTextField.resignFirstResponder()
         }
+    }
+    
+    @IBAction func backToLogin(segue: UIStoryboardSegue) {
     }
 }
 
