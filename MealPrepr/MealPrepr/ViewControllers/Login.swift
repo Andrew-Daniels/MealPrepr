@@ -84,7 +84,16 @@ class Login: UIViewController, MPTextFieldDelegate {
         
         if (!emailTextField.hasError && !passwordTextField.hasError) {
             Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
-                if let error = error {
+                if let error = error,
+                    let errorCode = AuthErrorCode(rawValue: error._code),
+                    let errorMsg = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode) {
+                    
+                    let alert = UIAlertController(title: "Uh oh", message: errorMsg, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else if let error = error {
                     let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
                     let action = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
                     alert.addAction(action)
