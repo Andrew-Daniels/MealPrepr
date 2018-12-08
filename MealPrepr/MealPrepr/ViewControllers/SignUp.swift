@@ -20,20 +20,13 @@ class SignUp: UIViewController, MPTextFieldDelegate {
 
         // Do any additional setup after loading the view.
         emailTextField.delegate = self
+        emailTextField.authFieldType = .Email
         usernameTextField.delegate = self
+        usernameTextField.authFieldType = .Username
         passwordTextField.delegate = self
+        passwordTextField.authFieldType = .Password
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func signUpBtnClicked(_ sender: UIButton) {
         let email = emailTextField.text
@@ -57,19 +50,26 @@ class SignUp: UIViewController, MPTextFieldDelegate {
             //Try to create the account
                 Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
                     if let error = error,
-                        let errorCode = AuthErrorCode(rawValue: error._code),
-                        let errorMsg = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode) {
+                        let errorCode = AuthErrorCode(rawValue: error._code) {
                         
-                        MPAlertController.show(title: "Uh oh", message: errorMsg, type: .Login, viewController: self)
+                        let authError = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode)
+                        
+                        self.emailTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
+                        self.passwordTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
                         
                     } else if let error = error {
                         
-                        MPAlertController.show(title: "Register Error", message: error.localizedDescription, type: .Login, viewController: self)
+                        MPAlertController.show(message: error.localizedDescription, type: .SignUp, presenter: self)
                         
                     }
                     guard let _ = authResult?.user else { return }
                     
                 }
+        }
+        else {
+            self.emailTextField.notifyOfError()
+            self.passwordTextField.notifyOfError()
+            self.usernameTextField.notifyOfError()
         }
     }
     

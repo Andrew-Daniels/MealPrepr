@@ -25,7 +25,9 @@ class Login: UIViewController, MPTextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         emailTextField.delegate = self
+        emailTextField.authFieldType = .Email
         passwordTextField.delegate = self
+        passwordTextField.authFieldType = .Password
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,14 +82,16 @@ class Login: UIViewController, MPTextFieldDelegate {
         if (!emailTextField.hasError && !passwordTextField.hasError) {
             Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
                 if let error = error,
-                    let errorCode = AuthErrorCode(rawValue: error._code),
-                    let errorMsg = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode) {
+                    let errorCode = AuthErrorCode(rawValue: error._code) {
                     
-                    MPAlertController.show(title: "Uh oh", message: errorMsg, type: .Login, viewController: self)
+                    let authError = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode)
+                    
+                    self.emailTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
+                    self.passwordTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
                     
                 } else if let error = error {
                     
-                    MPAlertController.show(title: "Login Error", message: error.localizedDescription, type: .Login, viewController: self)
+                    MPAlertController.show(message: error.localizedDescription, type: .Login, presenter: self)
                     
                 }
                 if let u = user {
@@ -95,6 +99,10 @@ class Login: UIViewController, MPTextFieldDelegate {
                     //Perform segue to homescreen here
                 }
             }
+        }
+        else {
+            self.emailTextField.notifyOfError()
+            self.passwordTextField.notifyOfError()
         }
     }
     

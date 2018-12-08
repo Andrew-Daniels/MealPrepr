@@ -19,6 +19,12 @@ struct ErrorHelper {
         case NoErrors
     }
     
+    public enum AuthFieldType {
+        case Email
+        case Username
+        case Password
+    }
+    
     public static func getErrorMsg(errorKey: ErrorKey) -> String? {
         switch(errorKey) {
         case .IncorrectEmailFormat:
@@ -34,7 +40,7 @@ struct ErrorHelper {
         }
     }
     
-    public static func getFirebaseErrorMsg(authErrorCode: AuthErrorCode) -> String? {
+    public static func getFirebaseErrorMsg(authErrorCode: AuthErrorCode) -> (errorMsg: String, authFieldType: AuthFieldType) {
         
         switch(authErrorCode) {
         case .invalidCustomToken:
@@ -48,15 +54,15 @@ struct ErrorHelper {
         case .operationNotAllowed:
             break;
         case .emailAlreadyInUse:
-            break;
+            return (errorMsg:"This email address is already in use by another account.", authFieldType: .Email)
         case .invalidEmail:
-            break;
+            return (errorMsg:"Email is not the correct format", authFieldType: .Email)
         case .wrongPassword:
-            return "The password entered was incorrect."
+            return (errorMsg:"The password entered was incorrect.", authFieldType: .Password)
         case .tooManyRequests:
             break;
         case .userNotFound:
-            return "An account with this email address doesn't exist."
+            return (errorMsg:"An account with this email address doesn't exist.", authFieldType: .Email)
         case .accountExistsWithDifferentCredential:
             break;
         case .requiresRecentLogin:
@@ -78,7 +84,7 @@ struct ErrorHelper {
         case .credentialAlreadyInUse:
             break;
         case .weakPassword:
-            break;
+            return (errorMsg: "Password must be 6 characters minimum", authFieldType: .Password)
         case .appNotAuthorized:
             break;
         case .expiredActionCode:
@@ -151,6 +157,6 @@ struct ErrorHelper {
             break;
         }
         
-        return "This is a test"
+        return (errorMsg: "Basic error message. This error message needs handled", .Email)
     }
 }

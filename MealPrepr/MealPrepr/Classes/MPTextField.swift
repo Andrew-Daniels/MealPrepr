@@ -48,6 +48,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
     var textField: UITextField = UITextField()
     var errorLabel: UILabel = UILabel()
     var delegate: MPTextFieldDelegate?
+    var authFieldType: ErrorHelper.AuthFieldType!
     private var _hasError: Bool = false
     
     override init(frame: CGRect) {
@@ -63,9 +64,21 @@ class MPTextField: UIControl, UITextFieldDelegate {
     
     public func setError(errorMsg: String?) {
         if let errorMsg = errorMsg {
-            errorLabel.text = errorMsg
+            self.errorLabel.text = errorMsg
             _hasError = true;
             setError(numberOfShakes: 2.0, revert: true)
+        }
+    }
+    
+    public func setAuthError(errorMsg: String?, authFieldType: ErrorHelper.AuthFieldType?) {
+        if let _authFieldType = self.authFieldType, _authFieldType == authFieldType {
+            setError(errorMsg: errorMsg)
+        }
+    }
+    
+    public func notifyOfError() {
+        if (self._hasError) {
+            self.setError(numberOfShakes: 2.0, revert: true)
         }
     }
     
@@ -104,6 +117,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         let font = UIFont(name: "Helvetica", size: 12.0)
         self.errorLabel.font = font
         self.errorLabel.textColor = UIColor.white
+        self.errorLabel.numberOfLines = 2
         
         //Setup constraints for TextField and ErrorLabel
         textField.translatesAutoresizingMaskIntoConstraints = false

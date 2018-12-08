@@ -17,22 +17,30 @@ class MPAlertController {
         case SignUp
     }
     
-    public static func show(title: String, message: String, type: AlertType, viewController: UIViewController) {
+    public static func show(message: String, type: AlertType, presenter: UIViewController) {
+        let alert = self.create(message: message, type: type)
+        presenter.present(alert, animated: true, completion: nil)
+    }
+    
+    public static func create(message: String, type: AlertType) -> UIAlertController {
         var actionTitle: String!
-        let actionStyle: UIAlertActionStyle = .cancel
-        
+        var title: String!
         switch(type) {
             
         case .Standard:
+            title = "Uh oh"
             actionTitle = "OK"
         case .Login:
+            title = "Login Error"
             actionTitle = "Try Again"
         case .SignUp:
+            title = "Register Error"
             actionTitle = "Try Again"
         }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: actionTitle, style: actionStyle, handler: nil)
+        let action = UIAlertAction(title: actionTitle, style: .cancel, handler: nil)
         alert.addAction(action)
-        viewController.present(alert, animated: true, completion: nil)
+        
+        return alert
     }
 }
