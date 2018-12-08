@@ -126,10 +126,10 @@
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="U6T-vd-f8j"/>
                                         <exclude reference="8X7-Je-Blg"/>
                                         <exclude reference="Vmd-Yn-8G1"/>
                                         <exclude reference="YFP-9N-0JF"/>
+                                        <exclude reference="U6T-vd-f8j"/>
                                         <exclude reference="D5l-yr-B2C"/>
                                         <exclude reference="Y9c-Ko-oY7"/>
                                         <exclude reference="eWv-eW-a7Q"/>
@@ -138,11 +138,11 @@
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="constraints">
                                         <exclude reference="C02-Nt-gd8"/>
-                                        <exclude reference="AuL-q5-BE4"/>
-                                        <include reference="U6T-vd-f8j"/>
                                         <include reference="8X7-Je-Blg"/>
                                         <exclude reference="YFP-9N-0JF"/>
                                         <exclude reference="YPt-8Y-fh3"/>
+                                        <exclude reference="AuL-q5-BE4"/>
+                                        <include reference="U6T-vd-f8j"/>
                                         <include reference="Y9c-Ko-oY7"/>
                                         <exclude reference="dBU-B6-k20"/>
                                         <exclude reference="eWv-eW-a7Q"/>
@@ -220,11 +220,11 @@
             </objects>
             <point key="canvasLocation" x="33.812949640287769" y="40.467625899280577"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="8EY-Ps-DVA">
             <objects>
-                <navigationController hidesBarsOnSwipe="YES" id="EbZ-3m-bBF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="iky-6h-PGy"/>
+                <navigationController hidesBarsOnSwipe="YES" id="EbZ-3m-bBF" customClass="HomeNavigationController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="iky-6h-PGy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VM9-XT-yon">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -233,18 +233,34 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="a4t-j8-lIB" kind="show" id="rJ1-hX-4QZ"/>
+                        <segue destination="a4t-j8-lIB" kind="relationship" relationship="rootViewController" id="cWh-9N-U92"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddU-Jb-deO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2416" y="-17"/>
         </scene>
-        <!--Item 2-->
+        <!--Admin-->
+        <scene sceneID="kTN-rL-U4H">
+            <objects>
+                <navigationController id="TBD-Ns-YWr" customClass="AdminNavigationViewController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Admin" id="BEG-aA-jp6"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L1p-Qt-KCp">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="i7O-rM-fJo" kind="relationship" relationship="rootViewController" id="Krw-h2-xcf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fg3-d8-xCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2416" y="801"/>
+        </scene>
+        <!--Admin Controller-->
         <scene sceneID="aLC-n0-UIH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OPu-di-470" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="i7O-rM-fJo" sceneMemberID="viewController">
+                <viewController id="i7O-rM-fJo" userLabel="Admin Controller" customClass="Admin" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EJS-eg-aFk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,14 +268,23 @@
                         <viewLayoutGuide key="safeArea" id="pUJ-mK-xEj"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="ywu-mv-Xik"/>
+                    <navigationItem key="navigationItem" id="B1a-3c-wtb">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Bsb-rS-Dyf">
+                            <connections>
+                                <segue destination="pTY-wR-bsB" kind="unwind" unwindAction="backToLoginWithSegue:" id="bDk-eC-2q7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPu-di-470" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pTY-wR-bsB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2416" y="801"/>
+            <point key="canvasLocation" x="3271" y="801"/>
         </scene>
-        <!--Item 1-->
+        <!--Home Controller-->
         <scene sceneID="vVR-WU-9Sq">
             <objects>
-                <viewController id="a4t-j8-lIB" sceneMemberID="viewController">
+                <viewController title="Home Controller" id="a4t-j8-lIB" userLabel="Home Controller" customClass="Home" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="144-Uw-5if">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,8 +292,14 @@
                         <viewLayoutGuide key="safeArea" id="WSn-kr-0aX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="LSy-We-SrA"/>
+                    <navigationItem key="navigationItem" id="ygF-w8-FhQ"/>
+                    <connections>
+                        <segue destination="CYm-4t-8T9" kind="unwind" identifier="backToSignUp" unwindAction="backToSignUpWithSegue:" id="rph-LU-gCh"/>
+                        <segue destination="CYm-4t-8T9" kind="unwind" identifier="backToLogin" unwindAction="backToLoginWithSegue:" id="lAc-ga-fsR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5JA-99-1YZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CYm-4t-8T9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3272" y="-17"/>
         </scene>
@@ -282,8 +313,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="i7O-rM-fJo" kind="relationship" relationship="viewControllers" id="BoU-Cg-hl4"/>
                         <segue destination="EbZ-3m-bBF" kind="relationship" relationship="viewControllers" id="ZQO-ga-66P"/>
+                        <segue destination="TBD-Ns-YWr" kind="relationship" relationship="viewControllers" id="Vhk-We-wYl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="138-o1-SJi" userLabel="First Responder" sceneMemberID="firstResponder"/>

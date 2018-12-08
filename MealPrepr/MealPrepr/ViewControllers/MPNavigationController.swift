@@ -1,5 +1,5 @@
 //
-//  HomeNavigationController.swift
+//  MPNavigationController.swift
 //  MealPrepr
 //
 //  Created by Andrew Daniels on 12/8/18.
@@ -8,11 +8,15 @@
 
 import UIKit
 
-class HomeNavigationController: MPNavigationController {
+class MPNavigationController: UINavigationController {
 
+    var account: Account!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let root = self.topViewController as? MPViewController {
+            root.account = self.account
+        }
         // Do any additional setup after loading the view.
     }
     

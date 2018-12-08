@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeTabBarController: UITabBarController {
+class HomeTabBarController: MPTabBarController {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,21 +18,20 @@ class HomeTabBarController: UITabBarController {
     }
     */
     
-    var account: Account!
-    
     override func viewDidLoad() {
-//        if account.userLevel != .Admin {
-//            let adminController = self.viewControllers?.first(where: { (viewController) -> Bool in
-//                if (viewController is Admin) {
-//                    return true
-//                }
-//                return false
-//            })
-//
-//            guard let controller = adminController else { return }
-//            guard let index = self.viewControllers?.index(of: controller) else { return }
-//            self.viewControllers?.remove(at: index)
-//        }
+        super.viewDidLoad()
+        if account.userLevel != .Admin {
+            let adminController = self.viewControllers?.first(where: { (viewController) -> Bool in
+                if (viewController is AdminNavigationViewController) {
+                    return true
+                }
+                return false
+            })
+
+            guard let controller = adminController else { return }
+            guard let index = self.viewControllers?.index(of: controller) else { return }
+            self.viewControllers?.remove(at: index)
+        }
     }
 
 }

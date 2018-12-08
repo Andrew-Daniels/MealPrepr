@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignUp: UIViewController, MPTextFieldDelegate {
+class SignUp: MPViewController, MPTextFieldDelegate {
 
     @IBOutlet weak var emailTextField: MPTextField!
     @IBOutlet weak var usernameTextField: MPTextField!
@@ -62,9 +62,9 @@ class SignUp: UIViewController, MPTextFieldDelegate {
                         
                     }
                     guard let user = authResult?.user else { return }
-                    let newAccount = Account(UID: user.uid, username: username, userLevel: 0)
+                    self.account = Account(UID: user.uid, username: username, userLevel: .User)
                     
-                    self._FBHelper.saveAccount(account: newAccount)
+                    self._FBHelper.saveAccount(account: self.account)
                 }
         }
         else {

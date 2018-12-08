@@ -1,5 +1,5 @@
 //
-//  HomeNavigationController.swift
+//  MPTabBarController.swift
 //  MealPrepr
 //
 //  Created by Andrew Daniels on 12/8/18.
@@ -8,11 +8,19 @@
 
 import UIKit
 
-class HomeNavigationController: MPNavigationController {
+class MPTabBarController: UITabBarController {
 
+    var account: Account!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let controllers = self.viewControllers {
+            for controller in controllers {
+                if let navController = controller as? MPNavigationController {
+                    navController.account = account
+                }
+            }
+        }
         // Do any additional setup after loading the view.
     }
     

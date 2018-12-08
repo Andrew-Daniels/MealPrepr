@@ -24,6 +24,12 @@
 		312F5A2A21BB4ED60017B534 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2921BB4ED60017B534 /* Account.swift */; };
 		312F5A2C21BC36010017B534 /* HomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2B21BC36010017B534 /* HomeNavigationController.swift */; };
 		312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2D21BC36180017B534 /* HomeTabBarController.swift */; };
+		312F5A3021BC417A0017B534 /* MPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2F21BC417A0017B534 /* MPTabBarController.swift */; };
+		312F5A3221BC41980017B534 /* MPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3121BC41980017B534 /* MPNavigationController.swift */; };
+		312F5A3421BC41A90017B534 /* MPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3321BC41A90017B534 /* MPViewController.swift */; };
+		312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */; };
+		312F5A3821BC51120017B534 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3721BC51120017B534 /* Home.swift */; };
+		312F5A3A21BC511F0017B534 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3921BC511F0017B534 /* Admin.swift */; };
 		31CA29FC21B9F4E500C8BF35 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA29FB21B9F4E500C8BF35 /* SignUp.swift */; };
 		31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */; };
 		31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094021B8C63700555CBE /* Phosphate.ttc */; };
@@ -65,6 +71,12 @@
 		312F5A2921BB4ED60017B534 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		312F5A2B21BC36010017B534 /* HomeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationController.swift; sourceTree = "<group>"; };
 		312F5A2D21BC36180017B534 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		312F5A2F21BC417A0017B534 /* MPTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTabBarController.swift; sourceTree = "<group>"; };
+		312F5A3121BC41980017B534 /* MPNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPNavigationController.swift; sourceTree = "<group>"; };
+		312F5A3321BC41A90017B534 /* MPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPViewController.swift; sourceTree = "<group>"; };
+		312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationViewController.swift; sourceTree = "<group>"; };
+		312F5A3721BC51120017B534 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		312F5A3921BC511F0017B534 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		31CA29FB21B9F4E500C8BF35 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextFieldDelegate.swift; sourceTree = "<group>"; };
 		31D8094021B8C63700555CBE /* Phosphate.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphate.ttc; sourceTree = "<group>"; };
@@ -173,6 +185,12 @@
 				31CA29FB21B9F4E500C8BF35 /* SignUp.swift */,
 				312F5A2B21BC36010017B534 /* HomeNavigationController.swift */,
 				312F5A2D21BC36180017B534 /* HomeTabBarController.swift */,
+				312F5A2F21BC417A0017B534 /* MPTabBarController.swift */,
+				312F5A3121BC41980017B534 /* MPNavigationController.swift */,
+				312F5A3321BC41A90017B534 /* MPViewController.swift */,
+				312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */,
+				312F5A3721BC51120017B534 /* Home.swift */,
+				312F5A3921BC511F0017B534 /* Admin.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -377,14 +395,20 @@
 			files = (
 				310D30FE21B7618A00D0E079 /* ValidationHelper.swift in Sources */,
 				310D30F821B74FD900D0E079 /* RoundedUIView.swift in Sources */,
+				312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */,
+				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
 				310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */,
 				312F5A2C21BC36010017B534 /* HomeNavigationController.swift in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
+				312F5A3821BC51120017B534 /* Home.swift in Sources */,
+				312F5A3221BC41980017B534 /* MPNavigationController.swift in Sources */,
+				312F5A3021BC417A0017B534 /* MPTabBarController.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
+				312F5A3421BC41A90017B534 /* MPViewController.swift in Sources */,
 				312F5A2621BA2A6E0017B534 /* MPAlertController.swift in Sources */,
 				31CA29FC21B9F4E500C8BF35 /* SignUp.swift in Sources */,
 				312F5A2821BB47E20017B534 /* FirebaseHelper.swift in Sources */,

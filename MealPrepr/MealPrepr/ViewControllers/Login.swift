@@ -14,8 +14,10 @@ public let signUpSegueIdentifier = "SignUp"
 public let registeredSegueIdentifier = "Registered"
 public let loggedInSegueIdentifier = "LoggedIn"
 public let homeTabBarSegueIdentifier = "HomeTabBar"
+public let backToSignUpSegueIdentifier = "backToSignUp"
+public let backToLoginSegueIdentifier = "backToLogin"
 
-class Login: UIViewController, MPTextFieldDelegate {
+class Login: MPViewController, MPTextFieldDelegate {
     
     @IBOutlet weak var loginBackView: RoundedUIView!
     @IBOutlet weak var guestBtn: UIButton!
@@ -25,8 +27,8 @@ class Login: UIViewController, MPTextFieldDelegate {
     var _FBHelper: FirebaseHelper!
     @IBOutlet var loginBackViewActiveConstraints: [NSLayoutConstraint]!
     var loginBackViewInactiveConstraints: [NSLayoutConstraint]!
-    
-    var UID: String!
+    private var backViewOutOfView = false
+    private var segueToSignUp = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,13 @@ class Login: UIViewController, MPTextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             // ...
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if(segueToSignUp) {
+            performSegue(withIdentifier: signUpSegueIdentifier, sender: nil)
+            segueToSignUp = false
         }
     }
     
@@ -80,6 +89,8 @@ class Login: UIViewController, MPTextFieldDelegate {
         performSegue(withIdentifier: signUpSegueIdentifier, sender: sender)
     }
     @IBAction func guestBtnClicked(_ sender: UIButton) {
+        self.account = Account()
+        performSegue(withIdentifier: loggedInSegueIdentifier, sender: sender)
     }
     @IBAction func loginBtnClicked(_ sender: UIButton) {
         let email = emailTextField.text
@@ -107,10 +118,13 @@ class Login: UIViewController, MPTextFieldDelegate {
                     
                 }
                 if let u = user {
-                    //TODO: Get the username and userlevel here
-                    let account = Account(UID: u.user.uid, username: nil, userLevel: nil)
-                    self._FBHelper.saveAccount(account: account)
-                    //Perform segue to homescreen here
+                    //Get the username and userlevel here
+                    self.account = Account(UID: u.user.uid, completionHandler: { (accountCreated) in
+                        if(accountCreated) {
+                            //Perform segue to homescreen here
+                            self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+                        }
+                    })
                 }
             }
         }
@@ -150,7 +164,13 @@ class Login: UIViewController, MPTextFieldDelegate {
     }
     
     @IBAction func backToLogin(segue: UIStoryboardSegue) {
-        backViewAnimate()
+        if (backViewOutOfView) {
+            backViewAnimate()
+        }
+    }
+    
+    @IBAction func backToSignUp(segue: UIStoryboardSegue) {
+        self.segueToSignUp = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -161,9 +181,12 @@ class Login: UIViewController, MPTextFieldDelegate {
                 vc._FBHelper = self._FBHelper
                 backViewAnimate()
             }
+        case loggedInSegueIdentifier:
+            if let vc = segue.destination as? HomeTabBarController {
+                vc.account = account
+            }
         default:
             break;
-            
         }
     }
     
@@ -200,6 +223,8 @@ class Login: UIViewController, MPTextFieldDelegate {
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
+        
+        backViewOutOfView = !backViewOutOfView
     }
 }
 

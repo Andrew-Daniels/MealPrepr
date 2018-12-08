@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Account {
+class Account {
     
     public enum UserLevel: Int {
         case Admin = 1
@@ -20,21 +20,33 @@ struct Account {
     var username: String?
     var userLevel: UserLevel = .Guest
     
-    private var _userLevel: Int? {
-        didSet {
-            if let level = _userLevel, let ul = UserLevel(rawValue: level) {
-                userLevel = ul
-            }
-        }
-    }
-    
     init() {
         
+    }
+    
+    init(UID: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        FirebaseHelper().retrieveAccountInfo(UID: UID) { (accountInfo) in
+            self.username = accountInfo.username
+            if let level = accountInfo.userLevel, let ul = UserLevel(rawValue: level) {
+                self.userLevel = ul
+            }
+            completionHandler(true)
+        }
     }
     
     init(UID: String?, username: String?, userLevel: Int?) {
         self.UID = UID
         self.username = username
-        self._userLevel = userLevel
+        if let level = userLevel, let ul = UserLevel(rawValue: level) {
+            self.userLevel = ul
+        }
+    }
+    
+    init(UID: String?, username: String?, userLevel: UserLevel?) {
+        self.UID = UID
+        self.username = username
+        if let level = userLevel {
+            self.userLevel = level
+        }
     }
 }
