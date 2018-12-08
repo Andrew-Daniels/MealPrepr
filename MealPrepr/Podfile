@@ -8,6 +8,8 @@ target 'MealPrepr' do
   # Pods for MealPrepr
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database’
+  pod 'Firebase/Storage'
 
   target 'MealPreprTests' do
     inherit! :search_paths
