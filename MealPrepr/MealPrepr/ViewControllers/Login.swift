@@ -11,6 +11,9 @@ import FirebaseAuth
 import Firebase
 
 public let signUpSegueIdentifier = "SignUp"
+public let registeredSegueIdentifier = "Registered"
+public let loggedInSegueIdentifier = "LoggedIn"
+public let homeTabBarSegueIdentifier = "HomeTabBar"
 
 class Login: UIViewController, MPTextFieldDelegate {
     

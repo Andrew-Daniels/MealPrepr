@@ -72,7 +72,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         if let errorMsg = errorMsg {
             self.errorLabel.text = errorMsg
             _hasError = true;
-            setError(numberOfShakes: 2.0, revert: true)
+            animateError(numberOfShakes: 2.0, revert: true)
         }
     }
     
@@ -84,11 +84,11 @@ class MPTextField: UIControl, UITextFieldDelegate {
     
     public func notifyOfError() {
         if (self._hasError) {
-            self.setError(numberOfShakes: 2.0, revert: true)
+            self.animateError(numberOfShakes: 2.0, revert: true)
         }
     }
     
-    private func setError(numberOfShakes shakes: Float, revert: Bool) {
+    private func animateError(numberOfShakes shakes: Float, revert: Bool) {
         let shake: CABasicAnimation = CABasicAnimation(keyPath: "position")
         shake.duration = 0.07
         shake.repeatCount = shakes
@@ -152,7 +152,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.addConstraints([topConstraint, leadingConstraint, trailingConstraint])
     }
     
-    public func useUnderline() {
+    private func useUnderline() {
         let border = CALayer()
         let borderWidth = CGFloat(1.0)
         border.borderColor = UIColor.white.cgColor
