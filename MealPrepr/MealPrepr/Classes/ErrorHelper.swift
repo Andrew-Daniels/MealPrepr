@@ -84,7 +84,7 @@ struct ErrorHelper {
         case .credentialAlreadyInUse:
             break;
         case .weakPassword:
-            return (errorMsg: "Password must be 6 characters minimum", authFieldType: .Password)
+            return (errorMsg: "Password must be 8 characters minimum", authFieldType: .Password)
         case .appNotAuthorized:
             break;
         case .expiredActionCode:

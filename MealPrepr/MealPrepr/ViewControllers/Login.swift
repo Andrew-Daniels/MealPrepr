@@ -20,7 +20,9 @@ class Login: UIViewController, MPTextFieldDelegate {
     @IBOutlet weak var emailTextField: MPTextField!
     var handle: AuthStateDidChangeListenerHandle!
     var _FBHelper: FirebaseHelper!
-
+    @IBOutlet var loginBackViewActiveConstraints: [NSLayoutConstraint]!
+    var loginBackViewInactiveConstraints: [NSLayoutConstraint]!
+    
     var UID: String!
     
     override func viewDidLoad() {
@@ -141,6 +143,7 @@ class Login: UIViewController, MPTextFieldDelegate {
     }
     
     @IBAction func backToLogin(segue: UIStoryboardSegue) {
+        backViewAnimate()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -149,10 +152,46 @@ class Login: UIViewController, MPTextFieldDelegate {
         case signUpSegueIdentifier:
             if let vc = segue.destination as? SignUp {
                 vc._FBHelper = self._FBHelper
+                backViewAnimate()
             }
         default:
             break;
             
+        }
+    }
+    
+    func backViewAnimate() {
+        if (loginBackViewInactiveConstraints == nil) {
+           loginBackViewInactiveConstraints = []
+           let constraint = NSLayoutConstraint(item: loginBackView, attribute: .bottom, relatedBy: .equal, toItem: loginBackView.superview, attribute: .top, multiplier: 1.0, constant: -50.0)
+            
+            constraint.isActive = false
+            self.view.addConstraint(constraint)
+            loginBackViewInactiveConstraints.append(constraint)
+        }
+        let inactiveConstraints = loginBackViewInactiveConstraints
+        loginBackViewInactiveConstraints.removeAll()
+        
+        for constraint in loginBackViewActiveConstraints {
+            
+            constraint.isActive = false
+            loginBackViewInactiveConstraints.append(constraint)
+            
+        }
+        
+        loginBackViewActiveConstraints.removeAll()
+        
+        if let inactiveConstraints = inactiveConstraints {
+            for constraint in inactiveConstraints {
+                
+                constraint.isActive = true
+                loginBackViewActiveConstraints.append(constraint)
+                
+            }
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
         }
     }
 }
