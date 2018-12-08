@@ -8,12 +8,14 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class SignUp: UIViewController, MPTextFieldDelegate {
 
     @IBOutlet weak var emailTextField: MPTextField!
     @IBOutlet weak var usernameTextField: MPTextField!
     @IBOutlet weak var passwordTextField: MPTextField!
+    var _FBHelper: FirebaseHelper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +45,6 @@ class SignUp: UIViewController, MPTextFieldDelegate {
         usernameTextField.setError(errorMsg: errorMsg)
         
         if (!emailTextField.hasError && !passwordTextField.hasError && !usernameTextField.hasError) {
-            //TODO: Check if username is taken first
-            
-            
             
             //Try to create the account
                 Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
@@ -62,8 +61,10 @@ class SignUp: UIViewController, MPTextFieldDelegate {
                         MPAlertController.show(message: error.localizedDescription, type: .SignUp, presenter: self)
                         
                     }
-                    guard let _ = authResult?.user else { return }
+                    guard let user = authResult?.user else { return }
+                    let newAccount = Account(UID: user.uid, username: username, userLevel: 0)
                     
+                    self._FBHelper.saveAccount(account: newAccount)
                 }
         }
         else {

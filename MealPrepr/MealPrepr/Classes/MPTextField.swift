@@ -48,7 +48,13 @@ class MPTextField: UIControl, UITextFieldDelegate {
     var textField: UITextField = UITextField()
     var errorLabel: UILabel = UILabel()
     var delegate: MPTextFieldDelegate?
-    var authFieldType: ErrorHelper.AuthFieldType!
+    var authFieldType: ErrorHelper.AuthFieldType! {
+        didSet {
+            if (authFieldType == .Username) {
+                self.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+            }
+        }
+    }
     private var _hasError: Bool = false
     
     override init(frame: CGRect) {
@@ -98,8 +104,20 @@ class MPTextField: UIControl, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        self.removeError()
+        if (self.authFieldType != .Username) {
+            self.removeError()
+        }
         return true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        FirebaseHelper().checkUsernameAvailability(username: self.text) { (available) in
+            if (!available) {
+                self.setError(errorMsg: ErrorHelper.getErrorMsg(errorKey: .UsernameTaken))
+            } else {
+                self.removeError()
+            }
+        }
     }
     
     private func initMPTextField() {
@@ -155,6 +173,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         }
         return true;
     }
+    
     override func resignFirstResponder() -> Bool {
         if (self.textField.isFirstResponder) {
             self.textField.resignFirstResponder()

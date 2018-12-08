@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 public let signUpSegueIdentifier = "SignUp"
 
@@ -18,6 +19,7 @@ class Login: UIViewController, MPTextFieldDelegate {
     @IBOutlet weak var passwordTextField: MPTextField!
     @IBOutlet weak var emailTextField: MPTextField!
     var handle: AuthStateDidChangeListenerHandle!
+    var _FBHelper: FirebaseHelper!
 
     var UID: String!
     
@@ -28,6 +30,7 @@ class Login: UIViewController, MPTextFieldDelegate {
         emailTextField.authFieldType = .Email
         passwordTextField.delegate = self
         passwordTextField.authFieldType = .Password
+        _FBHelper = FirebaseHelper()
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,7 +98,9 @@ class Login: UIViewController, MPTextFieldDelegate {
                     
                 }
                 if let u = user {
-                    self.UID = u.user.uid
+                    //TODO: Get the username and userlevel here
+                    let account = Account(UID: u.user.uid, username: nil, userLevel: nil)
+                    self._FBHelper.saveAccount(account: account)
                     //Perform segue to homescreen here
                 }
             }
@@ -136,6 +141,19 @@ class Login: UIViewController, MPTextFieldDelegate {
     }
     
     @IBAction func backToLogin(segue: UIStoryboardSegue) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch (segue.identifier) {
+            
+        case signUpSegueIdentifier:
+            if let vc = segue.destination as? SignUp {
+                vc._FBHelper = self._FBHelper
+            }
+        default:
+            break;
+            
+        }
     }
 }
 

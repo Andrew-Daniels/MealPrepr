@@ -21,6 +21,7 @@
 		310D310221B772E800D0E079 /* MPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D310121B772E800D0E079 /* MPTextField.swift */; };
 		312F5A2621BA2A6E0017B534 /* MPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2521BA2A6E0017B534 /* MPAlertController.swift */; };
 		312F5A2821BB47E20017B534 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2721BB47E20017B534 /* FirebaseHelper.swift */; };
+		312F5A2A21BB4ED60017B534 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2921BB4ED60017B534 /* Account.swift */; };
 		31CA29FC21B9F4E500C8BF35 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA29FB21B9F4E500C8BF35 /* SignUp.swift */; };
 		31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */; };
 		31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094021B8C63700555CBE /* Phosphate.ttc */; };
@@ -59,6 +60,7 @@
 		310D310121B772E800D0E079 /* MPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextField.swift; sourceTree = "<group>"; };
 		312F5A2521BA2A6E0017B534 /* MPAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPAlertController.swift; sourceTree = "<group>"; };
 		312F5A2721BB47E20017B534 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
+		312F5A2921BB4ED60017B534 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		31CA29FB21B9F4E500C8BF35 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextFieldDelegate.swift; sourceTree = "<group>"; };
 		31D8094021B8C63700555CBE /* Phosphate.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphate.ttc; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				310D310121B772E800D0E079 /* MPTextField.swift */,
 				312F5A2521BA2A6E0017B534 /* MPAlertController.swift */,
 				312F5A2721BB47E20017B534 /* FirebaseHelper.swift */,
+				312F5A2921BB4ED60017B534 /* Account.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
 				310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
+				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
 				312F5A2621BA2A6E0017B534 /* MPAlertController.swift in Sources */,
