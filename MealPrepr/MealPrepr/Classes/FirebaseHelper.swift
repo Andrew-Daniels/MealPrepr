@@ -26,13 +26,14 @@ class FirebaseHelper {
         if let username = username {
             
             let path = "Accounts"
-            self.database.child(path).observe(.value) { (snapshot) in
+            self.database.child(path).observeSingleEvent(of: .value) { (snapshot) in
                 if let accounts = snapshot.value as? NSDictionary {
                     for (_, value) in accounts {
                         if let accountInfo = value as? [String: Any] {
                             for (key, value) in accountInfo {
                                 if let u = value as? String, key == "Username", u.lowercased() == username.lowercased() {
                                     completionHandler(false)
+                                    return
                                 }
                             }
                             completionHandler(true)
