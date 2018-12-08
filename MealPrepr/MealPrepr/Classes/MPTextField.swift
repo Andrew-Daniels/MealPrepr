@@ -24,7 +24,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
     
     public var text: String? {
         get { return self.textField.text }
-        set { self._text = text }
+        set { self._text = newValue }
     }
     
     @IBInspectable
@@ -130,6 +130,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.textField.delegate = self
         self.textField.textColor = UIColor.white
         self.textField.returnKeyType = .next
+        self.textField.clearButtonMode = .whileEditing
         
         //Setup errorLabel
         let font = UIFont(name: "Helvetica", size: 12.0)

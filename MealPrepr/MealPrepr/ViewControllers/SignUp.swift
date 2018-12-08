@@ -16,6 +16,7 @@ class SignUp: MPViewController, MPTextFieldDelegate {
     @IBOutlet weak var usernameTextField: MPTextField!
     @IBOutlet weak var passwordTextField: MPTextField!
     var _FBHelper: FirebaseHelper!
+    var email: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,12 @@ class SignUp: MPViewController, MPTextFieldDelegate {
         // Do any additional setup after loading the view.
         emailTextField.delegate = self
         emailTextField.authFieldType = .Email
+        emailTextField.text = email
         usernameTextField.delegate = self
         usernameTextField.authFieldType = .Username
         passwordTextField.delegate = self
         passwordTextField.authFieldType = .Password
-        
+        _FBHelper = FirebaseHelper()
     }
     
     @IBAction func signUpBtnClicked(_ sender: UIButton) {

@@ -46,12 +46,14 @@ class Login: MPViewController, MPTextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             // ...
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if(segueToSignUp) {
             performSegue(withIdentifier: signUpSegueIdentifier, sender: nil)
             segueToSignUp = false
@@ -178,7 +180,7 @@ class Login: MPViewController, MPTextFieldDelegate {
             
         case signUpSegueIdentifier:
             if let vc = segue.destination as? SignUp {
-                vc._FBHelper = self._FBHelper
+                vc.email = self.emailTextField.text
                 backViewAnimate()
             }
         case loggedInSegueIdentifier:
