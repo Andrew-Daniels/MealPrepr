@@ -57,14 +57,18 @@ class Login: UIViewController, MPTextFieldDelegate {
                 Auth.auth().sendPasswordReset(withEmail: email, completion: nil)
             }
         }
+        emailAction.isEnabled = false
         alert.addTextField { (emailTextField) in
             emailTextField.placeholder = "Enter Email Address"
             emailTextField.addTarget(self, action: #selector(self.emailTextFieldTextChanged(textField:)), for: .editingChanged)
+            emailTextField.text = self.emailTextField.text
+            if ValidationHelper.validateEmail(email: self.emailTextField.text) == nil {
+                emailAction.isEnabled = true
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        emailAction.isEnabled = false
         alert.addAction(cancelAction)
         alert.addAction(emailAction)
         self.present(alert, animated: true, completion: nil)
