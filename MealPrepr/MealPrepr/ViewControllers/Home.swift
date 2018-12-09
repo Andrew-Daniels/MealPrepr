@@ -10,7 +10,6 @@ import UIKit
 
 class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
 
-    private var searchController: UISearchController!
     @IBOutlet weak var collectionView: MPCollectionView!
     
     
@@ -28,27 +27,15 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
             self.navigationItem.rightBarButtonItem = logoutBtn
         }
         
+        //Setup SearchController
+        hasSearchController = true
+        setupSearchControllerDelegates(searchResultsUpdater: self, searchDelegate: self)
+        
         //Setup UINavigationBarTitleView
         let imageViewTitle: UIImageView = UIImageView(image: UIImage(named: "Meal-Prepr-Logo"))
         imageViewTitle.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageViewTitle
         imageViewTitle.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        
-        //Setup SearchController
-        self.searchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.searchBar.sizeToFit()
-            controller.searchBar.barStyle = .black
-            controller.searchBar.returnKeyType = .search
-            controller.searchBar.delegate = self
-            controller.definesPresentationContext = false
-            controller.obscuresBackgroundDuringPresentation = false
-            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .white
-            self.navigationItem.searchController = controller
-            
-            return controller
-        })()
     }
     
     @objc func createAccountBtnClicked() {

@@ -11,7 +11,33 @@ import UIKit
 class MPViewController: UIViewController {
     
     var account: Account!
-
+    var searchController: UISearchController?
+    
+    var hasSearchController: Bool = false {
+        didSet {
+            if hasSearchController {
+                
+                //Setup SearchController
+                self.searchController = ({
+                    let controller = UISearchController(searchResultsController: nil)
+                    controller.searchBar.sizeToFit()
+                    controller.searchBar.barStyle = .black
+                    controller.searchBar.returnKeyType = .search
+                    controller.definesPresentationContext = false
+                    controller.obscuresBackgroundDuringPresentation = false
+                    UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .white
+                    self.navigationItem.searchController = controller
+                    
+                    return controller
+                })()
+                
+            }
+            else {
+                self.searchController = nil
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +71,11 @@ class MPViewController: UIViewController {
             return viewFrame.contains(touchLocation)
         }
         return false
+    }
+    
+    func setupSearchControllerDelegates(searchResultsUpdater: UISearchResultsUpdating, searchDelegate: UISearchBarDelegate) {
+        searchController?.searchResultsUpdater = searchResultsUpdater
+        searchController?.searchBar.delegate = searchDelegate
     }
 
     /*
