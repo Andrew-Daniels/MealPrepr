@@ -31,7 +31,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
     public var placeholderText: String? {
         didSet {
             if let placeholder = self.placeholderText {
-                let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+                let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
                 self.textField.attributedPlaceholder = attributedPlaceholder
             }
         }

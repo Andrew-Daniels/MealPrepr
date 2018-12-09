@@ -32,7 +32,7 @@ class RoundedUIView: UIView {
         }
     }
     
-    public var effect: UIBlurEffectStyle! {
+    public var effect: UIBlurEffect.Style! {
         didSet {
             if (self.effectView != nil) {
                 self.effectView.removeFromSuperview()
