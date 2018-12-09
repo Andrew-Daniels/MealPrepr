@@ -26,6 +26,12 @@ class RoundedUIView: UIView {
         }
     }
     
+    @IBInspectable var clips: Bool = false {
+        didSet {
+            self.clipsToBounds = clips
+        }
+    }
+    
     public var effect: UIBlurEffectStyle! {
         didSet {
             if (self.effectView != nil) {

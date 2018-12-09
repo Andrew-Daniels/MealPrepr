@@ -30,6 +30,8 @@
 		312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */; };
 		312F5A3821BC51120017B534 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3721BC51120017B534 /* Home.swift */; };
 		312F5A3A21BC511F0017B534 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3921BC511F0017B534 /* Admin.swift */; };
+		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
+		3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */; };
 		31CA29FC21B9F4E500C8BF35 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA29FB21B9F4E500C8BF35 /* SignUp.swift */; };
 		31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */; };
 		31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094021B8C63700555CBE /* Phosphate.ttc */; };
@@ -77,6 +79,8 @@
 		312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationViewController.swift; sourceTree = "<group>"; };
 		312F5A3721BC51120017B534 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		312F5A3921BC511F0017B534 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
+		3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionView.swift; sourceTree = "<group>"; };
 		31CA29FB21B9F4E500C8BF35 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextFieldDelegate.swift; sourceTree = "<group>"; };
 		31D8094021B8C63700555CBE /* Phosphate.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphate.ttc; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		310D30D321B74DE200D0E079 /* MealPrepr */ = {
 			isa = PBXGroup;
 			children = (
+				3171CAEC21BCCDCC0026CC18 /* Cells */,
 				31D8093F21B8C61E00555CBE /* Fonts */,
 				31D8093C21B8BEB300555CBE /* Protocols */,
 				310D30FC21B75C8600D0E079 /* ViewControllers */,
@@ -174,6 +179,7 @@
 				312F5A2521BA2A6E0017B534 /* MPAlertController.swift */,
 				312F5A2721BB47E20017B534 /* FirebaseHelper.swift */,
 				312F5A2921BB4ED60017B534 /* Account.swift */,
+				3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -193,6 +199,14 @@
 				312F5A3921BC511F0017B534 /* Admin.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3171CAEC21BCCDCC0026CC18 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		31D8093C21B8BEB300555CBE /* Protocols */ = {
@@ -406,6 +420,7 @@
 				312F5A3821BC51120017B534 /* Home.swift in Sources */,
 				312F5A3221BC41980017B534 /* MPNavigationController.swift in Sources */,
 				312F5A3021BC417A0017B534 /* MPTabBarController.swift in Sources */,
+				3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
 				312F5A3421BC41A90017B534 /* MPViewController.swift in Sources */,
@@ -413,6 +428,7 @@
 				31CA29FC21B9F4E500C8BF35 /* SignUp.swift in Sources */,
 				312F5A2821BB47E20017B534 /* FirebaseHelper.swift in Sources */,
 				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,
+				3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

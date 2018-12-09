@@ -225,9 +225,10 @@
             <objects>
                 <navigationController id="EbZ-3m-bBF" customClass="HomeNavigationController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="iky-6h-PGy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VM9-XT-yon">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="VM9-XT-yon">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.19215686274509802" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iS5-W6-kf9">
                         <autoresizingMask key="autoresizingMask"/>
@@ -286,87 +287,108 @@
             <objects>
                 <viewController title="Home Controller" id="a4t-j8-lIB" userLabel="Home Controller" customClass="Home" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="144-Uw-5if">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="um7-nF-XLl">
-                                <rect key="frame" x="10" y="88" width="394" height="725"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="um7-nF-XLl" customClass="MPCollectionView" customModule="MealPrepr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SaI-u8-2gS">
                                     <size key="itemSize" width="170" height="170"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeRecipes" id="Qhy-ve-kge">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeRecipes" id="Qhy-ve-kge" customClass="HomeRecipesCell" customModule="MealPrepr" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="170" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXA-B1-UhL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home-Background" translatesAutoresizingMaskIntoConstraints="NO" id="RXA-B1-UhL">
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D81-EA-wBS" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="130" width="170" height="40"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Mozzerella Cheese Sticks" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-F2-HwS">
-                                                            <rect key="frame" x="2" y="2" width="64" height="27.666666666666668"/>
-                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-F2-HwS">
+                                                            <rect key="frame" x="5" y="2" width="111.33333333333333" height="23.333333333333332"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="23.329999999999998" id="V0f-WM-afr"/>
+                                                            </constraints>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="Mozzarella Cheese Sticks">
+                                                                    <attributes>
+                                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <font key="NSFont" size="19" name=".SFNSText"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0R-YD-bkC">
-                                                            <rect key="frame" x="2" y="24" width="25" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="450" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0R-YD-bkC">
+                                                            <rect key="frame" x="5" y="24" width="17" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prep:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-WL-YqB">
-                                                            <rect key="frame" x="109" y="2" width="23" height="14"/>
+                                                            <rect key="frame" x="120" y="2" width="23" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8hr88m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsV-38-vcf">
-                                                            <rect key="frame" x="134" y="2" width="34" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsV-38-vcf">
+                                                            <rect key="frame" x="145" y="2" width="20" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8hr88m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz0-do-StF">
-                                                            <rect key="frame" x="134" y="24" width="34" height="14"/>
+                                                            <rect key="frame" x="131" y="24" width="34" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cook:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0i-AG-Hah">
-                                                            <rect key="frame" x="108" y="24" width="24" height="14"/>
+                                                            <rect key="frame" x="105" y="24" width="24" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cal/serving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhc-1G-QLA">
+                                                            <rect key="frame" x="23.999999999999996" y="24" width="49.666666666666657" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="fz0-do-StF" firstAttribute="leading" secondItem="P0i-AG-Hah" secondAttribute="trailing" constant="2" id="2vw-Bh-mEh"/>
-                                                        <constraint firstItem="m0R-YD-bkC" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="2" id="9Ph-jS-kRh"/>
+                                                        <constraint firstItem="m0R-YD-bkC" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="5" id="9Ph-jS-kRh"/>
                                                         <constraint firstAttribute="bottom" secondItem="fz0-do-StF" secondAttribute="bottom" constant="2" id="ALT-2e-eiM"/>
                                                         <constraint firstItem="nJc-F2-HwS" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="KY3-23-j4X"/>
+                                                        <constraint firstItem="nhc-1G-QLA" firstAttribute="leading" secondItem="m0R-YD-bkC" secondAttribute="trailing" constant="2" id="QIP-ak-rqz"/>
                                                         <constraint firstAttribute="bottom" secondItem="m0R-YD-bkC" secondAttribute="bottom" constant="2" id="Qkt-D8-tqL"/>
-                                                        <constraint firstItem="nJc-F2-HwS" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="2" id="Sqk-1S-Cht"/>
+                                                        <constraint firstItem="nJc-F2-HwS" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="5" id="Sqk-1S-Cht"/>
                                                         <constraint firstItem="l7S-WL-YqB" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="WqE-VS-dhq"/>
                                                         <constraint firstItem="P0i-AG-Hah" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m0R-YD-bkC" secondAttribute="trailing" constant="2" id="ZOg-Fa-Pvz"/>
                                                         <constraint firstItem="l7S-WL-YqB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nJc-F2-HwS" secondAttribute="trailing" constant="2" id="Zkx-Qb-BaI"/>
                                                         <constraint firstAttribute="bottom" secondItem="P0i-AG-Hah" secondAttribute="bottom" constant="2" id="fJ3-Wu-9Gn"/>
                                                         <constraint firstItem="PsV-38-vcf" firstAttribute="leading" secondItem="l7S-WL-YqB" secondAttribute="trailing" constant="2" id="fzk-Qv-MDM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="PsV-38-vcf" secondAttribute="trailing" constant="2" id="qn7-Qk-uLc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PsV-38-vcf" secondAttribute="trailing" constant="5" id="qn7-Qk-uLc"/>
                                                         <constraint firstAttribute="height" constant="40" id="qy3-sK-Mlb"/>
                                                         <constraint firstItem="PsV-38-vcf" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="sAA-tx-zhM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="fz0-do-StF" secondAttribute="trailing" constant="2" id="tRr-aJ-sqO"/>
+                                                        <constraint firstAttribute="trailing" secondItem="fz0-do-StF" secondAttribute="trailing" constant="5" id="tRr-aJ-sqO"/>
+                                                        <constraint firstAttribute="bottom" secondItem="nhc-1G-QLA" secondAttribute="bottom" constant="2" id="uaH-9H-DKQ"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clips" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ai1-b3-jyl" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                                     <rect key="frame" x="115" y="0.0" width="55" height="45"/>
@@ -394,6 +416,9 @@
                                                         <constraint firstItem="tXc-e7-4BI" firstAttribute="centerY" secondItem="Ai1-b3-jyl" secondAttribute="centerY" multiplier="0.9" id="njx-1F-rTy"/>
                                                         <constraint firstItem="DiZ-xx-fWo" firstAttribute="centerY" secondItem="Ai1-b3-jyl" secondAttribute="centerY" multiplier="1.6" id="oXU-qx-dab"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clips" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                         </view>
@@ -408,6 +433,18 @@
                                             <constraint firstItem="RXA-B1-UhL" firstAttribute="leading" secondItem="Qhy-ve-kge" secondAttribute="leading" id="scV-RI-S6t"/>
                                             <constraint firstItem="RXA-B1-UhL" firstAttribute="top" secondItem="Qhy-ve-kge" secondAttribute="top" id="tXS-71-c78"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="caloriesLabel" destination="m0R-YD-bkC" id="PM3-bg-Lih"/>
+                                            <outlet property="cookLabel" destination="fz0-do-StF" id="1hP-4R-lWH"/>
+                                            <outlet property="imageView" destination="RXA-B1-UhL" id="e0P-X2-9K3"/>
+                                            <outlet property="prepLabel" destination="PsV-38-vcf" id="PeK-qf-kBQ"/>
+                                            <outlet property="titleLabel" destination="nJc-F2-HwS" id="O9B-RN-KYy"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -416,11 +453,11 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.25882352941176467" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="WSn-kr-0aX" firstAttribute="trailing" secondItem="um7-nF-XLl" secondAttribute="trailing" constant="10" id="KRm-9l-5Od"/>
+                            <constraint firstItem="WSn-kr-0aX" firstAttribute="trailing" secondItem="um7-nF-XLl" secondAttribute="trailing" id="KRm-9l-5Od"/>
                             <constraint firstItem="um7-nF-XLl" firstAttribute="top" secondItem="WSn-kr-0aX" secondAttribute="top" id="OMO-EJ-IVd"/>
-                            <constraint firstItem="um7-nF-XLl" firstAttribute="leading" secondItem="WSn-kr-0aX" secondAttribute="leading" constant="10" id="YF7-Wx-9Up"/>
+                            <constraint firstItem="um7-nF-XLl" firstAttribute="leading" secondItem="WSn-kr-0aX" secondAttribute="leading" id="YF7-Wx-9Up"/>
                             <constraint firstItem="WSn-kr-0aX" firstAttribute="bottom" secondItem="um7-nF-XLl" secondAttribute="bottom" id="ekg-1p-tBG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WSn-kr-0aX"/>
@@ -428,6 +465,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="LSy-We-SrA"/>
                     <navigationItem key="navigationItem" id="ygF-w8-FhQ"/>
                     <connections>
+                        <outlet property="collectionView" destination="um7-nF-XLl" id="YZM-aI-zeF"/>
                         <segue destination="CYm-4t-8T9" kind="unwind" identifier="backToSignUp" unwindAction="backToSignUpWithSegue:" id="rph-LU-gCh"/>
                         <segue destination="CYm-4t-8T9" kind="unwind" identifier="backToLogin" unwindAction="backToLoginWithSegue:" id="lAc-ga-fsR"/>
                     </connections>
@@ -445,6 +483,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.19215686274509802" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="EbZ-3m-bBF" kind="relationship" relationship="viewControllers" id="ZQO-ga-66P"/>
