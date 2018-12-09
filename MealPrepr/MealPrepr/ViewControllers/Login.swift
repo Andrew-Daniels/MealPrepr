@@ -176,16 +176,13 @@ class Login: MPViewController, MPTextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         switch (segue.identifier) {
             
         case signUpSegueIdentifier:
             if let vc = segue.destination as? SignUp {
                 vc.email = self.emailTextField.text
                 backViewAnimate()
-            }
-        case loggedInSegueIdentifier:
-            if let vc = segue.destination as? HomeTabBarController {
-                vc.account = account
             }
         default:
             break;
@@ -195,7 +192,7 @@ class Login: MPViewController, MPTextFieldDelegate {
     func backViewAnimate() {
         if (loginBackViewInactiveConstraints == nil) {
            loginBackViewInactiveConstraints = []
-           let constraint = NSLayoutConstraint(item: loginBackView, attribute: .bottom, relatedBy: .equal, toItem: loginBackView.superview, attribute: .top, multiplier: 1.0, constant: -50.0)
+           let constraint = NSLayoutConstraint(item: loginBackView, attribute: .bottom, relatedBy: .equal, toItem: loginBackView.superview, attribute: .top, multiplier: 1.0, constant: 0.0)
             
             constraint.isActive = false
             self.view.addConstraint(constraint)
@@ -222,11 +219,18 @@ class Login: MPViewController, MPTextFieldDelegate {
             }
         }
         
-        UIView.animate(withDuration: 0.5) {
+        backViewOutOfView = !backViewOutOfView
+        
+        UIView.animate(withDuration: 0.4) {
+            if (self.backViewOutOfView) {
+                self.guestBtn.isHidden = true
+            } else {
+                self.guestBtn.isHidden = false
+            }
             self.view.layoutIfNeeded()
         }
         
-        backViewOutOfView = !backViewOutOfView
+        
     }
 }
 

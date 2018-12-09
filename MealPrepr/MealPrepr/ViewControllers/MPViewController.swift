@@ -18,6 +18,15 @@ class MPViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? MPViewController {
+            vc.account = account
+        } else if let vc = segue.destination as? MPNavigationController {
+            vc.account = account
+        } else if let vc = segue.destination as? MPTabBarController {
+            vc.account = account
+        }
+    }
 
     /*
     // MARK: - Navigation

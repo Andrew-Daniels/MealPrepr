@@ -223,7 +223,7 @@
         <!--Home-->
         <scene sceneID="8EY-Ps-DVA">
             <objects>
-                <navigationController hidesBarsOnSwipe="YES" id="EbZ-3m-bBF" customClass="HomeNavigationController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="EbZ-3m-bBF" customClass="HomeNavigationController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="iky-6h-PGy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VM9-XT-yon">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -288,7 +288,141 @@
                     <view key="view" contentMode="scaleToFill" id="144-Uw-5if">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="um7-nF-XLl">
+                                <rect key="frame" x="10" y="88" width="394" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SaI-u8-2gS">
+                                    <size key="itemSize" width="170" height="170"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeRecipes" id="Qhy-ve-kge">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXA-B1-UhL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D81-EA-wBS" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="130" width="170" height="40"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Mozzerella Cheese Sticks" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-F2-HwS">
+                                                            <rect key="frame" x="2" y="2" width="64" height="27.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0R-YD-bkC">
+                                                            <rect key="frame" x="2" y="24" width="25" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prep:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-WL-YqB">
+                                                            <rect key="frame" x="109" y="2" width="23" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8hr88m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsV-38-vcf">
+                                                            <rect key="frame" x="134" y="2" width="34" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8hr88m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz0-do-StF">
+                                                            <rect key="frame" x="134" y="24" width="34" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cook:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0i-AG-Hah">
+                                                            <rect key="frame" x="108" y="24" width="24" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="fz0-do-StF" firstAttribute="leading" secondItem="P0i-AG-Hah" secondAttribute="trailing" constant="2" id="2vw-Bh-mEh"/>
+                                                        <constraint firstItem="m0R-YD-bkC" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="2" id="9Ph-jS-kRh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="fz0-do-StF" secondAttribute="bottom" constant="2" id="ALT-2e-eiM"/>
+                                                        <constraint firstItem="nJc-F2-HwS" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="KY3-23-j4X"/>
+                                                        <constraint firstAttribute="bottom" secondItem="m0R-YD-bkC" secondAttribute="bottom" constant="2" id="Qkt-D8-tqL"/>
+                                                        <constraint firstItem="nJc-F2-HwS" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="2" id="Sqk-1S-Cht"/>
+                                                        <constraint firstItem="l7S-WL-YqB" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="WqE-VS-dhq"/>
+                                                        <constraint firstItem="P0i-AG-Hah" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m0R-YD-bkC" secondAttribute="trailing" constant="2" id="ZOg-Fa-Pvz"/>
+                                                        <constraint firstItem="l7S-WL-YqB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nJc-F2-HwS" secondAttribute="trailing" constant="2" id="Zkx-Qb-BaI"/>
+                                                        <constraint firstAttribute="bottom" secondItem="P0i-AG-Hah" secondAttribute="bottom" constant="2" id="fJ3-Wu-9Gn"/>
+                                                        <constraint firstItem="PsV-38-vcf" firstAttribute="leading" secondItem="l7S-WL-YqB" secondAttribute="trailing" constant="2" id="fzk-Qv-MDM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PsV-38-vcf" secondAttribute="trailing" constant="2" id="qn7-Qk-uLc"/>
+                                                        <constraint firstAttribute="height" constant="40" id="qy3-sK-Mlb"/>
+                                                        <constraint firstItem="PsV-38-vcf" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="sAA-tx-zhM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="fz0-do-StF" secondAttribute="trailing" constant="2" id="tRr-aJ-sqO"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ai1-b3-jyl" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
+                                                    <rect key="frame" x="115" y="0.0" width="55" height="45"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXc-e7-4BI">
+                                                            <rect key="frame" x="14" y="3.6666666666666679" width="27" height="33"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiZ-xx-fWo">
+                                                            <rect key="frame" x="0.0" y="29" width="55" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="DiZ-xx-fWo" secondAttribute="trailing" id="Bud-6s-zMn"/>
+                                                        <constraint firstItem="tXc-e7-4BI" firstAttribute="centerX" secondItem="Ai1-b3-jyl" secondAttribute="centerX" id="I3M-HA-fbM"/>
+                                                        <constraint firstAttribute="width" constant="55" id="MNI-0z-IfH"/>
+                                                        <constraint firstItem="DiZ-xx-fWo" firstAttribute="leading" secondItem="Ai1-b3-jyl" secondAttribute="leading" id="PGh-B7-sof"/>
+                                                        <constraint firstAttribute="height" constant="45" id="ane-tx-CkN"/>
+                                                        <constraint firstItem="tXc-e7-4BI" firstAttribute="centerY" secondItem="Ai1-b3-jyl" secondAttribute="centerY" multiplier="0.9" id="njx-1F-rTy"/>
+                                                        <constraint firstItem="DiZ-xx-fWo" firstAttribute="centerY" secondItem="Ai1-b3-jyl" secondAttribute="centerY" multiplier="1.6" id="oXU-qx-dab"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Ai1-b3-jyl" firstAttribute="top" secondItem="Qhy-ve-kge" secondAttribute="top" id="9aT-NC-90t"/>
+                                            <constraint firstAttribute="trailing" secondItem="RXA-B1-UhL" secondAttribute="trailing" id="9cm-zC-aUU"/>
+                                            <constraint firstAttribute="trailing" secondItem="D81-EA-wBS" secondAttribute="trailing" id="F2x-0o-CTW"/>
+                                            <constraint firstAttribute="bottom" secondItem="D81-EA-wBS" secondAttribute="bottom" id="HR9-yx-Suq"/>
+                                            <constraint firstItem="D81-EA-wBS" firstAttribute="leading" secondItem="Qhy-ve-kge" secondAttribute="leading" id="JC6-3V-Wh3"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ai1-b3-jyl" secondAttribute="trailing" id="Wzg-kK-Bbu"/>
+                                            <constraint firstAttribute="bottom" secondItem="RXA-B1-UhL" secondAttribute="bottom" id="ZG6-ku-H9M"/>
+                                            <constraint firstItem="RXA-B1-UhL" firstAttribute="leading" secondItem="Qhy-ve-kge" secondAttribute="leading" id="scV-RI-S6t"/>
+                                            <constraint firstItem="RXA-B1-UhL" firstAttribute="top" secondItem="Qhy-ve-kge" secondAttribute="top" id="tXS-71-c78"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="a4t-j8-lIB" id="tpL-Bq-XUd"/>
+                                    <outlet property="delegate" destination="a4t-j8-lIB" id="KAy-T9-fIp"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WSn-kr-0aX" firstAttribute="trailing" secondItem="um7-nF-XLl" secondAttribute="trailing" constant="10" id="KRm-9l-5Od"/>
+                            <constraint firstItem="um7-nF-XLl" firstAttribute="top" secondItem="WSn-kr-0aX" secondAttribute="top" id="OMO-EJ-IVd"/>
+                            <constraint firstItem="um7-nF-XLl" firstAttribute="leading" secondItem="WSn-kr-0aX" secondAttribute="leading" constant="10" id="YF7-Wx-9Up"/>
+                            <constraint firstItem="WSn-kr-0aX" firstAttribute="bottom" secondItem="um7-nF-XLl" secondAttribute="bottom" id="ekg-1p-tBG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WSn-kr-0aX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="LSy-We-SrA"/>
@@ -301,7 +435,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5JA-99-1YZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CYm-4t-8T9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3272" y="-17"/>
+            <point key="canvasLocation" x="3271.0144927536235" y="-17.410714285714285"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="S6a-Rb-Lqa">
@@ -413,14 +547,30 @@
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="o1v-S2-nUu"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vUs-WN-rAS" firstAttribute="height" secondItem="yar-sO-cYI" secondAttribute="height" id="Fkd-KQ-4yb"/>
                             <constraint firstItem="vUs-WN-rAS" firstAttribute="centerY" secondItem="yar-sO-cYI" secondAttribute="centerY" id="KPl-sr-C77"/>
                             <constraint firstItem="vUs-WN-rAS" firstAttribute="centerX" secondItem="yar-sO-cYI" secondAttribute="centerX" id="Psx-hB-jHa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kIp-1d-5np"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Fkd-KQ-4yb"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="Fkd-KQ-4yb"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="heK-cb-gEZ" id="eOh-q6-UKU"/>
