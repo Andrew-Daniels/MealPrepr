@@ -68,12 +68,8 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let cellWidth : CGFloat = 170.0
-        
-        let numberOfCells = floor(self.view.frame.size.width / cellWidth)
-        let edgeInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
-        return UIEdgeInsetsMake(15, edgeInsets, 0, edgeInsets)
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
     }
     
     func updateSearchResults(for searchController: UISearchController) {

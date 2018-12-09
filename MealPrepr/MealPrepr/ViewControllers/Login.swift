@@ -152,6 +152,13 @@ class Login: MPViewController, MPTextFieldDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if let touch = touches.first {
+//            let touchLocation = touch.location(in: self.loginBackView)
+//            print(touchLocation)
+//            let backViewFrame = self.loginBackView.convert(self.loginBackView.frame, from: self.loginBackView.superview)
+//
+//            print(backViewFrame.contains(touchLocation))
+//        }
         self.view.endEditing(true)
     }
     
@@ -229,8 +236,6 @@ class Login: MPViewController, MPTextFieldDelegate {
             }
             self.view.layoutIfNeeded()
         }
-        
-        
     }
 }
 

@@ -319,7 +319,7 @@
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="23.329999999999998" id="V0f-WM-afr"/>
                                                             </constraints>
                                                             <attributedString key="attributedText">
-                                                                <fragment content="Mozzarella Cheese Sticks">
+                                                                <fragment content="Mozzarella Cheese Sticks Stick Stick Stick Stick Stick">
                                                                     <attributes>
                                                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <font key="NSFont" size="19" name=".SFNSText"/>
@@ -368,6 +368,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="P0i-AG-Hah" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nhc-1G-QLA" secondAttribute="trailing" constant="2" id="2uX-tS-bUg"/>
                                                         <constraint firstItem="fz0-do-StF" firstAttribute="leading" secondItem="P0i-AG-Hah" secondAttribute="trailing" constant="2" id="2vw-Bh-mEh"/>
                                                         <constraint firstItem="m0R-YD-bkC" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="5" id="9Ph-jS-kRh"/>
                                                         <constraint firstAttribute="bottom" secondItem="fz0-do-StF" secondAttribute="bottom" constant="2" id="ALT-2e-eiM"/>
