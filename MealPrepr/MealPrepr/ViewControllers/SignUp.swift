@@ -67,6 +67,7 @@ class SignUp: MPViewController, MPTextFieldDelegate {
                     self.account = Account(UID: user.uid, username: username, userLevel: .User)
                     
                     self._FBHelper.saveAccount(account: self.account)
+                    self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
                 }
         }
         else {

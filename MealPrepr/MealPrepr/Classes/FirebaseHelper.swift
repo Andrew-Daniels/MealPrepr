@@ -50,7 +50,7 @@ class FirebaseHelper {
             
             let path = "Accounts/\(UID)"
             self.database.child(path).child("Username").setValue(username)
-            self.database.child(path).child("UserLevel").setValue(userLevel)
+            self.database.child(path).child("UserLevel").setValue(userLevel.rawValue)
         }
     }
     
