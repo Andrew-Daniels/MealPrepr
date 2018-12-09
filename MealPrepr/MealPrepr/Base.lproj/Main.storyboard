@@ -224,7 +224,7 @@
         <scene sceneID="8EY-Ps-DVA">
             <objects>
                 <navigationController id="EbZ-3m-bBF" customClass="HomeNavigationController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="iky-6h-PGy"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="tab-home" id="iky-6h-PGy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="VM9-XT-yon">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -457,13 +457,13 @@
                         <color key="backgroundColor" red="0.94901960784313721" green="0.25882352941176467" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="WSn-kr-0aX" firstAttribute="trailing" secondItem="um7-nF-XLl" secondAttribute="trailing" id="KRm-9l-5Od"/>
-                            <constraint firstItem="um7-nF-XLl" firstAttribute="top" secondItem="WSn-kr-0aX" secondAttribute="top" id="OMO-EJ-IVd"/>
                             <constraint firstItem="um7-nF-XLl" firstAttribute="leading" secondItem="WSn-kr-0aX" secondAttribute="leading" id="YF7-Wx-9Up"/>
+                            <constraint firstItem="um7-nF-XLl" firstAttribute="top" secondItem="WSn-kr-0aX" secondAttribute="top" id="c5m-kF-U61"/>
                             <constraint firstItem="WSn-kr-0aX" firstAttribute="bottom" secondItem="um7-nF-XLl" secondAttribute="bottom" id="ekg-1p-tBG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WSn-kr-0aX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="LSy-We-SrA"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="tab-home" id="LSy-We-SrA"/>
                     <navigationItem key="navigationItem" id="ygF-w8-FhQ"/>
                     <connections>
                         <outlet property="collectionView" destination="um7-nF-XLl" id="YZM-aI-zeF"/>
@@ -629,6 +629,7 @@
     <resources>
         <image name="Home-Background" width="1895" height="1255"/>
         <image name="Meal-Prepr-Logo" width="80" height="80"/>
+        <image name="tab-home" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="a1X-fi-h5r"/>

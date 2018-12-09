@@ -35,6 +35,17 @@ class MPViewController: UIViewController {
         let edgeInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
         return UIEdgeInsetsMake(15, edgeInsets, 0, edgeInsets)
     }
+    
+    func checkIfTouchesAreInside(touches: Set<UITouch>, ofView: UIView) -> Bool {
+        if let touch = touches.first {
+            let touchLocation = touch.location(in: ofView)
+            print(touchLocation)
+            let viewFrame = ofView.convert(ofView.frame, from: ofView.superview)
+            
+            return viewFrame.contains(touchLocation)
+        }
+        return false
+    }
 
     /*
     // MARK: - Navigation
