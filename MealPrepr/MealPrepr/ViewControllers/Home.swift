@@ -24,7 +24,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             let logoutBtn = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutBtnClicked))
             logoutBtn.tintColor = UIColor.white
-            self.navigationItem.rightBarButtonItem = logoutBtn
+            self.navigationItem.leftBarButtonItem = logoutBtn
         }
         
         //Setup SearchController
@@ -38,9 +38,6 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         imageViewTitle.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
     }
     
-    @objc func createAccountBtnClicked() {
-        performSegue(withIdentifier: backToSignUpSegueIdentifier, sender: nil)
-    }
     @objc func logoutBtnClicked() {
         performSegue(withIdentifier: backToLoginSegueIdentifier, sender: nil)
     }

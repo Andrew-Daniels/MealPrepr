@@ -16,6 +16,7 @@ public let loggedInSegueIdentifier = "LoggedIn"
 public let homeTabBarSegueIdentifier = "HomeTabBar"
 public let backToSignUpSegueIdentifier = "backToSignUp"
 public let backToLoginSegueIdentifier = "backToLogin"
+public let createRecipeSegueIdentifier = "CreateRecipe"
 
 class Login: MPViewController, MPTextFieldDelegate {
     
@@ -92,6 +93,7 @@ class Login: MPViewController, MPTextFieldDelegate {
     }
     @IBAction func guestBtnClicked(_ sender: UIButton) {
         self.account = Account()
+        self.account.userLevel = .Admin
         performSegue(withIdentifier: loggedInSegueIdentifier, sender: sender)
     }
     @IBAction func loginBtnClicked(_ sender: UIButton) {

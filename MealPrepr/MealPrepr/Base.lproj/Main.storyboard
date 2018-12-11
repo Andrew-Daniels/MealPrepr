@@ -229,6 +229,13 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.19215686274509802" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iS5-W6-kf9">
                         <autoresizingMask key="autoresizingMask"/>
@@ -464,7 +471,14 @@
                         <viewLayoutGuide key="safeArea" id="WSn-kr-0aX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="tab-home" id="LSy-We-SrA"/>
-                    <navigationItem key="navigationItem" id="ygF-w8-FhQ"/>
+                    <navigationItem key="navigationItem" id="ygF-w8-FhQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fuh-wI-eKj">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="eGc-Uf-BP7" kind="show" id="eHp-wW-gfb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="um7-nF-XLl" id="YZM-aI-zeF"/>
                         <segue destination="CYm-4t-8T9" kind="unwind" identifier="backToSignUp" unwindAction="backToSignUpWithSegue:" id="rph-LU-gCh"/>
@@ -475,6 +489,287 @@
                 <exit id="CYm-4t-8T9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3271.0144927536235" y="-17.410714285714285"/>
+        </scene>
+        <!--Create Recipe-->
+        <scene sceneID="dGg-wH-Sex">
+            <objects>
+                <viewController id="eGc-Uf-BP7" customClass="CreateRecipe" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HEl-ra-a7v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvT-Yc-DpG" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="394" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yNn-Ik-AdN"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textFieldTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="0.57462007709999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Recipe Title"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgT-PX-QDP" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
+                                <rect key="frame" x="10" y="70" width="394" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="0.57462007709999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textFieldTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Calories/Serving"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICt-Kh-Eut" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
+                                <rect key="frame" x="10" y="130" width="394" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="# of Servings"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="0.57462007706849305" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textFieldTextColor">
+                                        <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cEn-FH-Pq8">
+                                <rect key="frame" x="500.5" y="0.0" width="333.5" height="247.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MeS-tc-nU3">
+                                    <size key="itemSize" width="120" height="189"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="pwm-Ka-2XU">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="189"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="189"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dgD-RT-LxH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="189"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="dgD-RT-LxH" secondAttribute="trailing" id="DRx-2Q-jqH"/>
+                                            <constraint firstAttribute="bottom" secondItem="dgD-RT-LxH" secondAttribute="bottom" id="KkO-1W-bTV"/>
+                                            <constraint firstItem="dgD-RT-LxH" firstAttribute="leading" secondItem="pwm-Ka-2XU" secondAttribute="leading" id="tHk-fy-f5A"/>
+                                            <constraint firstItem="dgD-RT-LxH" firstAttribute="top" secondItem="pwm-Ka-2XU" secondAttribute="top" id="uEO-FL-TAF"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bO1-Rg-lpa">
+                                <rect key="frame" x="423.5" y="109" width="72" height="30"/>
+                                <state key="normal" title="Add Photo">
+                                    <color key="titleColor" red="0.19215686274509802" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QxD-al-LhV">
+                                <rect key="frame" x="10" y="210" width="394" height="29"/>
+                                <segments>
+                                    <segment title="Ingredients"/>
+                                    <segment title="Utensils"/>
+                                    <segment title="Instructions"/>
+                                </segments>
+                                <color key="tintColor" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUV-Mo-dop">
+                                <rect key="frame" x="10" y="248" width="394" height="425"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.25882352941176467" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cEn-FH-Pq8" firstAttribute="top" secondItem="M1o-uI-1Yl" secondAttribute="top" id="84H-xA-gza"/>
+                            <constraint firstItem="yUV-Mo-dop" firstAttribute="top" secondItem="QxD-al-LhV" secondAttribute="bottom" constant="10" id="9rs-N9-NAu"/>
+                            <constraint firstItem="SvT-Yc-DpG" firstAttribute="top" secondItem="M1o-uI-1Yl" secondAttribute="top" constant="10" id="Axj-gC-r9x"/>
+                            <constraint firstItem="ICt-Kh-Eut" firstAttribute="trailing" secondItem="SvT-Yc-DpG" secondAttribute="trailing" id="B1G-Ex-M8A"/>
+                            <constraint firstItem="DgT-PX-QDP" firstAttribute="leading" secondItem="SvT-Yc-DpG" secondAttribute="leading" id="G3p-8j-J7J"/>
+                            <constraint firstItem="QxD-al-LhV" firstAttribute="leading" secondItem="M1o-uI-1Yl" secondAttribute="leading" constant="10" id="IXE-t9-8EV"/>
+                            <constraint firstItem="DgT-PX-QDP" firstAttribute="width" secondItem="SvT-Yc-DpG" secondAttribute="width" id="Ic3-1i-QTa"/>
+                            <constraint firstItem="SvT-Yc-DpG" firstAttribute="leading" secondItem="M1o-uI-1Yl" secondAttribute="leading" constant="10" id="J5v-k6-J1o"/>
+                            <constraint firstItem="DgT-PX-QDP" firstAttribute="top" secondItem="SvT-Yc-DpG" secondAttribute="bottom" constant="10" id="NZq-Vo-FBZ"/>
+                            <constraint firstItem="QxD-al-LhV" firstAttribute="top" secondItem="ICt-Kh-Eut" secondAttribute="bottom" constant="30" id="PHw-AO-BDl"/>
+                            <constraint firstItem="ICt-Kh-Eut" firstAttribute="top" secondItem="DgT-PX-QDP" secondAttribute="bottom" constant="10" id="TOV-mE-EBS"/>
+                            <constraint firstItem="DgT-PX-QDP" firstAttribute="trailing" secondItem="SvT-Yc-DpG" secondAttribute="trailing" id="VdC-Dp-bdF"/>
+                            <constraint firstItem="M1o-uI-1Yl" firstAttribute="trailing" secondItem="yUV-Mo-dop" secondAttribute="trailing" constant="10" id="VhO-W2-rvO"/>
+                            <constraint firstItem="ICt-Kh-Eut" firstAttribute="width" secondItem="SvT-Yc-DpG" secondAttribute="width" id="Vsn-AG-dRX"/>
+                            <constraint firstItem="cEn-FH-Pq8" firstAttribute="width" secondItem="HEl-ra-a7v" secondAttribute="width" multiplier="0.4" id="Wue-Uk-aPr"/>
+                            <constraint firstItem="M1o-uI-1Yl" firstAttribute="trailing" secondItem="QxD-al-LhV" secondAttribute="trailing" constant="10" id="Zh8-m7-WJd"/>
+                            <constraint firstItem="QxD-al-LhV" firstAttribute="width" secondItem="HEl-ra-a7v" secondAttribute="width" multiplier="0.6" id="a88-p3-Trz"/>
+                            <constraint firstItem="ICt-Kh-Eut" firstAttribute="height" secondItem="SvT-Yc-DpG" secondAttribute="height" id="aKO-sf-lnt"/>
+                            <constraint firstItem="M1o-uI-1Yl" firstAttribute="trailing" secondItem="DgT-PX-QDP" secondAttribute="trailing" constant="10" id="cGp-n5-x1u"/>
+                            <constraint firstItem="cEn-FH-Pq8" firstAttribute="trailing" secondItem="M1o-uI-1Yl" secondAttribute="trailing" id="fAJ-uu-Ryd"/>
+                            <constraint firstItem="bO1-Rg-lpa" firstAttribute="leading" secondItem="DgT-PX-QDP" secondAttribute="trailing" constant="5" id="hJM-ha-62c"/>
+                            <constraint firstItem="QxD-al-LhV" firstAttribute="centerX" secondItem="HEl-ra-a7v" secondAttribute="centerX" id="hfU-Da-26K"/>
+                            <constraint firstItem="ICt-Kh-Eut" firstAttribute="leading" secondItem="SvT-Yc-DpG" secondAttribute="leading" id="juk-M4-WLR"/>
+                            <constraint firstItem="M1o-uI-1Yl" firstAttribute="bottom" secondItem="yUV-Mo-dop" secondAttribute="bottom" id="kfu-9N-Z5Y"/>
+                            <constraint firstItem="yUV-Mo-dop" firstAttribute="leading" secondItem="M1o-uI-1Yl" secondAttribute="leading" constant="10" id="nRx-j8-Je3"/>
+                            <constraint firstItem="cEn-FH-Pq8" firstAttribute="height" secondItem="HEl-ra-a7v" secondAttribute="height" multiplier="0.25" id="qvL-jb-5Uu"/>
+                            <constraint firstItem="cEn-FH-Pq8" firstAttribute="leading" secondItem="bO1-Rg-lpa" secondAttribute="trailing" constant="5" id="tic-Tj-Dp6"/>
+                            <constraint firstItem="bO1-Rg-lpa" firstAttribute="centerY" secondItem="cEn-FH-Pq8" secondAttribute="centerY" id="uJP-HA-78J"/>
+                            <constraint firstItem="DgT-PX-QDP" firstAttribute="height" secondItem="SvT-Yc-DpG" secondAttribute="height" id="z1S-ca-fT9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M1o-uI-1Yl"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Zh8-m7-WJd"/>
+                                <exclude reference="cGp-n5-x1u"/>
+                                <exclude reference="IXE-t9-8EV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <exclude reference="cEn-FH-Pq8"/>
+                                <exclude reference="bO1-Rg-lpa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="hJM-ha-62c"/>
+                                <exclude reference="uJP-HA-78J"/>
+                                <exclude reference="84H-xA-gza"/>
+                                <exclude reference="Wue-Uk-aPr"/>
+                                <exclude reference="fAJ-uu-Ryd"/>
+                                <exclude reference="qvL-jb-5Uu"/>
+                                <exclude reference="tic-Tj-Dp6"/>
+                                <include reference="Zh8-m7-WJd"/>
+                                <include reference="cGp-n5-x1u"/>
+                                <include reference="IXE-t9-8EV"/>
+                                <exclude reference="a88-p3-Trz"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Recipe" id="LX0-lc-hx7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NAt-gk-6la"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="yUV-Mo-dop" id="quT-7C-IFH"/>
+                        <outlet property="segmentedControl" destination="QxD-al-LhV" id="Pqe-4D-dMl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kFD-fi-fXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4108.695652173913" y="-17.410714285714285"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kq1-Hj-es2">
+            <objects>
+                <viewController storyboardIdentifier="Create-Ingredients" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mbe-hH-KDe" customClass="MPViewController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CuO-2X-Vgo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gb-xe-aoT">
+                                <rect key="frame" x="168.66666666666666" y="832" width="77" height="30"/>
+                                <state key="normal" title="Ingredients"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4gb-xe-aoT" firstAttribute="centerX" secondItem="CuO-2X-Vgo" secondAttribute="centerX" id="iWX-cR-U51"/>
+                            <constraint firstItem="PTX-w0-FvH" firstAttribute="bottom" secondItem="4gb-xe-aoT" secondAttribute="bottom" id="otU-1R-F60"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PTX-w0-FvH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKX-UH-BAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4107" y="-722"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fju-3P-8aU">
+            <objects>
+                <viewController storyboardIdentifier="Create-Utensils" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dth-o4-DHH" customClass="MPViewController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UEz-oK-781">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-UN-M19">
+                                <rect key="frame" x="179" y="433" width="56" height="30"/>
+                                <state key="normal" title="Utensils"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qhc-UN-M19" firstAttribute="centerX" secondItem="UEz-oK-781" secondAttribute="centerX" id="19c-Ue-p7I"/>
+                            <constraint firstItem="qhc-UN-M19" firstAttribute="centerY" secondItem="UEz-oK-781" secondAttribute="centerY" id="cUd-Wf-j4i"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KYX-Eo-lff"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F6m-LL-5cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4848" y="-723"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="j4B-vy-UEl">
+            <objects>
+                <viewController storyboardIdentifier="Create-Instructions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uB3-o3-CSV" customClass="MPViewController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="16N-aN-9Gf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDm-5R-X87">
+                                <rect key="frame" x="166.66666666666666" y="433" width="81" height="30"/>
+                                <state key="normal" title="Instructions"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="UDm-5R-X87" firstAttribute="centerX" secondItem="16N-aN-9Gf" secondAttribute="centerX" id="leY-gT-NEH"/>
+                            <constraint firstItem="UDm-5R-X87" firstAttribute="centerY" secondItem="16N-aN-9Gf" secondAttribute="centerY" id="luI-NV-MuA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0wd-Rm-rPK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LTe-vs-h4C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5559" y="-723"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TAE-PK-aoK">
+            <objects>
+                <viewController storyboardIdentifier="Create-Photos" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6eD-fD-e0U" customClass="MPViewController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W2z-ib-uCA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za6-FV-Bsk">
+                                <rect key="frame" x="183" y="433" width="48" height="30"/>
+                                <state key="normal" title="Photos"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Za6-FV-Bsk" firstAttribute="centerX" secondItem="W2z-ib-uCA" secondAttribute="centerX" id="btb-Xv-TgE"/>
+                            <constraint firstItem="Za6-FV-Bsk" firstAttribute="centerY" secondItem="W2z-ib-uCA" secondAttribute="centerY" id="tdc-z5-NXW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f3s-kQ-5ua"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GTh-Px-4eu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6274" y="-723"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="S6a-Rb-Lqa">
@@ -634,4 +929,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="a1X-fi-h5r"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

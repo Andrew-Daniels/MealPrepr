@@ -38,9 +38,13 @@ class MPViewController: UIViewController {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.leftBarButtonItem?.tintColor = .white
         // Do any additional setup after loading the view.
     }
     
@@ -78,6 +82,23 @@ class MPViewController: UIViewController {
         searchController?.searchBar.delegate = searchDelegate
     }
 
+    @objc func createAccountBtnClicked() {
+        performSegue(withIdentifier: backToSignUpSegueIdentifier, sender: nil)
+    }
+    
+    func constrainToContainerView() {
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        if let superview = self.view.superview {
+        NSLayoutConstraint.activate([
+            self.view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0),
+            self.view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0),
+            self.view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 0),
+            self.view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0)
+            ])
+        }
+    }
     /*
     // MARK: - Navigation
 

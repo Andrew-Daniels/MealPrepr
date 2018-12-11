@@ -31,9 +31,31 @@ class MPTextField: UIControl, UITextFieldDelegate {
     public var placeholderText: String? {
         didSet {
             if let placeholder = self.placeholderText {
-                let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: self.placeHolderTextColor ?? UIColor.lightGray])
                 self.textField.attributedPlaceholder = attributedPlaceholder
             }
+        }
+    }
+    
+    @IBInspectable
+    public var errorTextColor: UIColor? {
+        didSet {
+            self.errorLabel.textColor = self.errorTextColor
+        }
+    }
+    
+    @IBInspectable
+    public var textFieldTextColor: UIColor? {
+        didSet {
+            self.textField.textColor = self.textFieldTextColor
+            self.borderColor = self.textFieldTextColor?.cgColor
+        }
+    }
+    
+    @IBInspectable
+    public var placeHolderTextColor: UIColor? {
+        didSet {
+            self.textField.attributedPlaceholder = NSAttributedString(string: self.placeholderText ?? "", attributes: [NSAttributedString.Key.foregroundColor: self.placeHolderTextColor ?? UIColor.lightGray])
         }
     }
     
@@ -56,6 +78,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         }
     }
     private var _hasError: Bool = false
+    private var borderColor: CGColor?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -156,7 +179,13 @@ class MPTextField: UIControl, UITextFieldDelegate {
     private func useUnderline() {
         let border = CALayer()
         let borderWidth = CGFloat(1.0)
-        border.borderColor = UIColor.white.cgColor
+        if let setColor = self.borderColor {
+            border.borderColor = setColor
+        }
+        else
+        {
+            border.borderColor = UIColor.white.cgColor
+        }
         border.frame = CGRect(x: 0, y: self.textField.frame.size.height - borderWidth, width: self.textField.frame.size.width, height: self.textField.frame.size.height)
         border.borderWidth = borderWidth
         self.textField.layer.addSublayer(border)
