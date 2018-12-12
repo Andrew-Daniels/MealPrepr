@@ -88,8 +88,4 @@ class SignUp: MPViewController, MPTextFieldDelegate {
             let _ = self.passwordTextField.resignFirstResponder()
         }
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }

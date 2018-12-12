@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class IngredientAlert: MPViewController {
+class IngredientAlert: MPViewController, MPTextFieldDelegate  {
     
     @IBOutlet weak var quantityTextField: MPTextField!
     @IBOutlet weak var ingredientTextField: MPTextField!
@@ -21,9 +21,12 @@ class IngredientAlert: MPViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        quantityTextField.delegate = self
+        ingredientTextField.delegate = self
+        unitTextField.delegate = self
         
+        ingredientTextField.becomeFirstResponder()
     }
-    
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -52,5 +55,17 @@ class IngredientAlert: MPViewController {
         
         performSegue(withIdentifier: backToIngredientsIdentifier, sender: self)
         
+    }
+    
+    func mpTextFieldShouldReturn(textField: MPTextField) {
+        if (textField == self.ingredientTextField) {
+            let _ = self.quantityTextField.becomeFirstResponder()
+        }
+        else if (textField == self.quantityTextField) {
+            let _ = self.unitTextField.becomeFirstResponder()
+        }
+        else if (textField == self.unitTextField) {
+            let _ = self.unitTextField.resignFirstResponder()
+        }
     }
 }
