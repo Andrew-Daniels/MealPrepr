@@ -18,6 +18,7 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate {
         super.viewDidLoad()
         
         utensilTextField.delegate = self
+        let _ = utensilTextField.becomeFirstResponder()
     }
     
     

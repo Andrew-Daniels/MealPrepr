@@ -15,10 +15,13 @@ private let createPhotosIdentifier = "Create-Photos"
 
 public let mainStoryboardIdentifier = "Main"
 
-class CreateRecipe: MPViewController {
+class CreateRecipe: MPViewController, MPTextFieldDelegate {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var titleTextField: MPTextField!
+    @IBOutlet weak var caloriesTextField: MPTextField!
+    @IBOutlet weak var servingsTextField: MPTextField!
     
     private enum Controller: Int {
         case Ingredients = 0
@@ -33,9 +36,15 @@ class CreateRecipe: MPViewController {
         super.viewDidLoad()
         setupSegmentedControl()
         
+        titleTextField.delegate = self
+        caloriesTextField.delegate = self
+        servingsTextField.delegate = self
+        
         let index = Controller(rawValue: segmentedControl.selectedSegmentIndex)
         presentChildVC(atIndex: index)
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
+        
+        let _ = titleTextField.becomeFirstResponder()   
     }
     
     func setupSegmentedControl() {
@@ -90,5 +99,17 @@ class CreateRecipe: MPViewController {
     @objc func segmentedControlIndexChanged() {
         guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         presentChildVC(atIndex: index)
+    }
+    
+    func mpTextFieldShouldReturn(textField: MPTextField) {
+        if (textField == self.titleTextField) {
+            let _ = self.caloriesTextField.becomeFirstResponder()
+        }
+        else if (textField == self.caloriesTextField) {
+            let _ = self.servingsTextField.becomeFirstResponder()
+        }
+        else if (textField == self.servingsTextField) {
+            let _ = self.servingsTextField.resignFirstResponder()
+        }
     }
 }

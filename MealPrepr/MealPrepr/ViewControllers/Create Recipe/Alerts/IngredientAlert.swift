@@ -25,7 +25,7 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
         ingredientTextField.delegate = self
         unitTextField.delegate = self
         
-        ingredientTextField.becomeFirstResponder()
+        let _ = ingredientTextField.becomeFirstResponder()
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {

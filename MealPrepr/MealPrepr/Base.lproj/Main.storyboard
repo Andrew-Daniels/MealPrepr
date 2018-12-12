@@ -663,8 +663,11 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NAt-gk-6la"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="caloriesTextField" destination="DgT-PX-QDP" id="H0S-9B-NxJ"/>
                         <outlet property="containerView" destination="yUV-Mo-dop" id="quT-7C-IFH"/>
                         <outlet property="segmentedControl" destination="QxD-al-LhV" id="Pqe-4D-dMl"/>
+                        <outlet property="servingsTextField" destination="ICt-Kh-Eut" id="g0F-AG-8Vj"/>
+                        <outlet property="titleTextField" destination="SvT-Yc-DpG" id="FyS-qc-e1s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kFD-fi-fXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1195,10 +1198,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U65-N7-hFe" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                <rect key="frame" x="57" y="363" width="300" height="170"/>
+                                <rect key="frame" x="57" y="373" width="300" height="150"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hd-J6-Gdl">
-                                        <rect key="frame" x="0.0" y="126" width="150" height="44"/>
+                                        <rect key="frame" x="0.0" y="106" width="150" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Mn9-Al-2UY"/>
                                         </constraints>
@@ -1208,7 +1211,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-zD-kQL">
-                                        <rect key="frame" x="150" y="126" width="150" height="44"/>
+                                        <rect key="frame" x="150" y="106" width="150" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="bIr-Va-2xH"/>
                                         </constraints>
@@ -1245,7 +1248,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="3c7-Sb-eq9"/>
+                                    <constraint firstAttribute="height" constant="150" id="3c7-Sb-eq9"/>
                                     <constraint firstItem="oNr-Dg-HfN" firstAttribute="top" secondItem="U65-N7-hFe" secondAttribute="top" constant="10" id="89V-47-aF8"/>
                                     <constraint firstItem="WCY-2d-sfV" firstAttribute="leading" secondItem="U65-N7-hFe" secondAttribute="leading" constant="30" id="GVu-cO-vGK"/>
                                     <constraint firstAttribute="trailing" secondItem="WCY-2d-sfV" secondAttribute="trailing" constant="30" id="NBG-zD-MgY"/>
