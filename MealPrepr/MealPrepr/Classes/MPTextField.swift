@@ -148,6 +148,8 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.addSubview(textField)
         self.addSubview(errorLabel)
         
+        self.backgroundColor = .clear
+        
         //Setup TextField
         self.textField.borderStyle = .none
         self.textField.delegate = self

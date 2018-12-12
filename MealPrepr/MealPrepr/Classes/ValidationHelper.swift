@@ -60,4 +60,42 @@ struct ValidationHelper {
         }
         return ErrorHelper.getErrorMsg(errorKey: .NoErrors)
     }
+    
+    public static func checkIfEmpty(text: String?) -> String? {
+        guard let text = text else {
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
+        }
+        if (text.isEmpty) {
+            return ErrorHelper.getErrorMsg(errorKey: .Empty)
+        }
+        
+        return ErrorHelper.getErrorMsg(errorKey: .NoErrors)
+    }
+    
+    public static func checkIfDecimal(text: String?) -> String? {
+        if self.checkIfEmpty(text: text) == nil {
+            
+            if let _ = text?.decimalValue {
+                return ErrorHelper.getErrorMsg(errorKey: .NoErrors)
+            }
+            return ErrorHelper.getErrorMsg(errorKey: .NotDecimal)
+        }
+    
+        return self.checkIfEmpty(text: text)
+        
+    }
+}
+
+extension String {
+    struct NumFormatter {
+        static let instance = NumberFormatter()
+    }
+    
+    var decimalValue: Decimal? {
+        return NumFormatter.instance.number(from: self)?.decimalValue
+    }
+    
+    var integerValue: Int? {
+        return NumFormatter.instance.number(from: self)?.intValue
+    }
 }

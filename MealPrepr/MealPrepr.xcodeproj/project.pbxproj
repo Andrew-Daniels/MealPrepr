@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310D026621C0817000EA8BA0 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D026521C0817000EA8BA0 /* Ingredients.swift */; };
+		310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D026821C0821C00EA8BA0 /* IngredientCell.swift */; };
+		310D026B21C08C5400EA8BA0 /* IngredientAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D026A21C08C5400EA8BA0 /* IngredientAlert.swift */; };
+		310D026F21C0967800EA8BA0 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D026E21C0967800EA8BA0 /* Ingredient.swift */; };
 		310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D421B74DE200D0E079 /* AppDelegate.swift */; };
 		310D30D721B74DE200D0E079 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D621B74DE200D0E079 /* Login.swift */; };
 		310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310D30D821B74DE200D0E079 /* Main.storyboard */; };
@@ -53,6 +57,10 @@
 
 /* Begin PBXFileReference section */
 		1B15E1F370FDDA838579A52F /* Pods-MealPrepr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPrepr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MealPrepr/Pods-MealPrepr.debug.xcconfig"; sourceTree = "<group>"; };
+		310D026521C0817000EA8BA0 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
+		310D026821C0821C00EA8BA0 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
+		310D026A21C08C5400EA8BA0 /* IngredientAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientAlert.swift; sourceTree = "<group>"; };
+		310D026E21C0967800EA8BA0 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		310D30D121B74DE200D0E079 /* MealPrepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPrepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		310D30D421B74DE200D0E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		310D30D621B74DE200D0E079 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -123,6 +131,77 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		310D026021C080E100EA8BA0 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				312F5A2F21BC417A0017B534 /* MPTabBarController.swift */,
+				312F5A3321BC41A90017B534 /* MPViewController.swift */,
+				312F5A3121BC41980017B534 /* MPNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		310D026121C0810600EA8BA0 /* Create Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				310D026D21C0966700EA8BA0 /* Models */,
+				310D026C21C08C6300EA8BA0 /* Alerts */,
+				310D026721C081F800EA8BA0 /* Cells */,
+				3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */,
+				310D026521C0817000EA8BA0 /* Ingredients.swift */,
+			);
+			path = "Create Recipe";
+			sourceTree = "<group>";
+		};
+		310D026221C0811C00EA8BA0 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				312F5A2B21BC36010017B534 /* HomeNavigationController.swift */,
+				312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		310D026321C0813400EA8BA0 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				312F5A2D21BC36180017B534 /* HomeTabBarController.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		310D026421C0814300EA8BA0 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				312F5A3921BC511F0017B534 /* Admin.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		310D026721C081F800EA8BA0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				310D026821C0821C00EA8BA0 /* IngredientCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		310D026C21C08C6300EA8BA0 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				310D026A21C08C5400EA8BA0 /* IngredientAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		310D026D21C0966700EA8BA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				310D026E21C0967800EA8BA0 /* Ingredient.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		310D30C821B74DE200D0E079 = {
 			isa = PBXGroup;
 			children = (
@@ -189,17 +268,14 @@
 		310D30FC21B75C8600D0E079 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				310D026421C0814300EA8BA0 /* Admin */,
+				310D026321C0813400EA8BA0 /* Tabs */,
+				310D026221C0811C00EA8BA0 /* Navigation */,
+				310D026121C0810600EA8BA0 /* Create Recipe */,
+				310D026021C080E100EA8BA0 /* Base */,
 				310D30D621B74DE200D0E079 /* Login.swift */,
 				31CA29FB21B9F4E500C8BF35 /* SignUp.swift */,
-				312F5A2B21BC36010017B534 /* HomeNavigationController.swift */,
-				312F5A2D21BC36180017B534 /* HomeTabBarController.swift */,
-				312F5A2F21BC417A0017B534 /* MPTabBarController.swift */,
-				312F5A3121BC41980017B534 /* MPNavigationController.swift */,
-				312F5A3321BC41A90017B534 /* MPViewController.swift */,
-				312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */,
 				312F5A3721BC51120017B534 /* Home.swift */,
-				312F5A3921BC511F0017B534 /* Admin.swift */,
-				3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -421,13 +497,17 @@
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
 				310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */,
 				312F5A2C21BC36010017B534 /* HomeNavigationController.swift in Sources */,
+				310D026B21C08C5400EA8BA0 /* IngredientAlert.swift in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
+				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,
 				312F5A3821BC51120017B534 /* Home.swift in Sources */,
 				312F5A3221BC41980017B534 /* MPNavigationController.swift in Sources */,
 				312F5A3021BC417A0017B534 /* MPTabBarController.swift in Sources */,
+				310D026F21C0967800EA8BA0 /* Ingredient.swift in Sources */,
 				3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
+				310D026621C0817000EA8BA0 /* Ingredients.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
 				312F5A3421BC41A90017B534 /* MPViewController.swift in Sources */,
 				312F5A2621BA2A6E0017B534 /* MPAlertController.swift in Sources */,

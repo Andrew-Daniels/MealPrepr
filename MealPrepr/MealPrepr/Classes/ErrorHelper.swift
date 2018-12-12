@@ -17,6 +17,7 @@ struct ErrorHelper {
         case UsernameTaken
         case Empty
         case NoErrors
+        case NotDecimal
     }
     
     public enum AuthFieldType {
@@ -35,6 +36,8 @@ struct ErrorHelper {
             return "Password must be 8 characters minimum"
         case .Empty:
             return "Field cannot be left blank"
+        case .NotDecimal:
+            return "This field can only contain numbers"
         case .NoErrors:
             return nil
         }
