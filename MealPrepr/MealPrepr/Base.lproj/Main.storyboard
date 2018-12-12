@@ -683,10 +683,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDJ-Jk-pRm" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                <rect key="frame" x="57" y="313" width="300" height="270"/>
+                                <rect key="frame" x="57" y="223.33333333333337" width="300" height="270"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijg-Bl-dYK">
-                                        <rect key="frame" x="0.0" y="226" width="150" height="44"/>
+                                        <rect key="frame" x="0.0" y="225.99999999999997" width="150" height="44.000000000000028"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="mnN-Rc-nDP"/>
                                         </constraints>
@@ -696,7 +696,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDe-77-8Lo">
-                                        <rect key="frame" x="150" y="226" width="150" height="44"/>
+                                        <rect key="frame" x="150" y="225.99999999999997" width="150" height="44.000000000000028"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Sbv-Rm-AY6"/>
                                         </constraints>
@@ -712,7 +712,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Qb-xE-lYX" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="111" width="240" height="50"/>
+                                        <rect key="frame" x="30" y="110.99999999999997" width="240" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YX5-ef-3fY"/>
@@ -731,7 +731,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIR-oV-Ang" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="51" width="240" height="50"/>
+                                        <rect key="frame" x="30" y="50.999999999999972" width="240" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dVC-ZN-sUG"/>
@@ -750,7 +750,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkf-LD-LJ3" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="171" width="240" height="50"/>
+                                        <rect key="frame" x="30" y="170.99999999999997" width="240" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gKX-Ir-Z9V"/>
@@ -806,10 +806,22 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="xDJ-Jk-pRm" firstAttribute="centerY" secondItem="Y07-ce-mgB" secondAttribute="centerY" multiplier="0.7" id="KU1-dw-7TQ"/>
                             <constraint firstItem="xDJ-Jk-pRm" firstAttribute="centerX" secondItem="Y07-ce-mgB" secondAttribute="centerX" id="OIH-KL-m7p"/>
-                            <constraint firstItem="xDJ-Jk-pRm" firstAttribute="centerY" secondItem="Y07-ce-mgB" secondAttribute="centerY" id="lyf-zc-7Gg"/>
+                            <constraint firstItem="xDJ-Jk-pRm" firstAttribute="centerY" secondItem="Y07-ce-mgB" secondAttribute="centerY" multiplier="0.8" id="lyf-zc-7Gg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FQi-o3-vtK"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KU1-dw-7TQ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="KU1-dw-7TQ"/>
+                                <exclude reference="lyf-zc-7Gg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addBtn" destination="NDe-77-8Lo" id="eEd-Ld-C8y"/>
@@ -846,13 +858,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjn-PQ-6G0">
-                                                    <rect key="frame" x="30" y="0.0" width="177" height="75"/>
+                                                    <rect key="frame" x="30" y="0.0" width="387" height="75"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-Kf-DSu">
-                                                    <rect key="frame" x="207" y="0.0" width="207" height="75"/>
+                                                    <rect key="frame" x="417" y="0.0" width="417" height="75"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -946,7 +958,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2F-S9-1dT">
-                                                    <rect key="frame" x="20" y="11" width="374" height="53"/>
+                                                    <rect key="frame" x="20" y="11" width="794" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1273,10 +1285,22 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="U65-N7-hFe" firstAttribute="centerY" secondItem="jU6-4g-2ON" secondAttribute="centerY" multiplier="0.8" id="oP1-PZ-e1j"/>
                             <constraint firstItem="U65-N7-hFe" firstAttribute="centerX" secondItem="jU6-4g-2ON" secondAttribute="centerX" id="sb6-Gn-sy1"/>
                             <constraint firstItem="U65-N7-hFe" firstAttribute="centerY" secondItem="jU6-4g-2ON" secondAttribute="centerY" id="xoX-TI-wBc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qZG-lP-09S"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="oP1-PZ-e1j"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="oP1-PZ-e1j"/>
+                                <exclude reference="xoX-TI-wBc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="utensilTextField" destination="WCY-2d-sfV" id="LER-vV-enU"/>
