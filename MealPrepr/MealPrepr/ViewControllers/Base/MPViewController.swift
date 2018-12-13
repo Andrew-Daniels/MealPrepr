@@ -13,6 +13,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     var account: Account!
     var searchController: UISearchController?
     var selectedImage: UIImage?
+    var collectionViewCellWidth: CGFloat?
     
     var hasSearchController: Bool = false {
         didSet {
@@ -60,7 +61,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let cellWidth : CGFloat = 170.0
+        guard let cellWidth = collectionViewCellWidth else { return UIEdgeInsets.zero }
         
         let numberOfCells = floor(self.view.frame.size.width / cellWidth)
         let edgeInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)

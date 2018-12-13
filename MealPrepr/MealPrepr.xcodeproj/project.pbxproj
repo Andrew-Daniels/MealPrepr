@@ -149,6 +149,9 @@
 				312F5A2F21BC417A0017B534 /* MPTabBarController.swift */,
 				312F5A3321BC41A90017B534 /* MPViewController.swift */,
 				312F5A3121BC41980017B534 /* MPNavigationController.swift */,
+				312F5A2521BA2A6E0017B534 /* MPAlertController.swift */,
+				310D310121B772E800D0E079 /* MPTextField.swift */,
+				3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -273,11 +276,8 @@
 				310D30F721B74FD900D0E079 /* RoundedUIView.swift */,
 				310D30FD21B7618A00D0E079 /* ValidationHelper.swift */,
 				310D30FF21B7620500D0E079 /* ErrorHelper.swift */,
-				310D310121B772E800D0E079 /* MPTextField.swift */,
-				312F5A2521BA2A6E0017B534 /* MPAlertController.swift */,
 				312F5A2721BB47E20017B534 /* FirebaseHelper.swift */,
 				312F5A2921BB4ED60017B534 /* Account.swift */,
-				3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */,
 				310D027621C1F29B00EA8BA0 /* ImageHelper.swift */,
 			);
 			path = Classes;

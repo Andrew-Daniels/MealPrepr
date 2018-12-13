@@ -112,14 +112,4 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
             let _ = self.servingsTextField.resignFirstResponder()
         }
     }
-    @IBAction func addPhotoBtnClicked(_ sender: Any) {
-        showImagePickerController()
-    }
-    
-    override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        super.imagePickerController(picker, didFinishPickingMediaWithInfo: info)
-        if let image = self.selectedImage {
-            //DO STUFF HERE
-        }
-    }
 }

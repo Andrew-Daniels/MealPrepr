@@ -12,7 +12,7 @@ private let photoCellIdentifier = "PhotoCell"
 
 class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: MPCollectionView!
     var images = [UIImage]()
     
     override func viewDidLoad() {
@@ -30,6 +30,11 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.imageView.image = images[indexPath.row]
         return cell
     }
+    
+//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        self.collectionViewCellWidth = 300.0
+//        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
+//    }
     
     func addImage(image: UIImage) {
         images.append(image)
