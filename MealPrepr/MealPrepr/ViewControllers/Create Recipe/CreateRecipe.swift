@@ -15,7 +15,7 @@ private let createPhotosIdentifier = "Create-Photos"
 
 public let mainStoryboardIdentifier = "Main"
 
-class CreateRecipe: MPViewController, MPTextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateRecipe: MPViewController, MPTextFieldDelegate {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
@@ -110,6 +110,16 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate, UINavigationControlle
         }
         else if (textField == self.servingsTextField) {
             let _ = self.servingsTextField.resignFirstResponder()
+        }
+    }
+    @IBAction func addPhotoBtnClicked(_ sender: Any) {
+        showImagePickerController()
+    }
+    
+    override func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        super.imagePickerController(picker, didFinishPickingMediaWithInfo: info)
+        if let image = self.selectedImage {
+            //DO STUFF HERE
         }
     }
 }

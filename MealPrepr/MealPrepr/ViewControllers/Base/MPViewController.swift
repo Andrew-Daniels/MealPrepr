@@ -8,10 +8,11 @@
 
 import UIKit
 
-class MPViewController: UIViewController {
+class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var account: Account!
     var searchController: UISearchController?
+    var selectedImage: UIImage?
     
     var hasSearchController: Bool = false {
         didSet {
@@ -103,14 +104,22 @@ class MPViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let newImage = ImageHelper.resizeImage(image: image, withMaxDimension: 300) else {
+            return
+        }
+        self.selectedImage = newImage
     }
-    */
-
+    
+    func showImagePickerController() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
 }

@@ -14,6 +14,8 @@
 		310D027121C0B0DD00EA8BA0 /* UtensilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027021C0B0DD00EA8BA0 /* UtensilCell.swift */; };
 		310D027321C0B2A200EA8BA0 /* Utensils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027221C0B2A200EA8BA0 /* Utensils.swift */; };
 		310D027521C0B4DF00EA8BA0 /* UtensilAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027421C0B4DF00EA8BA0 /* UtensilAlert.swift */; };
+		310D027721C1F29B00EA8BA0 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027621C1F29B00EA8BA0 /* ImageHelper.swift */; };
+		310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027821C1FB2A00EA8BA0 /* Photos.swift */; };
 		310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D421B74DE200D0E079 /* AppDelegate.swift */; };
 		310D30D721B74DE200D0E079 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D621B74DE200D0E079 /* Login.swift */; };
 		310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310D30D821B74DE200D0E079 /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 		310D027021C0B0DD00EA8BA0 /* UtensilCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtensilCell.swift; sourceTree = "<group>"; };
 		310D027221C0B2A200EA8BA0 /* Utensils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utensils.swift; sourceTree = "<group>"; };
 		310D027421C0B4DF00EA8BA0 /* UtensilAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtensilAlert.swift; sourceTree = "<group>"; };
+		310D027621C1F29B00EA8BA0 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		310D027821C1FB2A00EA8BA0 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		310D30D121B74DE200D0E079 /* MealPrepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPrepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		310D30D421B74DE200D0E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		310D30D621B74DE200D0E079 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */,
 				310D026521C0817000EA8BA0 /* Ingredients.swift */,
 				310D027221C0B2A200EA8BA0 /* Utensils.swift */,
+				310D027821C1FB2A00EA8BA0 /* Photos.swift */,
 			);
 			path = "Create Recipe";
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 				312F5A2721BB47E20017B534 /* FirebaseHelper.swift */,
 				312F5A2921BB4ED60017B534 /* Account.swift */,
 				3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */,
+				310D027621C1F29B00EA8BA0 /* ImageHelper.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				310D30F821B74FD900D0E079 /* RoundedUIView.swift in Sources */,
 				310D027321C0B2A200EA8BA0 /* Utensils.swift in Sources */,
 				312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */,
+				310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */,
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
@@ -523,6 +530,7 @@
 				312F5A3421BC41A90017B534 /* MPViewController.swift in Sources */,
 				312F5A2621BA2A6E0017B534 /* MPAlertController.swift in Sources */,
 				31CA29FC21B9F4E500C8BF35 /* SignUp.swift in Sources */,
+				310D027721C1F29B00EA8BA0 /* ImageHelper.swift in Sources */,
 				312F5A2821BB47E20017B534 /* FirebaseHelper.swift in Sources */,
 				310D027521C0B4DF00EA8BA0 /* UtensilAlert.swift in Sources */,
 				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,

@@ -50,5 +50,9 @@
 	<false/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>MealPrepr would like to access your photos to add pictures.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>MealPrepr would like to access your camera to take pictures.</string>
 </dict>
 </plist>
