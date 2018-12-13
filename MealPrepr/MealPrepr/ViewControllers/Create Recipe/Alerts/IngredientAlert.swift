@@ -29,6 +29,7 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addBtnClicked(_ sender: Any) {
@@ -53,6 +54,7 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
         
         self.ingredient = Ingredient(title: ingredient!, quantity: Decimal(string: quantity!)!, unit: unit!)
         
+        self.view.endEditing(true)
         performSegue(withIdentifier: backToIngredientsIdentifier, sender: self)
         
     }

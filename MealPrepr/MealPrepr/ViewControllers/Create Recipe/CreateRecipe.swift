@@ -15,7 +15,7 @@ private let createPhotosIdentifier = "Create-Photos"
 
 public let mainStoryboardIdentifier = "Main"
 
-class CreateRecipe: MPViewController, MPTextFieldDelegate {
+class CreateRecipe: MPViewController, MPTextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
@@ -44,7 +44,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         presentChildVC(atIndex: index)
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
         
-        let _ = titleTextField.becomeFirstResponder()   
+        let _ = titleTextField.becomeFirstResponder()
     }
     
     func setupSegmentedControl() {

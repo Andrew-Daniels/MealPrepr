@@ -23,6 +23,7 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate {
     
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addBtnClicked(_ sender: Any) {
@@ -39,6 +40,7 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate {
         
         self.utensil = utensil
         
+        self.view.endEditing(true)
         performSegue(withIdentifier: backToUtensilsIdentifier, sender: self)
         
     }
