@@ -111,7 +111,9 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             return
         }
         self.selectedImage = newImage
+        picker.dismiss(animated: true, completion: nil)
     }
+    
     
     func showImagePickerController() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {

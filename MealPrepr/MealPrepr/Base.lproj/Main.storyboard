@@ -1226,8 +1226,8 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yab-OZ-phl">
-                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="792"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qU1-NH-5UD">
                                     <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1235,7 +1235,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="N8w-4x-xpE">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="N8w-4x-xpE" customClass="PhotoCell" customModule="MealPrepr" customModuleProvider="target">
                                         <rect key="frame" x="57" y="0.0" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1247,14 +1247,22 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="618-ql-v9e" secondAttribute="trailing" id="4kY-33-UQY"/>
                                             <constraint firstItem="618-ql-v9e" firstAttribute="top" secondItem="N8w-4x-xpE" secondAttribute="top" id="9QA-Cg-TbR"/>
                                             <constraint firstItem="618-ql-v9e" firstAttribute="leading" secondItem="N8w-4x-xpE" secondAttribute="leadingMargin" id="VsN-CA-TFM"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="618-ql-v9e" secondAttribute="bottom" id="aw3-8f-avp"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="618-ql-v9e" id="IYg-id-ePn"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6eD-fD-e0U" id="Eku-sU-Imk"/>
+                                    <outlet property="delegate" destination="6eD-fD-e0U" id="o2W-fi-zy8"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1264,7 +1272,7 @@
                             <constraint firstItem="yab-OZ-phl" firstAttribute="leading" secondItem="f3s-kQ-5ua" secondAttribute="leading" id="IKH-jS-5nP"/>
                             <constraint firstItem="f3s-kQ-5ua" firstAttribute="trailing" secondItem="yab-OZ-phl" secondAttribute="trailing" id="Ie1-LP-UpH"/>
                             <constraint firstItem="yab-OZ-phl" firstAttribute="top" secondItem="Za6-FV-Bsk" secondAttribute="bottom" constant="10" id="Ka2-1N-4zh"/>
-                            <constraint firstItem="f3s-kQ-5ua" firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" id="Wzv-zq-m7t"/>
+                            <constraint firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" id="Wzv-zq-m7t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f3s-kQ-5ua"/>
                     </view>
