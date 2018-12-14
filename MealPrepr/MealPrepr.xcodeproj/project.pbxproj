@@ -17,6 +17,10 @@
 		310D027721C1F29B00EA8BA0 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027621C1F29B00EA8BA0 /* ImageHelper.swift */; };
 		310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027821C1FB2A00EA8BA0 /* Photos.swift */; };
 		310D027B21C1FEFE00EA8BA0 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027A21C1FEFE00EA8BA0 /* PhotoCell.swift */; };
+		310D027D21C32F0F00EA8BA0 /* InstructionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027C21C32F0F00EA8BA0 /* InstructionCell.swift */; };
+		310D027F21C32F3100EA8BA0 /* InstructionIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027E21C32F3100EA8BA0 /* InstructionIngredientCell.swift */; };
+		310D028121C3302300EA8BA0 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D028021C3302300EA8BA0 /* Instructions.swift */; };
+		310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D028221C34A3B00EA8BA0 /* InstructionAlert.swift */; };
 		310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D421B74DE200D0E079 /* AppDelegate.swift */; };
 		310D30D721B74DE200D0E079 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D621B74DE200D0E079 /* Login.swift */; };
 		310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310D30D821B74DE200D0E079 /* Main.storyboard */; };
@@ -73,6 +77,10 @@
 		310D027621C1F29B00EA8BA0 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		310D027821C1FB2A00EA8BA0 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		310D027A21C1FEFE00EA8BA0 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		310D027C21C32F0F00EA8BA0 /* InstructionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCell.swift; sourceTree = "<group>"; };
+		310D027E21C32F3100EA8BA0 /* InstructionIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionIngredientCell.swift; sourceTree = "<group>"; };
+		310D028021C3302300EA8BA0 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
+		310D028221C34A3B00EA8BA0 /* InstructionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionAlert.swift; sourceTree = "<group>"; };
 		310D30D121B74DE200D0E079 /* MealPrepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPrepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		310D30D421B74DE200D0E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		310D30D621B74DE200D0E079 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -166,6 +174,7 @@
 				310D026521C0817000EA8BA0 /* Ingredients.swift */,
 				310D027221C0B2A200EA8BA0 /* Utensils.swift */,
 				310D027821C1FB2A00EA8BA0 /* Photos.swift */,
+				310D028021C3302300EA8BA0 /* Instructions.swift */,
 			);
 			path = "Create Recipe";
 			sourceTree = "<group>";
@@ -201,6 +210,8 @@
 				310D026821C0821C00EA8BA0 /* IngredientCell.swift */,
 				310D027021C0B0DD00EA8BA0 /* UtensilCell.swift */,
 				310D027A21C1FEFE00EA8BA0 /* PhotoCell.swift */,
+				310D027C21C32F0F00EA8BA0 /* InstructionCell.swift */,
+				310D027E21C32F3100EA8BA0 /* InstructionIngredientCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 			children = (
 				310D026A21C08C5400EA8BA0 /* IngredientAlert.swift */,
 				310D027421C0B4DF00EA8BA0 /* UtensilAlert.swift */,
+				310D028221C34A3B00EA8BA0 /* InstructionAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -509,12 +521,14 @@
 				310D30FE21B7618A00D0E079 /* ValidationHelper.swift in Sources */,
 				310D30F821B74FD900D0E079 /* RoundedUIView.swift in Sources */,
 				310D027321C0B2A200EA8BA0 /* Utensils.swift in Sources */,
+				310D027F21C32F3100EA8BA0 /* InstructionIngredientCell.swift in Sources */,
 				312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */,
 				310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */,
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
+				310D028121C3302300EA8BA0 /* Instructions.swift in Sources */,
 				310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */,
 				312F5A2C21BC36010017B534 /* HomeNavigationController.swift in Sources */,
 				310D026B21C08C5400EA8BA0 /* IngredientAlert.swift in Sources */,
@@ -522,12 +536,14 @@
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
 				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,
 				312F5A3821BC51120017B534 /* Home.swift in Sources */,
+				310D027D21C32F0F00EA8BA0 /* InstructionCell.swift in Sources */,
 				312F5A3221BC41980017B534 /* MPNavigationController.swift in Sources */,
 				312F5A3021BC417A0017B534 /* MPTabBarController.swift in Sources */,
 				310D027121C0B0DD00EA8BA0 /* UtensilCell.swift in Sources */,
 				310D026F21C0967800EA8BA0 /* Ingredient.swift in Sources */,
 				3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
+				310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */,
 				310D026621C0817000EA8BA0 /* Ingredients.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
 				312F5A3421BC41A90017B534 /* MPViewController.swift in Sources */,

@@ -31,11 +31,6 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        self.collectionViewCellWidth = 300.0
-//        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
-//    }
-    
     func addImage(image: UIImage) {
         images.append(image)
         collectionView.reloadData()

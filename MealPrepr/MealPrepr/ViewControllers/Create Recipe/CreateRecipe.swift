@@ -12,6 +12,7 @@ private let createIngredientsIdentifier = "Create-Ingredients"
 private let createUtensilsIdentifier = "Create-Utensils"
 private let createInstructionsIdentifier = "Create-Instructions"
 private let createPhotosIdentifier = "Create-Photos"
+private let containedPhotosViewControllerSegueIdentifier = "containedPhotos"
 
 public let mainStoryboardIdentifier = "Main"
 
@@ -94,6 +95,22 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         activeVC.constrainToContainerView()
         
         activeVC.didMove(toParent: self)
+        
+        switch (atIndex) {
+            
+        case .Ingredients:
+            break
+        case .Utensils:
+            break
+        case .Instructions:
+            if let ingredientsVC = viewControllers[.Ingredients] as? Ingredients,
+                let instructionsVC = viewControllers[.Instructions] as? Instructions {
+                instructionsVC.availableIngredients = ingredientsVC.ingredients
+            }
+            break
+        case .Photos:
+            break
+        }
     }
     
     @objc func segmentedControlIndexChanged() {
@@ -110,6 +127,12 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         }
         else if (textField == self.servingsTextField) {
             let _ = self.servingsTextField.resignFirstResponder()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == containedPhotosViewControllerSegueIdentifier {
+            viewControllers[.Photos] = segue.destination as? Photos
         }
     }
 }
