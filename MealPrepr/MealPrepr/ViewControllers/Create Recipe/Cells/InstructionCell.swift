@@ -37,5 +37,4 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    
 }

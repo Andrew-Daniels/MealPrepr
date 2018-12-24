@@ -15,14 +15,15 @@ class MPAlertController {
         case Standard
         case Login
         case SignUp
+        case CreateAccount
     }
     
     public static func show(message: String, type: AlertType, presenter: UIViewController) {
-        let alert = self.create(message: message, type: type)
+        let alert = self.create(message: message, type: type, presenter: presenter)
         presenter.present(alert, animated: true, completion: nil)
     }
     
-    public static func create(message: String, type: AlertType) -> UIAlertController {
+    public static func create(message: String, type: AlertType, presenter: UIViewController) -> UIAlertController {
         var actionTitle: String!
         var title: String!
         switch(type) {
@@ -36,6 +37,19 @@ class MPAlertController {
         case .SignUp:
             title = "Register Error"
             actionTitle = "Try Again"
+        case .CreateAccount:
+            title = "Account Required"
+            actionTitle = "Create an Account"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let createAccountAction = UIAlertAction(title: actionTitle, style: .default) { (action) in
+                if let vc = presenter as? MPViewController {
+                    vc.createAccountBtnClicked()
+                }
+            }
+            alert.addAction(action)
+            alert.addAction(createAccountAction)
+            return alert
         }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitle, style: .cancel, handler: nil)

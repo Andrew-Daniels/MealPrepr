@@ -64,5 +64,12 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if (account.userLevel == .Guest && segue.identifier != backToSignUpSegueIdentifier) {
+            MPAlertController.show(message: "You must sign in first before you can use this feature.", type: .CreateAccount, presenter: self)
+        }
+    }
 
 }

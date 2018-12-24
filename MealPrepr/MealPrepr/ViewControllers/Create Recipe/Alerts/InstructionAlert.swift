@@ -11,7 +11,7 @@ import UIKit
 
 private let ingredientButtonCellIdentifier = "IngredientButtons"
 
-class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     var availableIngredients = [Ingredient]()
     var instruction: String!
@@ -40,5 +40,15 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ingredientButtonCellIdentifier, for: indexPath) as! InstructionIngredientCell
         cell.ingredient = availableIngredients[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel()
+        label.text = availableIngredients[indexPath.row].title
+        label.sizeToFit()
+        var size = label.frame.size
+        size.height += 10
+        size.width += 6
+        return size
     }
 }
