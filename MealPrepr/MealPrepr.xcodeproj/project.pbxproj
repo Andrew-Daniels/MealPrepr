@@ -21,6 +21,7 @@
 		310D027F21C32F3100EA8BA0 /* InstructionIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D027E21C32F3100EA8BA0 /* InstructionIngredientCell.swift */; };
 		310D028121C3302300EA8BA0 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D028021C3302300EA8BA0 /* Instructions.swift */; };
 		310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D028221C34A3B00EA8BA0 /* InstructionAlert.swift */; };
+		310D028721D1A0D700EA8BA0 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D028621D1A0D700EA8BA0 /* Instruction.swift */; };
 		310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D421B74DE200D0E079 /* AppDelegate.swift */; };
 		310D30D721B74DE200D0E079 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30D621B74DE200D0E079 /* Login.swift */; };
 		310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310D30D821B74DE200D0E079 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		310D027E21C32F3100EA8BA0 /* InstructionIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionIngredientCell.swift; sourceTree = "<group>"; };
 		310D028021C3302300EA8BA0 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		310D028221C34A3B00EA8BA0 /* InstructionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionAlert.swift; sourceTree = "<group>"; };
+		310D028621D1A0D700EA8BA0 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		310D30D121B74DE200D0E079 /* MealPrepr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPrepr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		310D30D421B74DE200D0E079 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		310D30D621B74DE200D0E079 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				310D026E21C0967800EA8BA0 /* Ingredient.swift */,
+				310D028621D1A0D700EA8BA0 /* Instruction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */,
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
+				310D028721D1A0D700EA8BA0 /* Instruction.swift in Sources */,
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
 				310D028121C3302300EA8BA0 /* Instructions.swift in Sources */,

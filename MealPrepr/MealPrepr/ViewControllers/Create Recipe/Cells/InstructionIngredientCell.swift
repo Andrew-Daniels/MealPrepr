@@ -12,7 +12,12 @@ class InstructionIngredientCell: UICollectionViewCell {
     
     var ingredient: Ingredient!
     var ingredientLabel: UILabel!
-    var enabled: Bool = false
+    var selectedIngredient: Bool = false {
+        didSet {
+            self.backgroundColor = selectedIngredient ? .red : .white
+            self.ingredientLabel.textColor = selectedIngredient ? .white : .black
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,7 +35,7 @@ class InstructionIngredientCell: UICollectionViewCell {
         }
         ingredientLabel = UILabel()
         ingredientLabel.textAlignment = .center
-        ingredientLabel.text = ingredient.title
+        ingredientLabel.text = ingredient.toString()
         self.contentView.addSubview(ingredientLabel)
         ingredientLabel.sizeToFit()
         ingredientLabel.translatesAutoresizingMaskIntoConstraints = false

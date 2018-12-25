@@ -19,4 +19,8 @@ class Ingredient {
         self.quantity = quantity
         self.unit = unit
     }
+    
+    func toString() -> String {
+        return "\(title) \(quantity) \(unit)"
+    }
 }
