@@ -26,11 +26,12 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return instructions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: instructionCellIdentifier, for: indexPath) as! InstructionCell
+        cell.instruction = instructions[indexPath.row]
         return cell
     }
 
@@ -49,6 +50,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         case backToInstructionsSegueIdentifier:
             guard let vc = segue.source as? InstructionAlert else { return }
             instructions.append(vc.instruction)
+            tableView.reloadData()
             break;
         default:
             break;

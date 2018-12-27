@@ -15,7 +15,9 @@ class InstructionIngredientCell: UICollectionViewCell {
     var selectedIngredient: Bool = false {
         didSet {
             self.backgroundColor = selectedIngredient ? .red : .white
-            self.ingredientLabel.textColor = selectedIngredient ? .white : .black
+            if let label = self.ingredientLabel {
+                label.textColor = selectedIngredient ? .white : .black
+            }
         }
     }
     
@@ -39,6 +41,9 @@ class InstructionIngredientCell: UICollectionViewCell {
         self.contentView.addSubview(ingredientLabel)
         ingredientLabel.sizeToFit()
         ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
+        if selectedIngredient {
+            ingredientLabel.textColor = .white
+        }
         let top = NSLayoutConstraint(item: ingredientLabel, attribute: .top, relatedBy: .equal, toItem: self.contentView, attribute: .top, multiplier: 1.0, constant: 0.0)
         let leading = NSLayoutConstraint(item: ingredientLabel, attribute: .leading, relatedBy: .equal, toItem: self.contentView, attribute: .leading, multiplier: 1.0, constant: 0.0)
         let trailing = NSLayoutConstraint(item: ingredientLabel, attribute: .trailing, relatedBy: .equal, toItem: self.contentView, attribute: .trailing, multiplier: 1.0, constant: 0.0)
