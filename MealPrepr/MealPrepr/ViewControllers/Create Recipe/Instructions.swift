@@ -31,7 +31,9 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: instructionCellIdentifier, for: indexPath) as! InstructionCell
-        cell.instruction = instructions[indexPath.row]
+        let instruction = instructions[indexPath.row]
+        cell.instruction = instruction
+        cell.instructionLabel.text = instruction.instruction
         return cell
     }
 

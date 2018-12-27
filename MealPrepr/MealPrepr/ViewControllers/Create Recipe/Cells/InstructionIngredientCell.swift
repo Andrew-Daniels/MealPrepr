@@ -10,7 +10,13 @@ import UIKit
 
 class InstructionIngredientCell: UICollectionViewCell {
     
-    var ingredient: Ingredient!
+    var ingredient: Ingredient! {
+        didSet {
+            if self.ingredientLabel != nil {
+                self.ingredientLabel.text = ingredient.toString()
+            }
+        }
+    }
     var ingredientLabel: UILabel!
     var selectedIngredient: Bool = false {
         didSet {

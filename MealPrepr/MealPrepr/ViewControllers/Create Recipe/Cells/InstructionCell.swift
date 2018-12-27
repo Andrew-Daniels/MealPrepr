@@ -14,7 +14,11 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var instructionLabel: UILabel!
-    var instruction: Instruction!
+    var instruction: Instruction! {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,6 +56,5 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        instructionLabel.text = instruction.instruction
     }
 }

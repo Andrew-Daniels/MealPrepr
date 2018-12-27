@@ -101,6 +101,10 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         }
     }
     
+//    func textViewDidChange(_ textView: UITextView) {
+//        self.instruction.instruction = textView.text
+//    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -176,6 +180,6 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        instruction.instruction = instructionTextView.text  
+        instruction.instruction = instructionTextView.text
     }
 }
