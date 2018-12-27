@@ -10,11 +10,13 @@ import UIKit
 
 private let instructionAlertSegueIdentifier = "InstructionAlert"
 private let instructionCellIdentifier = "InstructionCell"
+let backToInstructionsSegueIdentifier = "backToInstructions"
 
 class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var availableIngredients = [Ingredient]()
+    var instructions = [Instruction]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,4 +42,17 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
             alert.availableIngredients = availableIngredients
         }
     }
+    
+    @IBAction func backToInstructions(segue: UIStoryboardSegue) {
+        switch(segue.identifier) {
+            
+        case backToInstructionsSegueIdentifier:
+            guard let vc = segue.source as? InstructionAlert else { return }
+            instructions.append(vc.instruction)
+            break;
+        default:
+            break;
+        }
+    }
+    
 }
