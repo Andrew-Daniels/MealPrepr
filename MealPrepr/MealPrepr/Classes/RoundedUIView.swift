@@ -56,6 +56,9 @@ class RoundedUIView: UIView {
         if (self.effect == nil) {
             self.effect = .dark
         }
+        if self.effectView != nil {
+            self.effectView.frame = self.bounds
+        }
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 private let instructionAlertSegueIdentifier = "InstructionAlert"
 private let instructionCellIdentifier = "InstructionCell"
+private let editInstructionAlertSegueIdentifier = "EditInstruction"
 let backToInstructionsSegueIdentifier = "backToInstructions"
 
 class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource {
@@ -36,6 +37,11 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         cell.instructionLabel.text = instruction.instruction
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: editInstructionAlertSegueIdentifier, sender: instructions[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -43,6 +49,12 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
             let alert = segue.destination as! InstructionAlert
             alert.hidesBottomBarWhenPushed = true
             alert.availableIngredients = availableIngredients
+        }
+        if segue.identifier == editInstructionAlertSegueIdentifier {
+            let alert = segue.destination as! InstructionAlert
+            alert.hidesBottomBarWhenPushed = true
+            alert.availableIngredients = availableIngredients
+            alert.instruction = sender as? Instruction
         }
     }
     

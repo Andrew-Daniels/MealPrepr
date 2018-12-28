@@ -20,7 +20,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     }
     
     var availableIngredients = [Ingredient]()
-    var instruction = Instruction()
+    var instruction: Instruction!
     var minutesPickerViewModel: [String]?
     var hoursPickerViewModel: [String]?
     
@@ -33,6 +33,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupAlertWithInstruction()
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
     }
     
@@ -101,10 +102,6 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         }
     }
     
-//    func textViewDidChange(_ textView: UITextView) {
-//        self.instruction.instruction = textView.text
-//    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -119,17 +116,17 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         return 0
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var pickerType: PickerViewType!
-        
-        if pickerView == minutesPickerView {
-            pickerType = .Minutes
-        }
-        if pickerView == hoursPickerView {
-            pickerType = .Hours
-        }
-        return getPickerViewTitleForRow(pickerType: pickerType, row: row)
-    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        var pickerType: PickerViewType!
+//        
+//        if pickerView == minutesPickerView {
+//            pickerType = .Minutes
+//        }
+//        if pickerView == hoursPickerView {
+//            pickerType = .Hours
+//        }
+//        return getPickerViewTitleForRow(pickerType: pickerType, row: row)
+//    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
@@ -147,6 +144,20 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         }
         
         instruction.timeInMinutes = minutesInMinutes + hoursInMinutes
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var pickerType: PickerViewType!
+        
+        if pickerView == minutesPickerView {
+            pickerType = .Minutes
+        }
+        if pickerView == hoursPickerView {
+            pickerType = .Hours
+        }
+        
+        let title = getPickerViewTitleForRow(pickerType: pickerType, row: row)
+        return NSAttributedString(string: title ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     func getPickerViewTitleForRow(pickerType: PickerViewType, row: Int) -> String? {
@@ -181,5 +192,15 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         instruction.instruction = instructionTextView.text
+    }
+    
+    func setupAlertWithInstruction() {
+        if self.instruction != nil {
+            instructionTextView.text = instruction.instruction
+            segmentedControl.selectedSegmentIndex = instruction.type.rawValue
+        } else {
+            instruction = Instruction()
+            instruction.type = .Prep
+        }
     }
 }
