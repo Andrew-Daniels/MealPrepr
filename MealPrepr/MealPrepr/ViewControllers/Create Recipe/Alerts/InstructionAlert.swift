@@ -21,12 +21,12 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     
     var availableIngredients = [Ingredient]()
     var instruction: Instruction!
-    var tempInstruction = Instruction()
+    var tempInstruction: Instruction! = Instruction()
     var minutesPickerViewModel: [String]?
     var hoursPickerViewModel: [String]?
     var indexPathsOfSelectedIngredients = [IndexPath]()
     var isEditingExistingIngredient = false
-    var type: Instruction.CookType!
+    //var type: Instruction.CookType!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var instructionTextView: UITextView!
@@ -49,7 +49,9 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         
         
         self.view.endEditing(true)
-        self.instruction = self.tempInstruction
+        if isEditingExistingIngredient {
+            instruction = tempInstruction
+        }
         performSegue(withIdentifier: backToInstructionsSegueIdentifier, sender: self)
         
     }
@@ -114,7 +116,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     @objc func segmentedControlIndexChanged() {
         guard let cookType = Instruction.CookType(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         if isEditingExistingIngredient {
-            type = cookType
+            tempInstruction.type = cookType
         } else {
             instruction.type = cookType
         }
@@ -217,6 +219,8 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
             
             tempInstruction.ingredients = instruction.ingredients
             tempInstruction.timeInMinutes = instruction.timeInMinutes
+            tempInstruction.type = instruction.type
+            tempInstruction.instruction = instruction.instruction
             
             instructionTextView.text = instruction.instruction
             segmentedControl.selectedSegmentIndex = instruction.type.rawValue

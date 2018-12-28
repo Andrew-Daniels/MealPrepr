@@ -68,7 +68,12 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         case backToInstructionsSegueIdentifier:
             guard let vc = segue.source as? InstructionAlert else { return }
             if isEditingExistingInstruction {
-                instructionBeingEdited.type = vc.type
+                if let instruction = vc.instruction {
+                    instructionBeingEdited.instruction = instruction.instruction
+                    instructionBeingEdited.ingredients = instruction.ingredients
+                    instructionBeingEdited.timeInMinutes = instruction.timeInMinutes
+                    instructionBeingEdited.type = instruction.type
+                }
                 isEditingExistingInstruction = false
                 tableView.reloadData()
                 return
