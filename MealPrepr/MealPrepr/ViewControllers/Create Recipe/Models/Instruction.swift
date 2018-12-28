@@ -16,7 +16,7 @@ class Instruction {
     }
     
     var ingredients = [Ingredient]()
-    var type: CookType!
+    var type: CookType = .Prep
     var instruction: String!
     var timeInMinutes: Int!
     

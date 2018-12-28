@@ -18,6 +18,8 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     var availableIngredients = [Ingredient]()
     var instructions = [Instruction]()
+    var isEditingExistingInstruction = false
+    var instructionBeingEdited: Instruction!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: editInstructionAlertSegueIdentifier, sender: instructions[indexPath.row])
+        instructionBeingEdited = instructions[indexPath.row]
+        isEditingExistingInstruction = true
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -63,6 +67,12 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
             
         case backToInstructionsSegueIdentifier:
             guard let vc = segue.source as? InstructionAlert else { return }
+            if isEditingExistingInstruction {
+                instructionBeingEdited.type = vc.type
+                isEditingExistingInstruction = false
+                tableView.reloadData()
+                return
+            }
             instructions.append(vc.instruction)
             tableView.reloadData()
             break;

@@ -21,8 +21,12 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     
     var availableIngredients = [Ingredient]()
     var instruction: Instruction!
+    var tempInstruction = Instruction()
     var minutesPickerViewModel: [String]?
     var hoursPickerViewModel: [String]?
+    var indexPathsOfSelectedIngredients = [IndexPath]()
+    var isEditingExistingIngredient = false
+    var type: Instruction.CookType!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var instructionTextView: UITextView!
@@ -45,6 +49,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         
         
         self.view.endEditing(true)
+        self.instruction = self.tempInstruction
         performSegue(withIdentifier: backToInstructionsSegueIdentifier, sender: self)
         
     }
@@ -56,6 +61,9 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ingredientButtonCellIdentifier, for: indexPath) as! InstructionIngredientCell
         cell.ingredient = availableIngredients[indexPath.row]
+        if self.indexPathsOfSelectedIngredients.contains(indexPath) {
+            cell.selectedIngredient = true
+        }
         return cell
     }
     
@@ -78,21 +86,38 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         cell.selectedIngredient = !cell.selectedIngredient
         if cell.selectedIngredient {
             let selectedIngredient = availableIngredients[indexPath.row]
-            instruction.ingredients.append(selectedIngredient)
+            if isEditingExistingIngredient {
+                tempInstruction.ingredients.append(selectedIngredient)
+            } else {
+                instruction.ingredients.append(selectedIngredient)
+            }
         } else {
             let deselectedIngredient = availableIngredients[indexPath.row]
-            instruction.ingredients.removeAll { (ingredient) -> Bool in
-                if ingredient.toString() == deselectedIngredient.toString() {
-                    return true
+            if isEditingExistingIngredient {
+                tempInstruction.ingredients.removeAll { (ingredient) -> Bool in
+                    if ingredient.toString() == deselectedIngredient.toString() {
+                        return true
+                    }
+                    return false
                 }
-                return false
+            } else {
+                instruction.ingredients.removeAll { (ingredient) -> Bool in
+                    if ingredient.toString() == deselectedIngredient.toString() {
+                        return true
+                    }
+                    return false
+                }
             }
         }
     }
     
     @objc func segmentedControlIndexChanged() {
         guard let cookType = Instruction.CookType(rawValue: segmentedControl.selectedSegmentIndex) else { return }
-        instruction.type = cookType
+        if isEditingExistingIngredient {
+            type = cookType
+        } else {
+            instruction.type = cookType
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -116,18 +141,6 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         return 0
     }
     
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        var pickerType: PickerViewType!
-//        
-//        if pickerView == minutesPickerView {
-//            pickerType = .Minutes
-//        }
-//        if pickerView == hoursPickerView {
-//            pickerType = .Hours
-//        }
-//        return getPickerViewTitleForRow(pickerType: pickerType, row: row)
-//    }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
         var hoursInMinutes = 0
@@ -143,7 +156,11 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
             minutesInMinutes = Int(minutesPickerViewModel?[minutesSelectedRow] ?? "0")!
         }
         
-        instruction.timeInMinutes = minutesInMinutes + hoursInMinutes
+        if isEditingExistingIngredient {
+            tempInstruction.timeInMinutes = minutesInMinutes + hoursInMinutes
+        } else {
+            instruction.timeInMinutes = minutesInMinutes + hoursInMinutes
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -196,11 +213,28 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     
     func setupAlertWithInstruction() {
         if self.instruction != nil {
+            isEditingExistingIngredient = true
+            
+            tempInstruction.ingredients = instruction.ingredients
+            tempInstruction.timeInMinutes = instruction.timeInMinutes
+            
             instructionTextView.text = instruction.instruction
             segmentedControl.selectedSegmentIndex = instruction.type.rawValue
+            
+            for ingredient in instruction.ingredients {
+                let index = availableIngredients.firstIndex { (containedIngredient) -> Bool in
+                    if containedIngredient.toString() == ingredient.toString() {
+                        return true
+                    }
+                    return false
+                }
+                guard let newIndex = index else { return }
+                let row = availableIngredients.startIndex.distance(to: newIndex)
+                let indexPath = IndexPath(row: row, section: 0)
+                self.indexPathsOfSelectedIngredients.append(indexPath)
+            }
         } else {
             instruction = Instruction()
-            instruction.type = .Prep
         }
     }
 }
