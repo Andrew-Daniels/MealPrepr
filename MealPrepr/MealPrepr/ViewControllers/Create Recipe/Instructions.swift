@@ -20,6 +20,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     var instructions = [Instruction]()
     var isEditingExistingInstruction = false
     var instructionBeingEdited: Instruction!
+    var collectionViewCellSizeAtIndexPath = [IndexPath : CGSize]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,10 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         cell.instruction = instruction
         cell.instructionLabel.text = instruction.instruction
         cell.delegate = self
+        if let collectionViewCellHeight = collectionViewCellSizeAtIndexPath[indexPath]?.height {
+            cell.knownCellHeight = collectionViewCellHeight
+        }
+        
         return cell
     }
     
@@ -90,9 +95,9 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func instructionCellCollectionViewHeightChanged(for cell: InstructionCell) {
-        //guard let indexPath = tableView.indexPath(for: cell) else { return }
-        //tableView.reloadRows(at: [indexPath], with: .fade)
-        tableView.reloadData()
+    func instructionCellCollectionViewContentSizeSet(for cell: InstructionCell, toSize: CGSize) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        collectionViewCellSizeAtIndexPath[indexPath] = toSize
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
 }

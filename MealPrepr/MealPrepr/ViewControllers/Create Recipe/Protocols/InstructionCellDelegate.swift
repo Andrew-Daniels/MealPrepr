@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import UIKit
 
 protocol InstructionCellDelegate {
-    func instructionCellCollectionViewHeightChanged(for cell: InstructionCell)
+    func instructionCellCollectionViewContentSizeSet(for cell: InstructionCell, toSize: CGSize)
 }

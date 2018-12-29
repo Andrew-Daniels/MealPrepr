@@ -23,6 +23,12 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    var knownCellHeight: CGFloat! {
+        didSet {
+            collectionViewHeightConstraint.constant = knownCellHeight
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -59,13 +65,11 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let collectionViewHeight = collectionView.collectionViewLayout.collectionViewContentSize
-        let previousCollectionViewHeight = collectionViewHeightConstraint.constant
-        if collectionViewHeight.height != previousCollectionViewHeight {
-            collectionViewHeightConstraint.constant = collectionViewHeight.height
-            //Schedule reloadData on TableView cell
-            //Pass in self
-            delegate.instructionCellCollectionViewHeightChanged(for: self)
+        let collectionViewSize = collectionView.collectionViewLayout.collectionViewContentSize
+        if (knownCellHeight == nil && collectionViewSize.height != 0)
+            || (knownCellHeight != nil && knownCellHeight != collectionViewSize.height) {
+            collectionViewHeightConstraint.constant = collectionViewSize.height
+            delegate.instructionCellCollectionViewContentSizeSet(for: self, toSize: collectionViewSize)
         }
     }
 }
