@@ -10,6 +10,7 @@ import UIKit
 
 private let ingredientCellIdentifier = "IngredientCell"
 public let backToIngredientsIdentifier = "backToIngredients"
+private let ingredientAlertIdentifier = "ingredientAlert"
 
 class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -90,6 +91,14 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
             })
         }
         return false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == ingredientAlertIdentifier {
+            if let alertVC = segue.destination as? IngredientAlert {
+                alertVC.availableIngredients = ingredients
+            }
+        }
     }
     
 }

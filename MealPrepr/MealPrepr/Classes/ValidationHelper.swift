@@ -9,6 +9,23 @@ import Foundation
 
 struct ValidationHelper {
     
+    public static func validateIngredientTitle(ingredientTitle: String?, availableIngredients: [Ingredient]!) -> String? {
+        if let errorMsg = self.checkIfEmpty(text: ingredientTitle) {
+            return errorMsg
+        }
+        if let availableIngredients = availableIngredients {
+            if availableIngredients.contains(where: { (ing) -> Bool in
+                if ing.title.lowercased() == ingredientTitle?.lowercased() {
+                    return true
+                }
+                return false
+            }) {
+                return ErrorHelper.getErrorMsg(errorKey: .IngredientTitleExists)
+            }
+        }
+        return nil
+    }
+    
     public static func validateEmail(email: String?) -> String? {
         guard let email = email else {
             return ErrorHelper.getErrorMsg(errorKey: .Empty)

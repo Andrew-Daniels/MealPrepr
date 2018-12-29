@@ -18,6 +18,7 @@ struct ErrorHelper {
         case Empty
         case NoErrors
         case NotDecimal
+        case IngredientTitleExists
     }
     
     public enum AuthFieldType {
@@ -38,6 +39,8 @@ struct ErrorHelper {
             return "Field cannot be left blank"
         case .NotDecimal:
             return "This field can only contain numbers"
+        case .IngredientTitleExists:
+            return "An ingredient with this title already exists"
         case .NoErrors:
             return nil
         }

@@ -18,6 +18,7 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
     @IBOutlet weak var addBtn: UIButton!
     
     var ingredient: Ingredient!
+    var availableIngredients: [Ingredient]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,9 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
         let quantity = quantityTextField.text
         let unit = unitTextField.text
         
-        var errorMsg = ValidationHelper.checkIfEmpty(text: ingredient)
+//        var errorMsg = ValidationHelper.checkIfEmpty(text: ingredient)
+//        ingredientTextField.setError(errorMsg: errorMsg)
+        var errorMsg = ValidationHelper.validateIngredientTitle(ingredientTitle: ingredient, availableIngredients: availableIngredients)
         ingredientTextField.setError(errorMsg: errorMsg)
         
         errorMsg = ValidationHelper.checkIfDecimal(text: quantity)
