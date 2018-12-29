@@ -68,7 +68,7 @@ class Utensils: MPViewController, UITableViewDelegate, UITableViewDataSource {
             if isEditingExistingUtensil {
                 utensils[utensilIndexBeingEdited.row] = vc.utensil
                 isEditingExistingUtensil = false
-                tableView.reloadRows(at: [utensilIndexBeingEdited], with: .fade)
+                tableView.reloadRows(at: [utensilIndexBeingEdited], with: .right)
                 return
             }
             utensils.append(vc.utensil)

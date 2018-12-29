@@ -99,7 +99,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     func instructionCellCollectionViewContentSizeSet(for cell: InstructionCell, toSize: CGSize) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         collectionViewCellSizeAtIndexPath[indexPath] = toSize
-        tableView.reloadRows(at: [indexPath], with: .fade)
+        tableView.reloadRows(at: [indexPath], with: .right)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

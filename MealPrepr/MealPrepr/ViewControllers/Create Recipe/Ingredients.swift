@@ -22,6 +22,7 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
     var instructions: [Instruction]!
     
     var ingredientBeingEdited: Ingredient!
+    var ingredientIndexBeingEdited: IndexPath!
     var isEditingExistingIngredient = false
     
     override func viewDidLoad() {
@@ -68,6 +69,7 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: editIngredientAlertSegueIdentifier, sender: ingredients[indexPath.row])
         ingredientBeingEdited = ingredients[indexPath.row]
+        ingredientIndexBeingEdited = indexPath
         isEditingExistingIngredient = true
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -83,7 +85,8 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
             guard let vc = segue.source as? IngredientAlert else { return }
             if isEditingExistingIngredient {
                 isEditingExistingIngredient = false
-                tableView.reloadData()
+                tableView.reloadRows(at: [ingredientIndexBeingEdited], with: .right)
+                //tableView.reloadData()
                 DispatchQueue.main.async {
                     if let parentVC = self.parent as? CreateRecipe {
                         if let instructionsVC = parentVC.getVC(atIndex: CreateRecipe.Controller.Instructions) as? Instructions {
