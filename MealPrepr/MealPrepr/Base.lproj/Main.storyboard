@@ -1121,7 +1121,7 @@
                                         <rect key="frame" x="157.66666666666666" y="20" width="79" height="30"/>
                                         <state key="normal" title="Add Utensil"/>
                                         <connections>
-                                            <segue destination="fJU-wp-l6i" kind="presentation" modalPresentationStyle="overCurrentContext" id="DC9-fp-NYg">
+                                            <segue destination="fJU-wp-l6i" kind="presentation" identifier="UtensilAlert" modalPresentationStyle="overCurrentContext" id="DC9-fp-NYg">
                                                 <segue key="commit" inheritsFrom="parent" id="8cG-7V-DUR"/>
                                                 <segue key="preview" inheritsFrom="commit" id="glc-fj-2gz"/>
                                             </segue>
@@ -1155,6 +1155,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="zgL-Bq-v2A" id="P4R-Qe-Ux8"/>
+                        <segue destination="fJU-wp-l6i" kind="presentation" identifier="editUtensil" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="1mD-6x-Zvs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6m-LL-5cp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1560,6 +1561,7 @@
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelBtnClicked:" destination="fJU-wp-l6i" eventType="touchUpInside" id="iT3-eM-Jjm"/>
+                                            <segue destination="usC-01-FMv" kind="unwind" identifier="cancelledEdit" unwindAction="backToUtensilsWithSegue:" id="fIY-yy-kCf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-zD-kQL">
@@ -1644,7 +1646,6 @@
                     </view>
                     <connections>
                         <outlet property="utensilTextField" destination="WCY-2d-sfV" id="LER-vV-enU"/>
-                        <segue destination="usC-01-FMv" kind="unwind" identifier="backToIngredients" unwindAction="backToIngredientsWithSegue:" id="EZT-wk-9Rc"/>
                         <segue destination="usC-01-FMv" kind="unwind" identifier="backToUtensils" unwindAction="backToUtensilsWithSegue:" id="Nad-yI-yM8"/>
                     </connections>
                 </viewController>
@@ -1950,8 +1951,8 @@
         <image name="tab-home" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h67-ku-xET"/>
-        <segue reference="8cG-7V-DUR"/>
+        <segue reference="9oo-f0-IPD"/>
+        <segue reference="DC9-fp-NYg"/>
         <segue reference="a1X-fi-h5r"/>
         <segue reference="dQ6-iL-yST"/>
     </inferredMetricsTieBreakers>

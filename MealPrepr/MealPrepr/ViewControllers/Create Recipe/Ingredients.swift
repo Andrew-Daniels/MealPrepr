@@ -130,20 +130,3 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
 }
-
-//    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-//        return false
-//    }
-//
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        return .none
-//    }
-//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//
-//    }
-//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//tableView.setEditing(true, animated: false)
-//tableView.allowsSelectionDuringEditing = true
-//cell.showsReorderControl = true

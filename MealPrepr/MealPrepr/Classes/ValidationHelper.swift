@@ -29,6 +29,28 @@ struct ValidationHelper {
         return nil
     }
     
+    public static func validateUtensilTitle(utensilTitle: String?, availableUtensils: [String]!, excludingTitle: String?) -> String? {
+        if let errorMsg = self.checkIfEmpty(text: utensilTitle) {
+            return errorMsg
+        }
+        
+        if let availableUtensils = availableUtensils {
+            if availableUtensils.contains(where: { (uten) -> Bool in
+                if uten.lowercased() == utensilTitle?.lowercased() {
+                    if uten.lowercased() == excludingTitle?.lowercased() {
+                        return false
+                    }
+                    return true
+                }
+                return false
+            }) {
+                return ErrorHelper.getErrorMsg(errorKey: .UtensilTitleExists)
+            }
+        }
+        
+        return nil
+    }
+    
     public static func validateEmail(email: String?) -> String? {
         guard let email = email else {
             return ErrorHelper.getErrorMsg(errorKey: .Empty)
