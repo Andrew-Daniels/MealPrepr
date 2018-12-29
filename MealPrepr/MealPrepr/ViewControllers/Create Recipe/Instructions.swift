@@ -13,7 +13,7 @@ private let instructionCellIdentifier = "InstructionCell"
 private let editInstructionAlertSegueIdentifier = "EditInstruction"
 let backToInstructionsSegueIdentifier = "backToInstructions"
 
-class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource {
+class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource, InstructionCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var availableIngredients = [Ingredient]()
@@ -23,6 +23,9 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
     }
 
     @IBAction func addInstructionBtnClicked(_ sender: Any) {
@@ -37,6 +40,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         let instruction = instructions[indexPath.row]
         cell.instruction = instruction
         cell.instructionLabel.text = instruction.instruction
+        cell.delegate = self
         return cell
     }
     
@@ -86,4 +90,9 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         }
     }
     
+    func instructionCellCollectionViewHeightChanged(for cell: InstructionCell) {
+        //guard let indexPath = tableView.indexPath(for: cell) else { return }
+        //tableView.reloadRows(at: [indexPath], with: .fade)
+        tableView.reloadData()
+    }
 }

@@ -52,6 +52,7 @@
 		31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */; };
 		31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094021B8C63700555CBE /* Phosphate.ttc */; };
 		31D8094321B8C81E00555CBE /* Nadeem.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094221B8C81E00555CBE /* Nadeem.ttc */; };
+		31DD2FE321D7DEAD00AE8974 /* InstructionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD2FE221D7DEAD00AE8974 /* InstructionCellDelegate.swift */; };
 		4B29C891FBA5ADE1D7FBF6BD /* Pods_MealPrepr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */; };
 		FF5B7C81D5B545A2F2BE0E7E /* Pods_MealPreprTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,7 @@
 		31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextFieldDelegate.swift; sourceTree = "<group>"; };
 		31D8094021B8C63700555CBE /* Phosphate.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphate.ttc; sourceTree = "<group>"; };
 		31D8094221B8C81E00555CBE /* Nadeem.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nadeem.ttc; sourceTree = "<group>"; };
+		31DD2FE221D7DEAD00AE8974 /* InstructionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCellDelegate.swift; sourceTree = "<group>"; };
 		4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPrepr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4673EC337F19E9FD24459B69 /* Pods-MealPreprTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPreprTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPreprTests/Pods-MealPreprTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPreprTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 		310D026121C0810600EA8BA0 /* Create Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				31DD2FE121D7DE8800AE8974 /* Protocols */,
 				310D026D21C0966700EA8BA0 /* Models */,
 				310D026C21C08C6300EA8BA0 /* Alerts */,
 				310D026721C081F800EA8BA0 /* Cells */,
@@ -336,6 +339,14 @@
 				31D8094221B8C81E00555CBE /* Nadeem.ttc */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		31DD2FE121D7DE8800AE8974 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				31DD2FE221D7DEAD00AE8974 /* InstructionCellDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		D11251EEC4CBDB7E84DB4A81 /* Pods */ = {
@@ -530,6 +541,7 @@
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
 				310D028721D1A0D700EA8BA0 /* Instruction.swift in Sources */,
+				31DD2FE321D7DEAD00AE8974 /* InstructionCellDelegate.swift in Sources */,
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
 				310D028121C3302300EA8BA0 /* Instructions.swift in Sources */,

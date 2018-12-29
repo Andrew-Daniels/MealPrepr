@@ -14,6 +14,9 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    var delegate: InstructionCellDelegate!
+    
     var instruction: Instruction! {
         didSet {
             collectionView.reloadData()
@@ -56,5 +59,13 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        let collectionViewHeight = collectionView.collectionViewLayout.collectionViewContentSize
+        let previousCollectionViewHeight = collectionViewHeightConstraint.constant
+        if collectionViewHeight.height != previousCollectionViewHeight {
+            collectionViewHeightConstraint.constant = collectionViewHeight.height
+            //Schedule reloadData on TableView cell
+            //Pass in self
+            delegate.instructionCellCollectionViewHeightChanged(for: self)
+        }
     }
 }
