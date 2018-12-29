@@ -127,6 +127,10 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         presentChildVC(atIndex: atIndex)
     }
     
+    func getVC(atIndex: Controller) -> MPViewController? {
+        return self.viewControllers[atIndex]
+    }
+    
     func mpTextFieldShouldReturn(textField: MPTextField) {
         if (textField == self.titleTextField) {
             let _ = self.caloriesTextField.becomeFirstResponder()

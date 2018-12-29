@@ -25,7 +25,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     var minutesPickerViewModel: [String]?
     var hoursPickerViewModel: [String]?
     var indexPathsOfSelectedIngredients = [IndexPath]()
-    var isEditingExistingIngredient = false
+    var isEditingExistingInstruction = false
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var instructionTextView: UITextView!
@@ -48,7 +48,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         
         
         self.view.endEditing(true)
-        if isEditingExistingIngredient {
+        if isEditingExistingInstruction {
             instruction = tempInstruction
         }
         performSegue(withIdentifier: backToInstructionsSegueIdentifier, sender: self)
@@ -87,14 +87,14 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         cell.selectedIngredient = !cell.selectedIngredient
         if cell.selectedIngredient {
             let selectedIngredient = availableIngredients[indexPath.row]
-            if isEditingExistingIngredient {
+            if isEditingExistingInstruction {
                 tempInstruction.ingredients.append(selectedIngredient)
             } else {
                 instruction.ingredients.append(selectedIngredient)
             }
         } else {
             let deselectedIngredient = availableIngredients[indexPath.row]
-            if isEditingExistingIngredient {
+            if isEditingExistingInstruction {
                 tempInstruction.ingredients.removeAll { (ingredient) -> Bool in
                     if ingredient.toString() == deselectedIngredient.toString() {
                         return true
@@ -114,7 +114,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     
     @objc func segmentedControlIndexChanged() {
         guard let cookType = Instruction.CookType(rawValue: segmentedControl.selectedSegmentIndex) else { return }
-        if isEditingExistingIngredient {
+        if isEditingExistingInstruction {
             tempInstruction.type = cookType
         } else {
             instruction.type = cookType
@@ -157,7 +157,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
             minutesInMinutes = Int(minutesPickerViewModel?[minutesSelectedRow] ?? "0")!
         }
         
-        if isEditingExistingIngredient {
+        if isEditingExistingInstruction {
             tempInstruction.timeInMinutes = minutesInMinutes + hoursInMinutes
         } else {
             instruction.timeInMinutes = minutesInMinutes + hoursInMinutes
@@ -226,7 +226,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     
     func setupAlertWithInstruction() {
         if self.instruction != nil {
-            isEditingExistingIngredient = true
+            isEditingExistingInstruction = true
             
             tempInstruction.ingredients = instruction.ingredients
             tempInstruction.timeInMinutes = instruction.timeInMinutes

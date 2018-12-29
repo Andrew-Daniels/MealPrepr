@@ -19,6 +19,8 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
     
     var ingredient: Ingredient!
     var availableIngredients: [Ingredient]!
+    var isEditingExistingIngredient = false
+    var originalTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,8 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
         unitTextField.delegate = self
         
         let _ = ingredientTextField.becomeFirstResponder()
+        
+        setupAlertWithIngredient()
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
@@ -39,9 +43,7 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
         let quantity = quantityTextField.text
         let unit = unitTextField.text
         
-//        var errorMsg = ValidationHelper.checkIfEmpty(text: ingredient)
-//        ingredientTextField.setError(errorMsg: errorMsg)
-        var errorMsg = ValidationHelper.validateIngredientTitle(ingredientTitle: ingredient, availableIngredients: availableIngredients)
+        var errorMsg = ValidationHelper.validateIngredientTitle(ingredientTitle: ingredient, availableIngredients: availableIngredients, excludingTitle: originalTitle)
         ingredientTextField.setError(errorMsg: errorMsg)
         
         errorMsg = ValidationHelper.checkIfDecimal(text: quantity)
@@ -54,8 +56,13 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
             //DONT Transition
             return
         }
-        
-        self.ingredient = Ingredient(title: ingredient!, quantity: Decimal(string: quantity!)!, unit: unit!)
+        if self.ingredient != nil {
+            self.ingredient.title = ingredient!
+            self.ingredient.quantity = Decimal(string: quantity!)!
+            self.ingredient.unit = unit!
+        } else {
+            self.ingredient = Ingredient(title: ingredient!, quantity: Decimal(string: quantity!)!, unit: unit!)
+        }
         
         self.view.endEditing(true)
         performSegue(withIdentifier: backToIngredientsIdentifier, sender: self)
@@ -71,6 +78,16 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
         }
         else if (textField == self.unitTextField) {
             let _ = self.unitTextField.resignFirstResponder()
+        }
+    }
+    
+    func setupAlertWithIngredient() {
+        if ingredient != nil {
+            isEditingExistingIngredient = true
+            quantityTextField.text = "\(ingredient.quantity)"
+            ingredientTextField.text = ingredient.title
+            unitTextField.text = ingredient.unit
+            originalTitle = ingredient.title
         }
     }
 }

@@ -10,7 +10,8 @@ import UIKit
 
 private let ingredientCellIdentifier = "IngredientCell"
 public let backToIngredientsIdentifier = "backToIngredients"
-private let ingredientAlertIdentifier = "ingredientAlert"
+private let ingredientAlertSegueIdentifier = "ingredientAlert"
+private let editIngredientAlertSegueIdentifier = "EditIngredient"
 
 class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,6 +19,9 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var tableView: UITableView!
     var ingredients = [Ingredient]()
     var instructions: [Instruction]!
+    
+    var ingredientBeingEdited: Ingredient!
+    var isEditingExistingIngredient = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,13 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
             break
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: editIngredientAlertSegueIdentifier, sender: ingredients[indexPath.row])
+        ingredientBeingEdited = ingredients[indexPath.row]
+        isEditingExistingIngredient = true
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     @IBAction func addIngredientBtnClicked(_ sender: Any) {
         
@@ -69,6 +80,18 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
             
         case backToIngredientsIdentifier:
             guard let vc = segue.source as? IngredientAlert else { return }
+            if isEditingExistingIngredient {
+                isEditingExistingIngredient = false
+                tableView.reloadData()
+                DispatchQueue.main.async {
+                    if let parentVC = self.parent as? CreateRecipe {
+                        if let instructionsVC = parentVC.getVC(atIndex: CreateRecipe.Controller.Instructions) as? Instructions {
+                            instructionsVC.tableView.reloadData()
+                        }
+                    }
+                }
+                return
+            }
             ingredients.append(vc.ingredient)
             self.tableView.reloadData()
             break;
@@ -94,10 +117,15 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == ingredientAlertIdentifier {
+        if segue.identifier == ingredientAlertSegueIdentifier {
             if let alertVC = segue.destination as? IngredientAlert {
                 alertVC.availableIngredients = ingredients
             }
+        }
+        if segue.identifier == editIngredientAlertSegueIdentifier {
+            let alertVC = segue.destination as! IngredientAlert
+            alertVC.availableIngredients = ingredients
+            alertVC.ingredient = sender as? Ingredient
         }
     }
     

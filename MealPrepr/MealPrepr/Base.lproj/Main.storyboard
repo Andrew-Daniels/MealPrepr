@@ -1062,6 +1062,7 @@
                     <connections>
                         <outlet property="addIngredientBtn" destination="eTo-Yr-ANb" id="W3l-Ll-Tdn"/>
                         <outlet property="tableView" destination="ABQ-w1-IdS" id="Kpw-zI-E6h"/>
+                        <segue destination="WlR-9H-Wwy" kind="presentation" identifier="EditIngredient" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="dQ6-iL-yST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKX-UH-BAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1952,7 +1953,7 @@
         <segue reference="h67-ku-xET"/>
         <segue reference="8cG-7V-DUR"/>
         <segue reference="a1X-fi-h5r"/>
-        <segue reference="3Tg-Qa-sNK"/>
+        <segue reference="dQ6-iL-yST"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

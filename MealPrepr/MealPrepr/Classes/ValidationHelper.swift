@@ -9,13 +9,16 @@ import Foundation
 
 struct ValidationHelper {
     
-    public static func validateIngredientTitle(ingredientTitle: String?, availableIngredients: [Ingredient]!) -> String? {
+    public static func validateIngredientTitle(ingredientTitle: String?, availableIngredients: [Ingredient]!, excludingTitle: String?) -> String? {
         if let errorMsg = self.checkIfEmpty(text: ingredientTitle) {
             return errorMsg
         }
         if let availableIngredients = availableIngredients {
             if availableIngredients.contains(where: { (ing) -> Bool in
                 if ing.title.lowercased() == ingredientTitle?.lowercased() {
+                    if ing.title.lowercased() == excludingTitle?.lowercased() {
+                        return false
+                    }
                     return true
                 }
                 return false
