@@ -21,6 +21,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     var instructions = [Instruction]()
     var isEditingExistingInstruction = false
     var instructionBeingEdited: Instruction!
+    var instructionIndexBeingEdited: IndexPath!
     var collectionViewCellSizeAtIndexPath = [IndexPath : CGSize]()
     
     override func viewDidLoad() {
@@ -53,6 +54,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: editInstructionAlertSegueIdentifier, sender: instructions[indexPath.row])
         instructionBeingEdited = instructions[indexPath.row]
+        instructionIndexBeingEdited = indexPath
         isEditingExistingInstruction = true
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -85,7 +87,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
                     instructionBeingEdited.type = instruction.type
                 }
                 isEditingExistingInstruction = false
-                tableView.reloadData()
+                tableView.reloadRows(at: [instructionIndexBeingEdited], with: .right)
                 return
             }
             instructions.append(vc.instruction)
@@ -99,7 +101,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     func instructionCellCollectionViewContentSizeSet(for cell: InstructionCell, toSize: CGSize) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         collectionViewCellSizeAtIndexPath[indexPath] = toSize
-        tableView.reloadRows(at: [indexPath], with: .right)
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
