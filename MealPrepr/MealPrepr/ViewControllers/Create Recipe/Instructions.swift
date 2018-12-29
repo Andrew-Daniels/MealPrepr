@@ -100,4 +100,8 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         collectionViewCellSizeAtIndexPath[indexPath] = toSize
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        collectionViewCellSizeAtIndexPath = [IndexPath : CGSize]()
+    }
 }
