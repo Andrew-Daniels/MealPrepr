@@ -24,7 +24,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     @IBOutlet weak var caloriesTextField: MPTextField!
     @IBOutlet weak var servingsTextField: MPTextField!
     
-    private enum Controller: Int {
+    enum Controller: Int {
         case Ingredients = 0
         case Utensils = 1
         case Instructions = 2
@@ -99,6 +99,10 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         switch (atIndex) {
             
         case .Ingredients:
+            if let ingredientsVC = viewControllers[.Ingredients] as? Ingredients,
+                let instructionsVC = viewControllers[.Instructions] as? Instructions {
+                ingredientsVC.instructions = instructionsVC.instructions
+            }
             break
         case .Utensils:
             break
@@ -116,6 +120,11 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     @objc func segmentedControlIndexChanged() {
         guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         presentChildVC(atIndex: index)
+    }
+    
+    func presentVC(atIndex: Controller) {
+        self.segmentedControl.selectedSegmentIndex = atIndex.rawValue
+        presentChildVC(atIndex: atIndex)
     }
     
     func mpTextFieldShouldReturn(textField: MPTextField) {

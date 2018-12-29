@@ -12,6 +12,7 @@ private let instructionAlertSegueIdentifier = "InstructionAlert"
 private let instructionCellIdentifier = "InstructionCell"
 private let editInstructionAlertSegueIdentifier = "EditInstruction"
 let backToInstructionsSegueIdentifier = "backToInstructions"
+private let ingredientAlertSegueIdentifier = "ingredientAlert"
 
 class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource, InstructionCellDelegate {
     

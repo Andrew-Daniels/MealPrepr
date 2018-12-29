@@ -16,6 +16,7 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var addIngredientBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var ingredients = [Ingredient]()
+    var instructions: [Instruction]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +46,13 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
         case .none:
             break
         case .delete:
-            ingredients.remove(at: indexPath.row)
-            tableView.reloadData()
+            if (!anyInstructionContainsIngredient(atIndex: indexPath)) {
+                ingredients.remove(at: indexPath.row)
+                tableView.reloadData()
+            } else {
+                //Alert User that you can't delete an ingredient that an instruction contains.
+                MPAlertController.show(message: "This ingredient is being used in an instruction, you must remove the ingredient from the instruction(s) before deleting.", type: .IngredientUsedInInstruction, presenter: self)
+            }
             break
         case .insert:
             break
@@ -70,6 +76,21 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
         }
     }
 
+    func anyInstructionContainsIngredient(atIndex: IndexPath) -> Bool {
+        let ingredientToDelete = (tableView.cellForRow(at: atIndex) as! IngredientCell).ingredient
+        
+        if let instructions = instructions {
+            return instructions.contains(where: { (i) -> Bool in
+                i.ingredients.contains(where: { (ing) -> Bool in
+                    if ing.toString() == ingredientToDelete?.toString() {
+                        return true
+                    }
+                    return false
+                })
+            })
+        }
+        return false
+    }
     
 }
 

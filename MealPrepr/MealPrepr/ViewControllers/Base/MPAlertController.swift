@@ -16,6 +16,7 @@ class MPAlertController {
         case Login
         case SignUp
         case CreateAccount
+        case IngredientUsedInInstruction
     }
     
     public static func show(message: String, type: AlertType, presenter: UIViewController) {
@@ -49,6 +50,19 @@ class MPAlertController {
             }
             alert.addAction(action)
             alert.addAction(createAccountAction)
+            return alert
+        case .IngredientUsedInInstruction:
+            title = "Cannot Delete Ingredient"
+            actionTitle = "Edit Instructions"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let editInstructionsAction = UIAlertAction(title: actionTitle, style: .default) { (action) in
+                if let vc = presenter as? Ingredients, let parentVC = vc.parent as? CreateRecipe {
+                    parentVC.presentVC(atIndex: CreateRecipe.Controller.Instructions)
+                }
+            }
+            alert.addAction(action)
+            alert.addAction(editInstructionsAction)
             return alert
         }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

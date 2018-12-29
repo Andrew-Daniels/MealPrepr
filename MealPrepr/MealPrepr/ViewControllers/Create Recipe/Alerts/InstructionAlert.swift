@@ -26,7 +26,6 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     var hoursPickerViewModel: [String]?
     var indexPathsOfSelectedIngredients = [IndexPath]()
     var isEditingExistingIngredient = false
-    //var type: Instruction.CookType!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var instructionTextView: UITextView!
@@ -186,10 +185,11 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         case .Minutes:
             if minutesPickerViewModel == nil {
                 minutesPickerViewModel = [String]()
-                for index in 0...60 {
+                for index in 0...59 {
                     minutesPickerViewModel?.append("\(index)")
                 }
                 minutesPickerView.reloadAllComponents()
+                selectPickerViewRowWithCurrentInstruction()
             }
             if let model = minutesPickerViewModel, model.count > row {
                 return model[row]
@@ -201,12 +201,23 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
                     hoursPickerViewModel?.append("\(index)")
                 }
                 hoursPickerView.reloadAllComponents()
+                selectPickerViewRowWithCurrentInstruction()
             }
             if let model = hoursPickerViewModel, model.count > row {
                 return model[row]
             }
         }
         return String(0)
+    }
+    
+    func selectPickerViewRowWithCurrentInstruction() {
+        if let timeInMinutes = instruction.timeInMinutes {
+            let data = RecipeHelper.parseTimeInMinutesForPickerView(timeInMinutes: timeInMinutes)
+            DispatchQueue.main.async {
+                self.minutesPickerView.selectRow(data.minutes, inComponent: 0, animated: true)
+                self.hoursPickerView.selectRow(data.hours, inComponent: 0, animated: true)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
