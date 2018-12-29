@@ -35,7 +35,6 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
         self.view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addBtnClicked(_ sender: Any) {
         

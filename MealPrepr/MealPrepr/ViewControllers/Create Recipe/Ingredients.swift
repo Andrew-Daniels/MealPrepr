@@ -12,6 +12,7 @@ private let ingredientCellIdentifier = "IngredientCell"
 public let backToIngredientsIdentifier = "backToIngredients"
 private let ingredientAlertSegueIdentifier = "ingredientAlert"
 private let editIngredientAlertSegueIdentifier = "EditIngredient"
+private let cancelledEditSegueIdentifier = "cancelledEdit"
 
 class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -95,6 +96,9 @@ class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource 
             ingredients.append(vc.ingredient)
             self.tableView.reloadData()
             break;
+        case cancelledEditSegueIdentifier:
+            isEditingExistingIngredient = false
+            break
         default:
             break;
         }

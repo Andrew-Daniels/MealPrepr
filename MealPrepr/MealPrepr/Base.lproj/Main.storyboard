@@ -817,6 +817,7 @@
                                         <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelBtnClicked:" destination="WlR-9H-Wwy" eventType="touchUpInside" id="JNa-1J-tfE"/>
+                                            <segue destination="b3M-YT-ljP" kind="unwind" identifier="cancelledEdit" unwindAction="backToIngredientsWithSegue:" id="Ykw-cT-3RU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDe-77-8Lo">
