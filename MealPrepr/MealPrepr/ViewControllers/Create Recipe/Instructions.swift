@@ -22,7 +22,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     var isEditingExistingInstruction = false
     var instructionBeingEdited: Instruction!
     var instructionIndexBeingEdited: IndexPath!
-    var collectionViewCellSizeAtIndexPath = [IndexPath : CGSize]()
+    var collectionViewContentSizeAtIndexPath = [IndexPath : CGSize]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         cell.instruction = instruction
         cell.instructionLabel.text = instruction.instruction
         cell.delegate = self
-        if let collectionViewCellHeight = collectionViewCellSizeAtIndexPath[indexPath]?.height {
+        if let collectionViewCellHeight = collectionViewContentSizeAtIndexPath[indexPath]?.height {
             cell.knownCellHeight = collectionViewCellHeight
         }
         
@@ -99,12 +99,28 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func instructionCellCollectionViewContentSizeSet(for cell: InstructionCell, toSize: CGSize) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        collectionViewCellSizeAtIndexPath[indexPath] = toSize
-        tableView.reloadRows(at: [indexPath], with: .fade)
+        if let _ = instructionIndexBeingEdited {
+            if collectionViewContentSizeAtIndexPath[instructionIndexBeingEdited] != toSize {
+                collectionViewContentSizeAtIndexPath[instructionIndexBeingEdited] = toSize
+                DispatchQueue.main.async {
+                    self.tableView.reloadRows(at: [self.instructionIndexBeingEdited], with: .fade)
+                }
+            }
+        }
+        else {
+            let indexPath = IndexPath(row: instructions.count - 1, section: 0)
+            if collectionViewContentSizeAtIndexPath[indexPath] != toSize {
+                collectionViewContentSizeAtIndexPath[indexPath] = toSize
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        //guard let _ = tableView.cellForRow(at: instructionIndexBeingEdited) else { return }
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        collectionViewCellSizeAtIndexPath = [IndexPath : CGSize]()
+        collectionViewContentSizeAtIndexPath = [IndexPath : CGSize]()
     }
 }
