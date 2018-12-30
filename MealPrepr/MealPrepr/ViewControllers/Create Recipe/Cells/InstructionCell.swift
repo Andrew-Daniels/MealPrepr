@@ -68,7 +68,6 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         let collectionViewSize = collectionView.collectionViewLayout.collectionViewContentSize
         if (knownCellHeight == nil && collectionViewSize.height != 0)
             || (knownCellHeight != nil && knownCellHeight != collectionViewSize.height) {
-            //collectionViewHeightConstraint.constant = collectionViewSize.height
             delegate.instructionCellCollectionViewContentSizeSet(for: self, toSize: collectionViewSize)
         }
     }

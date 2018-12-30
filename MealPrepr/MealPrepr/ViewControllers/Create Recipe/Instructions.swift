@@ -116,8 +116,6 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
                 }
             }
         }
-        //guard let _ = tableView.cellForRow(at: instructionIndexBeingEdited) else { return }
-        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
