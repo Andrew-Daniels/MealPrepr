@@ -14,7 +14,7 @@ private let editInstructionAlertSegueIdentifier = "EditInstruction"
 let backToInstructionsSegueIdentifier = "backToInstructions"
 private let ingredientAlertSegueIdentifier = "ingredientAlert"
 
-class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource, InstructionCellDelegate {
+class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var availableIngredients = [Ingredient]()
@@ -43,10 +43,13 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         let instruction = instructions[indexPath.row]
         cell.instruction = instruction
         cell.instructionLabel.text = instruction.instruction
-        cell.delegate = self
-        if let collectionViewCellHeight = collectionViewContentSizeAtIndexPath[indexPath]?.height {
-            cell.knownCellHeight = collectionViewCellHeight
-        }
+        //cell.knownCellHeight = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+        cell.frame = tableView.bounds;
+        cell.layoutIfNeeded()
+        cell.collectionView.reloadData()
+        
+        cell.collectionViewHeightConstraint.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height;
+        //cell.collectionView.bounds.size.width = self.view.bounds.size.width
         
         return cell
     }
@@ -98,27 +101,29 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func instructionCellCollectionViewContentSizeSet(for cell: InstructionCell, toSize: CGSize) {
-        if let _ = instructionIndexBeingEdited {
-            if collectionViewContentSizeAtIndexPath[instructionIndexBeingEdited] != toSize {
-                collectionViewContentSizeAtIndexPath[instructionIndexBeingEdited] = toSize
-                DispatchQueue.main.async {
-                    self.tableView.reloadRows(at: [self.instructionIndexBeingEdited], with: .fade)
-                }
-            }
-        }
-        else {
-            let indexPath = IndexPath(row: instructions.count - 1, section: 0)
-            if collectionViewContentSizeAtIndexPath[indexPath] != toSize {
-                collectionViewContentSizeAtIndexPath[indexPath] = toSize
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if self.traitCollection.horizontalSizeClass != previousTraitCollection?.horizontalSizeClass {
+            self.tableView.reloadData()
         }
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        collectionViewContentSizeAtIndexPath = [IndexPath : CGSize]()
-    }
+//    func instructionCellCollectionViewContentSizeSet(for cell: InstructionCell, toSize: CGSize) {
+//        if let _ = instructionIndexBeingEdited {
+//            if collectionViewContentSizeAtIndexPath[instructionIndexBeingEdited] != toSize {
+//                collectionViewContentSizeAtIndexPath[instructionIndexBeingEdited] = toSize
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadRows(at: [self.instructionIndexBeingEdited], with: .fade)
+//                }
+//            }
+//        }
+//        else {
+//            let indexPath = IndexPath(row: instructions.count - 1, section: 0)
+//            if collectionViewContentSizeAtIndexPath[indexPath] != toSize {
+//                collectionViewContentSizeAtIndexPath[indexPath] = toSize
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
+//    }
 }

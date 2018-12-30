@@ -63,12 +63,12 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         return size
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let collectionViewSize = collectionView.collectionViewLayout.collectionViewContentSize
-        if (knownCellHeight == nil && collectionViewSize.height != 0)
-            || (knownCellHeight != nil && knownCellHeight != collectionViewSize.height) {
-            delegate.instructionCellCollectionViewContentSizeSet(for: self, toSize: collectionViewSize)
-        }
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        let collectionViewSize = collectionView.collectionViewLayout.collectionViewContentSize
+//        if (knownCellHeight == nil && collectionViewSize.height != 0)
+//            || (knownCellHeight != nil && knownCellHeight != collectionViewSize.height) {
+//            delegate.instructionCellCollectionViewContentSizeSet(for: self, toSize: collectionViewSize)
+//        }
+//    }
 }
