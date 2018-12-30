@@ -63,12 +63,24 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         return size
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        let collectionViewSize = collectionView.collectionViewLayout.collectionViewContentSize
-//        if (knownCellHeight == nil && collectionViewSize.height != 0)
-//            || (knownCellHeight != nil && knownCellHeight != collectionViewSize.height) {
-//            delegate.instructionCellCollectionViewContentSizeSet(for: self, toSize: collectionViewSize)
-//        }
-//    }
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority
+        , verticalFittingPriority: verticalFittingPriority)
+        
+        self.instructionLabel.sizeToFit()
+        self.collectionView.layoutIfNeeded()
+        
+        let contentSize = self.collectionView.contentSize
+        let frameSize = self.collectionView.frame.size
+        let targetSize = targetSize
+
+        if (targetSize.width != contentSize.width) {
+            self.collectionView.contentSize.width = self.collectionView.frame.width
+            self.collectionView.bounds.size.width = contentSize.width
+            self.collectionView.contentSize.height = self.collectionView.bounds.size.height
+            self.collectionViewHeightConstraint.constant = contentSize.height
+        }
+
+        return CGSize(width: contentSize.width, height: contentSize.height + self.instructionLabel.bounds.size.height + 30)
+    }
 }

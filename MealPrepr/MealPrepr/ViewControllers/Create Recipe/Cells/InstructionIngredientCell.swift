@@ -42,10 +42,14 @@ class InstructionIngredientCell: UICollectionViewCell {
             return
         }
         ingredientLabel = UILabel()
+        ingredientLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        ingredientLabel.adjustsFontSizeToFitWidth = true
         ingredientLabel.textAlignment = .center
         ingredientLabel.text = ingredient.toString()
         self.contentView.addSubview(ingredientLabel)
         ingredientLabel.sizeToFit()
+        //self.contentView.bounds.size = ingredientLabel.bounds.size
+        //self.contentView.translatesAutoresizingMaskIntoConstraints = false
         ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
         if selectedIngredient {
             ingredientLabel.textColor = .white
