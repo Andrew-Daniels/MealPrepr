@@ -20,7 +20,8 @@ class InstructionIngredientCell: UICollectionViewCell {
     var ingredientLabel: UILabel!
     var selectedIngredient: Bool = false {
         didSet {
-            self.backgroundColor = selectedIngredient ? .red : .white
+            let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
+            self.backgroundColor = selectedIngredient ? redColor : .white
             if let label = self.ingredientLabel {
                 label.textColor = selectedIngredient ? .white : .black
             }
@@ -41,6 +42,7 @@ class InstructionIngredientCell: UICollectionViewCell {
         if ingredientLabel != nil {
             return
         }
+        self.layer.cornerRadius = 8
         ingredientLabel = UILabel()
         ingredientLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         ingredientLabel.adjustsFontSizeToFitWidth = true

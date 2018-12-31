@@ -71,8 +71,8 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         self.collectionView.layoutIfNeeded()
         
         let contentSize = self.collectionView.contentSize
-        let frameSize = self.collectionView.frame.size
-        let targetSize = targetSize
+//        let frameSize = self.collectionView.frame.size
+//        let targetSize = targetSize
 
         if (targetSize.width != contentSize.width) {
             self.collectionView.contentSize.width = self.collectionView.frame.width

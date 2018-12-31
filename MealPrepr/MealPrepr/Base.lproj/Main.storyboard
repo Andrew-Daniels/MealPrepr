@@ -40,7 +40,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-XS-Kcm">
-                                        <rect key="frame" x="148" y="292" width="142" height="40"/>
+                                        <rect key="frame" x="144" y="292" width="146" height="36"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="forgot password">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-7h-9aK">
-                                        <rect key="frame" x="132" y="340" width="158" height="40"/>
+                                        <rect key="frame" x="129" y="336" width="161" height="36"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="I need an account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,7 +83,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-iH-P01">
-                                        <rect key="frame" x="122.5" y="414" width="85" height="48"/>
+                                        <rect key="frame" x="127.5" y="415" width="75" height="47"/>
                                         <fontDescription key="fontDescription" name="Phosphate-Solid" family="Phosphate" pointSize="30"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,7 +158,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-vh-V1A">
-                                <rect key="frame" x="336.5" y="832" width="161" height="40"/>
+                                <rect key="frame" x="335.5" y="832" width="163" height="36"/>
                                 <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                 <state key="normal" title="Continue as guest">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -337,37 +337,37 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="450" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0R-YD-bkC">
-                                                            <rect key="frame" x="5" y="24" width="17" height="14"/>
+                                                            <rect key="frame" x="5" y="26" width="17" height="12"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prep:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-WL-YqB">
-                                                            <rect key="frame" x="120" y="2" width="23" height="14"/>
+                                                            <rect key="frame" x="120" y="2" width="23" height="12"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsV-38-vcf">
-                                                            <rect key="frame" x="145" y="2" width="20" height="14"/>
+                                                            <rect key="frame" x="145" y="2" width="20" height="12"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8hr88m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz0-do-StF">
-                                                            <rect key="frame" x="131" y="24" width="34" height="14"/>
+                                                            <rect key="frame" x="131" y="26" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cook:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0i-AG-Hah">
-                                                            <rect key="frame" x="105" y="24" width="24" height="14"/>
+                                                            <rect key="frame" x="104" y="26" width="25" height="12"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cal/serving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhc-1G-QLA">
-                                                            <rect key="frame" x="24" y="24" width="49" height="14"/>
+                                                            <rect key="frame" x="24" y="26" width="49" height="12"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -402,13 +402,13 @@
                                                     <rect key="frame" x="115" y="0.0" width="55" height="45"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXc-e7-4BI">
-                                                            <rect key="frame" x="14" y="4" width="27" height="33"/>
+                                                            <rect key="frame" x="14" y="6.5" width="27" height="28"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="24"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiZ-xx-fWo">
-                                                            <rect key="frame" x="0.0" y="29" width="55" height="14"/>
+                                                            <rect key="frame" x="0.0" y="30" width="55" height="12"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -660,6 +660,9 @@
                                 <exclude reference="qD2-v3-cpB"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="8Rh-rJ-JrP"/>
+                                <exclude reference="aaH-rH-Un3"/>
+                                <exclude reference="dtr-ci-NVa"/>
                                 <exclude reference="W0A-s8-4NY"/>
                                 <exclude reference="Zh8-m7-WJd"/>
                                 <exclude reference="cGp-n5-x1u"/>
@@ -693,9 +696,6 @@
                                 <exclude reference="8JY-zz-cdm"/>
                                 <exclude reference="dBD-zB-75g"/>
                                 <exclude reference="lc1-eS-eRL"/>
-                                <exclude reference="8Rh-rJ-JrP"/>
-                                <exclude reference="aaH-rH-Un3"/>
-                                <exclude reference="dtr-ci-NVa"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -751,6 +751,9 @@
                                 <include reference="qD2-v3-cpB"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="8Rh-rJ-JrP"/>
+                                <include reference="aaH-rH-Un3"/>
+                                <include reference="dtr-ci-NVa"/>
                                 <include reference="W0A-s8-4NY"/>
                                 <exclude reference="Axj-gC-r9x"/>
                                 <include reference="E7q-c9-gb2"/>
@@ -776,9 +779,6 @@
                                 <exclude reference="PHw-AO-BDl"/>
                                 <include reference="bkw-FP-pQD"/>
                                 <include reference="e7u-Sj-g3I"/>
-                                <include reference="8Rh-rJ-JrP"/>
-                                <include reference="aaH-rH-Un3"/>
-                                <include reference="dtr-ci-NVa"/>
                                 <exclude reference="hJM-ha-62c"/>
                             </mask>
                         </variation>
@@ -986,13 +986,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fjn-PQ-6G0">
-                                                            <rect key="frame" x="25" y="0.0" width="516" height="74.5"/>
+                                                            <rect key="frame" x="25" y="0.0" width="377" height="74.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-Kf-DSu">
-                                                            <rect key="frame" x="546" y="0.0" width="546" height="74.5"/>
+                                                            <rect key="frame" x="407" y="0.0" width="407" height="74.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1094,7 +1094,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="O2F-S9-1dT">
-                                                            <rect key="frame" x="15" y="11" width="1062" height="53"/>
+                                                            <rect key="frame" x="15" y="11" width="784" height="53"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1485,7 +1485,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFA-3l-uIQ">
-                                        <rect key="frame" x="133" y="297" width="157" height="40"/>
+                                        <rect key="frame" x="131" y="297" width="159" height="36"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="I have an account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1495,7 +1495,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhJ-L9-Lhe">
-                                        <rect key="frame" x="112.5" y="439" width="105" height="48"/>
+                                        <rect key="frame" x="104" y="440" width="122" height="47"/>
                                         <fontDescription key="fontDescription" name="Phosphate-Solid" family="Phosphate" pointSize="30"/>
                                         <state key="normal" title="SIGN UP">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1911,24 +1911,24 @@
                                         <exclude reference="FjL-HN-FkK"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="43i-c7-NEd"/>
-                                        <exclude reference="v3H-yh-cNi"/>
-                                        <exclude reference="KTS-VT-4Zn"/>
-                                        <exclude reference="Rfw-Xb-J12"/>
-                                        <exclude reference="4Eo-uN-Ahl"/>
-                                        <exclude reference="BOg-TW-Uic"/>
-                                        <exclude reference="aCn-Cr-Oo4"/>
-                                        <exclude reference="cGb-zH-wJ0"/>
                                         <exclude reference="MjA-OA-zcw"/>
                                         <exclude reference="bo5-tM-djj"/>
-                                        <exclude reference="eT4-g0-r45"/>
-                                        <exclude reference="ohC-yp-D3h"/>
+                                        <exclude reference="KTS-VT-4Zn"/>
+                                        <exclude reference="Rfw-Xb-J12"/>
                                         <exclude reference="1fH-Ht-D0G"/>
                                         <exclude reference="4u1-Mq-ZNN"/>
                                         <exclude reference="FlI-WZ-pxO"/>
                                         <exclude reference="bzJ-kT-iVo"/>
                                         <exclude reference="dpS-hI-Blp"/>
                                         <exclude reference="vmb-vB-o1a"/>
+                                        <exclude reference="4Eo-uN-Ahl"/>
+                                        <exclude reference="BOg-TW-Uic"/>
+                                        <exclude reference="aCn-Cr-Oo4"/>
+                                        <exclude reference="cGb-zH-wJ0"/>
+                                        <exclude reference="eT4-g0-r45"/>
+                                        <exclude reference="ohC-yp-D3h"/>
+                                        <exclude reference="43i-c7-NEd"/>
+                                        <exclude reference="v3H-yh-cNi"/>
                                         <exclude reference="EKi-oh-65a"/>
                                         <exclude reference="ifQ-kt-LsE"/>
                                     </mask>
@@ -1940,19 +1940,10 @@
                                     <mask key="constraints">
                                         <exclude reference="eZj-Qi-BvC"/>
                                         <exclude reference="zHQ-04-72P"/>
-                                        <exclude reference="Tnh-wJ-LNB"/>
-                                        <exclude reference="cQM-vO-hA9"/>
-                                        <exclude reference="F0L-vO-dkh"/>
-                                        <include reference="43i-c7-NEd"/>
-                                        <exclude reference="4YX-2A-Db2"/>
-                                        <exclude reference="v3H-yh-cNi"/>
-                                        <include reference="4Eo-uN-Ahl"/>
-                                        <include reference="cGb-zH-wJ0"/>
-                                        <exclude reference="OeU-oL-XrU"/>
                                         <include reference="MjA-OA-zcw"/>
                                         <include reference="bo5-tM-djj"/>
-                                        <include reference="eT4-g0-r45"/>
-                                        <include reference="ohC-yp-D3h"/>
+                                        <exclude reference="Tnh-wJ-LNB"/>
+                                        <exclude reference="cQM-vO-hA9"/>
                                         <exclude reference="1Wd-tS-1Uu"/>
                                         <include reference="1fH-Ht-D0G"/>
                                         <include reference="4u1-Mq-ZNN"/>
@@ -1965,6 +1956,15 @@
                                         <exclude reference="dpS-hI-Blp"/>
                                         <exclude reference="eI1-Fq-Ff7"/>
                                         <include reference="vmb-vB-o1a"/>
+                                        <exclude reference="F0L-vO-dkh"/>
+                                        <include reference="4Eo-uN-Ahl"/>
+                                        <include reference="cGb-zH-wJ0"/>
+                                        <include reference="eT4-g0-r45"/>
+                                        <include reference="ohC-yp-D3h"/>
+                                        <include reference="43i-c7-NEd"/>
+                                        <exclude reference="4YX-2A-Db2"/>
+                                        <exclude reference="v3H-yh-cNi"/>
+                                        <exclude reference="OeU-oL-XrU"/>
                                         <include reference="EKi-oh-65a"/>
                                     </mask>
                                 </variation>
@@ -1980,11 +1980,6 @@
                                         <include reference="Rfw-Xb-J12"/>
                                         <exclude reference="ULz-3C-WLY"/>
                                         <exclude reference="reO-ND-pGn"/>
-                                        <exclude reference="1tS-Ot-QT3"/>
-                                        <include reference="5pB-Gg-Nq6"/>
-                                        <exclude reference="BOg-TW-Uic"/>
-                                        <include reference="N6J-5y-8Am"/>
-                                        <include reference="aCn-Cr-Oo4"/>
                                         <include reference="1QH-Ut-Rzv"/>
                                         <include reference="Jd7-od-Grp"/>
                                         <include reference="1Wd-tS-1Uu"/>
@@ -1994,6 +1989,11 @@
                                         <include reference="MSx-GZ-XxZ"/>
                                         <include reference="eI1-Fq-Ff7"/>
                                         <include reference="heO-8m-xaW"/>
+                                        <exclude reference="1tS-Ot-QT3"/>
+                                        <include reference="5pB-Gg-Nq6"/>
+                                        <exclude reference="BOg-TW-Uic"/>
+                                        <include reference="N6J-5y-8Am"/>
+                                        <include reference="aCn-Cr-Oo4"/>
                                         <exclude reference="GHG-cL-fLg"/>
                                         <include reference="Mlt-Cw-7KT"/>
                                         <include reference="UcN-cl-dkS"/>
