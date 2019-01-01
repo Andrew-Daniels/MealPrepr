@@ -20,7 +20,23 @@ class Instruction {
     var instruction: String!
     var timeInMinutes: Int!
     
+    var ingredientsArray: [[String: String]] {
+        get {
+            var array = [[String: String]]()
+            for ingredient in self.ingredients {
+                var ingredientDict = [String: String]()
+                ingredientDict["Title"] = ingredient.title
+                ingredientDict["Quantity"] = "\(ingredient.quantity)"
+                ingredientDict["Unit"] = ingredient.unit
+                array.append(ingredientDict)
+            }
+            return array
+        }
+    }
+    
     init() {
         
     }
+    
+    
 }

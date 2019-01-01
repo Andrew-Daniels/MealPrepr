@@ -21,6 +21,52 @@ class FirebaseHelper {
         self.storage = Storage.storage().reference()
     }
     
+    public func saveRecipe(recipe: Recipe, userId: String) {
+        let path = "Recipes/"
+        let reference = database.child(path).childByAutoId()
+
+        var ingredients = [[String: String]]()
+        var utensils = [String]()
+        var instructions = [[String: Any]]()
+        
+        for ingredient in recipe.ingredients {
+            var ingredientDict = [String: String]()
+            ingredientDict["Title"] = ingredient.title
+            ingredientDict["Quantity"] = "\(ingredient.quantity)"
+            ingredientDict["Unit"] = ingredient.unit
+            ingredients.append(ingredientDict)
+        }
+        
+        for utensil in recipe.utensils {
+            utensils.append(utensil)
+        }
+        
+        for instruction in recipe.instructions {
+            var instructionDict = [String: Any]()
+            instructionDict["Instruction"] = instruction.instruction
+            instructionDict["Ingredients"] = instruction.ingredientsArray
+            instructionDict["Type"] = instruction.type.rawValue
+            instructionDict["TimeInMinutes"] = instruction.timeInMinutes
+            instructions.append(instructionDict)
+        }
+        
+        let recipeDict: [String: Any] = [
+            "Creator": userId,
+            "Title": recipe.title!,
+            "CaloriesPerServing": recipe.calServing!,
+            "NumServings": recipe.numServings!,
+            "Ingredients": ingredients,
+            "Utensils": utensils,
+            "Instructions": instructions
+        ]
+        
+        let updates = [
+            path + "\(reference.key)": recipeDict
+        ]
+        
+        database.updateChildValues(updates)
+    }
+    
     public func checkUsernameAvailability(username: String?, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         if let username = username {
             

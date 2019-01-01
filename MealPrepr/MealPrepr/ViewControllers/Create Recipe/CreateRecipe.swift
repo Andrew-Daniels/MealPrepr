@@ -240,6 +240,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
             } else {
                //There aren't any errors perform save here
                 let recipe = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos)
+                recipe.save(account: account)
             }
         }
     }

@@ -541,6 +541,7 @@
                                         <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Calories/Serving"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isNumberField" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -571,6 +572,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="textFieldTextColor">
                                         <color key="value" red="0.19215686269999999" green="0.21176470589999999" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isNumberField" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bO1-Rg-lpa">
@@ -857,6 +859,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeHolderTextColor">
                                                 <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isNumberField" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIR-oV-Ang" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
@@ -2089,7 +2092,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="9oo-f0-IPD"/>
         <segue reference="DC9-fp-NYg"/>
-        <segue reference="a1X-fi-h5r"/>
+        <segue reference="K7L-9q-dtF"/>
         <segue reference="dQ6-iL-yST"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

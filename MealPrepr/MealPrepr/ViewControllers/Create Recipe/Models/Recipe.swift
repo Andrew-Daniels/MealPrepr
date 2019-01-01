@@ -64,4 +64,14 @@ class Recipe {
         self.instructions = instructions
         self.photos = photos
     }
+    
+    func save(account: Account) {
+        if let UID = account.UID {
+            FirebaseHelper().saveRecipe(recipe: self, userId: UID)
+        }
+    }
+    
+    func delete() {
+        
+    }
 }

@@ -38,6 +38,17 @@ class MPTextField: UIControl, UITextFieldDelegate {
     }
     
     @IBInspectable
+    public var isNumberField: Bool = false {
+        didSet {
+            if isNumberField {
+                self.textField.keyboardType = .decimalPad
+            } else {
+                self.textField.keyboardType = .default
+            }
+        }
+    }
+    
+    @IBInspectable
     public var errorTextColor: UIColor? {
         didSet {
             self.errorLabel.textColor = self.errorTextColor

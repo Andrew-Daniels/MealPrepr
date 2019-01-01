@@ -26,6 +26,7 @@ class Account {
     
     init(UID: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         FirebaseHelper().retrieveAccountInfo(UID: UID) { (accountInfo) in
+            self.UID = UID
             self.username = accountInfo.username
             if let level = accountInfo.userLevel, let ul = UserLevel(rawValue: level) {
                 self.userLevel = ul
