@@ -784,7 +784,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Create Recipe" id="LX0-lc-hx7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NAt-gk-6la"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NAt-gk-6la">
+                            <connections>
+                                <action selector="saveBtnPressed:" destination="eGc-Uf-BP7" id="ihU-TC-L59"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="caloriesTextField" destination="DgT-PX-QDP" id="H0S-9B-NxJ"/>

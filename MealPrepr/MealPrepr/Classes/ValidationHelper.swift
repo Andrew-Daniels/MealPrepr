@@ -6,8 +6,46 @@
 //  Copyright © 2018 Andrew Daniels. All rights reserved.
 //
 import Foundation
+import UIKit
 
 struct ValidationHelper {
+    
+    public static func validateRecipePhotos(photos: [UIImage]) -> String? {
+        if photos.count > 0 {
+            return nil
+        }
+        return ErrorHelper.getErrorMsg(errorKey: .NoPhotos)
+    }
+    
+    public static func validateRecipeInstructions(instructions: [Instruction]) -> String? {
+        if instructions.count > 0 {
+            return nil
+        }
+        return ErrorHelper.getErrorMsg(errorKey: .NoInstructions)
+    }
+    
+    public static func validateRecipeUtensils(utensils: [String]) -> String? {
+        if utensils.count > 0 {
+            return nil
+        }
+        return ErrorHelper.getErrorMsg(errorKey: .NoUtensils)
+    }
+    
+    public static func validateRecipeIngredients(ingredients: [Ingredient]) -> String? {
+        if ingredients.count > 0 {
+            return nil
+        }
+        return ErrorHelper.getErrorMsg(errorKey: .NoIngredients)
+    }
+    
+    public static func validateRecipeTitle(title: String?) -> String? {
+        if let errorMsg = self.checkIfEmpty(text: title) {
+            return errorMsg
+        }
+        
+        
+        return nil
+    }
     
     public static func validateIngredientTitle(ingredientTitle: String?, availableIngredients: [Ingredient]!, excludingTitle: String?) -> String? {
         if let errorMsg = self.checkIfEmpty(text: ingredientTitle) {

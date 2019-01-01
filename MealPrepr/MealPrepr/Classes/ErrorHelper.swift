@@ -20,6 +20,10 @@ struct ErrorHelper {
         case NotDecimal
         case IngredientTitleExists
         case UtensilTitleExists
+        case NoIngredients
+        case NoUtensils
+        case NoInstructions
+        case NoPhotos
     }
     
     public enum AuthFieldType {
@@ -44,6 +48,14 @@ struct ErrorHelper {
             return "An ingredient with this title already exists"
         case .UtensilTitleExists:
             return "A utensil with this title already exists"
+        case .NoIngredients:
+            return "This recipe is missing ingredients"
+        case .NoUtensils:
+            return "This recipe is missing utensils"
+        case .NoInstructions:
+            return "This recipe is missing instructions"
+        case .NoPhotos:
+            return "This recipe is missing photos"
         case .NoErrors:
             return nil
         }

@@ -148,4 +148,99 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
             viewControllers[.Photos] = segue.destination as? Photos
         }
     }
+    @IBAction func saveBtnPressed(_ sender: Any) {
+        //Check if ingredients > 0
+        //Check if title is present
+        //Check if calServings is present and a number
+        //Check if numServings is present and a number
+        //Check if instructions are present
+        //Check if photos are present
+        let title = self.titleTextField.text
+        var errorMsg = ValidationHelper.validateRecipeTitle(title: title)
+        self.titleTextField.setError(errorMsg: errorMsg)
+        
+        let calories = self.caloriesTextField.text
+        errorMsg = ValidationHelper.checkIfDecimal(text: calories)
+        self.caloriesTextField.setError(errorMsg: errorMsg)
+        
+        let servings = self.servingsTextField.text
+        errorMsg = ValidationHelper.checkIfDecimal(text: servings)
+        self.servingsTextField.setError(errorMsg: errorMsg)
+        
+        var ingredients: [Ingredient]!
+        var utensils: [String]!
+        var instructions: [Instruction]!
+        var photos: [UIImage]!
+        
+        if !self.titleTextField.hasError && !caloriesTextField.hasError && !servingsTextField.hasError {
+            var errorMsg: String!
+            
+            if let ingredientVC = self.getVC(atIndex: .Ingredients) as? Ingredients {
+                ingredients = ingredientVC.ingredients
+                if let msg = ValidationHelper.validateRecipeIngredients(ingredients: ingredientVC.ingredients) {
+                    errorMsg = msg + "\n"
+                }
+            } else {
+                errorMsg = ErrorHelper.getErrorMsg(errorKey: .NoIngredients)! + "\n"
+            }
+            
+            if let utensilVC = self.getVC(atIndex: .Utensils) as? Utensils {
+                utensils = utensilVC.utensils
+                if let msg = ValidationHelper.validateRecipeUtensils(utensils: utensilVC.utensils) {
+                    if errorMsg != nil {
+                        errorMsg += msg + "\n"
+                    } else {
+                        errorMsg = msg + "\n"
+                    }
+                }
+            } else {
+                if errorMsg != nil {
+                    errorMsg += ErrorHelper.getErrorMsg(errorKey: .NoUtensils)! + "\n"
+                } else {
+                    errorMsg = ErrorHelper.getErrorMsg(errorKey: .NoUtensils)! + "\n"
+                }
+            }
+            
+            if let instructionVC = self.getVC(atIndex: .Instructions) as? Instructions {
+                instructions = instructionVC.instructions
+                if let msg = ValidationHelper.validateRecipeInstructions(instructions: instructionVC.instructions) {
+                    if errorMsg != nil {
+                        errorMsg += msg + "\n"
+                    } else {
+                        errorMsg = msg + "\n"
+                    }
+                }
+            } else {
+                if errorMsg != nil {
+                    errorMsg += ErrorHelper.getErrorMsg(errorKey: .NoInstructions)! + "\n"
+                } else {
+                    errorMsg = ErrorHelper.getErrorMsg(errorKey: .NoInstructions)! + "\n"
+                }
+            }
+            
+            if let photosVC = self.getVC(atIndex: .Photos) as? Photos {
+                photos = photosVC.images
+                if let msg = ValidationHelper.validateRecipePhotos(photos: photosVC.images) {
+                    if errorMsg != nil {
+                        errorMsg += msg + "\n"
+                    } else {
+                        errorMsg = msg + "\n"
+                    }
+                }
+            } else {
+                if errorMsg != nil {
+                    errorMsg += ErrorHelper.getErrorMsg(errorKey: .NoPhotos)! + "\n"
+                } else {
+                    errorMsg = ErrorHelper.getErrorMsg(errorKey: .NoPhotos)! + "\n"
+                }
+            }
+            
+            if errorMsg != nil {
+                MPAlertController.show(message: errorMsg, type: .Standard, presenter: self)
+            } else {
+               //There aren't any errors perform save here
+                let recipe = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos)
+            }
+        }
+    }
 }

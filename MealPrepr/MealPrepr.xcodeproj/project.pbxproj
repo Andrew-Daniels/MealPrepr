@@ -54,6 +54,7 @@
 		31D8094321B8C81E00555CBE /* Nadeem.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094221B8C81E00555CBE /* Nadeem.ttc */; };
 		31DD2FE321D7DEAD00AE8974 /* InstructionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD2FE221D7DEAD00AE8974 /* InstructionCellDelegate.swift */; };
 		31DD2FE521D7EDC800AE8974 /* RecipeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD2FE421D7EDC800AE8974 /* RecipeHelper.swift */; };
+		31DD2FE721DADA0A00AE8974 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD2FE621DADA0A00AE8974 /* Recipe.swift */; };
 		4B29C891FBA5ADE1D7FBF6BD /* Pods_MealPrepr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */; };
 		FF5B7C81D5B545A2F2BE0E7E /* Pods_MealPreprTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		31D8094221B8C81E00555CBE /* Nadeem.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nadeem.ttc; sourceTree = "<group>"; };
 		31DD2FE221D7DEAD00AE8974 /* InstructionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCellDelegate.swift; sourceTree = "<group>"; };
 		31DD2FE421D7EDC800AE8974 /* RecipeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHelper.swift; sourceTree = "<group>"; };
+		31DD2FE621DADA0A00AE8974 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPrepr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4673EC337F19E9FD24459B69 /* Pods-MealPreprTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPreprTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPreprTests/Pods-MealPreprTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPreprTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 			children = (
 				310D026E21C0967800EA8BA0 /* Ingredient.swift */,
 				310D028621D1A0D700EA8BA0 /* Instruction.swift */,
+				31DD2FE621DADA0A00AE8974 /* Recipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
 				310D028721D1A0D700EA8BA0 /* Instruction.swift in Sources */,
+				31DD2FE721DADA0A00AE8974 /* Recipe.swift in Sources */,
 				31DD2FE321D7DEAD00AE8974 /* InstructionCellDelegate.swift in Sources */,
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
