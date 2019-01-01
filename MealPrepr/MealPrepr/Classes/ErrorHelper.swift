@@ -24,6 +24,7 @@ struct ErrorHelper {
         case NoUtensils
         case NoInstructions
         case NoPhotos
+        case UsernameTwoCharMin
     }
     
     public enum AuthFieldType {
@@ -56,6 +57,8 @@ struct ErrorHelper {
             return "This recipe is missing instructions"
         case .NoPhotos:
             return "This recipe is missing photos"
+        case .UsernameTwoCharMin:
+            return "Username must be 2 characters minimum"
         case .NoErrors:
             return nil
         }

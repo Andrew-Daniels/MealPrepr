@@ -133,10 +133,13 @@ struct ValidationHelper {
     
     public static func validateUsername(username: String?) -> String? {
         guard let username = username else {
-            return ErrorHelper.getErrorMsg(errorKey: .Empty)
+            return ErrorHelper.getErrorMsg(errorKey: .UsernameTwoCharMin)
         }
         if (username.isEmpty) {
-            return ErrorHelper.getErrorMsg(errorKey: .Empty)
+            return ErrorHelper.getErrorMsg(errorKey: .UsernameTwoCharMin)
+        }
+        if (username.count < 2) {
+            return ErrorHelper.getErrorMsg(errorKey: .UsernameTwoCharMin)
         }
         return ErrorHelper.getErrorMsg(errorKey: .NoErrors)
     }

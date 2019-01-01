@@ -145,11 +145,13 @@ class MPTextField: UIControl, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        FirebaseHelper().checkUsernameAvailability(username: self.text) { (available) in
-            if (!available) {
-                self.setError(errorMsg: ErrorHelper.getErrorMsg(errorKey: .UsernameTaken))
-            } else {
-                self.removeError()
+        if let text = self.text, text.count > 1 {
+            FirebaseHelper().checkUsernameAvailability(username: self.text) { (available) in
+                if (!available) {
+                    self.setError(errorMsg: ErrorHelper.getErrorMsg(errorKey: .UsernameTaken))
+                } else {
+                    self.removeError()
+                }
             }
         }
     }
