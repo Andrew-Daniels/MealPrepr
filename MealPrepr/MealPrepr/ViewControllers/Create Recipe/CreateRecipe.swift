@@ -239,8 +239,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                 MPAlertController.show(message: errorMsg, type: .Standard, presenter: self)
             } else {
                //There aren't any errors perform save here
-                let recipe = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos)
-                recipe.save(account: account)
+                let recipe = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
+                recipe.save()
             }
         }
     }

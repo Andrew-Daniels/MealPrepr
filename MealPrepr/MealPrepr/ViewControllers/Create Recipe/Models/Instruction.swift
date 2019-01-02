@@ -20,23 +20,23 @@ class Instruction {
     var instruction: String!
     var timeInMinutes: Int!
     
-    var ingredientsArray: [[String: String]] {
-        get {
-            var array = [[String: String]]()
-            for ingredient in self.ingredients {
-                var ingredientDict = [String: String]()
-                ingredientDict["Title"] = ingredient.title
-                ingredientDict["Quantity"] = "\(ingredient.quantity)"
-                ingredientDict["Unit"] = ingredient.unit
-                array.append(ingredientDict)
-            }
-            return array
-        }
-    }
-    
     init() {
         
     }
     
-    
+    func ingredientsDict(availableIngredients: [Ingredient]) -> [String: Int] {
+        var ingredientsDict = [String: Int]()
+        for (modelIndex, ingredient) in ingredients.enumerated() {
+            let firstIndex = availableIngredients.firstIndex { (ing) -> Bool in
+                if ing.toString() == ingredient.toString() {
+                    return true
+                }
+                return false
+            }
+            guard let nonNilIndex = firstIndex else { return ingredientsDict }
+            let index = availableIngredients.startIndex.distance(to: nonNilIndex)
+            ingredientsDict["\(modelIndex)"] = index
+        }
+        return ingredientsDict
+    }
 }

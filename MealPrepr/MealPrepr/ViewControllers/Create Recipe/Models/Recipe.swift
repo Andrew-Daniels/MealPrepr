@@ -18,6 +18,7 @@ class Recipe {
     var utensils: [String]!
     var instructions: [Instruction]!
     var photos: [UIImage]!
+    var creator: String!
     
     var numIngredients: Int {
         get {
@@ -39,6 +40,59 @@ class Recipe {
         get {
             //Calculate preptime here
             return 0
+        }
+    }
+    
+    private var ingredientsArray: [[String: String]] {
+        get{
+            var array = [[String: String]]()
+            for ingredient in self.ingredients {
+                var ingredientDict = [String: String]()
+                ingredientDict["Title"] = ingredient.title
+                ingredientDict["Quantity"] = "\(ingredient.quantity)"
+                ingredientDict["Unit"] = ingredient.unit
+                array.append(ingredientDict)
+            }
+            return array
+        }
+    }
+    
+    private var utensilsArray: [String] {
+        get {
+            var array = [String]()
+            for utensil in self.utensils {
+                array.append(utensil)
+            }
+            return array
+        }
+    }
+    
+    private var instructionsArray: [[String: Any]] {
+        get {
+            var array = [[String: Any]]()
+            for instruction in self.instructions {
+                var instructionDict = [String: Any]()
+                instructionDict["Instruction"] = instruction.instruction
+                instructionDict["Ingredients"] = instruction.ingredientsDict(availableIngredients: self.ingredients)
+                instructionDict["Type"] = instruction.type.rawValue
+                instructionDict["TimeInMinutes"] = instruction.timeInMinutes
+                array.append(instructionDict)
+            }
+            return array
+        }
+    }
+    
+    var recipeDict: [String: Any] {
+        get {
+            return [
+                "Creator": creator!,
+                "Title": title!,
+                "CaloriesPerServing": calServing!,
+                "NumServings": numServings!,
+                "Ingredients": ingredientsArray,
+                "Utensils": utensilsArray,
+                "Instructions": instructionsArray
+            ]
         }
     }
     
@@ -65,9 +119,20 @@ class Recipe {
         self.photos = photos
     }
     
-    func save(account: Account) {
-        if let UID = account.UID {
-            FirebaseHelper().saveRecipe(recipe: self, userId: UID)
+    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [String], instructions: [Instruction], photos: [UIImage], creator: String?) {
+        self.title = title
+        self.calServing = calServing
+        self.numServings = numServings
+        self.ingredients = ingredients
+        self.utensils = utensils
+        self.instructions = instructions
+        self.photos = photos
+        self.creator = creator
+    }
+    
+    func save() {
+        if let creator = creator {
+            FirebaseHelper().saveRecipe(recipe: self, userId: creator)
         }
     }
     
