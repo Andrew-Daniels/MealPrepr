@@ -24,13 +24,36 @@ class FirebaseHelper {
     public func saveRecipe(recipe: Recipe, userId: String) {
         let path = "Recipes/"
         let reference = database.child(path).childByAutoId()
-        let recipeDict = recipe.recipeDict
+        var photoPaths = [String]()
         
-        let updates = [
-            path + "\(reference.key)": recipeDict
-        ]
-        
-        database.updateChildValues(updates)
+        for (index, photo) in recipe.photos.enumerated() {
+            if let data = photo.pngData() {
+                let photoRef = storage.child(path + "\(reference.key)" + "\(index)")
+                    photoRef.putData(data, metadata: nil) { (metadata, error) in
+                    guard let _ = metadata else {
+                        // Uh-oh, an error occurred!
+                        return
+                    }
+                    
+                    photoRef.downloadURL { (url, error) in
+                        guard let _ = url else {
+                            // Uh-oh, an error occurred!
+                            return
+                        }
+                        photoPaths.append(photoRef.fullPath)
+                        if (photoPaths.count == recipe.photos.count) {
+                            recipe.photoPaths = photoPaths
+                            
+                            let updates = [
+                                path + "\(reference.key)": recipe.recipeDict
+                            ]
+                            
+                            self.database.updateChildValues(updates)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     public func checkUsernameAvailability(username: String?, completionHandler: @escaping (_ isResponse : Bool) -> Void) {

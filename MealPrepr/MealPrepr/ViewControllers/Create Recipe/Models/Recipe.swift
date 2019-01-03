@@ -19,6 +19,7 @@ class Recipe {
     var instructions: [Instruction]!
     var photos: [UIImage]!
     var creator: String!
+    var photoPaths: [String]!
     
     var numIngredients: Int {
         get {
@@ -82,6 +83,15 @@ class Recipe {
         }
     }
     
+//    private var photoURLsArray: [String] {
+//        get {
+//            var array = [String]()
+//            for photo in self.photos {
+//                var photoDict = [String: Any]()
+//            }
+//        }
+//    }
+    
     var recipeDict: [String: Any] {
         get {
             return [
@@ -91,7 +101,8 @@ class Recipe {
                 "NumServings": numServings!,
                 "Ingredients": ingredientsArray,
                 "Utensils": utensilsArray,
-                "Instructions": instructionsArray
+                "Instructions": instructionsArray,
+                "Photos": photoPaths
             ]
         }
     }
