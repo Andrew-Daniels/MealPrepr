@@ -93,7 +93,7 @@ class Login: MPViewController, MPTextFieldDelegate {
     }
     @IBAction func guestBtnClicked(_ sender: UIButton) {
         self.account = Account()
-        self.account.userLevel = .Admin
+        //self.account.userLevel = .Admin
         performSegue(withIdentifier: loggedInSegueIdentifier, sender: sender)
     }
     @IBAction func loginBtnClicked(_ sender: UIButton) {

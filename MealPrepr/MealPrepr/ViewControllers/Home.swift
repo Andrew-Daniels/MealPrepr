@@ -8,8 +8,8 @@
 
 import UIKit
 
-class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
-
+class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegateFlowLayout, RecipeDelegate {
+    
     @IBOutlet weak var collectionView: MPCollectionView!
     var recipes = [Recipe]()
     
@@ -54,6 +54,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeRecipes", for: indexPath) as! HomeRecipesCell
         let recipe = recipes[indexPath.row]
+        recipe.delegate = self
         cell.recipe = recipe
         return cell
     }
@@ -76,6 +77,19 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         if (account.userLevel == .Guest && segue.identifier != backToSignUpSegueIdentifier) {
             MPAlertController.show(message: "You must sign in first before you can use this feature.", type: .CreateAccount, presenter: self)
         }
+    }
+    
+    func photoDownloaded(sender: Recipe) {
+        let firstIndex = self.recipes.firstIndex { (recipe) -> Bool in
+            if recipe.GUID == sender.GUID {
+                return true
+            }
+            return false
+        }
+        guard let nonNilIndex = firstIndex else { return }
+        let row = recipes.startIndex.distance(to: nonNilIndex)
+        let indexPath = IndexPath(row: row, section: 0)
+        self.collectionView.reloadItems(at: [indexPath])
     }
 
 }

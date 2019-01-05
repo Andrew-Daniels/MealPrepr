@@ -41,7 +41,7 @@ class HomeRecipesCell: UICollectionViewCell {
         }
     }
     
-    private var image: UIImage! {
+    private var image: UIImage? {
         didSet {
             if let i = image {
                 self.imageView.image = i
@@ -78,9 +78,7 @@ class HomeRecipesCell: UICollectionViewCell {
             self.title = r.title
             self.calories = r.calServing
             self.ingredientCount = r.numIngredients
-            if let photos = r.photos, let paths = r.photoPaths, photos.count != paths.count {
-                
-            }
+            self.image = r.photoAtIndex(index: 0)
         }
     }
     

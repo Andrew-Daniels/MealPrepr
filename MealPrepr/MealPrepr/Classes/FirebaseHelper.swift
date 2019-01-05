@@ -35,7 +35,15 @@ class FirebaseHelper {
         }
     }
     
-    public func saveRecipe(recipe: Recipe, userId: String) {
+    public func downloadImage(atPath: String, completionHandler: @escaping (_ isResponse : UIImage) -> Void) {
+        storage.child(atPath).getData(maxSize: (1000 * 500)) { (data, error) in
+            if let data = data, let image = UIImage(data: data) {
+                completionHandler(image)
+            }
+        }
+    }
+    
+    public func saveRecipe(recipe: Recipe, userId: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         let path = "Recipes/"
         let reference = database.child(path).childByAutoId()
         var photoPaths = [String]()
@@ -63,6 +71,7 @@ class FirebaseHelper {
                             ]
                             
                             self.database.updateChildValues(updates)
+                            completionHandler(true)
                         }
                     }
                 }

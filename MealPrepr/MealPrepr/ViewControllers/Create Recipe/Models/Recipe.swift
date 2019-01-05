@@ -18,9 +18,11 @@ class Recipe {
     var utensils: [String]!
     var instructions: [Instruction]!
     var photos: [UIImage]!
+    private var downloadedPhotos: [String: UIImage]!
     var creatorUID: String!
     var photoPaths: [String]!
     var GUID: String!
+    var delegate: RecipeDelegate?
     
     var numIngredients: Int {
         get {
@@ -159,6 +161,13 @@ class Recipe {
                 }
                 if let photoPaths = recipeValue["Photos"] as? [String] {
                     self.photoPaths = photoPaths
+                    self.downloadedPhotos = [String: UIImage]()
+                    for path in self.photoPaths {
+                        FirebaseHelper().downloadImage(atPath: path) { (image) in
+                            self.downloadedPhotos[path] = image
+                            self.delegate?.photoDownloaded(sender: self)
+                        }
+                    }
                 }
                 if let caloriesPerServing = recipeValue["CaloriesPerServing"] as? String,
                     let numServings = recipeValue["NumServings"] as? String,
@@ -173,9 +182,19 @@ class Recipe {
             }
     }
     
-    func save() {
-        if let creator = creatorUID {
-            FirebaseHelper().saveRecipe(recipe: self, userId: creator)
+    func photoAtIndex(index: Int) -> UIImage? {
+        let key = photoPaths[index]
+        return downloadedPhotos[key]
+    }
+    
+    func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        if let creatorUID = creatorUID {
+            FirebaseHelper().saveRecipe(recipe: self, userId: creatorUID) { (success) in
+                if success {
+                    completionHandler(true)
+                }
+            }
+            //FirebaseHelper().saveRecipe(recipe: self, userId: creatorUID)
         }
     }
     
