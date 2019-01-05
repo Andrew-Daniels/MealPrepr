@@ -1594,14 +1594,23 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="8wU-Kg-6Uh">
+                                        <rect key="frame" x="30" y="30" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0JA-Rq-6Xa"/>
+                                            <constraint firstAttribute="width" constant="40" id="84w-hy-wRx"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="3yd-vm-KJp"/>
                                     <constraint firstAttribute="bottom" secondItem="TxC-Vy-0W7" secondAttribute="bottom" constant="8" id="9iJ-xa-wzL"/>
+                                    <constraint firstItem="8wU-Kg-6Uh" firstAttribute="centerY" secondItem="CFg-A4-kdr" secondAttribute="centerY" id="Kwt-CJ-1zg"/>
                                     <constraint firstAttribute="trailing" secondItem="TxC-Vy-0W7" secondAttribute="trailing" id="TUm-tD-h7q"/>
                                     <constraint firstAttribute="width" constant="100" id="i3O-xH-6x3"/>
                                     <constraint firstItem="TxC-Vy-0W7" firstAttribute="leading" secondItem="CFg-A4-kdr" secondAttribute="leading" id="uzr-VE-3bR"/>
+                                    <constraint firstItem="8wU-Kg-6Uh" firstAttribute="centerX" secondItem="CFg-A4-kdr" secondAttribute="centerX" id="wyx-PQ-bvC"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1609,7 +1618,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="PdA-qe-Zch">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="PdA-qe-Zch">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -1623,6 +1632,8 @@
                         <viewLayoutGuide key="safeArea" id="cWp-PS-Yot"/>
                     </view>
                     <connections>
+                        <outlet property="errorImageView" destination="8wU-Kg-6Uh" id="5xB-4H-cpf"/>
+                        <outlet property="indicatorView" destination="PdA-qe-Zch" id="gm6-hh-IeS"/>
                         <outlet property="loadingLabel" destination="TxC-Vy-0W7" id="lWU-yX-G4s"/>
                     </connections>
                 </viewController>
@@ -2141,6 +2152,7 @@
     <resources>
         <image name="Home-Background" width="1895" height="1255"/>
         <image name="Meal-Prepr-Logo" width="80" height="80"/>
+        <image name="error" width="24" height="24"/>
         <image name="tab-home" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

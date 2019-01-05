@@ -242,11 +242,16 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                 let recipe = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
                 self.startLoading(withText: "Saving")
                 recipe.save { (success) in
-                    self.finishLoading(completionHandler: { (finished) in
-                        //Do Animation to dismiss this view controller
-                    })
+                    if success {
+                        self.finishLoading(completionHandler: { (finished) in
+                            //Do Animation to dismiss this view controller
+                        })
+                    } else {
+                        self.finishLoadingWithError(completionHandler: { (finished) in
+                            //Do stuff here
+                        })
+                    }
                 }
-                //recipe.save()
             }
         }
     }

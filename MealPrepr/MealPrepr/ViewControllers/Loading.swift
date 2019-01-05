@@ -10,6 +10,8 @@ import UIKit
 
 class Loading: UIViewController {
     
+    @IBOutlet weak var errorImageView: UIImageView!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: UILabel!
     var loadingText = "Loading"
 
@@ -21,6 +23,11 @@ class Loading: UIViewController {
     }
     
 
+    func setError() {
+        self.loadingLabel.text = "Error"
+        indicatorView.stopAnimating()
+        errorImageView.isHidden = false
+    }
     /*
     // MARK: - Navigation
 

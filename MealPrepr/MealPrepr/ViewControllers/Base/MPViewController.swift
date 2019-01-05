@@ -16,7 +16,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     var searchController: UISearchController?
     var selectedImage: UIImage?
     var collectionViewCellWidth: CGFloat?
-    private var loadingVC: Loading!
+    private var loadingVC: Loading?
     
     var hasSearchController: Bool = false {
         didSet {
@@ -141,8 +141,18 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func finishLoading(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
-        self.loadingVC.dismiss(animated: true) {
+        self.loadingVC?.dismiss(animated: true) {
             completionHandler(true)
         }
+    }
+    
+    func finishLoadingWithError(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        self.loadingVC?.setError()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            // Put your code which should be executed with a delay here
+            self.loadingVC?.dismiss(animated: true) {
+                completionHandler(true)
+            }
+        })
     }
 }
