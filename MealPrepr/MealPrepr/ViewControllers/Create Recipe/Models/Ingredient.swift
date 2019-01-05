@@ -10,9 +10,9 @@ import Foundation
 
 class Ingredient {
     
-    var title: String
-    var quantity: Decimal
-    var unit: String
+    var title: String!
+    var quantity: Decimal!
+    var unit: String!
     
     init(title: String, quantity: Decimal, unit: String) {
         self.title = title
@@ -20,7 +20,14 @@ class Ingredient {
         self.unit = unit
     }
     
+    init() {
+        
+    }
+    
     func toString() -> String {
-        return "\(title) \(quantity) \(unit)"
+        if let title = title, let quantity = quantity, let unit = unit {
+            return "\(title) \(quantity) \(unit)"
+        }
+        return ""
     }
 }

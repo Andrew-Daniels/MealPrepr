@@ -11,10 +11,15 @@ import UIKit
 class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: MPCollectionView!
-    
+    var recipes = [Recipe]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FirebaseHelper().loadRecipes { (data) in
+            self.recipes = data
+            self.collectionView.reloadData()
+        }
         
         //Setup UIBarButtonItems
         if (account.userLevel == .Guest) {
@@ -43,12 +48,13 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return recipes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeRecipes", for: indexPath) as! HomeRecipesCell
-        cell.title = "Test"
+        let recipe = recipes[indexPath.row]
+        cell.recipe = recipe
         return cell
     }
     

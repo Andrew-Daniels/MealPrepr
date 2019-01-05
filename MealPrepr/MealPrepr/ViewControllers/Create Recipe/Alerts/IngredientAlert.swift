@@ -83,7 +83,9 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate  {
     func setupAlertWithIngredient() {
         if ingredient != nil {
             isEditingExistingIngredient = true
-            quantityTextField.text = "\(ingredient.quantity)"
+            if let quantity = ingredient.quantity {
+                quantityTextField.text = "\(quantity)"
+            }
             ingredientTextField.text = ingredient.title
             unitTextField.text = ingredient.unit
             originalTitle = ingredient.title

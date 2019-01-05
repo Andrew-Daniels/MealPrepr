@@ -17,7 +17,7 @@ class HomeRecipesCell: UICollectionViewCell {
         }
     }
     
-    public var title: String? {
+    private var title: String? {
         didSet {
             self.titleLabel.text = title
         }
@@ -41,11 +41,32 @@ class HomeRecipesCell: UICollectionViewCell {
         }
     }
     
+    private var image: UIImage! {
+        didSet {
+            if let i = image {
+                self.imageView.image = i
+            }
+        }
+    }
+    
+    private var ingredientCount: Int = 0 {
+        didSet {
+            ingredientCountLabel.text = "\(ingredientCount)"
+        }
+    }
+    
+    public var recipe: Recipe! {
+        didSet {
+            initHomeRecipesCell()
+        }
+    }
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var prepLabel: UILabel!
     @IBOutlet weak var cookLabel: UILabel!
+    @IBOutlet weak var ingredientCountLabel: UILabel!
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +74,14 @@ class HomeRecipesCell: UICollectionViewCell {
     }
     
     private func initHomeRecipesCell() {
-        
+        if let r = recipe {
+            self.title = r.title
+            self.calories = r.calServing
+            self.ingredientCount = r.numIngredients
+            if let photos = r.photos, let paths = r.photoPaths, photos.count != paths.count {
+                
+            }
+        }
     }
     
 }

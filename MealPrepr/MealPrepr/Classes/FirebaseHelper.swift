@@ -21,6 +21,20 @@ class FirebaseHelper {
         self.storage = Storage.storage().reference()
     }
     
+    public func loadRecipes(completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
+        let path = "Recipes/"
+        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+            var recipes = [Recipe]()
+            if let value = snapshot.value as? NSDictionary {
+                for recipeData in value {
+                    let recipe = Recipe(recipeData: recipeData)
+                    recipes.append(recipe)
+                }
+            }
+            completionHandler(recipes)
+        }
+    }
+    
     public func saveRecipe(recipe: Recipe, userId: String) {
         let path = "Recipes/"
         let reference = database.child(path).childByAutoId()

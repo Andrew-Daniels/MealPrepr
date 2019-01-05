@@ -39,4 +39,13 @@ class Instruction {
         }
         return ingredientsDict
     }
+    
+    func setIngredientsWithIngredientArray(ingredientIndexes: [Int]?, availableIngredients: [Ingredient]) {
+        if let indexes = ingredientIndexes {
+            for index in indexes {
+                let ingredient = availableIngredients[index]
+                ingredients.append(ingredient)
+            }
+        }
+    }
 }

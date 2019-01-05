@@ -34,6 +34,8 @@ class IngredientCell: UITableViewCell {
         super.layoutSubviews()
         
         ingredientLabel.text = ingredient.title
-        quantityLabel.text = "\(ingredient.quantity) \(ingredient.unit)"
+        if let quantity = ingredient.quantity, let unit = ingredient.unit {
+            quantityLabel.text = "\(quantity) \(unit)"
+        }
     }
 }
