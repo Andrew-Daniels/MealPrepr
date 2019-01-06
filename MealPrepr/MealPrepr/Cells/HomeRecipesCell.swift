@@ -79,6 +79,16 @@ class HomeRecipesCell: UICollectionViewCell {
             self.calories = r.calServing
             self.ingredientCount = r.numIngredients
             self.image = r.photoAtIndex(index: 0)
+            if r.totalCookTime.hours == 0 {
+                self.cook = "\(r.totalCookTime.minutes)m"
+            } else {
+                self.cook = "\(r.totalCookTime.hours)hr\(r.totalCookTime.minutes)m"
+            }
+            if r.totalPrepTime.hours == 0 {
+                self.prep = "\(r.totalPrepTime.minutes)m"
+            } else {
+                self.prep = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m"
+            }
         }
     }
     

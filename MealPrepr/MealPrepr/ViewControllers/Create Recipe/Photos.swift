@@ -69,6 +69,10 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
+//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
+//    }
+    
     /*
      // MARK: - Naviga@objc(collectionView:layout:insetForSectionAtIndex:) tion
 

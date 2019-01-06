@@ -23,6 +23,8 @@ class Recipe {
     var photoPaths: [String]!
     var GUID: String!
     var delegate: RecipeDelegate?
+    private var cook: (minutes: Int, hours: Int)!
+    private var prep: (minutes: Int, hours: Int)!
     
     var numIngredients: Int {
         get {
@@ -33,17 +35,43 @@ class Recipe {
         }
     }
     
-    var totalCookTime: Int {
+    var totalCookTime: (minutes: Int, hours: Int) {
         get {
             //Calculate cook time here
-            return 0
+            if cook == nil {
+                var timeInMinutes = 0
+                if let ints = instructions {
+                    for i in ints {
+                        if i.type == .Cook {
+                            if let time = i.timeInMinutes {
+                                timeInMinutes += time
+                            }
+                        }
+                    }
+                }
+                cook = RecipeHelper.parseTimeInMinutesForPickerView(timeInMinutes: timeInMinutes)
+            }
+            return cook
         }
     }
     
-    var totalPrepTime: Int {
+    var totalPrepTime: (minutes: Int, hours: Int) {
         get {
             //Calculate preptime here
-            return 0
+            if prep == nil {
+                var timeInMinutes = 0
+                if let ints = instructions {
+                    for i in ints {
+                        if i.type == .Prep {
+                            if let time = i.timeInMinutes {
+                                timeInMinutes += time
+                            }
+                        }
+                    }
+                }
+                prep = RecipeHelper.parseTimeInMinutesForPickerView(timeInMinutes: timeInMinutes)
+            }
+            return prep
         }
     }
     
@@ -146,7 +174,7 @@ class Recipe {
                     for instruction in instructions {
                         let i = Instruction()
                         i.instruction = instruction["Instruction"] as? String
-                        i.timeInMinutes = Int(instruction["TimeInMinutes"] as? String ?? "")
+                        i.timeInMinutes = instruction["TimeInMinutes"] as? Int
                         if let type = instruction["Type"] as? Int {
                             i.type = Instruction.CookType(rawValue: type) ?? .Prep
                         }
