@@ -190,11 +190,8 @@ class Recipe {
     func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         if let creatorUID = creatorUID {
             FirebaseHelper().saveRecipe(recipe: self, userId: creatorUID) { (success) in
-                if success {
-                    completionHandler(true)
-                }
+                completionHandler(success)
             }
-            //FirebaseHelper().saveRecipe(recipe: self, userId: creatorUID)
         }
     }
     

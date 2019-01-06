@@ -1322,14 +1322,28 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="618-ql-v9e">
                                                             <rect key="frame" x="8" y="0.0" width="284" height="258"/>
                                                         </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Kz-ZB-lwH">
+                                                            <rect key="frame" x="8" y="0.0" width="44" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="44" id="0sg-AQ-S82"/>
+                                                                <constraint firstAttribute="width" constant="44" id="Z84-2k-OZV"/>
+                                                            </constraints>
+                                                            <state key="normal" image="delete"/>
+                                                            <connections>
+                                                                <action selector="deleteBtnPressed:" destination="N8w-4x-xpE" eventType="touchUpInside" id="qMo-Db-Ehy"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </view>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailingMargin" secondItem="618-ql-v9e" secondAttribute="trailing" id="4kY-33-UQY"/>
                                                     <constraint firstItem="618-ql-v9e" firstAttribute="top" secondItem="N8w-4x-xpE" secondAttribute="top" id="9QA-Cg-TbR"/>
+                                                    <constraint firstItem="5Kz-ZB-lwH" firstAttribute="top" secondItem="618-ql-v9e" secondAttribute="top" id="OXO-LI-oiW"/>
                                                     <constraint firstItem="618-ql-v9e" firstAttribute="leading" secondItem="N8w-4x-xpE" secondAttribute="leadingMargin" id="VsN-CA-TFM"/>
                                                     <constraint firstAttribute="bottomMargin" secondItem="618-ql-v9e" secondAttribute="bottom" id="aw3-8f-avp"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Kz-ZB-lwH" secondAttribute="trailing" priority="999" constant="6" id="bza-hh-LE9"/>
+                                                    <constraint firstItem="5Kz-ZB-lwH" firstAttribute="leading" secondItem="618-ql-v9e" secondAttribute="leading" id="lrL-dl-NX3"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="imageView" destination="618-ql-v9e" id="IYg-id-ePn"/>
@@ -2152,6 +2166,7 @@
     <resources>
         <image name="Home-Background" width="1895" height="1255"/>
         <image name="Meal-Prepr-Logo" width="80" height="80"/>
+        <image name="delete" width="24" height="24"/>
         <image name="error" width="24" height="24"/>
         <image name="tab-home" width="30" height="30"/>
     </resources>

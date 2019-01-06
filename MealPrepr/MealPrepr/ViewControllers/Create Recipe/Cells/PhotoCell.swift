@@ -11,6 +11,7 @@ import UIKit
 class PhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    var delegate: PhotoCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,5 +20,9 @@ class PhotoCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    @IBAction func deleteBtnPressed(_ sender: Any) {
+        delegate?.deleteBtnPressed(sender: self)
     }
 }

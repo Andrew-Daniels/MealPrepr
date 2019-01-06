@@ -245,6 +245,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                     if success {
                         self.finishLoading(completionHandler: { (finished) in
                             //Do Animation to dismiss this view controller
+                            self.navigationController?.popToRootViewController(animated: true)
                         })
                     } else {
                         self.finishLoadingWithError(completionHandler: { (finished) in

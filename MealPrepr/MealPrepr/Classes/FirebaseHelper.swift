@@ -54,12 +54,14 @@ class FirebaseHelper {
                     photoRef.putData(data, metadata: nil) { (metadata, error) in
                     guard let _ = metadata else {
                         // Uh-oh, an error occurred!
+                        completionHandler(false)
                         return
                     }
                     
                     photoRef.downloadURL { (url, error) in
                         guard let _ = url else {
                             // Uh-oh, an error occurred!
+                            completionHandler(false)
                             return
                         }
                         photoPaths.append(photoRef.fullPath)

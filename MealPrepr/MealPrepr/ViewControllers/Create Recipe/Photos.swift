@@ -10,7 +10,7 @@ import UIKit
 
 private let photoCellIdentifier = "PhotoCell"
 
-class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoCellDelegate {
     
     @IBOutlet weak var collectionView: MPCollectionView!
     var images = [UIImage]()
@@ -32,7 +32,18 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PhotoCell
         cell.imageView.image = images[indexPath.row]
+        cell.clipsToBounds = true
+        cell.layer.cornerRadius = 8
+        cell.delegate = self
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let iv = UIImageView()
+        iv.image = images[indexPath.row]
+        iv.sizeToFit()
+        let size = iv.frame.size
+        return size
     }
     
     func addImage(image: UIImage) {
@@ -50,8 +61,16 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
+    func deleteBtnPressed(sender: PhotoCell) {
+        let indexPath = self.collectionView.indexPath(for: sender)
+        if let path = indexPath {
+            self.images.remove(at: path.row)
+            self.collectionView.deleteItems(at: [path])
+        }
+    }
+    
     /*
-    // MARK: - Navigation
+     // MARK: - Naviga@objc(collectionView:layout:insetForSectionAtIndex:) tion
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
