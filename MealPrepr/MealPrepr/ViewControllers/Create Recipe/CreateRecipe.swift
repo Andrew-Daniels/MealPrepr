@@ -245,7 +245,25 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                     if success {
                         self.finishLoading(completionHandler: { (finished) in
                             //Do Animation to dismiss this view controller
+                            let homeVC = self.navigationController?.viewControllers.first(where: { (vc) -> Bool in
+                                if vc is Home {
+                                    return true
+                                }
+                                return false
+                            })
+                            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200), execute: {
+                                // Put your code which should be executed with a delay here
+                                UIView.animate(withDuration: 0.2, animations: {
+                                    (homeVC as! Home).collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: UICollectionView.ScrollPosition.top, animated: true)
+                                })
+                            })
+                            
+                            (homeVC as! Home).recipes.insert(recipe, at: 0)
                             self.navigationController?.popToRootViewController(animated: true)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000), execute: {
+                                // Put your code which should be executed with a delay here
+                                (homeVC as! Home).collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                            })
                         })
                     } else {
                         self.finishLoadingWithError(completionHandler: { (finished) in

@@ -212,7 +212,11 @@ class Recipe {
     
     func photoAtIndex(index: Int) -> UIImage? {
         let key = photoPaths[index]
-        return downloadedPhotos[key]
+        if downloadedPhotos != nil {
+            return downloadedPhotos[key]
+        } else {
+            return photos[index]
+        }
     }
     
     func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
