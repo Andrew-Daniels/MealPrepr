@@ -10,10 +10,17 @@ import UIKit
 
 private let photoCellIdentifier = "PhotoCell"
 
-class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoCellDelegate {
+class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoCellDelegate, RecipeDelegate {
     
     @IBOutlet weak var collectionView: MPCollectionView!
     var images = [UIImage]()
+    var recipe: Recipe?
+    var readOnly: Bool = false
+    @IBOutlet weak var addPhotoBtn: UIButton!
+    
+    @IBOutlet var activeConstraintsDuringView: [NSLayoutConstraint]!
+   
+    @IBOutlet var inactiveConstraintsDuringView: [NSLayoutConstraint]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +30,31 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.scrollDirection = .horizontal
         }
+        if readOnly {
+            addPhotoBtn.isHidden = true
+            addPhotoBtn.isEnabled = false
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let recipe = recipe {
+            return recipe.photoPaths.count
+        }
         return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PhotoCell
-        cell.imageView.image = images[indexPath.row]
+        
+        if let recipe = recipe {
+            cell.imageView.image = recipe.photoAtIndex(index: indexPath.row)
+            cell.deleteBtn.isHidden = true
+            cell.deleteBtn.isEnabled = false
+            recipe.delegate = self
+        } else {
+            cell.imageView.image = images[indexPath.row]
+        }
+        
         cell.clipsToBounds = true
         cell.layer.cornerRadius = 8
         cell.delegate = self
@@ -40,10 +63,18 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let iv = UIImageView()
-        iv.image = images[indexPath.row]
+        if let recipe = recipe {
+            iv.image = recipe.photoAtIndex(index: indexPath.row)
+        } else {
+            iv.image = images[indexPath.row]
+        }
         iv.sizeToFit()
         let size = iv.frame.size
         return size
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
     }
     
     func addImage(image: UIImage) {
@@ -66,6 +97,32 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
         if let path = indexPath {
             self.images.remove(at: path.row)
             self.collectionView.deleteItems(at: [path])
+        }
+    }
+    
+    func photoDownloaded(sender: Recipe) {
+        
+    }
+    
+    func photoDownloaded(photoPath index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        collectionView.reloadItems(at: [indexPath])
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if let _ = recipe {
+            for c in activeConstraintsDuringView {
+                if !c.isActive {
+                    c.isActive = true
+                }
+            }
+            for c in inactiveConstraintsDuringView {
+                if c.isActive {
+                    c.isActive = false
+                }
+            }
+            
+            self.view.layoutIfNeeded()
         }
     }
     

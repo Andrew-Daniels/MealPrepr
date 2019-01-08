@@ -190,10 +190,11 @@ class Recipe {
                 if let photoPaths = recipeValue["Photos"] as? [String] {
                     self.photoPaths = photoPaths
                     self.downloadedPhotos = [String: UIImage]()
-                    for path in self.photoPaths {
+                    for (index, path) in self.photoPaths.enumerated() {
                         FirebaseHelper().downloadImage(atPath: path) { (image) in
                             self.downloadedPhotos[path] = image
                             self.delegate?.photoDownloaded(sender: self)
+                            self.delegate?.photoDownloaded(photoPath: index)
                         }
                     }
                 }

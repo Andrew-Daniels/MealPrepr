@@ -8,6 +8,8 @@
 
 import UIKit
 
+let recipeDetailsStoryboardIdentifier = "RecipeDetails"
+
 class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegateFlowLayout, RecipeDelegate {
     
     @IBOutlet weak var collectionView: MPCollectionView!
@@ -64,6 +66,16 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recipe = recipes[indexPath.row]
+        
+        let main = UIStoryboard.init(name: "Main", bundle: nil)
+        let recipeDetailsVC = main.instantiateViewController(withIdentifier: recipeDetailsStoryboardIdentifier) as! RecipeDetails
+        recipeDetailsVC.recipe = recipe
+        recipeDetailsVC.navigationItem.title = recipe.title
+        self.navigationController?.pushViewController(recipeDetailsVC, animated: true)
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         
     }
@@ -92,4 +104,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         self.collectionView.reloadItems(at: [indexPath])
     }
 
+    func photoDownloaded(photoPath index: Int) {
+        
+    }
 }
