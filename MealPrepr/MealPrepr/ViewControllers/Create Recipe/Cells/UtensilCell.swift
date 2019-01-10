@@ -9,20 +9,18 @@
 import Foundation
 import UIKit
 
-class UtensilCell: UITableViewCell {
+class UtensilCell: UICollectionViewCell {
     
-    var utensil: String!
-    @IBOutlet weak var utensilLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    override var isSelected: Bool {
+        didSet {
+            self.backgroundColor = isSelected ? UIColor.red : UIColor.white
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,7 +29,5 @@ class UtensilCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        utensilLabel.text = utensil
     }
 }

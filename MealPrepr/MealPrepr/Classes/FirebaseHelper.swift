@@ -45,6 +45,7 @@ class FirebaseHelper {
                     utensils.append(utensil)
                 }
             }
+            completionHandler(utensils)
         }
     }
     
