@@ -20,9 +20,13 @@ class Utensils: MPViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var utensilIndexBeingEdited: IndexPath!
     var isEditingExistingUtensil = false
+    var availableUtensils = [Utensil]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseHelper().loadUtensils { (utensils) in
+            self.availableUtensils = utensils
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

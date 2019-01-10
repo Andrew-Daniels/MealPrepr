@@ -35,6 +35,19 @@ class FirebaseHelper {
         }
     }
     
+    public func loadUtensils(completionHandler: @escaping (_ isResponse : [Utensil]) -> Void) {
+        let path = "Utensils/"
+        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+            var utensils = [Utensil]()
+            if let value = snapshot.value as? NSDictionary {
+                for utensilData in value {
+                    let utensil = Utensil(utensilData: utensilData)
+                    utensils.append(utensil)
+                }
+            }
+        }
+    }
+    
     public func downloadImage(atPath: String, completionHandler: @escaping (_ isResponse : UIImage) -> Void) {
         storage.child(atPath).getData(maxSize: (1000 * 500)) { (data, error) in
             if let data = data, let image = UIImage(data: data) {
