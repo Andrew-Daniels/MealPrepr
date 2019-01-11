@@ -15,14 +15,15 @@ class Recipe {
     var calServing: String!
     var numServings: String!
     var ingredients: [Ingredient]!
-    var utensils: [String]!
+    var utensils: [Utensil]!
     var instructions: [Instruction]!
     var photos: [UIImage]!
     private var downloadedPhotos: [String: UIImage]!
     var creatorUID: String!
     var photoPaths: [String]!
     var GUID: String!
-    var delegate: RecipeDelegate?
+    var recipeDelegate: RecipeDelegate?
+    var utensilDelegate: UtensilDelegate?
     private var cook: (minutes: Int, hours: Int)!
     private var prep: (minutes: Int, hours: Int)!
     
@@ -106,6 +107,16 @@ class Recipe {
         }
     }
     
+    private var utensilArray: [String] {
+        get {
+            var array = [String]()
+            for utensil in self.utensils {
+                array.append(utensil.title)
+            }
+            return array
+        }
+    }
+    
     var recipeDict: [String: Any] {
         get {
             return [
@@ -114,7 +125,7 @@ class Recipe {
                 "CaloriesPerServing": calServing!,
                 "NumServings": numServings!,
                 "Ingredients": ingredientsArray,
-                "Utensils": utensils,
+                "Utensils": utensilArray,
                 "Instructions": instructionsArray,
                 "Photos": photoPaths
             ]
@@ -124,7 +135,7 @@ class Recipe {
     init() {
     }
     
-    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [String], instructions: [Instruction]) {
+    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction]) {
         self.title = title
         self.calServing = calServing
         self.numServings = numServings
@@ -133,7 +144,7 @@ class Recipe {
         self.instructions = instructions
     }
     
-    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [String], instructions: [Instruction], photos: [UIImage]) {
+    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction], photos: [UIImage]) {
         self.title = title
         self.calServing = calServing
         self.numServings = numServings
@@ -143,7 +154,7 @@ class Recipe {
         self.photos = photos
     }
     
-    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [String], instructions: [Instruction], photos: [UIImage], creator: String?) {
+    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction], photos: [UIImage], creator: String?) {
         self.title = title
         self.calServing = calServing
         self.numServings = numServings
@@ -185,7 +196,18 @@ class Recipe {
                     self.instructions = recipeInstructions
                 }
                 if let utensils = recipeValue["Utensils"] as? [String] {
-                    self.utensils = utensils
+                    var array = [Utensil]()
+                    for utensil in utensils {
+                        let u = Utensil()
+                        u.title = utensil
+                        FirebaseHelper().loadUtensil(utensil: u) { (success) in
+                            if success {
+                                self.utensilDelegate?.photoDownloaded(sender: u)
+                            }
+                        }
+                        array.append(u)
+                    }
+                    self.utensils = array
                 }
                 if let photoPaths = recipeValue["Photos"] as? [String] {
                     self.photoPaths = photoPaths
@@ -193,8 +215,8 @@ class Recipe {
                     for (index, path) in self.photoPaths.enumerated() {
                         FirebaseHelper().downloadImage(atPath: path) { (image) in
                             self.downloadedPhotos[path] = image
-                            self.delegate?.photoDownloaded(sender: self)
-                            self.delegate?.photoDownloaded(photoPath: index)
+                            self.recipeDelegate?.photoDownloaded(sender: self)
+                            self.recipeDelegate?.photoDownloaded(photoPath: index)
                         }
                     }
                 }

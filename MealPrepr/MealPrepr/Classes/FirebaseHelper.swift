@@ -35,6 +35,21 @@ class FirebaseHelper {
         }
     }
     
+    public func loadUtensil(utensil: Utensil, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        guard let title = utensil.title else { return }
+        let path = "Utensils/"
+        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                for utensilData in value {
+                    if let key = utensilData.key as? String, title == key {
+                        utensil.photoPath = utensilData.value as? String
+                        completionHandler(true)
+                    }
+                }
+            }
+        }
+    }
+    
     public func loadUtensils(completionHandler: @escaping (_ isResponse : [Utensil]) -> Void) {
         let path = "Utensils/"
         database.child(path).observeSingleEvent(of: .value) { (snapshot) in

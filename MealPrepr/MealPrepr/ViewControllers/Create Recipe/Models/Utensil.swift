@@ -15,6 +15,10 @@ class Utensil {
     var photo: UIImage!
     var delegate: UtensilDelegate?
     
+    init() {
+        
+    }
+    
     init(utensilData: (key: Any, value: Any)) {
         print(utensilData)
         self.title = utensilData.key as? String

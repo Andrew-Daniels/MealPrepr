@@ -24,7 +24,7 @@ struct ValidationHelper {
         return ErrorHelper.getErrorMsg(errorKey: .NoInstructions)
     }
     
-    public static func validateRecipeUtensils(utensils: [String]) -> String? {
+    public static func validateRecipeUtensils(utensils: [Utensil]) -> String? {
         if utensils.count > 0 {
             return nil
         }

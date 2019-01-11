@@ -56,7 +56,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeRecipes", for: indexPath) as! HomeRecipesCell
         let recipe = recipes[indexPath.row]
-        recipe.delegate = self
+        recipe.recipeDelegate = self
         cell.recipe = recipe
         return cell
     }

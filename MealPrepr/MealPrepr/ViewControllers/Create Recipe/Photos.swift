@@ -50,7 +50,7 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
             cell.imageView.image = recipe.photoAtIndex(index: indexPath.row)
             cell.deleteBtn.isHidden = true
             cell.deleteBtn.isEnabled = false
-            recipe.delegate = self
+            recipe.recipeDelegate = self
         } else {
             cell.imageView.image = images[indexPath.row]
         }
