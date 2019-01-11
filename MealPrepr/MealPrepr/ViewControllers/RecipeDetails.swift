@@ -14,6 +14,7 @@ class RecipeDetails: MPViewController {
     
     var recipe: Recipe!
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var prepLabel: UILabel!
