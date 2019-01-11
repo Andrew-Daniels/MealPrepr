@@ -13,6 +13,7 @@ private let utensilCellIdentifier = "utensilCell"
 
 class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var roundedUIView: RoundedUIView!
     var availableUtensils: [Utensil]!
     var selectedUtensils = [Utensil]()
     @IBOutlet weak var collectionView: UICollectionView!
@@ -43,6 +44,7 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: utensilCellIdentifier, for: indexPath) as! UtensilCell
         let u = availableUtensils[indexPath.row]
+        cell.titleLabel.text = u.title
         if let image = u.photo {
             cell.imageView.image = image
         } else {
@@ -55,9 +57,9 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
             }
             return false
         }) {
-            cell.isSelected = true
+            cell.isSel = true
         } else {
-            cell.isSelected = false
+            cell.isSel = false
         }
         
         return cell
@@ -83,11 +85,6 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
             self.collectionView.reloadItems(at: [indexPath])
         }
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        self.collectionViewCellWidth = 100.0
-//        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
-//    }
     
     func photoDownloaded(sender: Utensil) {
         let firstIndex = availableUtensils.firstIndex { (utensil) -> Bool in

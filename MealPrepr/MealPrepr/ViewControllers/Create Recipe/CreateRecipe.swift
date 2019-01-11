@@ -185,14 +185,14 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
             }
             
             if let utensilVC = self.getVC(atIndex: .Utensils) as? Utensils {
-                utensils = utensilVC.utensils
-                if let msg = ValidationHelper.validateRecipeUtensils(utensils: utensilVC.utensils) {
-                    if errorMsg != nil {
-                        errorMsg += msg + "\n"
-                    } else {
-                        errorMsg = msg + "\n"
-                    }
-                }
+//                utensils = utensilVC.utensils
+//                if let msg = ValidationHelper.validateRecipeUtensils(utensils: utensilVC.utensils) {
+//                    if errorMsg != nil {
+//                        errorMsg += msg + "\n"
+//                    } else {
+//                        errorMsg = msg + "\n"
+//                    }
+//                }
             } else {
                 if errorMsg != nil {
                     errorMsg += ErrorHelper.getErrorMsg(errorKey: .NoUtensils)! + "\n"

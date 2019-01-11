@@ -11,10 +11,13 @@ import UIKit
 
 class UtensilCell: UICollectionViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    override var isSelected: Bool {
+    var isSel: Bool = false {
         didSet {
-            self.backgroundColor = isSelected ? UIColor.red : UIColor.white
+            let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
+            self.backgroundColor = isSel ? redColor : UIColor.clear
+            self.titleLabel.textColor = isSel ? UIColor.black : UIColor.white
         }
     }
     
@@ -29,5 +32,6 @@ class UtensilCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.layer.cornerRadius = 8
     }
 }
