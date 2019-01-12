@@ -11,7 +11,14 @@ import UIKit
 
 class Utensil {
     var title: String!
-    var photoPath: String!
+    var photoPath: String! {
+        didSet {
+            FirebaseHelper().downloadImage(atPath: self.photoPath) { (image) in
+                self.photo = image
+                self.delegate?.photoDownloaded(sender: self)
+            }
+        }
+    }
     var photo: UIImage!
     var delegate: UtensilDelegate?
     

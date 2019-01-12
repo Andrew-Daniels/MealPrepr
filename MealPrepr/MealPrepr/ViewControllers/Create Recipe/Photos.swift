@@ -9,6 +9,9 @@
 import UIKit
 
 private let photoCellIdentifier = "PhotoCell"
+let readOnlyConstraintIdentifier = "readOnly"
+let createOnlyConstraintIdentifier = "createOnly"
+let bottomConstraintIdentifier = "bottomConstraint"
 
 class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoCellDelegate, RecipeDelegate {
     
@@ -18,9 +21,7 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var readOnly: Bool = false
     @IBOutlet weak var addPhotoBtn: UIButton!
     
-    @IBOutlet var activeConstraintsDuringView: [NSLayoutConstraint]!
-   
-    @IBOutlet var inactiveConstraintsDuringView: [NSLayoutConstraint]!
+    @IBOutlet var constraints: [NSLayoutConstraint]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,19 +111,29 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     override func viewDidLayoutSubviews() {
-        if let _ = recipe {
-            for c in activeConstraintsDuringView {
-                if !c.isActive {
+        super.viewDidLayoutSubviews()
+        
+        updateConstraints()
+    }
+    
+    private func updateConstraints() {
+        if readOnly {
+            for c in constraints {
+                switch (c.identifier) {
+                case readOnlyConstraintIdentifier:
                     c.isActive = true
-                }
-            }
-            for c in inactiveConstraintsDuringView {
-                if c.isActive {
+                    break
+                case createOnlyConstraintIdentifier:
                     c.isActive = false
+                    break
+                case bottomConstraintIdentifier:
+                    c.constant = 0
+                default:
+                    break
                 }
+                
+                self.view.layoutIfNeeded()
             }
-            
-            self.view.layoutIfNeeded()
         }
     }
     

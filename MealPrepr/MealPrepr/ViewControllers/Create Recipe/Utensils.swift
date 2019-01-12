@@ -14,7 +14,7 @@ private let editUtensilAlertSegueIdentifier = "editUtensil"
 private let utensilAlertSegueIdentifier = "UtensilAlert"
 private let cancelledEditSegueIdentifier = "cancelledEdit"
 
-class Utensils: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class Utensils: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UtensilDelegate {
     
     var utensils = [Utensil]()
     @IBOutlet weak var collectionView: UICollectionView!
@@ -37,7 +37,12 @@ class Utensils: MPViewController, UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: utensilCellIdentifier, for: indexPath) as! UtensilCell
         cell.isSel = true
         let u = utensils[indexPath.row]
-        cell.imageView.image = u.photo
+        if let photo = u.photo {
+           cell.imageView.image = photo
+        } else {
+            u.delegate = self
+        }
+        
         cell.titleLabel.text = u.title
         return cell
     }
@@ -52,6 +57,19 @@ class Utensils: MPViewController, UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: editUtensilAlertSegueIdentifier, sender: nil)
+    }
+    
+    func photoDownloaded(sender: Utensil) {
+        let firstIndex = utensils.firstIndex { (utensil) -> Bool in
+            if utensil.photoPath == utensil.photoPath {
+                return true
+            }
+            return false
+        }
+        guard let nonNilIndex = firstIndex else { return }
+        let index = utensils.startIndex.distance(to: nonNilIndex)
+        let indexPath = IndexPath(row: index, section: 0)
+        self.collectionView.reloadItems(at: [indexPath])
     }
     
     @IBAction func backToUtensils(segue: UIStoryboardSegue) {

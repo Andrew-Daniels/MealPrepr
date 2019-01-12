@@ -1331,7 +1331,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igk-sf-q9e">
-                                <rect key="frame" x="320" y="128.33333333333334" width="84" height="20.333333333333343"/>
+                                <rect key="frame" x="320" y="128" width="84" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1350,7 +1350,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6W-he-9lY" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                <rect key="frame" x="10" y="446" width="394" height="386"/>
+                                <rect key="frame" x="10" y="448" width="814" height="654"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1359,7 +1359,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91x-ou-DMZ">
-                                <rect key="frame" x="0.0" y="54" width="320" height="270"/>
+                                <rect key="frame" x="0.0" y="-162" width="0.0" height="270"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="fom-UO-Lcx"/>
                                     <constraint firstAttribute="height" constant="300" id="sad-bY-JCH"/>
@@ -1436,7 +1436,7 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhD-iT-m9X">
-                                <rect key="frame" x="60" y="351" width="34" height="21"/>
+                                <rect key="frame" x="37.5" y="330" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1455,7 +1455,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo4-K0-vLD">
-                                <rect key="frame" x="0.0" y="456" width="414" height="326"/>
+                                <rect key="frame" x="0.0" y="240" width="0.0" height="326"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1802,17 +1802,17 @@
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="centerX" secondItem="sh4-la-SZS" secondAttribute="centerX" id="CcZ-ct-mag"/>
                                     <constraint firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" id="FZQ-pL-Uqi"/>
                                     <constraint firstAttribute="trailing" secondItem="yab-OZ-phl" secondAttribute="trailing" id="Irn-dw-4RC"/>
-                                    <constraint firstItem="yab-OZ-phl" firstAttribute="leading" secondItem="Za6-FV-Bsk" secondAttribute="trailing" constant="5" id="KWm-Cr-xoL"/>
-                                    <constraint firstItem="yab-OZ-phl" firstAttribute="leading" secondItem="sh4-la-SZS" secondAttribute="leading" id="MdX-Q9-ZNU"/>
-                                    <constraint firstItem="yab-OZ-phl" firstAttribute="top" secondItem="sh4-la-SZS" secondAttribute="top" id="PvT-R6-r2a"/>
-                                    <constraint firstItem="yab-OZ-phl" firstAttribute="top" secondItem="Za6-FV-Bsk" secondAttribute="bottom" constant="10" id="RI9-bq-8d7"/>
+                                    <constraint firstItem="yab-OZ-phl" firstAttribute="leading" secondItem="Za6-FV-Bsk" secondAttribute="trailing" constant="5" identifier="createOnly" id="KWm-Cr-xoL"/>
+                                    <constraint firstItem="yab-OZ-phl" firstAttribute="leading" secondItem="sh4-la-SZS" secondAttribute="leading" identifier="readOnly" id="MdX-Q9-ZNU"/>
+                                    <constraint firstItem="yab-OZ-phl" firstAttribute="top" secondItem="sh4-la-SZS" secondAttribute="top" identifier="readOnly" id="PvT-R6-r2a"/>
+                                    <constraint firstItem="yab-OZ-phl" firstAttribute="top" secondItem="Za6-FV-Bsk" secondAttribute="bottom" constant="10" identifier="createOnly" id="RI9-bq-8d7"/>
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="leading" secondItem="sh4-la-SZS" secondAttribute="leading" constant="5" id="SjZ-qf-DNU">
                                         <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                                     </constraint>
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="top" secondItem="sh4-la-SZS" secondAttribute="top" constant="20" id="cTe-Ha-ayt"/>
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="centerY" secondItem="sh4-la-SZS" secondAttribute="centerY" id="fsX-4A-Mpb"/>
                                     <constraint firstAttribute="trailing" secondItem="yab-OZ-phl" secondAttribute="trailing" id="wS2-DE-fe1"/>
-                                    <constraint firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" constant="30" id="ziQ-HJ-IhD"/>
+                                    <constraint firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" constant="30" identifier="bottomConstraint" id="ziQ-HJ-IhD"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1849,7 +1849,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sh4-la-SZS" firstAttribute="bottom" secondItem="W2z-ib-uCA" secondAttribute="bottom" constant="30" id="9Pr-I6-YDy"/>
+                            <constraint firstItem="sh4-la-SZS" firstAttribute="bottom" secondItem="W2z-ib-uCA" secondAttribute="bottom" constant="30" identifier="bottomConstraint" id="9Pr-I6-YDy"/>
                             <constraint firstAttribute="trailing" secondItem="sh4-la-SZS" secondAttribute="trailing" constant="10" id="HUe-kU-SHS"/>
                             <constraint firstAttribute="bottom" secondItem="sh4-la-SZS" secondAttribute="bottom" id="Iq6-NB-5N3"/>
                             <constraint firstItem="sh4-la-SZS" firstAttribute="leading" secondItem="W2z-ib-uCA" secondAttribute="leading" constant="10" id="rn3-6s-5Im"/>
@@ -1873,8 +1873,12 @@
                     <connections>
                         <outlet property="addPhotoBtn" destination="Za6-FV-Bsk" id="lpj-EG-bny"/>
                         <outlet property="collectionView" destination="yab-OZ-phl" id="rBr-7d-8LU"/>
-                        <outletCollection property="activeConstraintsDuringView" destination="MdX-Q9-ZNU" collectionClass="NSMutableArray" id="4nt-Gl-6jP"/>
-                        <outletCollection property="inactiveConstraintsDuringView" destination="KWm-Cr-xoL" collectionClass="NSMutableArray" id="mgd-6Z-QUe"/>
+                        <outletCollection property="constraints" destination="KWm-Cr-xoL" collectionClass="NSMutableArray" id="4KE-BZ-xSk"/>
+                        <outletCollection property="constraints" destination="MdX-Q9-ZNU" collectionClass="NSMutableArray" id="IRm-hi-2Sm"/>
+                        <outletCollection property="constraints" destination="RI9-bq-8d7" collectionClass="NSMutableArray" id="PLQ-LE-msM"/>
+                        <outletCollection property="constraints" destination="PvT-R6-r2a" collectionClass="NSMutableArray" id="Hh7-Km-kSv"/>
+                        <outletCollection property="constraints" destination="ziQ-HJ-IhD" collectionClass="NSMutableArray" id="eJ1-7V-InK"/>
+                        <outletCollection property="constraints" destination="9Pr-I6-YDy" collectionClass="NSMutableArray" id="euL-5A-Dmg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTh-Px-4eu" userLabel="First Responder" sceneMemberID="firstResponder"/>
