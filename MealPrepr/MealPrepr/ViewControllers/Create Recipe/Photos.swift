@@ -19,6 +19,7 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var images = [UIImage]()
     var recipe: Recipe?
     var readOnly: Bool = false
+    var readOnlyConstraintsSet = false
     @IBOutlet weak var addPhotoBtn: UIButton!
     
     @IBOutlet var constraints: [NSLayoutConstraint]!
@@ -30,10 +31,6 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
         if UIDevice.current.userInterfaceIdiom == .pad {
             let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.scrollDirection = .horizontal
-        }
-        if readOnly {
-            addPhotoBtn.isHidden = true
-            addPhotoBtn.isEnabled = false
         }
     }
     
@@ -117,7 +114,11 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     private func updateConstraints() {
-        if readOnly {
+        if readOnly && !readOnlyConstraintsSet {
+            
+            addPhotoBtn.isHidden = true
+            addPhotoBtn.isEnabled = false
+            
             for c in constraints {
                 switch (c.identifier) {
                 case readOnlyConstraintIdentifier:
@@ -134,6 +135,9 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 
                 self.view.layoutIfNeeded()
             }
+            
+            readOnlyConstraintsSet = true
+            
         }
     }
     
