@@ -12,6 +12,14 @@ private let photosVCSegueIdentifier = "containedPhotos"
 
 class RecipeDetails: MPViewController {
     
+    enum Controller: Int {
+        case Instructions = 0
+        case Utensils = 1
+        case Ingredients = 2
+        case Reviews = 3
+        case Photos = 4
+    }
+    
     var recipe: Recipe!
     
     @IBOutlet weak var containerView: UIView!
@@ -20,10 +28,82 @@ class RecipeDetails: MPViewController {
     @IBOutlet weak var prepLabel: UILabel!
     @IBOutlet weak var cookLabel: UILabel!
     
+    private var viewControllers = [Controller: MPViewController]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let index = Controller(rawValue: segmentedControl.selectedSegmentIndex)
+        presentChildVC(atIndex: index)
+        segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
+        
         setupWithRecipe()
+    }
+    
+    private func createControllerForSelectedIndex(index: Controller?) -> MPViewController? {
+        let main = UIStoryboard(name: mainStoryboardIdentifier, bundle: nil)
+        guard let index = index else { return nil }
+        var vcIdentifier: String!
+        
+        switch (index) {
+            
+        case .Ingredients:
+            vcIdentifier = createIngredientsIdentifier
+        case .Utensils:
+            vcIdentifier = createUtensilsIdentifier
+        case .Instructions:
+            vcIdentifier = createInstructionsIdentifier
+        case .Photos:
+            vcIdentifier = createPhotosIdentifier
+        case .Reviews:
+            break
+        }
+        guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPViewController else {return nil}
+        
+        viewControllers[index] = vc
+        
+        return vc
+    }
+    
+    private func presentChildVC(atIndex: Controller?) {
+        guard let atIndex = atIndex else { return }
+        var vc = viewControllers[atIndex]
+        if vc == nil {
+            vc = createControllerForSelectedIndex(index: atIndex)
+        }
+        
+        guard let activeVC = vc else { return }
+        addChild(activeVC)
+        containerView.addSubview(activeVC.view)
+        activeVC.constrainToContainerView()
+        
+        activeVC.didMove(toParent: self)
+        
+        switch (atIndex) {
+            
+        case .Ingredients:
+            if let ingredientsVC = viewControllers[.Ingredients] as? Ingredients {
+                ingredientsVC.ingredients = recipe.ingredients
+            }
+            break
+        case .Utensils:
+            if let utensilVC = viewControllers[.Utensils] as? Utensils {
+                utensilVC.utensils = recipe.utensils
+            }
+            break
+        case .Instructions:
+            if let instructionsVC = viewControllers[.Instructions] as? Instructions {
+                instructionsVC.instructions = recipe.instructions
+            }
+            break
+        case .Photos:
+            if let photosVC = viewControllers[.Photos] as? Photos {
+                photosVC.images = recipe.photos
+            }
+            break
+        case .Reviews:
+            break
+        }
     }
 
     private func setupWithRecipe() {
@@ -37,6 +117,11 @@ class RecipeDetails: MPViewController {
     @IBAction func favoritesBtnClicked(_ sender: Any) {
     }
     @IBAction func flagBtnClicked(_ sender: Any) {
+    }
+    
+    @objc func segmentedControlIndexChanged() {
+        guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
+        presentChildVC(atIndex: index)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

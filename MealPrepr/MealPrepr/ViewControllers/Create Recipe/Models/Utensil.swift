@@ -20,7 +20,6 @@ class Utensil {
     }
     
     init(utensilData: (key: Any, value: Any)) {
-        print(utensilData)
         self.title = utensilData.key as? String
         self.photoPath = utensilData.value as? String
         FirebaseHelper().downloadImage(atPath: self.photoPath) { (image) in

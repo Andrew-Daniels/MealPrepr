@@ -8,10 +8,10 @@
 
 import UIKit
 
-private let createIngredientsIdentifier = "Create-Ingredients"
-private let createUtensilsIdentifier = "Create-Utensils"
-private let createInstructionsIdentifier = "Create-Instructions"
-private let createPhotosIdentifier = "Create-Photos"
+let createIngredientsIdentifier = "Create-Ingredients"
+let createUtensilsIdentifier = "Create-Utensils"
+let createInstructionsIdentifier = "Create-Instructions"
+let createPhotosIdentifier = "Create-Photos"
 private let containedPhotosViewControllerSegueIdentifier = "containedPhotos"
 
 public let mainStoryboardIdentifier = "Main"
