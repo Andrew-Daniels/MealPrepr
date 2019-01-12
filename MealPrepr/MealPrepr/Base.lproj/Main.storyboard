@@ -1047,9 +1047,10 @@
                                 <constraints>
                                     <constraint firstItem="ABQ-w1-IdS" firstAttribute="leading" secondItem="ff8-Qc-PfI" secondAttribute="leading" id="0gO-df-bFz"/>
                                     <constraint firstItem="eTo-Yr-ANb" firstAttribute="centerX" secondItem="ff8-Qc-PfI" secondAttribute="centerX" id="AAi-kw-nZu"/>
-                                    <constraint firstItem="ABQ-w1-IdS" firstAttribute="top" secondItem="eTo-Yr-ANb" secondAttribute="bottom" constant="10" id="H7k-U2-ETI"/>
+                                    <constraint firstItem="ABQ-w1-IdS" firstAttribute="top" secondItem="eTo-Yr-ANb" secondAttribute="bottom" constant="10" identifier="createOnly" id="H7k-U2-ETI"/>
                                     <constraint firstItem="eTo-Yr-ANb" firstAttribute="top" secondItem="ff8-Qc-PfI" secondAttribute="top" constant="20" id="hsy-t1-v9x"/>
-                                    <constraint firstAttribute="bottom" secondItem="ABQ-w1-IdS" secondAttribute="bottom" constant="30" id="yHp-pF-iKK"/>
+                                    <constraint firstItem="ABQ-w1-IdS" firstAttribute="top" secondItem="ff8-Qc-PfI" secondAttribute="top" constant="10" identifier="readOnly" id="xee-eq-Kr6"/>
+                                    <constraint firstAttribute="bottom" secondItem="ABQ-w1-IdS" secondAttribute="bottom" constant="30" identifier="bottomConstraint" id="yHp-pF-iKK"/>
                                     <constraint firstAttribute="trailing" secondItem="ABQ-w1-IdS" secondAttribute="trailing" id="zL5-WK-icw"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1057,11 +1058,16 @@
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="xee-eq-Kr6"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ff8-Qc-PfI" firstAttribute="bottom" secondItem="PTX-w0-FvH" secondAttribute="bottom" constant="30" id="1a3-hx-VuY"/>
+                            <constraint firstItem="ff8-Qc-PfI" firstAttribute="bottom" secondItem="PTX-w0-FvH" secondAttribute="bottom" constant="30" identifier="bottomConstraint" id="1a3-hx-VuY"/>
                             <constraint firstItem="ff8-Qc-PfI" firstAttribute="leading" secondItem="PTX-w0-FvH" secondAttribute="leading" constant="10" id="4tT-RN-9cu"/>
                             <constraint firstItem="ff8-Qc-PfI" firstAttribute="top" secondItem="PTX-w0-FvH" secondAttribute="top" id="NaE-Y9-Nxm"/>
                             <constraint firstItem="PTX-w0-FvH" firstAttribute="trailing" secondItem="ff8-Qc-PfI" secondAttribute="trailing" constant="10" id="scZ-H3-RhG"/>
@@ -1069,8 +1075,12 @@
                         <viewLayoutGuide key="safeArea" id="PTX-w0-FvH"/>
                     </view>
                     <connections>
-                        <outlet property="addIngredientBtn" destination="eTo-Yr-ANb" id="W3l-Ll-Tdn"/>
+                        <outlet property="addBtn" destination="eTo-Yr-ANb" id="dGF-JA-Ch2"/>
                         <outlet property="tableView" destination="ABQ-w1-IdS" id="Kpw-zI-E6h"/>
+                        <outletCollection property="constraints" destination="H7k-U2-ETI" collectionClass="NSMutableArray" id="dzJ-QU-nR5"/>
+                        <outletCollection property="constraints" destination="yHp-pF-iKK" collectionClass="NSMutableArray" id="2FV-if-EuQ"/>
+                        <outletCollection property="constraints" destination="xee-eq-Kr6" collectionClass="NSMutableArray" id="VOZ-hH-S5o"/>
+                        <outletCollection property="constraints" destination="1a3-hx-VuY" collectionClass="NSMutableArray" id="wXB-WC-eQz"/>
                         <segue destination="WlR-9H-Wwy" kind="presentation" identifier="EditIngredient" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="dQ6-iL-yST"/>
                     </connections>
                 </viewController>
@@ -1314,7 +1324,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nzO-VH-bpc">
-                                <rect key="frame" x="10" y="418" width="394" height="29"/>
+                                <rect key="frame" x="10" y="448" width="394" height="29"/>
                                 <segments>
                                     <segment title="Instructions"/>
                                     <segment title="Utensils"/>
@@ -1331,7 +1341,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igk-sf-q9e">
-                                <rect key="frame" x="320" y="128" width="84" height="20.666666666666657"/>
+                                <rect key="frame" x="320" y="143" width="84" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1344,7 +1354,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzf-am-1Yp">
-                                <rect key="frame" x="320" y="158.66666666666666" width="84" height="20.333333333333343"/>
+                                <rect key="frame" x="320" y="173.66666666666666" width="84" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1359,11 +1369,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91x-ou-DMZ">
-                                <rect key="frame" x="0.0" y="-162" width="0.0" height="270"/>
+                                <rect key="frame" x="0.0" y="54" width="320" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="fom-UO-Lcx"/>
                                     <constraint firstAttribute="height" constant="300" id="sad-bY-JCH"/>
-                                    <constraint firstAttribute="height" constant="270" id="urK-lL-dVi"/>
+                                    <constraint firstAttribute="height" constant="300" id="urK-lL-dVi"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1388,19 +1398,19 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5w-1S-0ow">
-                                <rect key="frame" x="320" y="199" width="84" height="21"/>
+                                <rect key="frame" x="320" y="214" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q0-23-leF">
-                                <rect key="frame" x="320" y="230" width="84" height="21"/>
+                                <rect key="frame" x="320" y="245" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9UX-pE-Hvx">
-                                <rect key="frame" x="320" y="189" width="94" height="0.0"/>
+                                <rect key="frame" x="320" y="204" width="94" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="DBh-JE-35B"/>
@@ -1417,7 +1427,7 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="5yz-Mz-TeB">
-                                <rect key="frame" x="10" y="364" width="44" height="44"/>
+                                <rect key="frame" x="10" y="394" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="I9k-ss-Rh2"/>
                                     <constraint firstAttribute="height" constant="44" id="j1d-qk-4Su"/>
@@ -1442,7 +1452,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="151" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXN-Aw-v3K">
-                                <rect key="frame" x="10" y="387" width="44" height="21"/>
+                                <rect key="frame" x="10" y="417" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1455,7 +1465,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo4-K0-vLD">
-                                <rect key="frame" x="0.0" y="240" width="0.0" height="326"/>
+                                <rect key="frame" x="0.0" y="486" width="414" height="296"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1871,14 +1881,14 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="300"/>
                     <connections>
-                        <outlet property="addPhotoBtn" destination="Za6-FV-Bsk" id="lpj-EG-bny"/>
+                        <outlet property="addBtn" destination="Za6-FV-Bsk" id="ijv-dl-evq"/>
                         <outlet property="collectionView" destination="yab-OZ-phl" id="rBr-7d-8LU"/>
-                        <outletCollection property="constraints" destination="KWm-Cr-xoL" collectionClass="NSMutableArray" id="4KE-BZ-xSk"/>
                         <outletCollection property="constraints" destination="MdX-Q9-ZNU" collectionClass="NSMutableArray" id="IRm-hi-2Sm"/>
                         <outletCollection property="constraints" destination="RI9-bq-8d7" collectionClass="NSMutableArray" id="PLQ-LE-msM"/>
                         <outletCollection property="constraints" destination="PvT-R6-r2a" collectionClass="NSMutableArray" id="Hh7-Km-kSv"/>
                         <outletCollection property="constraints" destination="ziQ-HJ-IhD" collectionClass="NSMutableArray" id="eJ1-7V-InK"/>
                         <outletCollection property="constraints" destination="9Pr-I6-YDy" collectionClass="NSMutableArray" id="euL-5A-Dmg"/>
+                        <outletCollection property="constraints" destination="KWm-Cr-xoL" collectionClass="NSMutableArray" id="VpP-IA-bcu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTh-Px-4eu" userLabel="First Responder" sceneMemberID="firstResponder"/>

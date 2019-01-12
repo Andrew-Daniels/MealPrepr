@@ -9,21 +9,13 @@
 import UIKit
 
 private let photoCellIdentifier = "PhotoCell"
-let readOnlyConstraintIdentifier = "readOnly"
-let createOnlyConstraintIdentifier = "createOnly"
-let bottomConstraintIdentifier = "bottomConstraint"
 
-class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoCellDelegate, RecipeDelegate {
+class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoCellDelegate, RecipeDelegate {
     
     @IBOutlet weak var collectionView: MPCollectionView!
     var images = [UIImage]()
     var recipe: Recipe?
-    var readOnly: Bool = false
-    var readOnlyConstraintsSet = false
-    @IBOutlet weak var addPhotoBtn: UIButton!
-    
-    @IBOutlet var constraints: [NSLayoutConstraint]!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -105,40 +97,6 @@ class Photos: MPViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func photoDownloaded(photoPath index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         collectionView.reloadItems(at: [indexPath])
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        updateConstraints()
-    }
-    
-    private func updateConstraints() {
-        if readOnly && !readOnlyConstraintsSet {
-            
-            addPhotoBtn.isHidden = true
-            addPhotoBtn.isEnabled = false
-            
-            for c in constraints {
-                switch (c.identifier) {
-                case readOnlyConstraintIdentifier:
-                    c.isActive = true
-                    break
-                case createOnlyConstraintIdentifier:
-                    c.isActive = false
-                    break
-                case bottomConstraintIdentifier:
-                    c.constant = 0
-                default:
-                    break
-                }
-                
-                self.view.layoutIfNeeded()
-            }
-            
-            readOnlyConstraintsSet = true
-            
-        }
     }
     
 //    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

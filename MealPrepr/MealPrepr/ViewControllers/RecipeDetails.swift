@@ -84,22 +84,22 @@ class RecipeDetails: MPViewController {
         case .Ingredients:
             if let ingredientsVC = viewControllers[.Ingredients] as? Ingredients {
                 ingredientsVC.ingredients = recipe.ingredients
+                ingredientsVC.readOnly = true
             }
             break
         case .Utensils:
             if let utensilVC = viewControllers[.Utensils] as? Utensils {
                 utensilVC.utensils = recipe.utensils
+                //utensilVC.readOnly = true
             }
             break
         case .Instructions:
             if let instructionsVC = viewControllers[.Instructions] as? Instructions {
                 instructionsVC.instructions = recipe.instructions
+                //instructionsVC.readOnly = true
             }
             break
         case .Photos:
-            if let photosVC = viewControllers[.Photos] as? Photos {
-                photosVC.images = recipe.photos
-            }
             break
         case .Reviews:
             break

@@ -14,9 +14,8 @@ private let ingredientAlertSegueIdentifier = "ingredientAlert"
 private let editIngredientAlertSegueIdentifier = "EditIngredient"
 private let cancelledEditSegueIdentifier = "cancelledEdit"
 
-class Ingredients: MPViewController, UITableViewDelegate, UITableViewDataSource {
+class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var addIngredientBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var ingredients = [Ingredient]()
     var instructions: [Instruction]!
