@@ -14,7 +14,7 @@ private let editInstructionAlertSegueIdentifier = "EditInstruction"
 let backToInstructionsSegueIdentifier = "backToInstructions"
 private let ingredientAlertSegueIdentifier = "ingredientAlert"
 
-class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource {
+class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var availableIngredients = [Ingredient]()
@@ -45,23 +45,28 @@ class Instructions: MPViewController, UITableViewDelegate, UITableViewDataSource
         cell.instructionLabel.text = instruction.instruction
         cell.frame = tableView.bounds;
         cell.layoutIfNeeded()
-        //cell.collectionView.reloadData()
         
         cell.collectionViewHeightConstraint.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height;
+        
+        if readOnly {
+            cell.selectionStyle = .none
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: editInstructionAlertSegueIdentifier, sender: instructions[indexPath.row])
-        instructionBeingEdited = instructions[indexPath.row]
-        instructionIndexBeingEdited = indexPath
-        isEditingExistingInstruction = true
-        tableView.deselectRow(at: indexPath, animated: true)
+        if !readOnly {
+            performSegue(withIdentifier: editInstructionAlertSegueIdentifier, sender: instructions[indexPath.row])
+            instructionBeingEdited = instructions[indexPath.row]
+            instructionIndexBeingEdited = indexPath
+            isEditingExistingInstruction = true
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return !readOnly
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

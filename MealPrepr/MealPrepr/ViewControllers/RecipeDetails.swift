@@ -90,13 +90,13 @@ class RecipeDetails: MPViewController {
         case .Utensils:
             if let utensilVC = viewControllers[.Utensils] as? Utensils {
                 utensilVC.utensils = recipe.utensils
-                //utensilVC.readOnly = true
+                utensilVC.readOnly = true
             }
             break
         case .Instructions:
             if let instructionsVC = viewControllers[.Instructions] as? Instructions {
                 instructionsVC.instructions = recipe.instructions
-                //instructionsVC.readOnly = true
+                instructionsVC.readOnly = true
             }
             break
         case .Photos:
@@ -107,11 +107,18 @@ class RecipeDetails: MPViewController {
     }
 
     private func setupWithRecipe() {
-        if let recipe = recipe {
-            let prep = recipe.totalPrepTime
-            self.prepLabel.text = "\(prep.hours)h\(prep.minutes)m"
-            let cook = recipe.totalCookTime
-            self.cookLabel.text = "\(cook.hours)h\(cook.minutes)m"
+        if let r = recipe {
+            
+            if r.totalCookTime.hours == 0 {
+                self.cookLabel.text = "\(r.totalCookTime.minutes)m"
+            } else {
+                self.cookLabel.text = "\(r.totalCookTime.hours)hr\(r.totalCookTime.minutes)m"
+            }
+            if r.totalPrepTime.hours == 0 {
+                self.prepLabel.text = "\(r.totalPrepTime.minutes)m"
+            } else {
+                self.prepLabel.text = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m"
+            }
         }
     }
     @IBAction func favoritesBtnClicked(_ sender: Any) {

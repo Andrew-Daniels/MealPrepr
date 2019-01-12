@@ -39,11 +39,15 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ingredientCellIdentifier) as! IngredientCell
         cell.ingredient = ingredients[indexPath.row]
+        
+        if readOnly {
+            cell.selectionStyle = .none
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return !readOnly
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -66,11 +70,13 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: editIngredientAlertSegueIdentifier, sender: ingredients[indexPath.row])
-        ingredientBeingEdited = ingredients[indexPath.row]
-        ingredientIndexBeingEdited = indexPath
-        isEditingExistingIngredient = true
-        tableView.deselectRow(at: indexPath, animated: true)
+        if !readOnly {
+            performSegue(withIdentifier: editIngredientAlertSegueIdentifier, sender: ingredients[indexPath.row])
+            ingredientBeingEdited = ingredients[indexPath.row]
+            ingredientIndexBeingEdited = indexPath
+            isEditingExistingIngredient = true
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 
     @IBAction func addIngredientBtnClicked(_ sender: Any) {

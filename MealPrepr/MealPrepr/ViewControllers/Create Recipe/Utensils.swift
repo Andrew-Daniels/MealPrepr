@@ -14,7 +14,7 @@ private let editUtensilAlertSegueIdentifier = "editUtensil"
 private let utensilAlertSegueIdentifier = "UtensilAlert"
 private let cancelledEditSegueIdentifier = "cancelledEdit"
 
-class Utensils: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UtensilDelegate {
+class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UtensilDelegate {
     
     var utensils = [Utensil]()
     @IBOutlet weak var collectionView: UICollectionView!
@@ -56,7 +56,9 @@ class Utensils: MPViewController, UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: editUtensilAlertSegueIdentifier, sender: nil)
+        if !readOnly {
+            performSegue(withIdentifier: editUtensilAlertSegueIdentifier, sender: nil)
+        }
     }
     
     func photoDownloaded(sender: Utensil) {
