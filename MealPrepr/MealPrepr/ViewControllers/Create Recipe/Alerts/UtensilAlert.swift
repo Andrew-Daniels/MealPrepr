@@ -13,8 +13,10 @@ private let utensilCellIdentifier = "utensilCell"
 
 class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var roundedUIView: RoundedUIView!
     var availableUtensils: [Utensil]!
+    var filteredUtensils: [Utensil]!
     var selectedUtensils = [Utensil]()
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -22,6 +24,7 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
         super.viewDidLoad()
         
         setupAlertWithUtensil()
+        self.searchBar.showsCancelButton = true
     }
     
     
@@ -38,12 +41,22 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let f = self.filteredUtensils {
+            return f.count
+        }
         return availableUtensils.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: utensilCellIdentifier, for: indexPath) as! UtensilCell
-        let u = availableUtensils[indexPath.row]
+        
+        var u = Utensil()
+        if let f = self.filteredUtensils {
+            u = f[indexPath.row]
+        } else {
+            u = availableUtensils[indexPath.row]
+        }
+        
         cell.titleLabel.text = u.title
         if let image = u.photo {
             cell.imageView.image = image
@@ -66,7 +79,13 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let u = availableUtensils[indexPath.row]
+        var u = Utensil()
+        if let f = self.filteredUtensils {
+            u = f[indexPath.row]
+        } else {
+            u = availableUtensils[indexPath.row]
+        }
+        
         if selectedUtensils.contains(where: { (utensil) -> Bool in
             if utensil.photoPath == u.photoPath {
                 return true
@@ -84,6 +103,38 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
             selectedUtensils.append(u)
             self.collectionView.reloadItems(at: [indexPath])
         }
+        
+        self.endEditing()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.endEditing()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        filteredUtensils = nil
+        refreshCollection()
+        self.endEditing()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            filteredUtensils = nil
+            refreshCollection()
+            return
+        }
+        filteredUtensils = availableUtensils.filter({ (utensil) -> Bool in
+            if utensil.title.contains(searchText) {
+                return true
+            }
+            return false
+        })
+        refreshCollection()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
     }
     
     func photoDownloaded(sender: Utensil) {
@@ -105,6 +156,15 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
     
     func setupAlertWithUtensil() {
         
+    }
+    
+    func refreshCollection() {
+        self.collectionView.reloadData()
+    }
+    
+    override func endEditing() {
+        super.endEditing()
+        self.searchBar.resignFirstResponder()
     }
 }
 

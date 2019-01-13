@@ -15,7 +15,8 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var collectionView: MPCollectionView!
     var images = [UIImage]()
     var recipe: Recipe?
-
+    @IBOutlet weak var roundedUIView: RoundedUIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +24,10 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         if UIDevice.current.userInterfaceIdiom == .pad {
             let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.scrollDirection = .horizontal
+        }
+        
+        if readOnly {
+            roundedUIView.hasEffectView = false
         }
     }
     
@@ -52,6 +57,10 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if readOnly {
+            return CGSize.init(width: 200, height: 200)
+        }
         let iv = UIImageView()
         if let recipe = recipe {
             iv.image = recipe.photoAtIndex(index: indexPath.row)
@@ -72,6 +81,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         collectionView.reloadData()
     }
     @IBAction func addPhotoBtnClicked(_ sender: Any) {
+        endEditing()
         showImagePickerController()
     }
     

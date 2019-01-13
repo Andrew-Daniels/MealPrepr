@@ -77,6 +77,7 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        endEditing()
         super.prepare(for: segue, sender: sender)
         if segue.identifier == instructionAlertSegueIdentifier {
             let alert = segue.destination as! InstructionAlert

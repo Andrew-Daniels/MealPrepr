@@ -110,14 +110,14 @@ class RecipeDetails: MPViewController {
         if let r = recipe {
             
             if r.totalCookTime.hours == 0 {
-                self.cookLabel.text = "\(r.totalCookTime.minutes)m"
+                self.cookLabel.text = "\(r.totalCookTime.minutes)m cook"
             } else {
-                self.cookLabel.text = "\(r.totalCookTime.hours)hr\(r.totalCookTime.minutes)m"
+                self.cookLabel.text = "\(r.totalCookTime.hours)hr\(r.totalCookTime.minutes)m cook"
             }
             if r.totalPrepTime.hours == 0 {
-                self.prepLabel.text = "\(r.totalPrepTime.minutes)m"
+                self.prepLabel.text = "\(r.totalPrepTime.minutes)m prep"
             } else {
-                self.prepLabel.text = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m"
+                self.prepLabel.text = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m prep"
             }
         }
     }

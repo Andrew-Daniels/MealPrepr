@@ -48,12 +48,20 @@ class RoundedUIView: UIView {
         }
     }
     
+    public var hasEffectView: Bool = true {
+        didSet {
+            if !hasEffectView && self.effectView != nil {
+                self.effectView.removeFromSuperview()
+            }
+        }
+    }
+    
     private var effectView: UIVisualEffectView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if (self.effect == nil) {
+        if (self.effectView == nil && hasEffectView) {
             self.effect = .dark
         }
         if self.effectView != nil {

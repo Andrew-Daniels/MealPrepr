@@ -129,6 +129,7 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        endEditing()
         if segue.identifier == ingredientAlertSegueIdentifier {
             if let alertVC = segue.destination as? IngredientAlert {
                 alertVC.availableIngredients = ingredients
@@ -140,5 +141,4 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
             alertVC.ingredient = sender as? Ingredient
         }
     }
-    
 }

@@ -61,6 +61,13 @@ class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UIColle
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if readOnly {
+            return CGSize.init(width: 80, height: 100)
+        }
+        return CGSize.init(width: 120, height: 130)
+    }
+    
     func photoDownloaded(sender: Utensil) {
         let firstIndex = utensils.firstIndex { (utensil) -> Bool in
             if utensil.photoPath == utensil.photoPath {
@@ -90,12 +97,9 @@ class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UIColle
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == utensilAlertSegueIdentifier {
-            if let alertVC = segue.destination as? UtensilAlert {
-                alertVC.availableUtensils = availableUtensils
-            }
-        }
-        if segue.identifier == editUtensilAlertSegueIdentifier {
+        endEditing()
+        if segue.identifier == utensilAlertSegueIdentifier ||
+            segue.identifier == editUtensilAlertSegueIdentifier {
             if let alertVC = segue.destination as? UtensilAlert {
                 alertVC.availableUtensils = availableUtensils
                 alertVC.selectedUtensils = utensils

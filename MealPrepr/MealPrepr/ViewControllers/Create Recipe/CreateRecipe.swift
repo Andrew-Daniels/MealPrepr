@@ -120,6 +120,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     @objc func segmentedControlIndexChanged() {
         guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         presentChildVC(atIndex: index)
+        self.endEditing()
     }
     
     func presentVC(atIndex: Controller) {
@@ -273,5 +274,13 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                 }
             }
         }
+    }
+    
+    override func endEditing() {
+        super.endEditing()
+        
+        titleTextField.resignFirstResponder()
+        caloriesTextField.resignFirstResponder()
+        servingsTextField.resignFirstResponder()
     }
 }

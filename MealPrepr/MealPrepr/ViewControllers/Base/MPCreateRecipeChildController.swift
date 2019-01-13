@@ -54,4 +54,10 @@ class MPCreateRecipeChildController: MPViewController {
             
         }
     }
+    
+    override func endEditing() {
+        if let parent = self.parent as? MPViewController {
+            parent.endEditing()
+        }
+    }
 }

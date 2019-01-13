@@ -155,4 +155,10 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             }
         })
     }
+    
+    func endEditing() {
+        if self.isEditing {
+            self.view.endEditing(true)
+        }
+    }
 }
