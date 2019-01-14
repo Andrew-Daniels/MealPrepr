@@ -279,8 +279,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     override func endEditing() {
         super.endEditing()
         
-        titleTextField.resignFirstResponder()
-        caloriesTextField.resignFirstResponder()
-        servingsTextField.resignFirstResponder()
+        let _ = titleTextField.resignFirstResponder()
+        let _ = caloriesTextField.resignFirstResponder()
+        let _ = servingsTextField.resignFirstResponder()
     }
 }

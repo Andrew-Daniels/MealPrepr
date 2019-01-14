@@ -18,6 +18,7 @@ class Recipe {
     var utensils: [Utensil]!
     var instructions: [Instruction]!
     var photos: [UIImage]!
+    var dateCreated: Date!
     private var downloadedPhotos: [String: UIImage]!
     var creatorUID: String!
     var photoPaths: [String]!
@@ -127,7 +128,8 @@ class Recipe {
                 "Ingredients": ingredientsArray,
                 "Utensils": utensilArray,
                 "Instructions": instructionsArray,
-                "Photos": photoPaths
+                "Photos": photoPaths,
+                "DateCreated": dateCreated.description
             ]
         }
     }
@@ -166,71 +168,79 @@ class Recipe {
     }
     
     init(recipeData: (key: Any, value: Any)) {
-        
-            self.GUID = recipeData.key as? String // Creator's username
-            if let recipeValue = recipeData.value as? [String: Any] {
-                if let ingredients = recipeValue["Ingredients"] as? [[String: Any]] {
-                    var recipeIngredients = [Ingredient]()
-                    for ingredient in ingredients {
-                        let i = Ingredient()
-                        i.title = ingredient["Title"] as? String
-                        i.quantity = Decimal(string: ingredient["Quantity"] as? String ?? "")
-                        i.unit = ingredient["Unit"] as? String
-                        recipeIngredients.append(i)
-                    }
-                    self.ingredients = recipeIngredients
-                }
-                if let instructions = recipeValue["Instructions"] as? [[String: Any]] {
-                    var recipeInstructions = [Instruction]()
-                    for instruction in instructions {
-                        let i = Instruction()
-                        i.instruction = instruction["Instruction"] as? String
-                        i.timeInMinutes = instruction["TimeInMinutes"] as? Int
-                        if let type = instruction["Type"] as? Int {
-                            i.type = Instruction.CookType(rawValue: type) ?? .Prep
-                        }
-                        let ingredientIndexes = instruction["Ingredients"] as? [Int]
-                        i.setIngredientsWithIngredientArray(ingredientIndexes: ingredientIndexes, availableIngredients: self.ingredients)
-                        recipeInstructions.append(i)
-                    }
-                    self.instructions = recipeInstructions
-                }
-                if let utensils = recipeValue["Utensils"] as? [String] {
-                    var array = [Utensil]()
-                    for utensil in utensils {
-                        let u = Utensil()
-                        u.title = utensil
-                        FirebaseHelper().loadUtensil(utensil: u) { (success) in
-                            if success {
-                                self.utensilDelegate?.photoDownloaded(sender: u)
-                            }
-                        }
-                        array.append(u)
-                    }
-                    self.utensils = array
-                }
-                if let photoPaths = recipeValue["Photos"] as? [String] {
-                    self.photoPaths = photoPaths
-                    self.downloadedPhotos = [String: UIImage]()
-                    for (index, path) in self.photoPaths.enumerated() {
-                        FirebaseHelper().downloadImage(atPath: path) { (image) in
-                            self.downloadedPhotos[path] = image
-                            self.recipeDelegate?.photoDownloaded(sender: self)
-                            self.recipeDelegate?.photoDownloaded(photoPath: index)
-                        }
-                    }
-                }
-                if let caloriesPerServing = recipeValue["CaloriesPerServing"] as? String,
-                    let numServings = recipeValue["NumServings"] as? String,
-                    let title = recipeValue["Title"] as? String {
-                    self.title = title
-                    self.numServings = numServings
-                    self.calServing = caloriesPerServing
-                }
-                if let creatorUID = recipeValue["Creator"] as? String {
-                    self.creatorUID = creatorUID
+        self.GUID = recipeData.key as? String // Creator's username
+        if let recipeValue = recipeData.value as? [String: Any] {
+            if let dateCreated = recipeValue["DateCreated"] as? String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+                self.dateCreated = dateFormatter.date(from: dateCreated)
+                if self.dateCreated == nil {
+                    dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
+                    self.dateCreated = dateFormatter.date(from: dateCreated)
                 }
             }
+            if let ingredients = recipeValue["Ingredients"] as? [[String: Any]] {
+                var recipeIngredients = [Ingredient]()
+                for ingredient in ingredients {
+                    let i = Ingredient()
+                    i.title = ingredient["Title"] as? String
+                    i.quantity = Decimal(string: ingredient["Quantity"] as? String ?? "")
+                    i.unit = ingredient["Unit"] as? String
+                    recipeIngredients.append(i)
+                }
+                self.ingredients = recipeIngredients
+            }
+            if let instructions = recipeValue["Instructions"] as? [[String: Any]] {
+                var recipeInstructions = [Instruction]()
+                for instruction in instructions {
+                    let i = Instruction()
+                    i.instruction = instruction["Instruction"] as? String
+                    i.timeInMinutes = instruction["TimeInMinutes"] as? Int
+                    if let type = instruction["Type"] as? Int {
+                        i.type = Instruction.CookType(rawValue: type) ?? .Prep
+                    }
+                    let ingredientIndexes = instruction["Ingredients"] as? [Int]
+                    i.setIngredientsWithIngredientArray(ingredientIndexes: ingredientIndexes, availableIngredients: self.ingredients)
+                    recipeInstructions.append(i)
+                }
+                self.instructions = recipeInstructions
+            }
+            if let utensils = recipeValue["Utensils"] as? [String] {
+                var array = [Utensil]()
+                for utensil in utensils {
+                    let u = Utensil()
+                    u.title = utensil
+                    FirebaseHelper().loadUtensil(utensil: u) { (success) in
+                        if success {
+                            self.utensilDelegate?.photoDownloaded(sender: u)
+                        }
+                    }
+                    array.append(u)
+                }
+                self.utensils = array
+            }
+            if let photoPaths = recipeValue["Photos"] as? [String] {
+                self.photoPaths = photoPaths
+                self.downloadedPhotos = [String: UIImage]()
+                for (index, path) in self.photoPaths.enumerated() {
+                    FirebaseHelper().downloadImage(atPath: path) { (image) in
+                        self.downloadedPhotos[path] = image
+                        self.recipeDelegate?.photoDownloaded(sender: self)
+                        self.recipeDelegate?.photoDownloaded(photoPath: index)
+                    }
+                }
+            }
+            if let caloriesPerServing = recipeValue["CaloriesPerServing"] as? String,
+                let numServings = recipeValue["NumServings"] as? String,
+                let title = recipeValue["Title"] as? String {
+                self.title = title
+                self.numServings = numServings
+                self.calServing = caloriesPerServing
+            }
+            if let creatorUID = recipeValue["Creator"] as? String {
+                self.creatorUID = creatorUID
+            }
+        }
     }
     
     func photoAtIndex(index: Int) -> UIImage? {
@@ -244,6 +254,7 @@ class Recipe {
     
     func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         if let creatorUID = creatorUID {
+            self.dateCreated = Date()
             FirebaseHelper().saveRecipe(recipe: self, userId: creatorUID) { (success) in
                 completionHandler(success)
             }
