@@ -1473,7 +1473,7 @@
                                 <state key="normal" image="Flag_Black"/>
                                 <state key="highlighted" image="Flag_White"/>
                                 <connections>
-                                    <action selector="flagBtnClicked:" destination="Jiq-mb-JvP" eventType="touchUpInside" id="t7x-RJ-ySJ"/>
+                                    <action selector="flagBtnClicked:" destination="Jiq-mb-JvP" eventType="touchUpInside" id="6pZ-6k-ega"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo4-K0-vLD">
@@ -1696,11 +1696,14 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="caloriesServingLabel" destination="Icy-b0-bJf" id="He5-7R-j4U"/>
                         <outlet property="containerView" destination="wo4-K0-vLD" id="9nh-xE-9Db"/>
                         <outlet property="cookLabel" destination="igk-sf-q9e" id="h1c-cB-DlO"/>
+                        <outlet property="dateCreatedLabel" destination="KEG-2t-MIq" id="Z4R-lx-9Ra"/>
                         <outlet property="likesLabel" destination="oXN-Aw-v3K" id="CnC-wc-ZDU"/>
                         <outlet property="prepLabel" destination="E5w-1S-0ow" id="d2A-DG-mzb"/>
                         <outlet property="segmentedControl" destination="nzO-VH-bpc" id="BFt-xD-jfM"/>
+                        <outlet property="servingLabel" destination="Oh1-Ie-Rg5" id="jIF-E6-zgd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKV-UK-t8A" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -27,6 +27,9 @@ class RecipeDetails: MPViewController {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var prepLabel: UILabel!
     @IBOutlet weak var cookLabel: UILabel!
+    @IBOutlet weak var dateCreatedLabel: UILabel!
+    @IBOutlet weak var servingLabel: UILabel!
+    @IBOutlet weak var caloriesServingLabel: UILabel!
     
     private var viewControllers = [Controller: MPViewController]()
     
@@ -58,7 +61,7 @@ class RecipeDetails: MPViewController {
         case .Reviews:
             break
         }
-        guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPViewController else {return nil}
+        guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPViewController else { return nil }
         
         viewControllers[index] = vc
         
@@ -108,7 +111,6 @@ class RecipeDetails: MPViewController {
 
     private func setupWithRecipe() {
         if let r = recipe {
-            
             if r.totalCookTime.hours == 0 {
                 self.cookLabel.text = "\(r.totalCookTime.minutes)m cook"
             } else {
@@ -119,6 +121,11 @@ class RecipeDetails: MPViewController {
             } else {
                 self.prepLabel.text = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m prep"
             }
+            if let d = r.dateCreated {
+                self.dateCreatedLabel.text = "Date Created: \(d.detail)"
+            }
+            self.servingLabel.text = r.numServings
+            self.caloriesServingLabel.text = r.calServing
         }
     }
     @IBAction func favoritesBtnClicked(_ sender: Any) {

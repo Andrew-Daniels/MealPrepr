@@ -48,6 +48,7 @@
 		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
 		3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */; };
 		3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */; };
+		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		31B9572521E0789D00D15CCD /* RecipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572421E0789D00D15CCD /* RecipeDelegate.swift */; };
 		31B9572721E120AC00D15CCD /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572621E120AC00D15CCD /* Loading.swift */; };
 		31B9572921E1351A00D15CCD /* PhotoCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */; };
@@ -123,6 +124,7 @@
 		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
 		3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionView.swift; sourceTree = "<group>"; };
 		3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipe.swift; sourceTree = "<group>"; };
+		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		31B9572421E0789D00D15CCD /* RecipeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDelegate.swift; sourceTree = "<group>"; };
 		31B9572621E120AC00D15CCD /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellDelegate.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		310D30D321B74DE200D0E079 /* MealPrepr */ = {
 			isa = PBXGroup;
 			children = (
+				3193138C21EC14F500DBF55B /* Extensions */,
 				3171CAEC21BCCDCC0026CC18 /* Cells */,
 				31D8093F21B8C61E00555CBE /* Fonts */,
 				31D8093C21B8BEB300555CBE /* Protocols */,
@@ -346,6 +349,14 @@
 				3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		3193138C21EC14F500DBF55B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3193138D21EC150800DBF55B /* DateExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		31D8093C21B8BEB300555CBE /* Protocols */ = {
@@ -559,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */,
 				31B9573121EA479C00D15CCD /* MPCreateRecipeChildController.swift in Sources */,
 				310D30FE21B7618A00D0E079 /* ValidationHelper.swift in Sources */,
 				310D30F821B74FD900D0E079 /* RoundedUIView.swift in Sources */,
