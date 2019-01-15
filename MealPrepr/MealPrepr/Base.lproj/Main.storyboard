@@ -485,9 +485,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="MhW-qy-BEt" id="g1A-4P-6sT"/>
+                        <segue destination="Doe-k8-0gA" kind="unwind" identifier="backToSignUp" unwindAction="backToSignUpWithSegue:" id="CcL-wP-y4R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeK-Mu-OPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Doe-k8-0gA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3326.0869565217395" y="1553.5714285714284"/>
         </scene>
@@ -2993,7 +2995,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="9oo-f0-IPD"/>
         <segue reference="1mD-6x-Zvs"/>
-        <segue reference="K7L-9q-dtF"/>
+        <segue reference="a1X-fi-h5r"/>
         <segue reference="tf5-SY-mbG"/>
         <segue reference="3Tg-Qa-sNK"/>
     </inferredMetricsTieBreakers>

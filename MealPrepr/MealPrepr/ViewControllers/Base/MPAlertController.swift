@@ -42,7 +42,13 @@ class MPAlertController {
             title = "Account Required"
             actionTitle = "Create an Account"
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let action = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                if let vc = presenter as? MPViewController {
+                    if let tabVC = vc.tabBarController, tabVC.selectedIndex != 0 {
+                        tabVC.selectedIndex = 0
+                    }
+                }
+            }
             let createAccountAction = UIAlertAction(title: actionTitle, style: .default) { (action) in
                 if let vc = presenter as? MPViewController {
                     vc.createAccountBtnClicked()
