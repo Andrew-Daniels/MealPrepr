@@ -1,0 +1,34 @@
+//
+//  Favorites.swift
+//  MealPrepr
+//
+//  Created by Andrew Daniels on 1/14/19.
+//  Copyright © 2019 Andrew Daniels. All rights reserved.
+//
+
+import UIKit
+
+private let categoryAlertSegueIdentifier = "CategoryAlert"
+
+class Categories: MPViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func backToCategories(segue: UIStoryboardSegue) {
+    }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

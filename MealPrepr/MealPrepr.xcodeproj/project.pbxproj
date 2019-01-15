@@ -49,6 +49,8 @@
 		3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */; };
 		3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
+		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
+		3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193139221ED682700DBF55B /* CategoryAlert.swift */; };
 		31B9572521E0789D00D15CCD /* RecipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572421E0789D00D15CCD /* RecipeDelegate.swift */; };
 		31B9572721E120AC00D15CCD /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572621E120AC00D15CCD /* Loading.swift */; };
 		31B9572921E1351A00D15CCD /* PhotoCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */; };
@@ -125,6 +127,8 @@
 		3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionView.swift; sourceTree = "<group>"; };
 		3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipe.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		3193139221ED682700DBF55B /* CategoryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAlert.swift; sourceTree = "<group>"; };
 		31B9572421E0789D00D15CCD /* RecipeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDelegate.swift; sourceTree = "<group>"; };
 		31B9572621E120AC00D15CCD /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellDelegate.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 		310D30FC21B75C8600D0E079 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3193139121ED680C00DBF55B /* Alerts */,
 				310D026421C0814300EA8BA0 /* Admin */,
 				310D026321C0813400EA8BA0 /* Tabs */,
 				310D026221C0811C00EA8BA0 /* Navigation */,
@@ -339,6 +344,7 @@
 				312F5A3721BC51120017B534 /* Home.swift */,
 				31B9572621E120AC00D15CCD /* Loading.swift */,
 				31B9572A21E2755D00D15CCD /* RecipeDetails.swift */,
+				3193138F21ED66A600DBF55B /* Categories.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -357,6 +363,14 @@
 				3193138D21EC150800DBF55B /* DateExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3193139121ED680C00DBF55B /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				3193139221ED682700DBF55B /* CategoryAlert.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		31D8093C21B8BEB300555CBE /* Protocols */ = {
@@ -603,6 +617,7 @@
 				310D027121C0B0DD00EA8BA0 /* UtensilCell.swift in Sources */,
 				310D026F21C0967800EA8BA0 /* Ingredient.swift in Sources */,
 				3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */,
+				3193139021ED66A600DBF55B /* Categories.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
 				310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */,
 				31B9572B21E2755D00D15CCD /* RecipeDetails.swift in Sources */,
@@ -616,6 +631,7 @@
 				310D027521C0B4DF00EA8BA0 /* UtensilAlert.swift in Sources */,
 				31B9572D21E6FBF000D15CCD /* Utensil.swift in Sources */,
 				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,
+				3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */,
 				31B9572F21E6FEBC00D15CCD /* UtensilDelegate.swift in Sources */,
 				310D027B21C1FEFE00EA8BA0 /* PhotoCell.swift in Sources */,
 				3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */,

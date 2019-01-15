@@ -68,12 +68,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let recipe = recipes[indexPath.row]
-        
-        let main = UIStoryboard.init(name: "Main", bundle: nil)
-        let recipeDetailsVC = main.instantiateViewController(withIdentifier: recipeDetailsStoryboardIdentifier) as! RecipeDetails
-        recipeDetailsVC.recipe = recipe
-        recipeDetailsVC.navigationItem.title = recipe.title
-        self.navigationController?.pushViewController(recipeDetailsVC, animated: true)
+        self.showRecipeDetails(recipe: recipe)
     }
     
     func updateSearchResults(for searchController: UISearchController) {

@@ -156,6 +156,14 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         })
     }
     
+    func showRecipeDetails(recipe: Recipe) {
+        let main = UIStoryboard.init(name: "Main", bundle: nil)
+        let recipeDetailsVC = main.instantiateViewController(withIdentifier: recipeDetailsStoryboardIdentifier) as! RecipeDetails
+        recipeDetailsVC.recipe = recipe
+        recipeDetailsVC.navigationItem.title = recipe.title
+        self.navigationController?.pushViewController(recipeDetailsVC, animated: true)
+    }
+    
     func endEditing() {
         if self.isEditing {
             self.view.endEditing(true)
