@@ -460,6 +460,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kq1-Zm-ioj">
                                 <rect key="frame" x="158.66666666666666" y="150" width="97" height="24"/>
                                 <state key="normal" title="Favorites" image="Flag_White"/>
+                                <connections>
+                                    <action selector="favoritesBtnClicked:" destination="QfP-Ah-PkY" eventType="touchUpInside" id="dRi-3e-rV8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -480,6 +483,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="MhW-qy-BEt" id="g1A-4P-6sT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeK-Mu-OPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -503,11 +509,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8J-Mw-tfw" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="41" width="280" height="50"/>
+                                        <rect key="frame" x="30" y="41" width="240" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ija-AJ-bcP"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Category Name"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dE6-dx-0Cx">
                                         <rect key="frame" x="0.0" y="106" width="150" height="44"/>
@@ -539,10 +548,10 @@
                                     <constraint firstAttribute="bottom" secondItem="0zo-hd-Qs1" secondAttribute="bottom" id="V0C-Zn-lBk"/>
                                     <constraint firstItem="dE6-dx-0Cx" firstAttribute="height" secondItem="0zo-hd-Qs1" secondAttribute="height" id="drh-7F-mHi"/>
                                     <constraint firstItem="dE6-dx-0Cx" firstAttribute="leading" secondItem="3Bq-U2-xXe" secondAttribute="leading" id="hBw-Yn-Mta"/>
-                                    <constraint firstAttribute="trailing" secondItem="U8J-Mw-tfw" secondAttribute="trailing" constant="10" id="ihJ-FG-GHz"/>
+                                    <constraint firstAttribute="trailing" secondItem="U8J-Mw-tfw" secondAttribute="trailing" constant="30" id="ihJ-FG-GHz"/>
                                     <constraint firstItem="0zo-hd-Qs1" firstAttribute="leading" secondItem="dE6-dx-0Cx" secondAttribute="trailing" id="oUi-rz-Ho9"/>
                                     <constraint firstAttribute="width" constant="300" id="pJc-PI-VBl"/>
-                                    <constraint firstItem="U8J-Mw-tfw" firstAttribute="leading" secondItem="3Bq-U2-xXe" secondAttribute="leading" constant="10" id="rmy-tW-0RE"/>
+                                    <constraint firstItem="U8J-Mw-tfw" firstAttribute="leading" secondItem="3Bq-U2-xXe" secondAttribute="leading" constant="30" id="rmy-tW-0RE"/>
                                     <constraint firstAttribute="bottom" secondItem="dE6-dx-0Cx" secondAttribute="bottom" id="tNc-CB-4oX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

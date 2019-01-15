@@ -35,6 +35,15 @@ class FirebaseHelper {
         }
     }
     
+    public func loadRecipe(guid: String, completionHandler: @escaping (_ isResponse : Recipe) -> Void) {
+        let path = "Recipes/\(guid)"
+        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String : Any] {
+                completionHandler(Recipe(guid: guid, recipeValue: value))
+            }
+        }
+    }
+    
     public func loadUtensil(utensil: Utensil, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         guard let title = utensil.title else { return }
         let path = "Utensils/"
@@ -131,6 +140,7 @@ class FirebaseHelper {
             }
         }
     }
+    
     public func saveAccount(account: Account) {
         if let username = account.username,
             let UID = account.UID {
@@ -163,4 +173,21 @@ class FirebaseHelper {
         }
     }
     
+    public func loadCategories(account: Account) {
+        if let UID = account.UID {
+            let path = "Accounts/\(UID)/Categories"
+            database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                if let value = snapshot.value as? [String] {
+                    account.recipeCategories = value
+                }
+            }
+        }
+    }
+    
+    public func saveCategory(account: Account) {
+        if let UID = account.UID {
+            let path = "Accounts/\(UID)/Categories"
+            database.child(path).setValue(account.recipeCategories)
+        }
+    }
 }

@@ -10,6 +10,18 @@ import UIKit
 
 struct ValidationHelper {
     
+    public static func validateCategory(account: Account, category: String?) -> String? {
+        if let errorMsg = self.checkIfEmpty(text: category) {
+            return errorMsg
+        }
+        
+        if account.recipeCategories.contains(category!) {
+            return ErrorHelper.getErrorMsg(errorKey: .CategoryExists)
+        }
+        
+        return nil
+    }
+    
     public static func validateRecipePhotos(photos: [UIImage]) -> String? {
         if photos.count > 0 {
             return nil

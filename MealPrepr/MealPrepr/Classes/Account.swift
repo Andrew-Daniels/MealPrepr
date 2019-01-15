@@ -19,6 +19,7 @@ class Account {
     var UID: String?
     var username: String?
     var userLevel: UserLevel = .Guest
+    var recipeCategories = [String]()
     
     init() {
         

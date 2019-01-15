@@ -12,6 +12,8 @@ private let categoryAlertSegueIdentifier = "CategoryAlert"
 
 class Categories: MPViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,8 @@ class Categories: MPViewController {
     @IBAction func backToCategories(segue: UIStoryboardSegue) {
     }
     
+    @IBAction func favoritesBtnClicked(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

@@ -11,12 +11,13 @@ import UIKit
 let cancelledCategoryUnwindSegueIdentifier = "cancelledCategory"
 let addCategoryUnwindSegueIdentifier = "addCategory"
 
-class CategoryAlert: MPViewController {
-
+class CategoryAlert: MPViewController, MPTextFieldDelegate {
+    
     @IBOutlet weak var categoryTextField: MPTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        categoryTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -27,10 +28,20 @@ class CategoryAlert: MPViewController {
     
     @IBAction func addBtnClicked(_ sender: Any) {
         
-        self.view.endEditing(true)
-        performSegue(withIdentifier: addCategoryUnwindSegueIdentifier, sender: self)
+        let errorMsg = ValidationHelper.validateCategory(account: self.account, category: categoryTextField.text)
+        categoryTextField.setError(errorMsg: errorMsg)
+        
+        if !categoryTextField.hasError {
+            self.view.endEditing(true)
+            self.account.recipeCategories.append(categoryTextField.text!)
+            FirebaseHelper().saveCategory(account: self.account)
+            performSegue(withIdentifier: addCategoryUnwindSegueIdentifier, sender: self)
+        }
     }
     
+    func mpTextFieldShouldReturn(textField: MPTextField) {
+        
+    }
     
     /*
     // MARK: - Navigation
