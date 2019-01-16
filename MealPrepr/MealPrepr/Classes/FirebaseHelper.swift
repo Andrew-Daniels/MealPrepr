@@ -190,4 +190,28 @@ class FirebaseHelper {
             database.child(path).setValue(account.recipeCategories)
         }
     }
+    
+    public func loadRecipesForCategory(account: Account, category: String, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
+        if let UID = account.UID {
+            let path = "Accounts/\(UID)/SavedRecipes"
+            database.child(path).queryOrderedByValue().queryEqual(toValue: category).observeSingleEvent(of: .value, with: { (snapshot) in
+                var recipes = [Recipe]()
+                if let value = snapshot.value as? NSDictionary {
+                    for recipeInfo in value {
+                        if let guid = recipeInfo.key as? String {
+                            self.loadRecipe(guid: guid, completionHandler: { (recipe) in
+                                recipes.append(recipe)
+                                if recipes.count == value.count {
+                                    completionHandler(recipes)
+                                }
+                            })
+                        }
+                    }
+                }
+                
+            }) { (error) in
+                print(error)
+            }
+        }
+    }
 }

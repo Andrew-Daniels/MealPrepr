@@ -15,7 +15,7 @@ struct ValidationHelper {
             return errorMsg
         }
         
-        if account.recipeCategories.contains(category!) {
+        if account.recipeCategories.contains(category!.trimmingCharacters(in: .whitespacesAndNewlines)) {
             return ErrorHelper.getErrorMsg(errorKey: .CategoryExists)
         }
         

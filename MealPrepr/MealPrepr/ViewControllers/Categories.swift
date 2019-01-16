@@ -31,11 +31,7 @@ class Categories: MPViewController {
     @IBAction func favoritesBtnClicked(_ sender: Any) {
     }
     
-    func checkForGuestAccount() {
-        if self.account.userLevel == .Guest {
-            MPAlertController.show(message: "You must sign in first before you can use this feature.", type: .CreateAccount, presenter: self)
-        }
-    }
+    
     
     /*
     // MARK: - Navigation

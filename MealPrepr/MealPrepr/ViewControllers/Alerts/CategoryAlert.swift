@@ -33,7 +33,7 @@ class CategoryAlert: MPViewController, MPTextFieldDelegate {
         
         if !categoryTextField.hasError {
             self.view.endEditing(true)
-            self.account.recipeCategories.append(categoryTextField.text!)
+            self.account.recipeCategories.append(categoryTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines))
             FirebaseHelper().saveCategory(account: self.account)
             performSegue(withIdentifier: addCategoryUnwindSegueIdentifier, sender: self)
         }

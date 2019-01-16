@@ -18,6 +18,8 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FirebaseHelper().loadRecipesForCategory(account: self.account, category: "Test")
+        
         FirebaseHelper().loadRecipes { (data) in
             self.recipes = data
             self.collectionView.reloadData()
