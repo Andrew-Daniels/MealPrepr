@@ -456,6 +456,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="QfP-Ah-PkY" id="kia-dQ-nEb"/>
+                                    <outlet property="delegate" destination="QfP-Ah-PkY" id="10v-ja-gU9"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kq1-Zm-ioj">
                                 <rect key="frame" x="158.66666666666666" y="150" width="97" height="24"/>
@@ -1286,13 +1290,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fjn-PQ-6G0">
-                                                            <rect key="frame" x="30" y="0.0" width="372" height="74.666666666666671"/>
+                                                            <rect key="frame" x="30" y="0.0" width="162" height="74.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-Kf-DSu">
-                                                            <rect key="frame" x="407" y="0.0" width="407" height="74.666666666666671"/>
+                                                            <rect key="frame" x="197" y="0.0" width="197" height="74.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1533,13 +1537,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ans-WD-euC">
-                                                            <rect key="frame" x="20" y="11" width="774" height="33"/>
+                                                            <rect key="frame" x="20" y="11" width="354" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qon-hE-7aJ">
-                                                            <rect key="frame" x="20" y="54" width="774" height="50"/>
+                                                            <rect key="frame" x="20" y="54" width="354" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="999" constant="50" id="wAr-4u-IBj"/>
@@ -1867,6 +1871,10 @@
                                 <exclude reference="wo4-K0-vLD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Efi-fC-Y35"/>
+                                <exclude reference="PXm-tS-VFW"/>
+                                <exclude reference="Xuh-gp-GHr"/>
+                                <exclude reference="kON-B1-ib8"/>
                                 <exclude reference="A4m-Jk-z1o"/>
                                 <exclude reference="QPP-eG-k5U"/>
                                 <exclude reference="S9L-8q-rMd"/>
@@ -1878,10 +1886,6 @@
                                 <exclude reference="LNW-M1-0WD"/>
                                 <exclude reference="tl3-jx-Ay7"/>
                                 <exclude reference="vgN-s9-kKR"/>
-                                <exclude reference="Efi-fC-Y35"/>
-                                <exclude reference="PXm-tS-VFW"/>
-                                <exclude reference="Xuh-gp-GHr"/>
-                                <exclude reference="kON-B1-ib8"/>
                                 <exclude reference="7e3-Dd-O4x"/>
                                 <exclude reference="Brv-1V-HiF"/>
                                 <exclude reference="bFb-g9-xi2"/>
@@ -1892,14 +1896,14 @@
                                 <exclude reference="D7E-wN-M3L"/>
                                 <exclude reference="L5a-qj-36q"/>
                                 <exclude reference="M0h-ua-uRv"/>
-                                <exclude reference="9k8-pX-5kR"/>
-                                <exclude reference="Che-VY-OZb"/>
                                 <exclude reference="17U-2H-JIL"/>
                                 <exclude reference="ahu-wR-LWk"/>
                                 <exclude reference="gRi-tJ-jBd"/>
                                 <exclude reference="p2h-SN-aDG"/>
                                 <exclude reference="47s-Yq-oOb"/>
                                 <exclude reference="sJu-rW-fTm"/>
+                                <exclude reference="9k8-pX-5kR"/>
+                                <exclude reference="Che-VY-OZb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1909,27 +1913,27 @@
                                 <include reference="wo4-K0-vLD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Efi-fC-Y35"/>
+                                <include reference="PXm-tS-VFW"/>
+                                <include reference="Xuh-gp-GHr"/>
+                                <include reference="kON-B1-ib8"/>
                                 <include reference="S9L-8q-rMd"/>
                                 <include reference="q0n-PL-kZa"/>
                                 <include reference="xBJ-Ay-ZAi"/>
                                 <include reference="LNW-M1-0WD"/>
                                 <include reference="tl3-jx-Ay7"/>
-                                <include reference="Efi-fC-Y35"/>
-                                <include reference="PXm-tS-VFW"/>
-                                <include reference="Xuh-gp-GHr"/>
-                                <include reference="kON-B1-ib8"/>
                                 <include reference="7e3-Dd-O4x"/>
                                 <exclude reference="Brv-1V-HiF"/>
                                 <include reference="h84-an-2HI"/>
                                 <include reference="hr1-xy-KIt"/>
                                 <include reference="j15-65-Mhu"/>
                                 <include reference="L5a-qj-36q"/>
-                                <include reference="9k8-pX-5kR"/>
-                                <include reference="Che-VY-OZb"/>
                                 <include reference="ahu-wR-LWk"/>
                                 <include reference="gRi-tJ-jBd"/>
                                 <include reference="p2h-SN-aDG"/>
                                 <include reference="47s-Yq-oOb"/>
+                                <include reference="9k8-pX-5kR"/>
+                                <include reference="Che-VY-OZb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -2523,21 +2527,21 @@
                         <viewLayoutGuide key="safeArea" id="qZG-lP-09S"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="EaS-QQ-1jf"/>
-                                <exclude reference="xoA-4g-FXd"/>
                                 <exclude reference="260-qc-4kp"/>
+                                <exclude reference="EaS-QQ-1jf"/>
                                 <exclude reference="Uob-Ka-sqU"/>
                                 <exclude reference="oP1-PZ-e1j"/>
+                                <exclude reference="xoA-4g-FXd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="EaS-QQ-1jf"/>
-                                <include reference="xoA-4g-FXd"/>
                                 <include reference="260-qc-4kp"/>
+                                <include reference="EaS-QQ-1jf"/>
                                 <include reference="Uob-Ka-sqU"/>
                                 <exclude reference="sb6-Gn-sy1"/>
                                 <exclude reference="xoX-TI-wBc"/>
+                                <include reference="xoA-4g-FXd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">

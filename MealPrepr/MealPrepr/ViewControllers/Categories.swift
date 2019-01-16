@@ -9,15 +9,21 @@
 import UIKit
 
 private let categoryAlertSegueIdentifier = "CategoryAlert"
+private let cellIdentifier = "HomeRecipes"
 
-class Categories: MPViewController {
-
+class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    var recipes = [Recipe]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        FirebaseHelper().loadRecipesForCategory(account: self.account, category: "Favorites") { (recipes) in
+            self.recipes = recipes
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,10 +31,49 @@ class Categories: MPViewController {
         checkForGuestAccount()
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recipes.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! HomeRecipesCell
+        let recipe = self.recipes[indexPath.row]
+        cell.recipe = recipe
+        recipe.recipeDelegate = self
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        self.collectionViewCellWidth = 170.0
+        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recipe = self.recipes[indexPath.row]
+        self.showRecipeDetails(recipe: recipe)
+    }
+    
     @IBAction func backToCategories(segue: UIStoryboardSegue) {
     }
     
     @IBAction func favoritesBtnClicked(_ sender: Any) {
+    }
+    
+    func photoDownloaded(sender: Recipe) {
+        let firstIndex = self.recipes.firstIndex { (recipe) -> Bool in
+            if recipe.GUID == sender.GUID {
+                return true
+            }
+            return false
+        }
+        guard let nonNilIndex = firstIndex else { return }
+        let row = recipes.startIndex.distance(to: nonNilIndex)
+        let indexPath = IndexPath(row: row, section: 0)
+        self.collectionView.reloadItems(at: [indexPath])
+    }
+    
+    func photoDownloaded(photoPath index: Int) {
+        
     }
     
     
