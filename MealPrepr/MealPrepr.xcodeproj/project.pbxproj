@@ -65,6 +65,8 @@
 		31DD2FE321D7DEAD00AE8974 /* InstructionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD2FE221D7DEAD00AE8974 /* InstructionCellDelegate.swift */; };
 		31DD2FE521D7EDC800AE8974 /* RecipeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD2FE421D7EDC800AE8974 /* RecipeHelper.swift */; };
 		31DD2FE721DADA0A00AE8974 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD2FE621DADA0A00AE8974 /* Recipe.swift */; };
+		31FAEAE721EEC459004D006E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAEAE621EEC459004D006E /* CategoryCell.swift */; };
+		31FAEAEA21EEC5BF004D006E /* CategorySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FAEAE921EEC5BF004D006E /* CategorySelector.swift */; };
 		4B29C891FBA5ADE1D7FBF6BD /* Pods_MealPrepr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */; };
 		FF5B7C81D5B545A2F2BE0E7E /* Pods_MealPreprTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */; };
 /* End PBXBuildFile section */
@@ -143,6 +145,8 @@
 		31DD2FE221D7DEAD00AE8974 /* InstructionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCellDelegate.swift; sourceTree = "<group>"; };
 		31DD2FE421D7EDC800AE8974 /* RecipeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeHelper.swift; sourceTree = "<group>"; };
 		31DD2FE621DADA0A00AE8974 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		31FAEAE621EEC459004D006E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		31FAEAE921EEC5BF004D006E /* CategorySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelector.swift; sourceTree = "<group>"; };
 		4500E2A716BEF8E51C4B45AC /* Pods_MealPrepr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPrepr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4673EC337F19E9FD24459B69 /* Pods-MealPreprTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPreprTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPreprTests/Pods-MealPreprTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8006E7BC70F749F252CD1ED /* Pods_MealPreprTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPreprTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,6 +337,7 @@
 		310D30FC21B75C8600D0E079 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				31FAEAE821EEC464004D006E /* Cells */,
 				3193139121ED680C00DBF55B /* Alerts */,
 				310D026421C0814300EA8BA0 /* Admin */,
 				310D026321C0813400EA8BA0 /* Tabs */,
@@ -369,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				3193139221ED682700DBF55B /* CategoryAlert.swift */,
+				31FAEAE921EEC5BF004D006E /* CategorySelector.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -399,6 +405,14 @@
 				31B9572E21E6FEBC00D15CCD /* UtensilDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		31FAEAE821EEC464004D006E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				31FAEAE621EEC459004D006E /* CategoryCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		D11251EEC4CBDB7E84DB4A81 /* Pods */ = {
@@ -612,6 +626,7 @@
 				312F5A3821BC51120017B534 /* Home.swift in Sources */,
 				310D027D21C32F0F00EA8BA0 /* InstructionCell.swift in Sources */,
 				312F5A3221BC41980017B534 /* MPNavigationController.swift in Sources */,
+				31FAEAEA21EEC5BF004D006E /* CategorySelector.swift in Sources */,
 				312F5A3021BC417A0017B534 /* MPTabBarController.swift in Sources */,
 				31B9572921E1351A00D15CCD /* PhotoCellDelegate.swift in Sources */,
 				310D027121C0B0DD00EA8BA0 /* UtensilCell.swift in Sources */,
@@ -623,6 +638,7 @@
 				31B9572B21E2755D00D15CCD /* RecipeDetails.swift in Sources */,
 				310D026621C0817000EA8BA0 /* Ingredients.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
+				31FAEAE721EEC459004D006E /* CategoryCell.swift in Sources */,
 				312F5A3421BC41A90017B534 /* MPViewController.swift in Sources */,
 				312F5A2621BA2A6E0017B534 /* MPAlertController.swift in Sources */,
 				31CA29FC21B9F4E500C8BF35 /* SignUp.swift in Sources */,

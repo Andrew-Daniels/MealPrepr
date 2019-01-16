@@ -207,6 +207,8 @@ class FirebaseHelper {
                             })
                         }
                     }
+                } else {
+                    completionHandler(recipes)
                 }
                 
             }) { (error) in

@@ -10,6 +10,8 @@ import UIKit
 
 private let categoryAlertSegueIdentifier = "CategoryAlert"
 private let cellIdentifier = "HomeRecipes"
+private let popoverSegueIdentifier = "categorySelectorPopover"
+private let selectorSegueIdentifier = "categorySelectorModal"
 
 class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -57,6 +59,21 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     @IBAction func favoritesBtnClicked(_ sender: Any) {
+        let idiom = UIDevice.current.userInterfaceIdiom
+        switch idiom {
+            
+        case .unspecified:
+            break
+        case .phone:
+            performSegue(withIdentifier: selectorSegueIdentifier, sender: self)
+            break
+        case .pad:
+            break
+        case .tv:
+            break
+        case .carPlay:
+            break
+        }
     }
     
     func photoDownloaded(sender: Recipe) {

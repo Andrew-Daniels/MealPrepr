@@ -18,7 +18,12 @@ class CategoryAlert: MPViewController, MPTextFieldDelegate {
         super.viewDidLoad()
         
         categoryTextField.delegate = self
+        let _ = categoryTextField.becomeFirstResponder()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
@@ -40,7 +45,7 @@ class CategoryAlert: MPViewController, MPTextFieldDelegate {
     }
     
     func mpTextFieldShouldReturn(textField: MPTextField) {
-        
+        let _ = self.categoryTextField.resignFirstResponder()
     }
     
     /*

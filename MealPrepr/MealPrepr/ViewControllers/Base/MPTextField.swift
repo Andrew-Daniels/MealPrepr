@@ -227,7 +227,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         return false
     }
     override func becomeFirstResponder() -> Bool {
-        if (!self.textField.isFirstResponder) {
+        if (!self.textField.isFirstResponder && self.textField.canBecomeFirstResponder) {
             self.textField.becomeFirstResponder()
             return true
         }
