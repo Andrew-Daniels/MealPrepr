@@ -14,8 +14,11 @@ struct ValidationHelper {
         if let errorMsg = self.checkIfEmpty(text: category) {
             return errorMsg
         }
-        
-        if account.recipeCategories.contains(category!.trimmingCharacters(in: .whitespacesAndNewlines)) {
+        let trimmedCat = category!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if account.recipeCategories.contains(trimmedCat) ||
+            trimmedCat.lowercased() == "favorites" ||
+            trimmedCat.lowercased() == "all"
+            {
             return ErrorHelper.getErrorMsg(errorKey: .CategoryExists)
         }
         

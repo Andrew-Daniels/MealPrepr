@@ -52,4 +52,20 @@ class Account {
             self.userLevel = level
         }
     }
+    
+    func savingCategories() {
+        self.recipeCategories.removeAll { (string) -> Bool in
+            if string == "Favorites" || string == "All" {
+                return true
+            }
+            return false
+        }
+    }
+    
+    func savedCategories() {
+        if !self.recipeCategories.contains("Favorites") {
+            self.recipeCategories.insert("Favorites", at: 0)
+            self.recipeCategories.insert("All", at: 0)
+        }
+    }
 }

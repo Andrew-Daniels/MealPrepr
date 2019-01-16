@@ -176,10 +176,17 @@ class FirebaseHelper {
     public func loadCategories(account: Account) {
         if let UID = account.UID {
             let path = "Accounts/\(UID)/Categories"
-            database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+//            database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+//                if let value = snapshot.value as? [String] {
+//                    account.recipeCategories = value
+//                    account.recipeCategories.insert("Favorites", at: 0)
+//                    account.recipeCategories.insert("All", at: 0)
+//                }
+//            }
+            database.child(path).observe(.value) { (snapshot) in
                 if let value = snapshot.value as? [String] {
                     account.recipeCategories = value
-                    account.recipeCategories.insert("Favorites", at: 0)
+                    account.savedCategories()
                 }
             }
         }
@@ -188,32 +195,47 @@ class FirebaseHelper {
     public func saveCategory(account: Account) {
         if let UID = account.UID {
             let path = "Accounts/\(UID)/Categories"
+            account.savingCategories()
             database.child(path).setValue(account.recipeCategories)
+            account.savedCategories()
+        }
+    }
+    
+    private func recipesFromSnapshot(snapshot: DataSnapshot, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
+        var recipes = [Recipe]()
+        if let value = snapshot.value as? NSDictionary {
+            for recipeInfo in value {
+                if let guid = recipeInfo.key as? String {
+                    self.loadRecipe(guid: guid, completionHandler: { (recipe) in
+                        recipes.append(recipe)
+                        if recipes.count == value.count {
+                            completionHandler(recipes)
+                        }
+                    })
+                }
+            }
+        } else {
+            completionHandler(recipes)
         }
     }
     
     public func loadRecipesForCategory(account: Account, category: String, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
         if let UID = account.UID {
             let path = "Accounts/\(UID)/SavedRecipes"
-            database.child(path).queryOrderedByValue().queryEqual(toValue: category).observeSingleEvent(of: .value, with: { (snapshot) in
-                var recipes = [Recipe]()
-                if let value = snapshot.value as? NSDictionary {
-                    for recipeInfo in value {
-                        if let guid = recipeInfo.key as? String {
-                            self.loadRecipe(guid: guid, completionHandler: { (recipe) in
-                                recipes.append(recipe)
-                                if recipes.count == value.count {
-                                    completionHandler(recipes)
-                                }
-                            })
-                        }
-                    }
-                } else {
-                    completionHandler(recipes)
+            if category == "All" {
+                database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                    self.recipesFromSnapshot(snapshot: snapshot, completionHandler: { (recipes) in
+                        completionHandler(recipes)
+                    })
                 }
-                
-            }) { (error) in
-                print(error)
+            } else {
+                database.child(path).queryOrderedByValue().queryEqual(toValue: category).observeSingleEvent(of: .value, with: { (snapshot) in
+                    self.recipesFromSnapshot(snapshot: snapshot, completionHandler: { (recipes) in
+                        completionHandler(recipes)
+                    })
+                }) { (error) in
+                    print(error)
+                }
             }
         }
     }

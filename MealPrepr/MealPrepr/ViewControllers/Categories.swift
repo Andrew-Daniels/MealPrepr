@@ -15,11 +15,13 @@ private let selectorSegueIdentifier = "categorySelectorModal"
 
 class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     var recipes = [Recipe]()
     var category = "Favorites" {
         didSet {
             FirebaseHelper().loadRecipesForCategory(account: self.account, category: self.category) { (recipes) in
+                self.filterButton.setTitle(self.category, for: .normal)
                 self.recipes = recipes
                 self.collectionView.reloadData()
             }
