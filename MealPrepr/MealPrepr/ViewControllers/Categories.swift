@@ -17,12 +17,20 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
     
     @IBOutlet weak var collectionView: UICollectionView!
     var recipes = [Recipe]()
+    var category = "Favorites" {
+        didSet {
+            FirebaseHelper().loadRecipesForCategory(account: self.account, category: self.category) { (recipes) in
+                self.recipes = recipes
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        FirebaseHelper().loadRecipesForCategory(account: self.account, category: "Favorites") { (recipes) in
+        FirebaseHelper().loadRecipesForCategory(account: self.account, category: self.category) { (recipes) in
             self.recipes = recipes
             self.collectionView.reloadData()
         }
@@ -93,7 +101,18 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        switch segue.identifier {
+        case selectorSegueIdentifier:
+            if let vc = segue.destination as? CategorySelector {
+                vc.presenter = self
+            }
+            break
+        default:
+            break
+        }
+    }
     
     /*
     // MARK: - Navigation

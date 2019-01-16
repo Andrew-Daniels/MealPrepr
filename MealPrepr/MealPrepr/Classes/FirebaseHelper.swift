@@ -179,6 +179,7 @@ class FirebaseHelper {
             database.child(path).observeSingleEvent(of: .value) { (snapshot) in
                 if let value = snapshot.value as? [String] {
                     account.recipeCategories = value
+                    account.recipeCategories.insert("Favorites", at: 0)
                 }
             }
         }

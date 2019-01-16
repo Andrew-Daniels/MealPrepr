@@ -16,6 +16,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
 
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    var presenter: MPViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,14 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
         let category = self.account.recipeCategories[indexPath.row]
         cell.categoryLabel.text = category
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = self.account.recipeCategories[indexPath.row]
+        if let presenter = self.presenter as? Categories {
+            presenter.category = category
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
