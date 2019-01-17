@@ -1354,7 +1354,7 @@
                                 <rect key="frame" x="10" y="44" width="394" height="848"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ABQ-w1-IdS">
-                                        <rect key="frame" x="0.0" y="60" width="394" height="758"/>
+                                        <rect key="frame" x="0.0" y="54" width="394" height="764"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -1403,9 +1403,9 @@
                                             <outlet property="delegate" destination="mbe-hH-KDe" id="aS1-wS-dlQ"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTo-Yr-ANb">
-                                        <rect key="frame" x="146.66666666666666" y="20" width="101" height="30"/>
-                                        <state key="normal" title="Add Ingredient"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTo-Yr-ANb">
+                                        <rect key="frame" x="125.66666666666666" y="20" width="142.99999999999997" height="24"/>
+                                        <state key="normal" title="Add Ingredient" image="Add"/>
                                         <connections>
                                             <action selector="addIngredientBtnClicked:" destination="mbe-hH-KDe" eventType="touchUpInside" id="TgQ-tD-4Yw"/>
                                             <segue destination="WlR-9H-Wwy" kind="presentation" identifier="ingredientAlert" modalPresentationStyle="overCurrentContext" id="3Tg-Qa-sNK">
@@ -1414,13 +1414,33 @@
                                             </segue>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ExA-8L-UD3">
+                                        <rect key="frame" x="342" y="20" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneBtnClicked:" destination="mbe-hH-KDe" eventType="touchUpInside" id="yoE-zr-m4B"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09x-4s-7UD">
+                                        <rect key="frame" x="15" y="20" width="56" height="24"/>
+                                        <state key="normal" title="Edit" image="Edit_White"/>
+                                        <connections>
+                                            <action selector="editBtnClicked:" destination="mbe-hH-KDe" eventType="touchUpInside" id="wRK-GZ-FUZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ABQ-w1-IdS" firstAttribute="leading" secondItem="ff8-Qc-PfI" secondAttribute="leading" id="0gO-df-bFz"/>
                                     <constraint firstItem="eTo-Yr-ANb" firstAttribute="centerX" secondItem="ff8-Qc-PfI" secondAttribute="centerX" id="AAi-kw-nZu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ExA-8L-UD3" secondAttribute="trailing" constant="15" id="F9w-P3-tSt"/>
                                     <constraint firstItem="ABQ-w1-IdS" firstAttribute="top" secondItem="eTo-Yr-ANb" secondAttribute="bottom" constant="10" identifier="createOnly" id="H7k-U2-ETI"/>
+                                    <constraint firstItem="eTo-Yr-ANb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="09x-4s-7UD" secondAttribute="trailing" constant="10" id="RFP-os-x2T"/>
+                                    <constraint firstItem="09x-4s-7UD" firstAttribute="leading" secondItem="ff8-Qc-PfI" secondAttribute="leading" constant="15" id="d9a-IQ-qlR"/>
                                     <constraint firstItem="eTo-Yr-ANb" firstAttribute="top" secondItem="ff8-Qc-PfI" secondAttribute="top" constant="20" id="hsy-t1-v9x"/>
+                                    <constraint firstItem="ExA-8L-UD3" firstAttribute="top" secondItem="eTo-Yr-ANb" secondAttribute="top" id="mWg-yb-yuz"/>
+                                    <constraint firstItem="ExA-8L-UD3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eTo-Yr-ANb" secondAttribute="trailing" constant="10" id="qOU-uu-aOb"/>
+                                    <constraint firstItem="09x-4s-7UD" firstAttribute="top" secondItem="eTo-Yr-ANb" secondAttribute="top" id="vi4-at-4Iu"/>
                                     <constraint firstItem="ABQ-w1-IdS" firstAttribute="top" secondItem="ff8-Qc-PfI" secondAttribute="top" constant="10" identifier="readOnly" id="xee-eq-Kr6"/>
                                     <constraint firstAttribute="bottom" secondItem="ABQ-w1-IdS" secondAttribute="bottom" constant="30" identifier="bottomConstraint" id="yHp-pF-iKK"/>
                                     <constraint firstAttribute="trailing" secondItem="ABQ-w1-IdS" secondAttribute="trailing" id="zL5-WK-icw"/>
@@ -1448,6 +1468,8 @@
                     </view>
                     <connections>
                         <outlet property="addBtn" destination="eTo-Yr-ANb" id="dGF-JA-Ch2"/>
+                        <outlet property="doneBtn" destination="ExA-8L-UD3" id="o2Z-zu-xRg"/>
+                        <outlet property="editBtn" destination="09x-4s-7UD" id="ugT-nr-03S"/>
                         <outlet property="tableView" destination="ABQ-w1-IdS" id="Kpw-zI-E6h"/>
                         <outletCollection property="constraints" destination="H7k-U2-ETI" collectionClass="NSMutableArray" id="dzJ-QU-nR5"/>
                         <outletCollection property="constraints" destination="yHp-pF-iKK" collectionClass="NSMutableArray" id="2FV-if-EuQ"/>
@@ -1471,9 +1493,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbf-GI-YlF" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                 <rect key="frame" x="10" y="44" width="394" height="848"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-UN-M19">
-                                        <rect key="frame" x="145.66666666666666" y="20" width="103" height="30"/>
-                                        <state key="normal" title="Select Utensils"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-UN-M19">
+                                        <rect key="frame" x="124.66666666666666" y="20" width="144.99999999999997" height="24"/>
+                                        <state key="normal" title="Select Utensils" image="Edit_White"/>
                                         <connections>
                                             <segue destination="fJU-wp-l6i" kind="presentation" identifier="UtensilAlert" modalPresentationStyle="overCurrentContext" id="DC9-fp-NYg">
                                                 <segue key="commit" inheritsFrom="parent" id="8cG-7V-DUR"/>
@@ -1482,7 +1504,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ek-R1-CbT">
-                                        <rect key="frame" x="0.0" y="60" width="394" height="758"/>
+                                        <rect key="frame" x="0.0" y="54" width="394" height="764"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="huN-Vi-Pqc">
                                             <size key="itemSize" width="120" height="130"/>
@@ -1592,16 +1614,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNe-QF-bxE" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                 <rect key="frame" x="10" y="44" width="394" height="848"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDm-5R-X87">
-                                        <rect key="frame" x="144.66666666666666" y="20" width="105" height="30"/>
-                                        <state key="normal" title="Add Instruction"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDm-5R-X87">
+                                        <rect key="frame" x="123" y="20" width="148" height="24"/>
+                                        <state key="normal" title="Add Instruction" image="Add"/>
                                         <connections>
                                             <action selector="addInstructionBtnClicked:" destination="uB3-o3-CSV" eventType="touchUpInside" id="auo-U6-nbI"/>
                                             <segue destination="JSH-uH-oIM" kind="presentation" identifier="InstructionAlert" modalPresentationStyle="overCurrentContext" id="9oo-f0-IPD"/>
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTz-wQ-o2M">
-                                        <rect key="frame" x="0.0" y="60" width="394" height="758"/>
+                                        <rect key="frame" x="0.0" y="54" width="394" height="764"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -1666,16 +1688,36 @@
                                             <outlet property="delegate" destination="uB3-o3-CSV" id="elY-ui-U3y"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjJ-oW-fBC">
+                                        <rect key="frame" x="15" y="20" width="56" height="24"/>
+                                        <state key="normal" title="Edit" image="Edit_White"/>
+                                        <connections>
+                                            <action selector="editBtnClicked:" destination="uB3-o3-CSV" eventType="touchUpInside" id="x6q-xI-6gI"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hO-dY-b1h">
+                                        <rect key="frame" x="342" y="20" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneBtnClicked:" destination="uB3-o3-CSV" eventType="touchUpInside" id="vYm-G5-r3t"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="2hO-dY-b1h" firstAttribute="top" secondItem="UDm-5R-X87" secondAttribute="top" id="1IU-hk-BJc"/>
+                                    <constraint firstAttribute="trailing" secondItem="2hO-dY-b1h" secondAttribute="trailing" constant="15" id="89p-Nw-U4h"/>
                                     <constraint firstItem="UDm-5R-X87" firstAttribute="centerX" secondItem="VNe-QF-bxE" secondAttribute="centerX" id="E2M-te-S0g"/>
                                     <constraint firstItem="mTz-wQ-o2M" firstAttribute="top" secondItem="UDm-5R-X87" secondAttribute="bottom" constant="10" identifier="createOnly" id="Rob-yz-rtY"/>
                                     <constraint firstItem="mTz-wQ-o2M" firstAttribute="leading" secondItem="VNe-QF-bxE" secondAttribute="leading" id="SwC-J9-NXa"/>
                                     <constraint firstAttribute="bottom" secondItem="mTz-wQ-o2M" secondAttribute="bottom" constant="30" identifier="bottomConstraint" id="T2E-X1-WMp"/>
                                     <constraint firstItem="UDm-5R-X87" firstAttribute="top" secondItem="VNe-QF-bxE" secondAttribute="top" constant="20" id="aOF-Kj-PNo"/>
                                     <constraint firstItem="mTz-wQ-o2M" firstAttribute="top" secondItem="VNe-QF-bxE" secondAttribute="top" constant="10" identifier="readOnly" id="ib2-qe-qPh"/>
+                                    <constraint firstItem="2hO-dY-b1h" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UDm-5R-X87" secondAttribute="trailing" constant="10" id="lU2-er-q21"/>
+                                    <constraint firstItem="xjJ-oW-fBC" firstAttribute="top" secondItem="UDm-5R-X87" secondAttribute="top" id="q0b-NV-pBD"/>
+                                    <constraint firstItem="xjJ-oW-fBC" firstAttribute="leading" secondItem="VNe-QF-bxE" secondAttribute="leading" constant="15" id="tZ1-lG-nkS"/>
                                     <constraint firstAttribute="trailing" secondItem="mTz-wQ-o2M" secondAttribute="trailing" id="xVD-3r-7bC"/>
+                                    <constraint firstItem="UDm-5R-X87" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xjJ-oW-fBC" secondAttribute="trailing" constant="10" id="xYH-wS-zqe"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1700,6 +1742,8 @@
                     </view>
                     <connections>
                         <outlet property="addBtn" destination="UDm-5R-X87" id="Cfo-TT-HmT"/>
+                        <outlet property="doneBtn" destination="2hO-dY-b1h" id="AhC-NZ-x6Q"/>
+                        <outlet property="editBtn" destination="xjJ-oW-fBC" id="9Ir-dC-cn2"/>
                         <outlet property="tableView" destination="mTz-wQ-o2M" id="KSa-VE-H76"/>
                         <outletCollection property="constraints" destination="cz0-q3-dET" collectionClass="NSMutableArray" id="3Yk-kr-tJJ"/>
                         <outletCollection property="constraints" destination="T2E-X1-WMp" collectionClass="NSMutableArray" id="uQE-jP-map"/>
@@ -3062,6 +3106,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="24" height="24"/>
+        <image name="Edit_White" width="24" height="24"/>
         <image name="Favorite_Black" width="24" height="24"/>
         <image name="Favorite_White" width="24" height="24"/>
         <image name="Filter_White" width="24" height="24"/>

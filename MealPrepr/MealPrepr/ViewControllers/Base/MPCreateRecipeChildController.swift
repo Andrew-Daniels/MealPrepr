@@ -19,7 +19,9 @@ class MPCreateRecipeChildController: MPViewController {
     @IBOutlet var constraints: [NSLayoutConstraint]!
     var readOnly: Bool = false
     var readOnlyConstraintsSet = false
-    
+    @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -30,6 +32,7 @@ class MPCreateRecipeChildController: MPViewController {
     private func updateConstraints() {
         if readOnly && !readOnlyConstraintsSet {
             
+            editBtn?.isHidden = true
             addBtn.isHidden = true
             addBtn.isEnabled = false
             
@@ -58,6 +61,20 @@ class MPCreateRecipeChildController: MPViewController {
     override func endEditing() {
         if let parent = self.parent as? MPViewController {
             parent.endEditing()
+        }
+    }
+    @IBAction func editBtnClicked(_ sender: Any) {
+        if let t = self.tableView {
+            t.setEditing(true, animated: true)
+            doneBtn.isHidden = false
+            editBtn.isHidden = true
+        }
+    }
+    @IBAction func doneBtnClicked(_ sender: Any) {
+        if let t = self.tableView {
+            t.setEditing(false, animated: true)
+            doneBtn.isHidden = true
+            editBtn.isHidden = false
         }
     }
 }

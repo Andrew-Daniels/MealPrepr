@@ -16,7 +16,6 @@ private let ingredientAlertSegueIdentifier = "ingredientAlert"
 
 class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
     var availableIngredients = [Ingredient]()
     var instructions = [Instruction]()
     var isEditingExistingInstruction = false
@@ -50,6 +49,8 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
         
         if readOnly {
             cell.selectionStyle = .none
+        } else {
+            cell.accessoryType = .disclosureIndicator
         }
         
         return cell

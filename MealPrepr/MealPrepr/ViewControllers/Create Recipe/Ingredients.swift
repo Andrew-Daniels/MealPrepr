@@ -16,7 +16,7 @@ private let cancelledEditSegueIdentifier = "cancelledEdit"
 
 class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
+    
     var ingredients = [Ingredient]()
     var instructions: [Instruction]!
     
@@ -42,6 +42,8 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
         
         if readOnly {
             cell.selectionStyle = .none
+        } else {
+            cell.accessoryType = .disclosureIndicator
         }
         return cell
     }
