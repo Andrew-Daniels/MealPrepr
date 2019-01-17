@@ -337,37 +337,37 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="450" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaM-cE-KMb">
-                                                            <rect key="frame" x="5" y="26.333333333333346" width="17" height="11.666666666666668"/>
+                                                            <rect key="frame" x="5" y="24" width="17" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prep:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vE-Uj-hZT">
-                                                            <rect key="frame" x="120" y="2" width="23" height="11.666666666666666"/>
+                                                            <rect key="frame" x="120" y="2" width="23" height="23.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDf-Mh-IXt">
-                                                            <rect key="frame" x="145" y="2" width="20" height="11.666666666666666"/>
+                                                            <rect key="frame" x="145" y="2" width="20" height="23.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8hr88m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLi-ke-sqJ">
-                                                            <rect key="frame" x="131" y="26.333333333333346" width="34" height="11.666666666666668"/>
+                                                            <rect key="frame" x="131" y="24" width="34" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cook:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krQ-KF-i0I">
-                                                            <rect key="frame" x="104" y="26.333333333333346" width="25" height="11.666666666666668"/>
+                                                            <rect key="frame" x="105.33333333333333" y="24" width="23.666666666666671" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cal/serving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppY-Z7-aIq">
-                                                            <rect key="frame" x="24" y="26.333333333333346" width="49" height="11.666666666666668"/>
+                                                            <rect key="frame" x="24" y="24" width="49" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -385,7 +385,9 @@
                                                         <constraint firstItem="2vE-Uj-hZT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cvF-y1-871" secondAttribute="trailing" constant="2" id="Q74-tA-b4Y"/>
                                                         <constraint firstItem="PLi-ke-sqJ" firstAttribute="leading" secondItem="krQ-KF-i0I" secondAttribute="trailing" constant="2" id="Ugc-m8-end"/>
                                                         <constraint firstItem="krQ-KF-i0I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ppY-Z7-aIq" secondAttribute="trailing" constant="2" id="aDN-QA-tMc"/>
+                                                        <constraint firstItem="bDf-Mh-IXt" firstAttribute="centerY" secondItem="2vE-Uj-hZT" secondAttribute="centerY" id="dMf-1T-INj"/>
                                                         <constraint firstAttribute="height" constant="40" id="daF-OD-JXO"/>
+                                                        <constraint firstItem="2vE-Uj-hZT" firstAttribute="centerY" secondItem="cvF-y1-871" secondAttribute="centerY" id="em3-i2-QAq"/>
                                                         <constraint firstItem="2vE-Uj-hZT" firstAttribute="top" secondItem="uqX-YY-68i" secondAttribute="top" constant="2" id="iIE-76-DfT"/>
                                                         <constraint firstAttribute="trailing" secondItem="bDf-Mh-IXt" secondAttribute="trailing" constant="5" id="oqF-VX-aEC"/>
                                                         <constraint firstItem="bDf-Mh-IXt" firstAttribute="leading" secondItem="2vE-Uj-hZT" secondAttribute="trailing" constant="2" id="qG3-ji-S1w"/>
@@ -402,13 +404,13 @@
                                                     <rect key="frame" x="115" y="0.0" width="55" height="45"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNI-dL-U8x">
-                                                            <rect key="frame" x="14" y="6.3333333333333321" width="27" height="27.999999999999996"/>
+                                                            <rect key="frame" x="14" y="3.6666666666666679" width="27" height="33"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="24"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CV8-Gd-GGY">
-                                                            <rect key="frame" x="0.0" y="30.333333333333332" width="55" height="11.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="29" width="55" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -443,7 +445,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="16"/>
+                                                <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -689,12 +691,12 @@
                                                     <rect key="frame" x="0.0" y="130" width="170" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-F2-HwS">
-                                                            <rect key="frame" x="5" y="2" width="111.33333333333333" height="23.333333333333332"/>
+                                                            <rect key="frame" x="5" y="2" width="105.66666666666667" height="23.333333333333332"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="23.329999999999998" id="V0f-WM-afr"/>
                                                             </constraints>
                                                             <attributedString key="attributedText">
-                                                                <fragment content="Mozzarella Cheese Sticks Stick Stick Stick Stick Stick">
+                                                                <fragment content="Veru long check this out">
                                                                     <attributes>
                                                                         <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <font key="NSFont" size="19" name=".SFNSText"/>
@@ -705,37 +707,37 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="450" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0R-YD-bkC">
-                                                            <rect key="frame" x="5" y="26.333333333333346" width="17" height="11.666666666666668"/>
+                                                            <rect key="frame" x="5" y="24" width="17" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prep:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-WL-YqB">
-                                                            <rect key="frame" x="120" y="2" width="23" height="11.666666666666666"/>
+                                                            <rect key="frame" x="120" y="2" width="23" height="23.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsV-38-vcf">
-                                                            <rect key="frame" x="145" y="2" width="20" height="11.666666666666666"/>
+                                                            <rect key="frame" x="145" y="2" width="20" height="23.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8hr88m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz0-do-StF">
-                                                            <rect key="frame" x="131" y="26.333333333333346" width="34" height="11.666666666666668"/>
+                                                            <rect key="frame" x="131" y="24" width="34" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cook:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0i-AG-Hah">
-                                                            <rect key="frame" x="104" y="26.333333333333346" width="25" height="11.666666666666668"/>
+                                                            <rect key="frame" x="105.33333333333333" y="24" width="23.666666666666671" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cal/serving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhc-1G-QLA">
-                                                            <rect key="frame" x="24" y="26.333333333333346" width="49" height="11.666666666666668"/>
+                                                            <rect key="frame" x="24" y="24" width="49" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -747,18 +749,20 @@
                                                         <constraint firstItem="fz0-do-StF" firstAttribute="leading" secondItem="P0i-AG-Hah" secondAttribute="trailing" constant="2" id="2vw-Bh-mEh"/>
                                                         <constraint firstItem="m0R-YD-bkC" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="5" id="9Ph-jS-kRh"/>
                                                         <constraint firstAttribute="bottom" secondItem="fz0-do-StF" secondAttribute="bottom" constant="2" id="ALT-2e-eiM"/>
+                                                        <constraint firstItem="PsV-38-vcf" firstAttribute="centerY" secondItem="l7S-WL-YqB" secondAttribute="centerY" id="G5r-KX-pTu"/>
                                                         <constraint firstItem="nJc-F2-HwS" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="KY3-23-j4X"/>
+                                                        <constraint firstItem="PsV-38-vcf" firstAttribute="top" secondItem="l7S-WL-YqB" secondAttribute="top" id="MPD-SZ-W69"/>
                                                         <constraint firstItem="nhc-1G-QLA" firstAttribute="leading" secondItem="m0R-YD-bkC" secondAttribute="trailing" constant="2" id="QIP-ak-rqz"/>
                                                         <constraint firstAttribute="bottom" secondItem="m0R-YD-bkC" secondAttribute="bottom" constant="2" id="Qkt-D8-tqL"/>
                                                         <constraint firstItem="nJc-F2-HwS" firstAttribute="leading" secondItem="D81-EA-wBS" secondAttribute="leading" constant="5" id="Sqk-1S-Cht"/>
-                                                        <constraint firstItem="l7S-WL-YqB" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="WqE-VS-dhq"/>
+                                                        <constraint firstItem="l7S-WL-YqB" firstAttribute="centerY" secondItem="nJc-F2-HwS" secondAttribute="centerY" id="UJ2-AB-WhN"/>
+                                                        <constraint firstItem="l7S-WL-YqB" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" priority="750" constant="2" id="WqE-VS-dhq"/>
                                                         <constraint firstItem="P0i-AG-Hah" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m0R-YD-bkC" secondAttribute="trailing" constant="2" id="ZOg-Fa-Pvz"/>
                                                         <constraint firstItem="l7S-WL-YqB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nJc-F2-HwS" secondAttribute="trailing" constant="2" id="Zkx-Qb-BaI"/>
                                                         <constraint firstAttribute="bottom" secondItem="P0i-AG-Hah" secondAttribute="bottom" constant="2" id="fJ3-Wu-9Gn"/>
                                                         <constraint firstItem="PsV-38-vcf" firstAttribute="leading" secondItem="l7S-WL-YqB" secondAttribute="trailing" constant="2" id="fzk-Qv-MDM"/>
                                                         <constraint firstAttribute="trailing" secondItem="PsV-38-vcf" secondAttribute="trailing" constant="5" id="qn7-Qk-uLc"/>
                                                         <constraint firstAttribute="height" constant="40" id="qy3-sK-Mlb"/>
-                                                        <constraint firstItem="PsV-38-vcf" firstAttribute="top" secondItem="D81-EA-wBS" secondAttribute="top" constant="2" id="sAA-tx-zhM"/>
                                                         <constraint firstAttribute="trailing" secondItem="fz0-do-StF" secondAttribute="trailing" constant="5" id="tRr-aJ-sqO"/>
                                                         <constraint firstAttribute="bottom" secondItem="nhc-1G-QLA" secondAttribute="bottom" constant="2" id="uaH-9H-DKQ"/>
                                                     </constraints>
@@ -770,13 +774,13 @@
                                                     <rect key="frame" x="115" y="0.0" width="55" height="45"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXc-e7-4BI">
-                                                            <rect key="frame" x="14" y="6.3333333333333321" width="27" height="27.999999999999996"/>
+                                                            <rect key="frame" x="14" y="3.6666666666666679" width="27" height="33"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="24"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiZ-xx-fWo">
-                                                            <rect key="frame" x="0.0" y="30.333333333333332" width="55" height="11.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="29" width="55" height="14"/>
                                                             <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -811,7 +815,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="16"/>
+                                                <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
