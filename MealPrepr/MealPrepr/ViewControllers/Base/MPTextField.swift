@@ -15,6 +15,11 @@ class MPTextField: UIControl, UITextFieldDelegate {
     private var _text: String? {
         didSet {
             self.textField.text = self._text
+            if let text = self._text, text.count > 0 {
+                self.textFieldLabel.isHidden = false
+            } else {
+                self.textFieldLabel.isHidden = true
+            }
         }
     }
     
@@ -61,6 +66,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         didSet {
             self.textField.textColor = self.textFieldTextColor
             self.borderColor = self.textFieldTextColor?.cgColor
+            self.textFieldLabel.textColor = self.textFieldTextColor
         }
     }
     
@@ -151,9 +157,12 @@ class MPTextField: UIControl, UITextFieldDelegate {
                         self.removeError()
                     }
                 }
-            } else {
-                self.textFieldLabel.isHidden = false
             }
+        }
+        else if let text = self.text, text.count > 0 {
+            self.textFieldLabel.isHidden = false
+        } else {
+            self.textFieldLabel.isHidden = true
         }
     }
     
@@ -174,12 +183,13 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         //Setup errorLabel
-        let font = UIFont(name: "Helvetica", size: 12.0)
+        var font = UIFont(name: "Helvetica", size: 12.0)
         self.errorLabel.font = font
         self.errorLabel.textColor = UIColor.white
         self.errorLabel.numberOfLines = 2
         
         //Setup textfield label
+        font = UIFont(name: "Helvetica-Bold", size: 14.0)
         self.textFieldLabel.font = font
         self.textFieldLabel.textColor = UIColor.white
         self.textFieldLabel.isHidden = true
@@ -189,7 +199,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         textFieldLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        var topConstraint = (NSLayoutConstraint(item: textFieldLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 1.0))
+        var topConstraint = (NSLayoutConstraint(item: textFieldLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 1.0))
         var leadingConstraint = (NSLayoutConstraint(item: textFieldLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
         var trailingConstraint = (NSLayoutConstraint(item: textFieldLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
         self.addConstraints([topConstraint, leadingConstraint, trailingConstraint])
