@@ -252,4 +252,11 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
             instruction = Instruction()
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        if !self.checkIfTouchesAreInside(touches: touches, ofView: self.instructionTextView) {
+            self.instructionTextView.resignFirstResponder()
+        }
+    }
 }

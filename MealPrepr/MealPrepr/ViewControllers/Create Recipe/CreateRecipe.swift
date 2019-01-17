@@ -255,7 +255,11 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200), execute: {
                                 // Put your code which should be executed with a delay here
                                 UIView.animate(withDuration: 0.2, animations: {
-                                    (homeVC as! Home).collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: UICollectionView.ScrollPosition.top, animated: true)
+                                    if let collectionView = (homeVC as! Home).collectionView {
+                                        if collectionView.numberOfItems(inSection: 0) > 0 {
+                                            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: UICollectionView.ScrollPosition.top, animated: true)
+                                        }
+                                    }
                                 })
                             })
                             
@@ -263,7 +267,11 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                             self.navigationController?.popToRootViewController(animated: true)
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000), execute: {
                                 // Put your code which should be executed with a delay here
-                                (homeVC as! Home).collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                                if let collectionView = (homeVC as! Home).collectionView {
+                                    if collectionView.numberOfItems(inSection: 0) > 0 {
+                                        collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                                    }
+                                }
                             })
                         })
                     } else {

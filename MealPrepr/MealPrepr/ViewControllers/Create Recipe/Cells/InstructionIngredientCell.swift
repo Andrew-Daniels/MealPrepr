@@ -43,6 +43,9 @@ class InstructionIngredientCell: UICollectionViewCell {
             return
         }
         self.layer.cornerRadius = 8
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0).cgColor
+        
         ingredientLabel = UILabel()
         ingredientLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         ingredientLabel.adjustsFontSizeToFitWidth = true
@@ -50,8 +53,6 @@ class InstructionIngredientCell: UICollectionViewCell {
         ingredientLabel.text = ingredient.toString()
         self.contentView.addSubview(ingredientLabel)
         ingredientLabel.sizeToFit()
-        //self.contentView.bounds.size = ingredientLabel.bounds.size
-        //self.contentView.translatesAutoresizingMaskIntoConstraints = false
         ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
         if selectedIngredient {
             ingredientLabel.textColor = .white
