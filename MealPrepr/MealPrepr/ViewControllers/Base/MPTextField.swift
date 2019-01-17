@@ -33,6 +33,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
             if let placeholder = self.placeholderText {
                 let attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: self.placeHolderTextColor ?? UIColor.lightGray])
                 self.textField.attributedPlaceholder = attributedPlaceholder
+                self.textFieldLabel.text = placeholder
             }
         }
     }
@@ -80,14 +81,10 @@ class MPTextField: UIControl, UITextFieldDelegate {
     
     var textField: UITextField = UITextField()
     var errorLabel: UILabel = UILabel()
+    var textFieldLabel: UILabel = UILabel()
     var delegate: MPTextFieldDelegate?
-    var authFieldType: ErrorHelper.AuthFieldType! {
-        didSet {
-            if (authFieldType == .Username) {
-                self.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-            }
-        }
-    }
+    var authFieldType: ErrorHelper.AuthFieldType!
+    
     private var _hasError: Bool = false
     private var borderColor: CGColor?
     
@@ -146,12 +143,16 @@ class MPTextField: UIControl, UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if let text = self.text, text.count > 1 {
-            FirebaseHelper().checkUsernameAvailability(username: self.text) { (available) in
-                if (!available) {
-                    self.setError(errorMsg: ErrorHelper.getErrorMsg(errorKey: .UsernameTaken))
-                } else {
-                    self.removeError()
+            if authFieldType == .Username {
+                FirebaseHelper().checkUsernameAvailability(username: self.text) { (available) in
+                    if (!available) {
+                        self.setError(errorMsg: ErrorHelper.getErrorMsg(errorKey: .UsernameTaken))
+                    } else {
+                        self.removeError()
+                    }
                 }
+            } else {
+                self.textFieldLabel.isHidden = false
             }
         }
     }
@@ -160,6 +161,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         //Add Textfield and ErrorLabel to MPTextField
         self.addSubview(textField)
         self.addSubview(errorLabel)
+        self.addSubview(textFieldLabel)
         
         self.backgroundColor = .clear
         
@@ -169,6 +171,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.textField.textColor = UIColor.white
         self.textField.returnKeyType = .next
         self.textField.clearButtonMode = .whileEditing
+        self.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         //Setup errorLabel
         let font = UIFont(name: "Helvetica", size: 12.0)
@@ -176,13 +179,24 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.errorLabel.textColor = UIColor.white
         self.errorLabel.numberOfLines = 2
         
-        //Setup constraints for TextField and ErrorLabel
+        //Setup textfield label
+        self.textFieldLabel.font = font
+        self.textFieldLabel.textColor = UIColor.white
+        self.textFieldLabel.isHidden = true
+        
+        //Setup constraints for TextField, ErrorLabel, and TextFieldLabel
         textField.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        textFieldLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        var topConstraint = (NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 1.0))
-        var leadingConstraint = (NSLayoutConstraint(item: textField, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
-        var trailingConstraint = (NSLayoutConstraint(item: textField, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
+        var topConstraint = (NSLayoutConstraint(item: textFieldLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 1.0))
+        var leadingConstraint = (NSLayoutConstraint(item: textFieldLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
+        var trailingConstraint = (NSLayoutConstraint(item: textFieldLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
+        self.addConstraints([topConstraint, leadingConstraint, trailingConstraint])
+        
+        topConstraint = (NSLayoutConstraint(item: textField, attribute: .top, relatedBy: .equal, toItem: textFieldLabel, attribute: .bottom, multiplier: 1.0, constant: 1.0))
+        leadingConstraint = (NSLayoutConstraint(item: textField, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
+        trailingConstraint = (NSLayoutConstraint(item: textField, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
         self.addConstraints([topConstraint, leadingConstraint, trailingConstraint])
         
         topConstraint = (NSLayoutConstraint(item: errorLabel, attribute: .top, relatedBy: .equal, toItem: textField, attribute: .bottom, multiplier: 1.0, constant: 1.0))
