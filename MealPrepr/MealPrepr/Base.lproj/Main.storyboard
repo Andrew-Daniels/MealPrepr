@@ -2466,30 +2466,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hd-J6-Gdl">
-                                        <rect key="frame" x="0.0" y="762" width="207" height="44"/>
+                                        <rect key="frame" x="12" y="40" width="53" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Mn9-Al-2UY"/>
+                                            <constraint firstAttribute="height" constant="44" id="qkd-bd-bU5"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="cancelBtnClicked:" destination="fJU-wp-l6i" eventType="touchUpInside" id="iT3-eM-Jjm"/>
                                             <segue destination="usC-01-FMv" kind="unwind" identifier="cancelledEdit" unwindAction="backToUtensilsWithSegue:" id="fIY-yy-kCf"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-zD-kQL">
-                                        <rect key="frame" x="207" y="762" width="207" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="bIr-Va-2xH"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Add">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addBtnClicked:" destination="fJU-wp-l6i" eventType="touchUpInside" id="g7k-pP-m7u"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Utensils" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNr-Dg-HfN">
@@ -2505,7 +2492,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7XR-CY-LnY">
-                                        <rect key="frame" x="0.0" y="158" width="414" height="604"/>
+                                        <rect key="frame" x="0.0" y="158" width="414" height="738"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rI8-fO-duE">
                                             <size key="itemSize" width="120" height="130"/>
@@ -2564,6 +2551,16 @@
                                             <outlet property="delegate" destination="fJU-wp-l6i" id="xvv-cd-czp"/>
                                         </connections>
                                     </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-zD-kQL">
+                                        <rect key="frame" x="349" y="40" width="53" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addBtnClicked:" destination="fJU-wp-l6i" eventType="touchUpInside" id="g7k-pP-m7u"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2572,22 +2569,19 @@
                                     <constraint firstAttribute="trailing" secondItem="Qad-np-I1f" secondAttribute="trailing" id="5vA-eX-0Gs"/>
                                     <constraint firstItem="7XR-CY-LnY" firstAttribute="top" secondItem="Qad-np-I1f" secondAttribute="bottom" id="6Fg-8A-Rs5"/>
                                     <constraint firstItem="oNr-Dg-HfN" firstAttribute="top" secondItem="U65-N7-hFe" secondAttribute="top" constant="10" id="89V-47-aF8"/>
+                                    <constraint firstItem="9hd-J6-Gdl" firstAttribute="top" secondItem="oNr-Dg-HfN" secondAttribute="top" id="D0e-Re-o8Q"/>
                                     <constraint firstItem="7XR-CY-LnY" firstAttribute="leading" secondItem="U65-N7-hFe" secondAttribute="leading" id="Gws-Ck-fyV"/>
-                                    <constraint firstAttribute="bottom" secondItem="9hd-J6-Gdl" secondAttribute="bottom" id="RX3-gf-6gc"/>
-                                    <constraint firstItem="9hd-J6-Gdl" firstAttribute="leading" secondItem="U65-N7-hFe" secondAttribute="leading" id="SBV-6n-Zj3"/>
+                                    <constraint firstItem="9hd-J6-Gdl" firstAttribute="leading" secondItem="U65-N7-hFe" secondAttribute="leading" constant="12" id="QH9-Ah-pxh"/>
                                     <constraint firstAttribute="trailing" secondItem="7XR-CY-LnY" secondAttribute="trailing" id="SNu-iF-6mN"/>
-                                    <constraint firstAttribute="trailing" secondItem="0nh-zD-kQL" secondAttribute="trailing" id="W9G-jD-Zgl"/>
                                     <constraint firstItem="Qad-np-I1f" firstAttribute="top" secondItem="HQQ-fr-T4B" secondAttribute="bottom" constant="10" id="Xel-yx-Tmd"/>
                                     <constraint firstItem="oNr-Dg-HfN" firstAttribute="top" secondItem="U65-N7-hFe" secondAttribute="top" constant="40" id="Yqz-pm-7Ku"/>
                                     <constraint firstItem="oNr-Dg-HfN" firstAttribute="centerX" secondItem="U65-N7-hFe" secondAttribute="centerX" id="ZmW-Ve-jdM"/>
-                                    <constraint firstItem="0nh-zD-kQL" firstAttribute="leading" secondItem="9hd-J6-Gdl" secondAttribute="trailing" id="a3M-MH-Xp8"/>
                                     <constraint firstItem="HQQ-fr-T4B" firstAttribute="top" secondItem="oNr-Dg-HfN" secondAttribute="bottom" constant="10" id="aBi-oz-vtz"/>
-                                    <constraint firstItem="9hd-J6-Gdl" firstAttribute="width" secondItem="U65-N7-hFe" secondAttribute="width" multiplier="0.5" id="eJd-dO-ORH"/>
-                                    <constraint firstAttribute="bottom" secondItem="0nh-zD-kQL" secondAttribute="bottom" id="fdX-Hx-8fw"/>
-                                    <constraint firstItem="0nh-zD-kQL" firstAttribute="bottom" secondItem="9hd-J6-Gdl" secondAttribute="bottom" id="hju-kD-17y"/>
-                                    <constraint firstAttribute="bottom" secondItem="9hd-J6-Gdl" secondAttribute="bottom" constant="90" id="hrD-i6-Yk6"/>
-                                    <constraint firstItem="9hd-J6-Gdl" firstAttribute="top" secondItem="7XR-CY-LnY" secondAttribute="bottom" id="jTp-2p-d27"/>
-                                    <constraint firstItem="0nh-zD-kQL" firstAttribute="width" secondItem="U65-N7-hFe" secondAttribute="width" multiplier="0.5" id="pyN-5J-9VZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="0nh-zD-kQL" secondAttribute="trailing" constant="12" id="cri-h6-Nxh"/>
+                                    <constraint firstItem="0nh-zD-kQL" firstAttribute="height" secondItem="9hd-J6-Gdl" secondAttribute="height" id="d3i-DJ-vgA"/>
+                                    <constraint firstItem="0nh-zD-kQL" firstAttribute="width" secondItem="9hd-J6-Gdl" secondAttribute="width" id="dWu-9b-88L"/>
+                                    <constraint firstItem="0nh-zD-kQL" firstAttribute="top" secondItem="oNr-Dg-HfN" secondAttribute="top" id="gIM-zt-t9E"/>
+                                    <constraint firstAttribute="bottom" secondItem="7XR-CY-LnY" secondAttribute="bottom" id="jcx-r3-o34"/>
                                     <constraint firstItem="Qad-np-I1f" firstAttribute="leading" secondItem="U65-N7-hFe" secondAttribute="leading" id="sCm-bs-bmf"/>
                                     <constraint firstAttribute="width" constant="350" id="zTm-Fe-b1X"/>
                                 </constraints>
@@ -2599,8 +2593,6 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Yqz-pm-7Ku"/>
-                                        <exclude reference="hrD-i6-Yk6"/>
-                                        <exclude reference="hju-kD-17y"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -2609,10 +2601,6 @@
                                         <exclude reference="zTm-Fe-b1X"/>
                                         <exclude reference="89V-47-aF8"/>
                                         <include reference="Yqz-pm-7Ku"/>
-                                        <exclude reference="RX3-gf-6gc"/>
-                                        <include reference="hrD-i6-Yk6"/>
-                                        <exclude reference="fdX-Hx-8fw"/>
-                                        <include reference="hju-kD-17y"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -2668,7 +2656,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9wX-TA-VvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="usC-01-FMv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4847.4820143884899" y="-1412.0503597122301"/>
+            <point key="canvasLocation" x="4846.376811594203" y="-1412.2767857142856"/>
         </scene>
         <!--Instruction Alert-->
         <scene sceneID="2lP-aS-EGy">
