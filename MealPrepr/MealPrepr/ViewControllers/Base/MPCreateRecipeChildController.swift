@@ -77,4 +77,20 @@ class MPCreateRecipeChildController: MPViewController {
             editBtn.isHidden = false
         }
     }
+    
+    public func tableViewModelDidChange(modelCount: Int) {
+        
+        if !readOnly && modelCount > 0 && !self.tableView.isEditing && self.editBtn.isHidden {
+            self.editBtn.isHidden = false
+            return
+        }
+        
+        if !readOnly && modelCount == 0 {
+            self.editBtn.isHidden = true
+            self.doneBtn.isHidden = true
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + .seconds(1)) {
+                self.tableView.setEditing(false, animated: false)
+            }
+        }
+    }
 }

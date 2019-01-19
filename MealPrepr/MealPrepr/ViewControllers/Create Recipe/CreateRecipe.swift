@@ -32,10 +32,21 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     }
     
     private var viewControllers = [Controller: MPViewController]()
+    private var ingredientUnits = [String]() {
+        didSet {
+            if let vc = getVC(atIndex: .Ingredients) as? Ingredients {
+                vc.ingredientUnits = self.ingredientUnits
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSegmentedControl()
+        
+        FirebaseHelper().loadIngredientUnits { (units) in
+            self.ingredientUnits = units
+        }
         
         titleTextField.delegate = self
         caloriesTextField.delegate = self
@@ -145,6 +156,10 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let vc = segue.destination as? Ingredients {
+            vc.ingredientUnits = self.ingredientUnits
+        }
         if segue.identifier == containedPhotosViewControllerSegueIdentifier {
             viewControllers[.Photos] = segue.destination as? Photos
         }

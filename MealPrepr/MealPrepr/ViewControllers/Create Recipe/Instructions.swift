@@ -17,7 +17,11 @@ private let ingredientAlertSegueIdentifier = "ingredientAlert"
 class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
     var availableIngredients = [Ingredient]()
-    var instructions = [Instruction]()
+    var instructions = [Instruction]() {
+        didSet {
+            self.tableViewModelDidChange(modelCount: instructions.count)
+        }
+    }
     var isEditingExistingInstruction = false
     var instructionBeingEdited: Instruction!
     var instructionIndexBeingEdited: IndexPath!

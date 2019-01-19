@@ -17,12 +17,24 @@ private let cancelledEditSegueIdentifier = "cancelledEdit"
 class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var ingredients = [Ingredient]()
+    var ingredients = [Ingredient]() {
+        didSet {
+            self.tableViewModelDidChange(modelCount: ingredients.count)
+        }
+    }
     var instructions: [Instruction]!
     
     var ingredientBeingEdited: Ingredient!
     var ingredientIndexBeingEdited: IndexPath!
     var isEditingExistingIngredient = false
+    var ingredientAlert: IngredientAlert?
+    var ingredientUnits = [String]() {
+        didSet {
+            if let alertVC = self.ingredientAlert {
+                alertVC.ingredientUnits = self.ingredientUnits
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +71,9 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
             break
         case .delete:
             if (!anyInstructionContainsIngredient(atIndex: indexPath)) {
+                if ingredients.count == 1 {
+                    self.tableView.setEditing(false, animated: true)
+                }
                 ingredients.remove(at: indexPath.row)
                 tableView.reloadData()
             } else {
@@ -86,6 +101,8 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func backToIngredients(segue: UIStoryboardSegue) {
+        self.ingredientAlert = nil
+        
         switch(segue.identifier) {
             
         case backToIngredientsIdentifier:
@@ -131,16 +148,21 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         endEditing()
         if segue.identifier == ingredientAlertSegueIdentifier {
             if let alertVC = segue.destination as? IngredientAlert {
                 alertVC.availableIngredients = ingredients
+                alertVC.ingredientUnits = self.ingredientUnits
+                self.ingredientAlert = alertVC
             }
         }
         if segue.identifier == editIngredientAlertSegueIdentifier {
             let alertVC = segue.destination as! IngredientAlert
             alertVC.availableIngredients = ingredients
             alertVC.ingredient = sender as? Ingredient
+            alertVC.ingredientUnits = self.ingredientUnits
+            self.ingredientAlert = alertVC
         }
     }
 }

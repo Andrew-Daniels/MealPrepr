@@ -44,6 +44,15 @@ class FirebaseHelper {
         }
     }
     
+    public func loadIngredientUnits(completionHandler: @escaping (_ isResponse : [String]) -> Void) {
+        let path = "Units"
+        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String] {
+                completionHandler(value.sorted())
+            }
+        }
+    }
+    
     public func loadUtensil(utensil: Utensil, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         guard let title = utensil.title else { return }
         let path = "Utensils/"

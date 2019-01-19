@@ -181,6 +181,8 @@ class MPTextField: UIControl, UITextFieldDelegate {
         self.textField.returnKeyType = .next
         self.textField.clearButtonMode = .whileEditing
         self.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.textField.minimumFontSize = 10
+        self.textField.adjustsFontSizeToFitWidth = true
         
         //Setup errorLabel
         var font = UIFont(name: "Helvetica", size: 12.0)
