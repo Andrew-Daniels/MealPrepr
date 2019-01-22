@@ -19,7 +19,8 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     var instruction: Instruction! {
         didSet {
-            collectionView.reloadData()
+            self.collectionView.reloadData()
+            self.collectionView.collectionViewLayout.invalidateLayout()
         }
     }
     

@@ -84,6 +84,11 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         if (account.userLevel == .Guest && segue.identifier != backToSignUpSegueIdentifier) {
             MPAlertController.show(message: "You must sign in first before you can use this feature.", type: .CreateAccount, presenter: self)
         }
+        if segue.identifier == createRecipeSegueIdentifier {
+            if let vc = segue.destination as? CreateRecipe {
+                vc.hidesBottomBarWhenPushed = true
+            }
+        }
     }
     
     func photoDownloaded(sender: Recipe) {

@@ -79,6 +79,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     func addImage(image: UIImage) {
         images.append(image)
         collectionView.reloadData()
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
     @IBAction func addPhotoBtnClicked(_ sender: Any) {
         endEditing()
@@ -108,6 +109,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         let indexPath = IndexPath(row: index, section: 0)
         collectionView.reloadItems(at: [indexPath])
     }
+    
     
 //    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
