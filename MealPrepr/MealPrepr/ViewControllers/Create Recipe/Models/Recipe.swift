@@ -19,6 +19,7 @@ class Recipe {
     var instructions: [Instruction]!
     var photos: [UIImage]!
     var dateCreated: Date!
+    var status: Status = .Active
     private var downloadedPhotos: [String: UIImage]!
     var creatorUID: String!
     var photoPaths: [String]!
@@ -27,6 +28,12 @@ class Recipe {
     var utensilDelegate: UtensilDelegate?
     private var cook: (minutes: Int, hours: Int)!
     private var prep: (minutes: Int, hours: Int)!
+    
+    enum Status: Int {
+        case Active
+        case Deleted
+        case Inactive
+    }
     
     var numIngredients: Int {
         get {
@@ -129,7 +136,8 @@ class Recipe {
                 "Utensils": utensilArray,
                 "Instructions": instructionsArray,
                 "Photos": photoPaths,
-                "DateCreated": dateCreated.description
+                "DateCreated": dateCreated.description,
+                "Status": status.rawValue
             ]
         }
     }
@@ -198,7 +206,7 @@ class Recipe {
     }
     
     func delete() {
-        
+        FirebaseHelper().deleteRecipe(recipe: self)
     }
     
     private func initWithRecipeValue(recipeValue: [String: Any]) {
@@ -272,5 +280,9 @@ class Recipe {
         if let creatorUID = recipeValue["Creator"] as? String {
             self.creatorUID = creatorUID
         }
+        if let status = recipeValue["Status"] as? Int {
+            self.status = Status.init(rawValue: status) ?? .Inactive
+        }
     }
+    
 }

@@ -18,7 +18,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseHelper().loadRecipes { (data) in
+        FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
             self.recipes = data
             self.collectionView.reloadData()
         }
@@ -106,5 +106,9 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
 
     func photoDownloaded(photoPath index: Int) {
         
+    }
+    
+    func recipeDeleted(GUID: String) {
+        print(GUID)
     }
 }

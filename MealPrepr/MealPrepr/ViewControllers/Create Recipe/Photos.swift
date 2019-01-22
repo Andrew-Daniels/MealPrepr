@@ -110,6 +110,10 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         collectionView.reloadItems(at: [indexPath])
     }
     
+    func recipeDeleted(GUID: String) {
+        
+    }
+    
     
 //    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)

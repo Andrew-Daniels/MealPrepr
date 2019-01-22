@@ -167,6 +167,16 @@ class RecipeDetails: MPViewController {
     }
     
     @objc func deleteBarBtnClicked() {
+        let title = "Delete Recipe"
+        let actionTitle = "Delete"
+        let alert = UIAlertController(title: title, message: "This recipe will be removed from searchable recipes, but will stay in user's favorites lists, would you like to continue?", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteRecipeAction = UIAlertAction(title: actionTitle, style: .default) { (action) in
+            self.recipe.delete()
+        }
+        alert.addAction(action)
+        alert.addAction(deleteRecipeAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func editBarBtnClicked() {

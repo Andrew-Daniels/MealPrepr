@@ -103,6 +103,10 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         
     }
     
+    func recipeDeleted(GUID: String) {
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         switch segue.identifier {

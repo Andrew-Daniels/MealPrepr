@@ -21,9 +21,14 @@ class FirebaseHelper {
         self.storage = Storage.storage().reference()
     }
     
-    public func loadRecipes(completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
+    public func loadRecipes(recipeDelegate: RecipeDelegate?, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
         let path = "Recipes/"
-        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+        database.child(path).queryOrdered(byChild: "Status").queryEqual(toValue: Recipe.Status.Active.rawValue).observe(.childRemoved, with: { (snapshot) in
+            let recipeGUID = snapshot.key
+            recipeDelegate?.recipeDeleted(GUID: recipeGUID)
+        })
+
+        database.child(path).queryOrdered(byChild: "Status").queryEqual(toValue: Recipe.Status.Active.rawValue).observeSingleEvent(of: .value) { (snapshot) in
             var recipes = [Recipe]()
             if let value = snapshot.value as? NSDictionary {
                 for recipeData in value {
@@ -185,13 +190,6 @@ class FirebaseHelper {
     public func loadCategories(account: Account) {
         if let UID = account.UID {
             let path = "Accounts/\(UID)/Categories"
-//            database.child(path).observeSingleEvent(of: .value) { (snapshot) in
-//                if let value = snapshot.value as? [String] {
-//                    account.recipeCategories = value
-//                    account.recipeCategories.insert("Favorites", at: 0)
-//                    account.recipeCategories.insert("All", at: 0)
-//                }
-//            }
             database.child(path).observe(.value) { (snapshot) in
                 if let value = snapshot.value as? [String] {
                     account.recipeCategories = value
@@ -246,6 +244,13 @@ class FirebaseHelper {
                     print(error)
                 }
             }
+        }
+    }
+    
+    public func deleteRecipe(recipe: Recipe) {
+        if let GUID = recipe.GUID {
+            let path = "Recipes/\(GUID)/Status"
+            database.child(path).setValue(Recipe.Status.Deleted.rawValue)
         }
     }
 }

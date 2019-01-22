@@ -11,4 +11,5 @@ import Foundation
 protocol RecipeDelegate {
     func photoDownloaded(sender: Recipe)
     func photoDownloaded(photoPath index: Int)
+    func recipeDeleted(GUID: String)
 }
