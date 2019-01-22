@@ -43,7 +43,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !self.checkIfTouchesAreInside(touches: touches, ofView: self.tableView) {
+        if !self.checkIfTouchesAreInside(touches: touches, ofView: self.containerView) {
             self.dismiss(animated: true, completion: nil)
         }
     }
