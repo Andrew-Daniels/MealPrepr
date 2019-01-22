@@ -167,6 +167,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         let recipeDetailsVC = main.instantiateViewController(withIdentifier: recipeDetailsStoryboardIdentifier) as! RecipeDetails
         recipeDetailsVC.recipe = recipe
         recipeDetailsVC.navigationItem.title = recipe.title
+        recipeDetailsVC.account = self.account
         self.navigationController?.pushViewController(recipeDetailsVC, animated: true)
     }
     

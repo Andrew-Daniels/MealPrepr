@@ -41,6 +41,7 @@ class RecipeDetails: MPViewController {
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
         
         setupWithRecipe()
+        setupBarButtons()
     }
     
     private func createControllerForSelectedIndex(index: Controller?) -> MPViewController? {
@@ -149,5 +150,25 @@ class RecipeDetails: MPViewController {
         default:
             return
         }
+    }
+    
+    func setupBarButtons() {
+        if account.UID == self.recipe.creatorUID {
+            let deleteBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(deleteBarBtnClicked))
+            deleteBtn.image = UIImage(named: "Delete_White")?.withRenderingMode(.alwaysTemplate)
+            deleteBtn.tintColor = UIColor.white
+            
+            let editBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(editBarBtnClicked))
+            editBtn.image = UIImage(named: "Edit_White")?.withRenderingMode(.alwaysTemplate)
+            editBtn.tintColor = UIColor.white
+            
+            self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn]
+        }
+    }
+    
+    @objc func deleteBarBtnClicked() {
+    }
+    
+    @objc func editBarBtnClicked() {
     }
 }
