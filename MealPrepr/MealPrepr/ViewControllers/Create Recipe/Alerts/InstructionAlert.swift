@@ -65,6 +65,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         if self.indexPathsOfSelectedIngredients.contains(indexPath) {
             cell.selectedIngredient = true
         }
+        cell.isSelectable = true
         return cell
     }
     
@@ -74,7 +75,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         label.sizeToFit()
         var size = label.frame.size
         size.height += 10
-        size.width += 6
+        size.width += 42
         return size
     }
     
