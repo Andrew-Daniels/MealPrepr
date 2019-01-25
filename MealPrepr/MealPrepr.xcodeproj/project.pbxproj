@@ -48,6 +48,7 @@
 		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
 		3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */; };
 		3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */; };
+		318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
 		3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193139221ED682700DBF55B /* CategoryAlert.swift */; };
@@ -128,6 +129,7 @@
 		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
 		3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionView.swift; sourceTree = "<group>"; };
 		3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipe.swift; sourceTree = "<group>"; };
+		318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorDelegate.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		3193139221ED682700DBF55B /* CategoryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAlert.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */,
+				318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
 				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,
+				318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */,
 				312F5A3821BC51120017B534 /* Home.swift in Sources */,
 				310D027D21C32F0F00EA8BA0 /* InstructionCell.swift in Sources */,
 				312F5A3221BC41980017B534 /* MPNavigationController.swift in Sources */,

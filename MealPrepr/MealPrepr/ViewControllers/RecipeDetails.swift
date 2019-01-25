@@ -9,8 +9,9 @@
 import UIKit
 
 private let photosVCSegueIdentifier = "containedPhotos"
+private let categorySelectorSegueIdentifier = "categorySelector"
 
-class RecipeDetails: MPViewController {
+class RecipeDetails: MPViewController, CategorySelectorDelegate {
     
     enum Controller: Int {
         case Instructions = 0
@@ -60,7 +61,7 @@ class RecipeDetails: MPViewController {
         case .Photos:
             vcIdentifier = createPhotosIdentifier
         case .Reviews:
-            break
+            return nil
         }
         guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPViewController else { return nil }
         
@@ -130,6 +131,7 @@ class RecipeDetails: MPViewController {
         }
     }
     @IBAction func favoritesBtnClicked(_ sender: Any) {
+        performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: self)
     }
     @IBAction func flagBtnClicked(_ sender: Any) {
     }
@@ -140,11 +142,17 @@ class RecipeDetails: MPViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         switch(segue.identifier) {
         case photosVCSegueIdentifier:
             if let vc = segue.destination as? Photos {
                 vc.recipe = recipe
                 vc.readOnly = true
+            }
+            return
+        case categorySelectorSegueIdentifier:
+            if let vc = segue.destination as? CategorySelector {
+                vc.delegate = self
             }
             return
         default:
@@ -180,5 +188,9 @@ class RecipeDetails: MPViewController {
     }
     
     @objc func editBarBtnClicked() {
+    }
+    
+    func categorySelected(category: String) {
+        FirebaseHelper().saveRecipeToCategory(account: self.account, category: category, recipe: self.recipe)
     }
 }

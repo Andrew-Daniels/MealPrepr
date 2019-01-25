@@ -15,7 +15,8 @@ class UtensilCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     var isSel: Bool = false {
         didSet {
-            let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
+            //let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
+            //let whiteColor = UIColor(red: 247/255, green: 247/255, blue: 255/255, alpha: 1.0)
             self.backgroundColor = isSel ? redColor : UIColor.clear
             self.titleLabel.textColor = isSel ? UIColor.black : UIColor.white
         }

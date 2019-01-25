@@ -39,6 +39,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
             }
         }
     }
+    var recipe: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()

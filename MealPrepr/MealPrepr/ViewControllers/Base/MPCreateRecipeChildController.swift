@@ -18,6 +18,7 @@ class MPCreateRecipeChildController: MPViewController {
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet var constraints: [NSLayoutConstraint]!
     var readOnly: Bool = false
+    var isEditingExistingRecipe: Bool = false
     var readOnlyConstraintsSet = false
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!

@@ -8,6 +8,10 @@
 
 import UIKit
 
+//let whiteColor = UIColor(red: 247/255, green: 247/255, blue: 255/255, alpha: 1.0)
+let whiteColor = UIColor(red: 234/255, green: 178/255, blue: 55/255, alpha: 1.0)
+let redColor = UIColor(red: 239/255, green: 68/255, blue: 61/255, alpha: 1.0)
+
 class InstructionIngredientCell: UICollectionViewCell {
     
     var ingredient: Ingredient! {
@@ -20,7 +24,7 @@ class InstructionIngredientCell: UICollectionViewCell {
     var ingredientLabel: UILabel!
     var selectedIngredient: Bool = false {
         didSet {
-            let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
+            //let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
             self.backgroundColor = selectedIngredient ? redColor : .white
             if let label = self.ingredientLabel {
                 label.textColor = selectedIngredient ? .white : .black
@@ -44,7 +48,7 @@ class InstructionIngredientCell: UICollectionViewCell {
         }
         self.layer.cornerRadius = 8
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0).cgColor
+        self.layer.borderColor = redColor.cgColor
         
         ingredientLabel = UILabel()
         ingredientLabel.setContentCompressionResistancePriority(.required, for: .horizontal)

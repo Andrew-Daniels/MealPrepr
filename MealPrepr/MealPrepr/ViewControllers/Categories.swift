@@ -13,26 +13,17 @@ private let cellIdentifier = "HomeRecipes"
 private let popoverSegueIdentifier = "categorySelectorPopover"
 private let selectorSegueIdentifier = "categorySelectorModal"
 
-class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout {
+class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout, CategorySelectorDelegate {
     
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     var recipes = [Recipe]()
-    var category = "Favorites" {
-        didSet {
-            FirebaseHelper().loadRecipesForCategory(account: self.account, category: self.category) { (recipes) in
-                self.filterButton.setTitle(self.category, for: .normal)
-                self.recipes = recipes
-                self.collectionView.reloadData()
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        FirebaseHelper().loadRecipesForCategory(account: self.account, category: self.category) { (recipes) in
+        FirebaseHelper().loadRecipesForCategory(account: self.account, category: "Favorites") { (recipes) in
             self.recipes = recipes
             self.collectionView.reloadData()
         }
@@ -112,11 +103,19 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         switch segue.identifier {
         case selectorSegueIdentifier:
             if let vc = segue.destination as? CategorySelector {
-                vc.presenter = self
+                vc.delegate = self
             }
             break
         default:
             break
+        }
+    }
+    
+    func categorySelected(category: String) {
+        FirebaseHelper().loadRecipesForCategory(account: self.account, category: category) { (recipes) in
+            self.filterButton.setTitle(category, for: .normal)
+            self.recipes = recipes
+            self.collectionView.reloadData()
         }
     }
     

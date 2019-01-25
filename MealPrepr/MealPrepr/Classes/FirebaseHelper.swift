@@ -133,6 +133,13 @@ class FirebaseHelper {
         }
     }
     
+    public func saveRecipeToCategory(account: Account, category: String, recipe: Recipe) {
+        if let UID = account.UID, let GUID = recipe.GUID {
+            let path = "Accounts/\(UID)/SavedRecipes/\(GUID)"
+            database.child(path).setValue(category)
+        }
+    }
+    
     public func checkUsernameAvailability(username: String?, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         if let username = username {
             
