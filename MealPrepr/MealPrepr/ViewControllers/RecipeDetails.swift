@@ -131,9 +131,13 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
         }
     }
     @IBAction func favoritesBtnClicked(_ sender: Any) {
-        performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: self)
+        if !checkForGuestAccount() {
+            performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: self)
+        }
     }
     @IBAction func flagBtnClicked(_ sender: Any) {
+        if !checkForGuestAccount() {
+        }
     }
     
     @objc func segmentedControlIndexChanged() {

@@ -2085,9 +2085,11 @@
                         <outlet property="segmentedControl" destination="nzO-VH-bpc" id="BFt-xD-jfM"/>
                         <outlet property="servingLabel" destination="Oh1-Ie-Rg5" id="jIF-E6-zgd"/>
                         <segue destination="pnO-aM-rNn" kind="presentation" identifier="categorySelector" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="oee-e7-zFS"/>
+                        <segue destination="ODn-SS-SVM" kind="unwind" identifier="backToSignUp" unwindAction="backToSignUpWithSegue:" id="jIx-Vd-AoW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKV-UK-t8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ODn-SS-SVM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6582.608695652174" y="-723.21428571428567"/>
         </scene>

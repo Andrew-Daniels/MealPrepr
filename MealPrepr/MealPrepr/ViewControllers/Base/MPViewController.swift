@@ -91,10 +91,12 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         performSegue(withIdentifier: backToSignUpSegueIdentifier, sender: nil)
     }
     
-    func checkForGuestAccount() {
+    func checkForGuestAccount() -> Bool {
         if self.account.userLevel == .Guest {
             MPAlertController.show(message: "You must sign in first before you can use this feature.", type: .CreateAccount, presenter: self)
+            return true
         }
+        return false
     }
     
     func constrainToContainerView() {
