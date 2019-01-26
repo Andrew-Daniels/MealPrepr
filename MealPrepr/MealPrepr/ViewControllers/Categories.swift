@@ -31,7 +31,7 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        checkForGuestAccount()
+        let _ = checkForGuestAccount()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
