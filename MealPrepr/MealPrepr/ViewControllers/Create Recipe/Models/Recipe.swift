@@ -263,7 +263,7 @@ class Recipe {
             self.photoPaths = photoPaths
             self.downloadedPhotos = [String: UIImage]()
             for (index, path) in self.photoPaths.enumerated() {
-                FirebaseHelper().downloadImage(atPath: path) { (image) in
+                FirebaseHelper().downloadImage(atPath: path, renderMode: .alwaysOriginal) { (image) in
                     self.downloadedPhotos[path] = image
                     self.recipeDelegate?.photoDownloaded(sender: self)
                     self.recipeDelegate?.photoDownloaded(photoPath: index)

@@ -45,6 +45,7 @@
 		312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */; };
 		312F5A3821BC51120017B534 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3721BC51120017B534 /* Home.swift */; };
 		312F5A3A21BC511F0017B534 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3921BC511F0017B534 /* Admin.swift */; };
+		3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */; };
 		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
 		3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */; };
 		3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */; };
@@ -126,6 +127,7 @@
 		312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationViewController.swift; sourceTree = "<group>"; };
 		312F5A3721BC51120017B534 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		312F5A3921BC511F0017B534 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
 		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
 		3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionView.swift; sourceTree = "<group>"; };
 		3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipe.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			children = (
 				31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */,
 				318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */,
+				3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				310D027721C1F29B00EA8BA0 /* ImageHelper.swift in Sources */,
 				312F5A2821BB47E20017B534 /* FirebaseHelper.swift in Sources */,
 				310D027521C0B4DF00EA8BA0 /* UtensilAlert.swift in Sources */,
+				3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */,
 				31B9572D21E6FBF000D15CCD /* Utensil.swift in Sources */,
 				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,
 				3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */,

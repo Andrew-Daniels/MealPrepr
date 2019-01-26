@@ -226,6 +226,12 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     }
     
     func setupAlertWithInstruction() {
+        
+        self.instructionTextView.becomeFirstResponder()
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerHandler))
+        self.instructionTextView.gestureRecognizers = [gestureRecognizer]
+        self.collectionView.gestureRecognizers?.append(gestureRecognizer)
+        
         if self.instruction != nil {
             isEditingExistingInstruction = true
             
@@ -259,5 +265,9 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         if !self.checkIfTouchesAreInside(touches: touches, ofView: self.instructionTextView) {
             self.instructionTextView.resignFirstResponder()
         }
+    }
+    
+    @objc func panGestureRecognizerHandler() {
+        self.instructionTextView.resignFirstResponder()
     }
 }

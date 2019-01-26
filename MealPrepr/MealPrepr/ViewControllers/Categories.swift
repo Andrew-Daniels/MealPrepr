@@ -66,7 +66,10 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         case .unspecified:
             break
         case .phone:
-            performSegue(withIdentifier: selectorSegueIdentifier, sender: self)
+            if let sender = sender as? UIButton {
+                sender.isSelected = true
+            }
+            performSegue(withIdentifier: selectorSegueIdentifier, sender: sender)
             break
         case .pad:
             break
@@ -104,6 +107,7 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         case selectorSegueIdentifier:
             if let vc = segue.destination as? CategorySelector {
                 vc.delegate = self
+                vc.sender = sender
             }
             break
         default:

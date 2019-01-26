@@ -87,9 +87,9 @@ class FirebaseHelper {
         }
     }
     
-    public func downloadImage(atPath: String, completionHandler: @escaping (_ isResponse : UIImage) -> Void) {
+    public func downloadImage(atPath: String, renderMode: UIImage.RenderingMode, completionHandler: @escaping (_ isResponse : UIImage) -> Void) {
         storage.child(atPath).getData(maxSize: (1000 * 500)) { (data, error) in
-            if let data = data, let image = UIImage(data: data) {
+            if let data = data, let image = UIImage(data: data)?.withRenderingMode(renderMode) {
                 completionHandler(image)
             }
         }
@@ -236,7 +236,7 @@ class FirebaseHelper {
     public func loadRecipesForCategory(account: Account, category: String, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
         if let UID = account.UID {
             let path = "Accounts/\(UID)/SavedRecipes"
-            if category == "All" {
+            if category == allCategoriesString {
                 database.child(path).observeSingleEvent(of: .value) { (snapshot) in
                     self.recipesFromSnapshot(snapshot: snapshot, completionHandler: { (recipes) in
                         completionHandler(recipes)

@@ -70,7 +70,17 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
         }
     }
     
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movingInstruction = self.instructions[sourceIndexPath.row]
+        self.instructions.remove(at: sourceIndexPath.row)
+        self.instructions.insert(movingInstruction, at: destinationIndexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return !readOnly
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return !readOnly
     }
     

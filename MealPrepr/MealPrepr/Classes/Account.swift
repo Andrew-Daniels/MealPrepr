@@ -6,6 +6,8 @@
 //  Copyright © 2018 Andrew Daniels. All rights reserved.
 //
 
+let allCategoriesString = "All Saved Recipes"
+
 import Foundation
 
 class Account {
@@ -55,7 +57,7 @@ class Account {
     
     func savingCategories() {
         self.recipeCategories.removeAll { (string) -> Bool in
-            if string == "Favorites" || string == "All" {
+            if string == "Favorites" || string == allCategoriesString {
                 return true
             }
             return false
@@ -65,7 +67,22 @@ class Account {
     func savedCategories() {
         if !self.recipeCategories.contains("Favorites") {
             self.recipeCategories.insert("Favorites", at: 0)
-            self.recipeCategories.insert("All", at: 0)
+            self.recipeCategories.insert(allCategoriesString, at: 0)
+        }
+    }
+    
+    func viewingCategories() {
+        self.recipeCategories.removeAll { (string) -> Bool in
+            if string == allCategoriesString {
+                return true
+            }
+            return false
+        }
+    }
+    
+    func finishedViewingCategories() {
+        if !self.recipeCategories.contains(allCategoriesString) {
+            self.recipeCategories.insert(allCategoriesString, at: 0)
         }
     }
 }

@@ -31,11 +31,15 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
     @IBOutlet weak var dateCreatedLabel: UILabel!
     @IBOutlet weak var servingLabel: UILabel!
     @IBOutlet weak var caloriesServingLabel: UILabel!
+    @IBOutlet weak var likesImageView: UIImageView!
     
     private var viewControllers = [Controller: MPViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        likesImageView.image = UIImage(named: "Like")?.withRenderingMode(.alwaysTemplate)
+        likesImageView.tintColor = redColor
         
         let index = Controller(rawValue: segmentedControl.selectedSegmentIndex)
         presentChildVC(atIndex: index)
@@ -132,11 +136,14 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
     }
     @IBAction func favoritesBtnClicked(_ sender: Any) {
         if !checkForGuestAccount() {
-            performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: self)
+            (sender as! UIButton).isSelected = true
+            self.account.savingCategories()
+            performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: sender)
         }
     }
     @IBAction func flagBtnClicked(_ sender: Any) {
         if !checkForGuestAccount() {
+            (sender as! UIButton).isSelected = true
         }
     }
     
@@ -157,6 +164,8 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
         case categorySelectorSegueIdentifier:
             if let vc = segue.destination as? CategorySelector {
                 vc.delegate = self
+                vc.sender = sender
+                vc.alertDelegate = self
             }
             return
         default:

@@ -17,10 +17,18 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     var delegate: CategorySelectorDelegate?
+    var alertDelegate: AlertDelegate?
+    var sender: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        alertDelegate?.alertShown()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        alertDelegate?.alertDismissed()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,13 +45,21 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = self.account.recipeCategories[indexPath.row]
         delegate?.categorySelected(category: category)
-        self.dismiss(animated: true, completion: nil)
+        dismiss()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !self.checkIfTouchesAreInside(touches: touches, ofView: self.containerView) {
-            self.dismiss(animated: true, completion: nil)
+            dismiss()
         }
+    }
+    
+    private func dismiss() {
+        if let sender = self.sender as? UIButton {
+            sender.isSelected = false
+        }
+        self.account.savedCategories()
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

@@ -12,6 +12,7 @@ class IngredientCell: UITableViewCell {
 
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var ingredientLabel: UILabel!
+    @IBOutlet weak var unitLabel: UILabel!
     
     var ingredient: Ingredient!
     
@@ -34,8 +35,6 @@ class IngredientCell: UITableViewCell {
         super.layoutSubviews()
         
         ingredientLabel.text = ingredient.title
-        if let quantity = ingredient.quantity, let unit = ingredient.unit {
-            quantityLabel.text = "\(quantity) \(unit)"
-        }
+        quantityLabel.text = ingredient.quantity?.description
     }
 }

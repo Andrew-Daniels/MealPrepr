@@ -10,7 +10,7 @@ import UIKit
 
 private let loadingVCSBIdentifer = "LoadingVC"
 
-class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AlertDelegate {
     
     var account: Account!
     var searchController: UISearchController?
@@ -176,6 +176,22 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     func endEditing() {
         if self.isEditing {
             self.view.endEditing(true)
+        }
+    }
+    
+    func alertShown() {
+        UIView.animate(withDuration: TimeInterval.init(exactly: 0.2)!) {
+            self.tabBarController?.tabBar.isHidden = true
+            self.extendedLayoutIncludesOpaqueBars = true
+            self.navigationController?.view.layoutSubviews()
+        }
+    }
+    
+    func alertDismissed() {
+        UIView.animate(withDuration: TimeInterval.init(exactly: 0.2)!) {
+            self.tabBarController?.tabBar.isHidden = false
+            self.extendedLayoutIncludesOpaqueBars = false
+            self.navigationController?.view.layoutSubviews()
         }
     }
 }
