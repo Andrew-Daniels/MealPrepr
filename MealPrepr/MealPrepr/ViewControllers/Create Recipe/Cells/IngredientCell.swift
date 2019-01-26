@@ -36,5 +36,6 @@ class IngredientCell: UITableViewCell {
         
         ingredientLabel.text = ingredient.title
         quantityLabel.text = ingredient.quantity?.description
+        unitLabel.text = ingredient.unit?.description
     }
 }
