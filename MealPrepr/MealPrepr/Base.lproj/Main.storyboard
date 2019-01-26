@@ -2303,7 +2303,7 @@
                                 <rect key="frame" x="10" y="0.0" width="580" height="300"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yab-OZ-phl" customClass="MPCollectionView" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="54" width="580" height="246"/>
+                                        <rect key="frame" x="0.0" y="64" width="580" height="236"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qU1-NH-5UD">
                                             <size key="itemSize" width="300" height="300"/>
@@ -2357,7 +2357,7 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za6-FV-Bsk">
-                                        <rect key="frame" x="268" y="0.0" width="44" height="44"/>
+                                        <rect key="frame" x="268" y="10" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="1pW-fn-qf9"/>
                                             <constraint firstAttribute="height" constant="44" id="40U-Rf-wzz"/>
@@ -2381,7 +2381,7 @@
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="leading" secondItem="sh4-la-SZS" secondAttribute="leading" constant="5" id="SjZ-qf-DNU">
                                         <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                                     </constraint>
-                                    <constraint firstItem="Za6-FV-Bsk" firstAttribute="top" secondItem="sh4-la-SZS" secondAttribute="top" id="cTe-Ha-ayt"/>
+                                    <constraint firstItem="Za6-FV-Bsk" firstAttribute="top" secondItem="sh4-la-SZS" secondAttribute="top" constant="10" id="cTe-Ha-ayt"/>
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="centerY" secondItem="sh4-la-SZS" secondAttribute="centerY" id="fsX-4A-Mpb"/>
                                     <constraint firstAttribute="trailing" secondItem="yab-OZ-phl" secondAttribute="trailing" id="wS2-DE-fe1"/>
                                     <constraint firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" identifier="bottomConstraint" id="ziQ-HJ-IhD"/>
