@@ -35,6 +35,7 @@ class Account {
                 self.userLevel = ul
                 FirebaseHelper().loadCategories(account: self)
                 completionHandler(true)
+                return
             }
             completionHandler(false)
         }

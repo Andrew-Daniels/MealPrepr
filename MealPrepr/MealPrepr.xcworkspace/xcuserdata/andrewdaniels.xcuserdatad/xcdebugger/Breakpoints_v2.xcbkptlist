@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MealPrepr/ViewControllers/Login.swift"
-            timestampString = "570260255.540689"
+            timestampString = "570261664.759737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -26,12 +26,12 @@
                   moduleName = "MealPrepr"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewdaniels/iCloudDrive_Archive/Desktop/FullSailUniversity/IPD/git/MealPrepr/MealPrepr/MealPrepr/ViewControllers/Login.swift"
-                  timestampString = "570260255.759068"
+                  timestampString = "570261664.916841"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "185"
                   endingLineNumber = "185"
-                  offsetFromSymbolStart = "1819">
+                  offsetFromSymbolStart = "1852">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "MealPrepr"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andrewdaniels/iCloudDrive_Archive/Desktop/FullSailUniversity/IPD/git/MealPrepr/MealPrepr/MealPrepr/ViewControllers/Login.swift"
-                  timestampString = "570260255.760962"
+                  timestampString = "570261664.918643"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "186"
                   endingLineNumber = "186"
-                  offsetFromSymbolStart = "34">
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>

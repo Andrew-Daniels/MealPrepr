@@ -288,8 +288,10 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         UIView.animate(withDuration: 0.4) {
             if (self.backViewOutOfView) {
                 self.guestBtn.isHidden = true
+                self.fbLoginBtn.isHidden = true
             } else {
                 self.guestBtn.isHidden = false
+                self.fbLoginBtn.isHidden = false
             }
             self.view.layoutIfNeeded()
         }

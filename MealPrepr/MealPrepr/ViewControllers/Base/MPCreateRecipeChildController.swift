@@ -38,21 +38,18 @@ class MPCreateRecipeChildController: MPViewController {
             addBtn.isEnabled = false
             
             for c in constraints {
-                switch (c.identifier) {
-                case readOnlyConstraintIdentifier:
-                    c.isActive = true
-                    break
-                case createOnlyConstraintIdentifier:
+                if c.identifier == createOnlyConstraintIdentifier {
                     c.isActive = false
-                    break
-                case bottomConstraintIdentifier:
-                    c.constant = 0
-                default:
-                    break
                 }
-                
-                self.view.layoutIfNeeded()
             }
+            
+            for c in constraints {
+                if c.identifier == readOnlyConstraintIdentifier {
+                    c.isActive = true
+                }
+            }
+            
+            self.view.layoutIfNeeded()
             
             readOnlyConstraintsSet = true
             

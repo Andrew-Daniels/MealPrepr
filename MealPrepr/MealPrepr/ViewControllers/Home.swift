@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 let recipeDetailsStoryboardIdentifier = "RecipeDetails"
 
@@ -48,7 +49,12 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     
     @objc func logoutBtnClicked() {
         do {
+            
+            let manager = FBSDKLoginManager()
+            manager.logOut()
+            
             try Auth.auth().signOut()
+            
             performSegue(withIdentifier: backToLoginSegueIdentifier, sender: nil)
         } catch {
             print("Error when trying to log user out.")
