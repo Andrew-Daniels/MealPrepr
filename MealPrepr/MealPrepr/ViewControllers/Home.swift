@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 let recipeDetailsStoryboardIdentifier = "RecipeDetails"
 
@@ -46,7 +47,12 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     @objc func logoutBtnClicked() {
-        performSegue(withIdentifier: backToLoginSegueIdentifier, sender: nil)
+        do {
+            try Auth.auth().signOut()
+            performSegue(withIdentifier: backToLoginSegueIdentifier, sender: nil)
+        } catch {
+            print("Error when trying to log user out.")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

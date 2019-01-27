@@ -2,4 +2,102 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MealPrepr/ViewControllers/Login.swift"
+            timestampString = "570249072.7361259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "loginBtnClicked(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MealPrepr.Login.loginBtnClicked(__C.UIButton) -&gt; ()"
+                  moduleName = "MealPrepr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewdaniels/iCloudDrive_Archive/Desktop/FullSailUniversity/IPD/git/MealPrepr/MealPrepr/MealPrepr/ViewControllers/Login.swift"
+                  timestampString = "570249072.749439"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "1786">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MealPrepr.Login.loginBtnClicked(__C.UIButton) -&gt; ()"
+                  moduleName = "MealPrepr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewdaniels/iCloudDrive_Archive/Desktop/FullSailUniversity/IPD/git/MealPrepr/MealPrepr/MealPrepr/ViewControllers/Login.swift"
+                  timestampString = "570249072.7535681"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "81">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MealPrepr/ViewControllers/Login.swift"
+            timestampString = "570249072.736621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "loginBtnClicked(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MealPrepr.Login.loginBtnClicked(__C.UIButton) -&gt; ()"
+                  moduleName = "MealPrepr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewdaniels/iCloudDrive_Archive/Desktop/FullSailUniversity/IPD/git/MealPrepr/MealPrepr/MealPrepr/ViewControllers/Login.swift"
+                  timestampString = "570249072.83928"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "1819">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MealPrepr.Login.loginBtnClicked(__C.UIButton) -&gt; ()"
+                  moduleName = "MealPrepr"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewdaniels/iCloudDrive_Archive/Desktop/FullSailUniversity/IPD/git/MealPrepr/MealPrepr/MealPrepr/ViewControllers/Login.swift"
+                  timestampString = "570249072.842664"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

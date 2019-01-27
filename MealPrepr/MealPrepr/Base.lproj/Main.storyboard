@@ -40,7 +40,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-XS-Kcm">
-                                        <rect key="frame" x="144" y="267" width="146" height="36"/>
+                                        <rect key="frame" x="148" y="267" width="142" height="40"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="forgot password">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-7h-9aK">
-                                        <rect key="frame" x="129" y="311" width="161" height="36"/>
+                                        <rect key="frame" x="132" y="315" width="158" height="40"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="I need an account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,7 +83,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-iH-P01">
-                                        <rect key="frame" x="127.66666666666666" y="440" width="75" height="47"/>
+                                        <rect key="frame" x="122.66666666666666" y="439" width="85" height="48"/>
                                         <fontDescription key="fontDescription" name="Phosphate-Solid" family="Phosphate" pointSize="30"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,7 +158,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-vh-V1A">
-                                <rect key="frame" x="125.66666666666669" y="724" width="163" height="36"/>
+                                <rect key="frame" x="126.66666666666669" y="724" width="161" height="40"/>
                                 <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                 <state key="normal" title="Continue as guest">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -166,6 +166,10 @@
                                 <connections>
                                     <action selector="guestBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xEp-6W-qta"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gk9-wN-bbo" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="180" y="784" width="54" height="34"/>
+                                <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -177,10 +181,12 @@
                             <constraint firstItem="H1W-tj-46m" firstAttribute="leading" secondItem="Mpd-vh-V1A" secondAttribute="trailing" constant="26" id="GKE-sS-CG0"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="GrW-Ed-RVZ"/>
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="leading" secondItem="lcR-Rl-ynz" secondAttribute="leading" constant="52" id="HPJ-pa-4Sj"/>
+                            <constraint firstItem="Gk9-wN-bbo" firstAttribute="top" secondItem="Mpd-vh-V1A" secondAttribute="bottom" constant="20" id="SVO-D3-l3U"/>
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="top" secondItem="H1W-tj-46m" secondAttribute="bottom" constant="20" id="SjZ-rg-Izw"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SuC-Kt-hAr"/>
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="bottom" secondItem="H1W-tj-46m" secondAttribute="bottom" constant="-15" id="Vl9-k4-fNw"/>
                             <constraint firstAttribute="trailing" secondItem="Seb-Lz-wGT" secondAttribute="trailing" id="jrH-Li-ybl"/>
+                            <constraint firstItem="Gk9-wN-bbo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mDN-sf-X6W"/>
                             <constraint firstItem="H1W-tj-46m" firstAttribute="centerX" secondItem="lcR-Rl-ynz" secondAttribute="centerX" id="qGz-S1-ZZw"/>
                             <constraint firstItem="Mpd-vh-V1A" firstAttribute="centerX" secondItem="lcR-Rl-ynz" secondAttribute="centerX" id="xwo-Ji-j64"/>
                         </constraints>
@@ -208,6 +214,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="IEu-sb-RQE" id="NL3-oH-JNx"/>
+                        <outlet property="fbLoginBtn" destination="Gk9-wN-bbo" id="LCH-43-rH0"/>
                         <outlet property="guestBtn" destination="Mpd-vh-V1A" id="0UL-wd-UdT"/>
                         <outlet property="loginBackView" destination="H1W-tj-46m" id="L9b-Z6-oSt"/>
                         <outlet property="passwordTextField" destination="uit-LP-7uh" id="NiQ-Sg-imk"/>
@@ -218,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33.812949640287769" y="40.467625899280577"/>
+            <point key="canvasLocation" x="33.333333333333336" y="40.178571428571423"/>
         </scene>
         <!--Home-->
         <scene sceneID="8EY-Ps-DVA">
@@ -3112,16 +3119,16 @@
                                         <exclude reference="FjL-HN-FkK"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="MjA-OA-zcw"/>
-                                        <exclude reference="bo5-tM-djj"/>
-                                        <exclude reference="eT4-g0-r45"/>
-                                        <exclude reference="ohC-yp-D3h"/>
                                         <exclude reference="KTS-VT-4Zn"/>
                                         <exclude reference="Rfw-Xb-J12"/>
                                         <exclude reference="dpS-hI-Blp"/>
                                         <exclude reference="vmb-vB-o1a"/>
                                         <exclude reference="43i-c7-NEd"/>
                                         <exclude reference="v3H-yh-cNi"/>
+                                        <exclude reference="MjA-OA-zcw"/>
+                                        <exclude reference="bo5-tM-djj"/>
+                                        <exclude reference="eT4-g0-r45"/>
+                                        <exclude reference="ohC-yp-D3h"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
@@ -3131,10 +3138,6 @@
                                     <mask key="constraints">
                                         <exclude reference="eZj-Qi-BvC"/>
                                         <exclude reference="zHQ-04-72P"/>
-                                        <include reference="MjA-OA-zcw"/>
-                                        <include reference="bo5-tM-djj"/>
-                                        <include reference="eT4-g0-r45"/>
-                                        <include reference="ohC-yp-D3h"/>
                                         <exclude reference="Tnh-wJ-LNB"/>
                                         <exclude reference="cQM-vO-hA9"/>
                                         <exclude reference="9oE-hy-xIF"/>
@@ -3146,6 +3149,10 @@
                                         <include reference="43i-c7-NEd"/>
                                         <exclude reference="4YX-2A-Db2"/>
                                         <exclude reference="v3H-yh-cNi"/>
+                                        <include reference="MjA-OA-zcw"/>
+                                        <include reference="bo5-tM-djj"/>
+                                        <include reference="eT4-g0-r45"/>
+                                        <include reference="ohC-yp-D3h"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -3287,7 +3294,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="9oo-f0-IPD"/>
         <segue reference="1mD-6x-Zvs"/>
-        <segue reference="a1X-fi-h5r"/>
+        <segue reference="K7L-9q-dtF"/>
         <segue reference="2dh-LI-w2E"/>
         <segue reference="3Tg-Qa-sNK"/>
         <segue reference="FCm-U1-elv"/>

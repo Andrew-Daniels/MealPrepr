@@ -8,10 +8,7 @@
 
 import UIKit
 
-//let whiteColor = UIColor(red: 234/255, green: 178/255, blue: 55/255, alpha: 1.0)
-//let redColor = UIColor(red: 239/255, green: 68/255, blue: 61/255, alpha: 1.0)
 let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
-//let redColor = UIColor(red: 247/255, green: 90/255, blue: 68/255, alpha: 1.0)
 
 class InstructionIngredientCell: UICollectionViewCell {
     
@@ -26,7 +23,6 @@ class InstructionIngredientCell: UICollectionViewCell {
     var imageView: UIImageView!
     var selectedIngredient: Bool = false {
         didSet {
-            //let redColor = UIColor(red: 242/255, green: 66/255, blue: 54/255, alpha: 1.0)
             self.backgroundColor = selectedIngredient ? redColor : .white
             setBorder()
             if let label = self.ingredientLabel {

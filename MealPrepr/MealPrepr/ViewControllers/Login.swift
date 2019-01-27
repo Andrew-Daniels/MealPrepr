@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 public let signUpSegueIdentifier = "SignUp"
 public let registeredSegueIdentifier = "Registered"
@@ -18,7 +20,7 @@ public let backToSignUpSegueIdentifier = "backToSignUp"
 public let backToLoginSegueIdentifier = "backToLogin"
 public let createRecipeSegueIdentifier = "CreateRecipe"
 
-class Login: MPViewController, MPTextFieldDelegate {
+class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var loginBackView: RoundedUIView!
     @IBOutlet weak var guestBtn: UIButton!
@@ -30,15 +32,65 @@ class Login: MPViewController, MPTextFieldDelegate {
     var loginBackViewInactiveConstraints: [NSLayoutConstraint]!
     private var backViewOutOfView = false
     private var segueToSignUp = false
+    @IBOutlet weak var fbLoginBtn: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         emailTextField.delegate = self
         emailTextField.authFieldType = .Email
         passwordTextField.delegate = self
         passwordTextField.authFieldType = .Password
+        
         _FBHelper = FirebaseHelper()
+        
+        fbLoginBtn.delegate = self
+        fbLoginBtn.readPermissions = ["public_profile", "email"]
+        
+        handleAuthToken()
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        handleAuthToken()
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    }
+    
+    private func handleAuthToken() {
+        if let token = FBSDKAccessToken.current() {
+            let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                //User is signed in
+                if let user = authResult?.user {
+                    self.handleUser(user: user)
+                }
+            }
+        } else if let user = Auth.auth().currentUser {
+            //User is signed in
+            handleUser(user: user)
+        }
+    }
+    
+    private func handleUser(user: User) {
+        self.account = Account(UID: user.uid, completionHandler: { (actCreated) in
+            if actCreated {
+                //perform segue to homepage
+                self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+            } else {
+                //Request username to create a new account
+                //then perform segue to homepage
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -227,6 +279,9 @@ class Login: MPViewController, MPTextFieldDelegate {
             }
             self.view.layoutIfNeeded()
         }
+    }
+    @IBAction func fbLoginBtnClicked(_ sender: Any) {
+        
     }
 }
 

@@ -108,6 +108,7 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
             if let vc = segue.destination as? CategorySelector {
                 vc.delegate = self
                 vc.sender = sender
+                vc.alertDelegate = self
             }
             break
         default:
