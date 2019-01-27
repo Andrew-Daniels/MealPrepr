@@ -18,6 +18,13 @@ class HomeTabBarController: MPTabBarController {
     }
     */
     
+    enum Controller: Int {
+        case Home
+        case Categories
+        case Weekplan
+        case Settings
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if account.userLevel != .Admin {
@@ -34,4 +41,31 @@ class HomeTabBarController: MPTabBarController {
         }
     }
 
+    public func getVC(controller: Controller) -> MPNavigationController? {
+        
+        guard let viewControllers = self.viewControllers else { return nil }
+        
+        switch controller {
+            
+        case .Home:
+            for vc in viewControllers {
+                if vc is HomeNavigationController {
+                    return vc as? HomeNavigationController
+                }
+            }
+        case .Categories:
+            for vc in viewControllers {
+                if vc is CategoriesNavigationController {
+                    return vc as? CategoriesNavigationController
+                }
+            }
+        case .Weekplan:
+            break;
+        case .Settings:
+            break;
+        }
+        
+        return nil
+    }
+    
 }

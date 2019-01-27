@@ -8,6 +8,13 @@
 
 import Foundation
 
-protocol MPTextFieldDelegate {
+protocol MPTextFieldDelegate: NSObjectProtocol {
     func mpTextFieldShouldReturn(textField: MPTextField)
+    func mpTextFieldTextDidChange(text: String?)
+}
+
+extension MPTextFieldDelegate {
+    func mpTextFieldTextDidChange(text: String?) {
+        
+    }
 }

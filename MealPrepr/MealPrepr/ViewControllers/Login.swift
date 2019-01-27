@@ -19,6 +19,7 @@ public let homeTabBarSegueIdentifier = "HomeTabBar"
 public let backToSignUpSegueIdentifier = "backToSignUp"
 public let backToLoginSegueIdentifier = "backToLogin"
 public let createRecipeSegueIdentifier = "CreateRecipe"
+private let usernameAlertSegueIdentifier = "usernameAlert"
 
 class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     
@@ -60,6 +61,11 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("Error trying to log user out.")
+        }
     }
     
     private func handleAuthToken() {
@@ -89,6 +95,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
             } else {
                 //Request username to create a new account
                 //then perform segue to homepage
+                self.performSegue(withIdentifier: usernameAlertSegueIdentifier, sender: nil)
             }
         })
     }
@@ -218,6 +225,13 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     @IBAction func backToLogin(segue: UIStoryboardSegue) {
         if (backViewOutOfView) {
             backViewAnimate()
+        }
+    }
+    
+    @IBAction func backToLoginLoggedIn(segue: UIStoryboardSegue) {
+        //Perform segue to homescreen here
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
         }
     }
     

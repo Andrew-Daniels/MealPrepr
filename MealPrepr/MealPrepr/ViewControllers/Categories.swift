@@ -18,12 +18,13 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     var recipes = [Recipe]()
+    var category = "Favorites"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        FirebaseHelper().loadRecipesForCategory(account: self.account, category: "Favorites") { (recipes) in
+        FirebaseHelper().loadRecipesForCategory(account: self.account, category: self.category) { (recipes) in
             self.recipes = recipes
             self.collectionView.reloadData()
         }
@@ -116,9 +117,16 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
-    func categorySelected(category: String) {
-        FirebaseHelper().loadRecipesForCategory(account: self.account, category: category) { (recipes) in
-            self.filterButton.setTitle(category, for: .normal)
+    internal func categorySelected(category: String) {
+        
+        self.category = category
+        
+        reloadRecipes()
+    }
+    
+    public func reloadRecipes() {
+        FirebaseHelper().loadRecipesForCategory(account: self.account, category: self.category) { (recipes) in
+            self.filterButton.setTitle(self.category, for: .normal)
             self.recipes = recipes
             self.collectionView.reloadData()
         }

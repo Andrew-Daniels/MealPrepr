@@ -33,9 +33,10 @@ class Account {
             self.username = accountInfo.username
             if let level = accountInfo.userLevel, let ul = UserLevel(rawValue: level) {
                 self.userLevel = ul
+                FirebaseHelper().loadCategories(account: self)
+                completionHandler(true)
             }
-            FirebaseHelper().loadCategories(account: self)
-            completionHandler(true)
+            completionHandler(false)
         }
     }
     

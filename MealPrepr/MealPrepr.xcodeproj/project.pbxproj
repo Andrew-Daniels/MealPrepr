@@ -46,6 +46,8 @@
 		312F5A3821BC51120017B534 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3721BC51120017B534 /* Home.swift */; };
 		312F5A3A21BC511F0017B534 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3921BC511F0017B534 /* Admin.swift */; };
 		3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */; };
+		31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE521FD64EB00789B2F /* UsernameAlert.swift */; };
+		31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */; };
 		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
 		3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */; };
 		3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */; };
@@ -128,6 +130,8 @@
 		312F5A3721BC51120017B534 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		312F5A3921BC511F0017B534 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
+		31611AE521FD64EB00789B2F /* UsernameAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAlert.swift; sourceTree = "<group>"; };
+		31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNavigationController.swift; sourceTree = "<group>"; };
 		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
 		3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionView.swift; sourceTree = "<group>"; };
 		3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipe.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 			children = (
 				312F5A2B21BC36010017B534 /* HomeNavigationController.swift */,
 				312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */,
+				31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 			children = (
 				3193139221ED682700DBF55B /* CategoryAlert.swift */,
 				31FAEAE921EEC5BF004D006E /* CategorySelector.swift */,
+				31611AE521FD64EB00789B2F /* UsernameAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -632,6 +638,7 @@
 				310D30DD21B74DE300D0E079 /* MealPrepr.xcdatamodeld in Sources */,
 				312F5A2C21BC36010017B534 /* HomeNavigationController.swift in Sources */,
 				310D026B21C08C5400EA8BA0 /* IngredientAlert.swift in Sources */,
+				31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
 				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,
@@ -660,6 +667,7 @@
 				310D027521C0B4DF00EA8BA0 /* UtensilAlert.swift in Sources */,
 				3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */,
 				31B9572D21E6FBF000D15CCD /* Utensil.swift in Sources */,
+				31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */,
 				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,
 				3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */,
 				31B9572F21E6FEBC00D15CCD /* UtensilDelegate.swift in Sources */,

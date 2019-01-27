@@ -190,6 +190,8 @@ class FirebaseHelper {
                     }
                 }
                 completionHandler((username: username, userLevel: userLevel))
+            } else {
+                completionHandler((username: nil, userLevel: nil))
             }
         }
     }
@@ -200,8 +202,8 @@ class FirebaseHelper {
             database.child(path).observe(.value) { (snapshot) in
                 if let value = snapshot.value as? [String] {
                     account.recipeCategories = value
-                    account.savedCategories()
                 }
+                account.savedCategories()
             }
         }
     }

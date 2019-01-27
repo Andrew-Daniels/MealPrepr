@@ -137,7 +137,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
     @IBAction func favoritesBtnClicked(_ sender: Any) {
         if !checkForGuestAccount() {
             (sender as! UIButton).isSelected = true
-            self.account.savingCategories()
+            self.account.viewingCategories()
             performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: sender)
         }
     }
@@ -205,5 +205,12 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
     
     func categorySelected(category: String) {
         FirebaseHelper().saveRecipeToCategory(account: self.account, category: category, recipe: self.recipe)
+        if let tabBarVC = self.tabBarController as? HomeTabBarController {
+            if let catNVC = tabBarVC.getVC(controller: .Categories) as? CategoriesNavigationController {
+                if let catVC = catNVC.viewControllers.first as? Categories, let _ = catVC.collectionView {
+                    catVC.reloadRecipes()
+                }
+            }
+        }
     }
 }

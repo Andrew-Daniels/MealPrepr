@@ -58,7 +58,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
         if let sender = self.sender as? UIButton {
             sender.isSelected = false
         }
-        self.account.savedCategories()
+        self.account.finishedViewingCategories()
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -164,6 +164,7 @@ class MPTextField: UIControl, UITextFieldDelegate {
         } else {
             self.textFieldLabel.isHidden = true
         }
+        self.delegate?.mpTextFieldTextDidChange(text: textField.text)
     }
     
     private func initMPTextField() {
