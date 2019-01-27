@@ -1666,7 +1666,7 @@
                                     <constraint firstItem="ExA-8L-UD3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eTo-Yr-ANb" secondAttribute="trailing" constant="10" id="qOU-uu-aOb"/>
                                     <constraint firstItem="09x-4s-7UD" firstAttribute="top" secondItem="eTo-Yr-ANb" secondAttribute="top" id="vi4-at-4Iu"/>
                                     <constraint firstItem="ABQ-w1-IdS" firstAttribute="top" secondItem="ff8-Qc-PfI" secondAttribute="top" constant="10" identifier="readOnly" id="xee-eq-Kr6"/>
-                                    <constraint firstAttribute="bottom" secondItem="ABQ-w1-IdS" secondAttribute="bottom" identifier="bottomConstraint" id="yHp-pF-iKK"/>
+                                    <constraint firstAttribute="bottom" secondItem="ABQ-w1-IdS" secondAttribute="bottom" id="yHp-pF-iKK"/>
                                     <constraint firstItem="ExA-8L-UD3" firstAttribute="width" secondItem="eTo-Yr-ANb" secondAttribute="width" id="z9n-A8-dFY"/>
                                     <constraint firstAttribute="trailing" secondItem="ABQ-w1-IdS" secondAttribute="trailing" id="zL5-WK-icw"/>
                                 </constraints>
@@ -1698,7 +1698,6 @@
                         <outlet property="editBtn" destination="09x-4s-7UD" id="ugT-nr-03S"/>
                         <outlet property="tableView" destination="ABQ-w1-IdS" id="Kpw-zI-E6h"/>
                         <outletCollection property="constraints" destination="H7k-U2-ETI" collectionClass="NSMutableArray" id="dzJ-QU-nR5"/>
-                        <outletCollection property="constraints" destination="yHp-pF-iKK" collectionClass="NSMutableArray" id="2FV-if-EuQ"/>
                         <outletCollection property="constraints" destination="xee-eq-Kr6" collectionClass="NSMutableArray" id="VOZ-hH-S5o"/>
                         <segue destination="WlR-9H-Wwy" kind="presentation" identifier="EditIngredient" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="dQ6-iL-yST"/>
                     </connections>
@@ -1792,7 +1791,7 @@
                                 <constraints>
                                     <constraint firstItem="0ek-R1-CbT" firstAttribute="top" secondItem="wbf-GI-YlF" secondAttribute="top" constant="10" identifier="readOnly" id="2c7-1Z-EI8"/>
                                     <constraint firstItem="0ek-R1-CbT" firstAttribute="top" secondItem="qhc-UN-M19" secondAttribute="bottom" constant="10" identifier="createOnly" id="6M6-MC-bDt"/>
-                                    <constraint firstAttribute="bottom" secondItem="0ek-R1-CbT" secondAttribute="bottom" identifier="bottomConstraint" id="BrR-sX-zIZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="0ek-R1-CbT" secondAttribute="bottom" id="BrR-sX-zIZ"/>
                                     <constraint firstItem="qhc-UN-M19" firstAttribute="top" secondItem="wbf-GI-YlF" secondAttribute="top" constant="10" id="KEe-V3-rXC"/>
                                     <constraint firstItem="qhc-UN-M19" firstAttribute="centerX" secondItem="wbf-GI-YlF" secondAttribute="centerX" id="THC-3Y-3Fi"/>
                                     <constraint firstItem="0ek-R1-CbT" firstAttribute="leading" secondItem="wbf-GI-YlF" secondAttribute="leading" id="l3J-sh-MGx"/>
@@ -1816,7 +1815,7 @@
                             <constraint firstItem="wbf-GI-YlF" firstAttribute="top" secondItem="KYX-Eo-lff" secondAttribute="top" id="25V-aR-aUQ"/>
                             <constraint firstItem="KYX-Eo-lff" firstAttribute="trailing" secondItem="wbf-GI-YlF" secondAttribute="trailing" constant="10" id="Agv-w8-oRE"/>
                             <constraint firstItem="wbf-GI-YlF" firstAttribute="leading" secondItem="KYX-Eo-lff" secondAttribute="leading" constant="10" id="TpN-3X-VK5"/>
-                            <constraint firstItem="wbf-GI-YlF" firstAttribute="bottom" secondItem="UEz-oK-781" secondAttribute="bottom" identifier="bottomConstraint" id="nYq-b5-ppk"/>
+                            <constraint firstItem="wbf-GI-YlF" firstAttribute="bottom" secondItem="UEz-oK-781" secondAttribute="bottom" id="nYq-b5-ppk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KYX-Eo-lff"/>
                     </view>
@@ -1825,8 +1824,6 @@
                         <outlet property="collectionView" destination="0ek-R1-CbT" id="HWz-w6-SxP"/>
                         <outletCollection property="constraints" destination="6M6-MC-bDt" collectionClass="NSMutableArray" id="v2c-di-mNs"/>
                         <outletCollection property="constraints" destination="2c7-1Z-EI8" collectionClass="NSMutableArray" id="fp7-tV-72n"/>
-                        <outletCollection property="constraints" destination="BrR-sX-zIZ" collectionClass="NSMutableArray" id="BLN-ep-GJ1"/>
-                        <outletCollection property="constraints" destination="nYq-b5-ppk" collectionClass="NSMutableArray" id="N6V-r6-5Iy"/>
                         <segue destination="fJU-wp-l6i" kind="presentation" identifier="editUtensil" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="1mD-6x-Zvs"/>
                     </connections>
                 </viewController>
@@ -1947,7 +1944,7 @@
                                     <constraint firstItem="2hO-dY-b1h" firstAttribute="width" secondItem="UDm-5R-X87" secondAttribute="width" id="OOe-zS-TO8"/>
                                     <constraint firstItem="mTz-wQ-o2M" firstAttribute="top" secondItem="UDm-5R-X87" secondAttribute="bottom" constant="10" identifier="createOnly" id="Rob-yz-rtY"/>
                                     <constraint firstItem="mTz-wQ-o2M" firstAttribute="leading" secondItem="VNe-QF-bxE" secondAttribute="leading" id="SwC-J9-NXa"/>
-                                    <constraint firstAttribute="bottom" secondItem="mTz-wQ-o2M" secondAttribute="bottom" identifier="bottomConstraint" id="T2E-X1-WMp"/>
+                                    <constraint firstAttribute="bottom" secondItem="mTz-wQ-o2M" secondAttribute="bottom" id="T2E-X1-WMp"/>
                                     <constraint firstItem="UDm-5R-X87" firstAttribute="top" secondItem="VNe-QF-bxE" secondAttribute="top" constant="10" id="aOF-Kj-PNo"/>
                                     <constraint firstAttribute="trailing" secondItem="xjJ-oW-fBC" secondAttribute="trailing" constant="15" id="euS-w1-tsS"/>
                                     <constraint firstItem="2hO-dY-b1h" firstAttribute="height" secondItem="UDm-5R-X87" secondAttribute="height" id="gah-jJ-3GJ"/>
@@ -1987,7 +1984,6 @@
                         <outlet property="editBtn" destination="xjJ-oW-fBC" id="9Ir-dC-cn2"/>
                         <outlet property="tableView" destination="mTz-wQ-o2M" id="KSa-VE-H76"/>
                         <outletCollection property="constraints" destination="cz0-q3-dET" collectionClass="NSMutableArray" id="3Yk-kr-tJJ"/>
-                        <outletCollection property="constraints" destination="T2E-X1-WMp" collectionClass="NSMutableArray" id="uQE-jP-map"/>
                         <outletCollection property="constraints" destination="ib2-qe-qPh" collectionClass="NSMutableArray" id="Bw9-KD-ECF"/>
                         <outletCollection property="constraints" destination="Rob-yz-rtY" collectionClass="NSMutableArray" id="VJv-kY-Ix5"/>
                         <segue destination="JSH-uH-oIM" kind="presentation" identifier="EditInstruction" modalPresentationStyle="overCurrentContext" id="h67-ku-xET"/>
@@ -2502,7 +2498,7 @@
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="top" secondItem="sh4-la-SZS" secondAttribute="top" constant="10" id="cTe-Ha-ayt"/>
                                     <constraint firstItem="Za6-FV-Bsk" firstAttribute="centerY" secondItem="sh4-la-SZS" secondAttribute="centerY" id="fsX-4A-Mpb"/>
                                     <constraint firstAttribute="trailing" secondItem="yab-OZ-phl" secondAttribute="trailing" id="wS2-DE-fe1"/>
-                                    <constraint firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" identifier="bottomConstraint" id="ziQ-HJ-IhD"/>
+                                    <constraint firstAttribute="bottom" secondItem="yab-OZ-phl" secondAttribute="bottom" id="ziQ-HJ-IhD"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2567,7 +2563,6 @@
                         <outletCollection property="constraints" destination="MdX-Q9-ZNU" collectionClass="NSMutableArray" id="IRm-hi-2Sm"/>
                         <outletCollection property="constraints" destination="RI9-bq-8d7" collectionClass="NSMutableArray" id="PLQ-LE-msM"/>
                         <outletCollection property="constraints" destination="PvT-R6-r2a" collectionClass="NSMutableArray" id="Hh7-Km-kSv"/>
-                        <outletCollection property="constraints" destination="ziQ-HJ-IhD" collectionClass="NSMutableArray" id="eJ1-7V-InK"/>
                         <outletCollection property="constraints" destination="9Pr-I6-YDy" collectionClass="NSMutableArray" id="euL-5A-Dmg"/>
                         <outletCollection property="constraints" destination="KWm-Cr-xoL" collectionClass="NSMutableArray" id="VpP-IA-bcu"/>
                     </connections>

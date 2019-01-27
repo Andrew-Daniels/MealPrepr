@@ -11,7 +11,6 @@ import UIKit
 
 private let readOnlyConstraintIdentifier = "readOnly"
 private let createOnlyConstraintIdentifier = "createOnly"
-private let bottomConstraintIdentifier = "bottomConstraint"
 
 class MPCreateRecipeChildController: MPViewController {
     
