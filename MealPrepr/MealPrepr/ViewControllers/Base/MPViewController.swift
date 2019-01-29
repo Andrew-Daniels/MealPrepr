@@ -28,7 +28,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                     controller.searchBar.sizeToFit()
                     controller.searchBar.barStyle = .black
                     controller.searchBar.returnKeyType = .search
-                    controller.definesPresentationContext = false
+                    controller.definesPresentationContext = true
                     controller.obscuresBackgroundDuringPresentation = false
                     UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .white
                     self.navigationItem.searchController = controller
@@ -84,7 +84,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     func setupSearchControllerDelegates(searchResultsUpdater: UISearchResultsUpdating, searchDelegate: UISearchBarDelegate) {
         searchController?.searchResultsUpdater = searchResultsUpdater
-        searchController?.searchBar.delegate = searchDelegate
+        //searchController?.searchBar.delegate = searchDelegate
     }
 
     @objc func createAccountBtnClicked() {
@@ -171,6 +171,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         recipeDetailsVC.navigationItem.title = recipe.title
         recipeDetailsVC.account = self.account
         self.navigationController?.pushViewController(recipeDetailsVC, animated: true)
+        recipeDetailsVC.navigationController?.isNavigationBarHidden = false
     }
     
     func endEditing() {

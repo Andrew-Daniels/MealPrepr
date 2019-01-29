@@ -45,6 +45,7 @@
 		312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */; };
 		312F5A3821BC51120017B534 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3721BC51120017B534 /* Home.swift */; };
 		312F5A3A21BC511F0017B534 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3921BC511F0017B534 /* Admin.swift */; };
+		313088B221FFDEBF0088AA5B /* RecipeDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313088B121FFDEBF0088AA5B /* RecipeDetailsDelegate.swift */; };
 		3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */; };
 		31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE521FD64EB00789B2F /* UsernameAlert.swift */; };
 		31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */; };
@@ -129,6 +130,7 @@
 		312F5A3521BC447D0017B534 /* AdminNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNavigationViewController.swift; sourceTree = "<group>"; };
 		312F5A3721BC51120017B534 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		312F5A3921BC511F0017B534 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		313088B121FFDEBF0088AA5B /* RecipeDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsDelegate.swift; sourceTree = "<group>"; };
 		3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
 		31611AE521FD64EB00789B2F /* UsernameAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAlert.swift; sourceTree = "<group>"; };
 		31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNavigationController.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */,
 				318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */,
 				3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */,
+				313088B121FFDEBF0088AA5B /* RecipeDetailsDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				31B9572521E0789D00D15CCD /* RecipeDelegate.swift in Sources */,
 				312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */,
 				31B9572721E120AC00D15CCD /* Loading.swift in Sources */,
+				313088B221FFDEBF0088AA5B /* RecipeDetailsDelegate.swift in Sources */,
 				310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */,
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,

@@ -12,18 +12,16 @@ import FBSDKLoginKit
 
 let recipeDetailsStoryboardIdentifier = "RecipeDetails"
 
-class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegateFlowLayout, RecipeDelegate {
+class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UICollectionViewDelegateFlowLayout, RecipeDelegate {
     
     @IBOutlet weak var collectionView: MPCollectionView!
     var recipes = [Recipe]()
+    var filteredRecipes = [Recipe]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
-            self.recipes = data
-            self.collectionView.reloadData()
-        }
+        retrieveRecipes()
         
         //Setup UIBarButtonItems
         if (account.userLevel == .Guest) {
@@ -38,13 +36,20 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         
         //Setup SearchController
         hasSearchController = true
-        setupSearchControllerDelegates(searchResultsUpdater: self, searchDelegate: self)
+        self.searchController?.searchResultsUpdater = self
         
         //Setup UINavigationBarTitleView
         let imageViewTitle: UIImageView = UIImageView(image: UIImage(named: "Meal-Prepr-Logo"))
         imageViewTitle.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageViewTitle
         imageViewTitle.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+    }
+    
+    public func retrieveRecipes() {
+        FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
+            self.recipes = data
+            self.collectionView.reloadData()
+        }
     }
     
     @objc func logoutBtnClicked() {
@@ -62,12 +67,22 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredRecipes.count
+        }
         return recipes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeRecipes", for: indexPath) as! HomeRecipesCell
-        let recipe = recipes[indexPath.row]
+        
+        var recipe = Recipe()
+        if isFiltering() {
+            recipe = filteredRecipes[indexPath.row]
+        } else {
+            recipe = recipes[indexPath.row]
+        }
+        
         recipe.recipeDelegate = self
         cell.recipe = recipe
         return cell
@@ -83,12 +98,27 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         self.showRecipeDetails(recipe: recipe)
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        
+    func isFiltering() -> Bool {
+        return self.searchController?.isActive ?? false && !searchBarIsEmpty()
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return self.searchController?.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredRecipes = recipes.filter({( recipe : Recipe) -> Bool in
+            return recipe.title.lowercased().contains(searchText.lowercased())
+        })
         
+        collectionView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if !searchBarIsEmpty() {
+            filterContentForSearchText(searchController.searchBar.text!)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,6 +151,20 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func recipeDeleted(GUID: String) {
-        print(GUID)
+        let firstIndex = self.recipes.firstIndex { (recipe) -> Bool in
+            if recipe.GUID == GUID {
+                return true
+            }
+            return false
+        }
+        guard let nonNilIndex = firstIndex else { return }
+        let index = self.recipes.startIndex.distance(to: nonNilIndex)
+        self.recipes.remove(at: index)
+        self.collectionView.reloadData()
     }
+    
+//    func detailsControllerPopped() {
+//        self.searchController?.isActive = true
+//        self.searchController?.searchBar.isHidden = false
+//    }
 }
