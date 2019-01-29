@@ -27,9 +27,11 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                     let controller = UISearchController(searchResultsController: nil)
                     controller.searchBar.sizeToFit()
                     controller.searchBar.barStyle = .black
+                    controller.searchBar.searchBarStyle = .minimal
                     controller.searchBar.returnKeyType = .search
                     controller.definesPresentationContext = true
                     controller.obscuresBackgroundDuringPresentation = false
+                    controller.hidesNavigationBarDuringPresentation = true
                     UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .white
                     self.navigationItem.searchController = controller
                     

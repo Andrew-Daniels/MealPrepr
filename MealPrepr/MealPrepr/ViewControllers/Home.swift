@@ -12,9 +12,10 @@ import FBSDKLoginKit
 
 let recipeDetailsStoryboardIdentifier = "RecipeDetails"
 
-class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UICollectionViewDelegateFlowLayout, RecipeDelegate {
+class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UICollectionViewDelegateFlowLayout, RecipeDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var collectionView: MPCollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var recipes = [Recipe]()
     var filteredRecipes = [Recipe]()
     
@@ -34,15 +35,19 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
             self.navigationItem.leftBarButtonItem = logoutBtn
         }
         
-        //Setup SearchController
-        hasSearchController = true
-        self.searchController?.searchResultsUpdater = self
+//        //Setup SearchController
+//        hasSearchController = true
+//        self.searchController?.searchResultsUpdater = self
         
         //Setup UINavigationBarTitleView
         let imageViewTitle: UIImageView = UIImageView(image: UIImage(named: "Meal-Prepr-Logo"))
         imageViewTitle.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageViewTitle
         imageViewTitle.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     public func retrieveRecipes() {
@@ -99,18 +104,21 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func isFiltering() -> Bool {
-        return self.searchController?.isActive ?? false && !searchBarIsEmpty()
+        return !searchBarIsEmpty()
     }
     
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
-        return self.searchController?.searchBar.text?.isEmpty ?? true
+        //return self.searchController?.searchBar.text?.isEmpty ?? true
+        return self.searchBar.text?.isEmpty ?? true
     }
     
-    func filterContentForSearchText(_ searchText: String) {
-        filteredRecipes = recipes.filter({( recipe : Recipe) -> Bool in
-            return recipe.title.lowercased().contains(searchText.lowercased())
-        })
+    func filterContentForSearchText(_ searchText: String?) {
+        if let text = searchText {
+            filteredRecipes = recipes.filter({( recipe : Recipe) -> Bool in
+                return recipe.title.lowercased().contains(text.lowercased())
+            })
+        }
         
         collectionView.reloadData()
     }
@@ -119,6 +127,21 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         if !searchBarIsEmpty() {
             filterContentForSearchText(searchController.searchBar.text!)
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterContentForSearchText(searchBar.text)
+        searchBar.setShowsCancelButton(isFiltering(), animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        collectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -162,9 +185,4 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         self.recipes.remove(at: index)
         self.collectionView.reloadData()
     }
-    
-//    func detailsControllerPopped() {
-//        self.searchController?.isActive = true
-//        self.searchController?.searchBar.isHidden = false
-//    }
 }

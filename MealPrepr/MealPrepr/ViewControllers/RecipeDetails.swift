@@ -49,6 +49,10 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
         setupBarButtons()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     private func createControllerForSelectedIndex(index: Controller?) -> MPViewController? {
         let main = UIStoryboard(name: mainStoryboardIdentifier, bundle: nil)
         guard let index = index else { return nil }
