@@ -708,7 +708,7 @@
         <!--Settings-->
         <scene sceneID="NYS-xq-1Hq">
             <objects>
-                <viewController id="KoY-Zi-EMs" sceneMemberID="viewController">
+                <viewController id="KoY-Zi-EMs" customClass="Settings" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n2M-Ld-7D7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -747,6 +747,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgD-BE-HS1">
+                                <rect key="frame" x="20" y="184" width="46" height="3"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.1215686275" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePhotoBtnClicked:" destination="KoY-Zi-EMs" eventType="touchUpInside" id="xzt-Sn-dnu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -766,10 +776,17 @@
                         <viewLayoutGuide key="safeArea" id="NfA-3P-akK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="i37-Gj-ZSq"/>
+                    <connections>
+                        <outlet property="choosePhotoBtn" destination="RgD-BE-HS1" id="Y9L-gc-t1R"/>
+                        <outlet property="dateJoinedLabel" destination="NBB-Os-z0V" id="9qF-el-VmH"/>
+                        <outlet property="profileImageView" destination="CCo-JB-KSA" id="qyt-Tc-KQQ"/>
+                        <outlet property="tableView" destination="Xhl-l4-jSB" id="Cwy-1y-Lmg"/>
+                        <outlet property="usernameLabel" destination="KuE-80-XrT" id="skH-lp-ztL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPq-R2-mbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1541" y="2289"/>
+            <point key="canvasLocation" x="1540.5797101449277" y="2288.8392857142858"/>
         </scene>
         <!--Category Alert-->
         <scene sceneID="BIc-8q-MGC">
@@ -1034,7 +1051,7 @@
                                     <outlet property="delegate" destination="a4t-j8-lIB" id="KAy-T9-fIp"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PE-HH-fZd">
+                            <searchBar contentMode="redraw" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PE-HH-fZd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <color key="barTintColor" red="0.1215686275" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -3423,7 +3440,7 @@
         <segue reference="9oo-f0-IPD"/>
         <segue reference="1mD-6x-Zvs"/>
         <segue reference="K7L-9q-dtF"/>
-        <segue reference="2dh-LI-w2E"/>
+        <segue reference="tf5-SY-mbG"/>
         <segue reference="3Tg-Qa-sNK"/>
         <segue reference="FCm-U1-elv"/>
     </inferredMetricsTieBreakers>

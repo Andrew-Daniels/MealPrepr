@@ -22,6 +22,7 @@ class Account {
     var username: String?
     var userLevel: UserLevel = .Guest
     var recipeCategories = [String]()
+    var dateJoined: Date?
     
     init() {
         
@@ -31,6 +32,8 @@ class Account {
         FirebaseHelper().retrieveAccountInfo(UID: UID) { (accountInfo) in
             self.UID = UID
             self.username = accountInfo.username
+            self.dateJoined = accountInfo.dateJoined
+            
             if let level = accountInfo.userLevel, let ul = UserLevel(rawValue: level) {
                 self.userLevel = ul
                 FirebaseHelper().loadCategories(account: self)

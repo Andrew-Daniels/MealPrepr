@@ -35,10 +35,6 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
             self.navigationItem.leftBarButtonItem = logoutBtn
         }
         
-//        //Setup SearchController
-//        hasSearchController = true
-//        self.searchController?.searchResultsUpdater = self
-        
         //Setup UINavigationBarTitleView
         let imageViewTitle: UIImageView = UIImageView(image: UIImage(named: "Meal-Prepr-Logo"))
         imageViewTitle.contentMode = .scaleAspectFit

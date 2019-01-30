@@ -16,4 +16,16 @@ extension Date {
             return dateFormatter.string(from: self)
         }
     }
+    
+    static func dateFromFirebaseString(dateString: String) -> Date? {
+        var date: Date?
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+        date = dateFormatter.date(from: dateString)
+        if date == nil {
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
+            date = dateFormatter.date(from: dateString)
+        }
+        return date
+    }
 }

@@ -171,13 +171,15 @@ class FirebaseHelper {
             let path = "Accounts/\(UID)"
             self.database.child(path).child("Username").setValue(username)
             self.database.child(path).child("UserLevel").setValue(userLevel.rawValue)
+            self.database.child(path).child("DateJoined").setValue(account.dateJoined?.description ?? Date().description)
         }
     }
     
-    public func retrieveAccountInfo(UID: String, completionHandler: @escaping (_ isResponse : (username: String?, userLevel: Int?)) -> Void) {
+    public func retrieveAccountInfo(UID: String, completionHandler: @escaping (_ isResponse : (username: String?, userLevel: Int?, dateJoined: Date?)) -> Void) {
         let path = "Accounts/\(UID)"
         var username: String?
         var userLevel: Int?
+        var dateJoined: Date?
         
         self.database.child(path).observeSingleEvent(of: .value) { (snapshot) in
             if let accountInfo = snapshot.value as? [String: Any] {
@@ -188,10 +190,15 @@ class FirebaseHelper {
                     else if key == "UserLevel" {
                         userLevel = value as? Int
                     }
+                    else if key == "DateJoined" {
+                        if let dateString = value as? String {
+                            dateJoined = Date.dateFromFirebaseString(dateString: dateString)
+                        }
+                    }
                 }
-                completionHandler((username: username, userLevel: userLevel))
+                completionHandler((username: username, userLevel: userLevel, dateJoined: dateJoined))
             } else {
-                completionHandler((username: nil, userLevel: nil))
+                completionHandler((username: nil, userLevel: nil, dateJoined: nil))
             }
         }
     }
