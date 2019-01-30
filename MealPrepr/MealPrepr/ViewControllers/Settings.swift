@@ -23,6 +23,7 @@ class Settings: MPViewController {
     }
     
     @IBAction func choosePhotoBtnClicked(_ sender: Any) {
+        
     }
     
     /*

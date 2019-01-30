@@ -130,10 +130,26 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     
     func showImagePickerController() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let choosePhotoAction = UIAlertAction(title: "Choose Photo", style: .default) { (action) in
+            self.showImagePickerController(type: .photoLibrary)
+        }
+        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default) { (action) in
+            self.showImagePickerController(type: .camera)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(takePhotoAction)
+        alert.addAction(choosePhotoAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func showImagePickerController(type: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(type) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.sourceType = type
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
         }

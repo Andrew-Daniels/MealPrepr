@@ -60,6 +60,12 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         let _ = titleTextField.becomeFirstResponder()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     func setupSegmentedControl() {
         segmentedControl.setTitle("Ingredients", forSegmentAt: 0)
         segmentedControl.setTitle("Utensils", forSegmentAt: 1)
