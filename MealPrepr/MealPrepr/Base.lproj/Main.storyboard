@@ -720,6 +720,15 @@
                                     <constraint firstAttribute="height" constant="250" id="zIv-sB-Mqy"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgD-BE-HS1">
+                                <rect key="frame" x="82" y="20" width="250" height="250"/>
+                                <state key="normal" title="Change Photo">
+                                    <color key="titleColor" red="0.1215686275" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePhotoBtnClicked:" destination="KoY-Zi-EMs" eventType="touchUpInside" id="hpq-zd-Ybn"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JVl-dY-mu4">
                                 <rect key="frame" x="30" y="280" width="354" height="20.333333333333314"/>
                                 <subviews>
@@ -747,16 +756,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgD-BE-HS1">
-                                <rect key="frame" x="20" y="184" width="46" height="3"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.1215686275" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="choosePhotoBtnClicked:" destination="KoY-Zi-EMs" eventType="touchUpInside" id="xzt-Sn-dnu"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -767,17 +766,21 @@
                             <constraint firstItem="NfA-3P-akK" firstAttribute="trailing" secondItem="Xhl-l4-jSB" secondAttribute="trailing" constant="30" id="BD0-m8-sLP"/>
                             <constraint firstItem="NBB-Os-z0V" firstAttribute="leading" secondItem="NfA-3P-akK" secondAttribute="leading" id="Feh-eG-oCm"/>
                             <constraint firstItem="NfA-3P-akK" firstAttribute="trailing" secondItem="NBB-Os-z0V" secondAttribute="trailing" id="H7r-3v-DC7"/>
+                            <constraint firstItem="RgD-BE-HS1" firstAttribute="trailing" secondItem="CCo-JB-KSA" secondAttribute="trailing" id="IqT-IS-c7t"/>
                             <constraint firstItem="NfA-3P-akK" firstAttribute="trailing" secondItem="JVl-dY-mu4" secondAttribute="trailing" constant="30" id="LWA-LD-4q6"/>
+                            <constraint firstItem="RgD-BE-HS1" firstAttribute="bottom" secondItem="CCo-JB-KSA" secondAttribute="bottom" id="Q0N-Vr-ufY"/>
                             <constraint firstItem="CCo-JB-KSA" firstAttribute="top" secondItem="NfA-3P-akK" secondAttribute="top" constant="20" id="XMA-7V-aCA"/>
                             <constraint firstItem="Xhl-l4-jSB" firstAttribute="top" secondItem="JVl-dY-mu4" secondAttribute="bottom" constant="10" id="dkj-3R-neN"/>
                             <constraint firstItem="JVl-dY-mu4" firstAttribute="leading" secondItem="NfA-3P-akK" secondAttribute="leading" constant="30" id="fkN-Um-eaO"/>
+                            <constraint firstItem="RgD-BE-HS1" firstAttribute="leading" secondItem="CCo-JB-KSA" secondAttribute="leading" id="nHW-w4-wTQ"/>
                             <constraint firstItem="Xhl-l4-jSB" firstAttribute="leading" secondItem="NfA-3P-akK" secondAttribute="leading" constant="30" id="qEV-9g-j7R"/>
+                            <constraint firstItem="RgD-BE-HS1" firstAttribute="top" secondItem="CCo-JB-KSA" secondAttribute="top" id="uiB-e0-vX2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NfA-3P-akK"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="i37-Gj-ZSq"/>
                     <connections>
-                        <outlet property="choosePhotoBtn" destination="RgD-BE-HS1" id="Y9L-gc-t1R"/>
+                        <outlet property="changePhotoBtn" destination="RgD-BE-HS1" id="5nr-Kc-5ue"/>
                         <outlet property="dateJoinedLabel" destination="NBB-Os-z0V" id="9qF-el-VmH"/>
                         <outlet property="profileImageView" destination="CCo-JB-KSA" id="qyt-Tc-KQQ"/>
                         <outlet property="tableView" destination="Xhl-l4-jSB" id="Cwy-1y-Lmg"/>

@@ -9,6 +9,9 @@
 let allCategoriesString = "All Saved Recipes"
 
 import Foundation
+import FirebaseAuth
+import Firebase
+import UIKit
 
 class Account {
     
@@ -23,6 +26,7 @@ class Account {
     var userLevel: UserLevel = .Guest
     var recipeCategories = [String]()
     var dateJoined: Date?
+    private var profilePicture: UIImage?
     
     init() {
         
@@ -88,6 +92,78 @@ class Account {
     func finishedViewingCategories() {
         if !self.recipeCategories.contains(allCategoriesString) {
             self.recipeCategories.insert(allCategoriesString, at: 0)
+        }
+    }
+    
+    func getProfilePicture(completionHandler: @escaping (_ isResponse : UIImage) -> Void) {
+        if let p = profilePicture {
+            completionHandler(p)
+            return
+        }
+        if let UID = UID {
+        let path = "ProfilePictures/\(UID)"
+            FirebaseHelper().downloadImage(atPath: path, renderMode: .alwaysOriginal) { (image) in
+                self.profilePicture = image
+                completionHandler(image)
+            }
+        }
+    }
+    
+    func setProfilePicture(image: UIImage) {
+        self.profilePicture = image
+        //Save image to account
+    }
+    
+    private func reauthenticateUser(currentPassword: String, completionHandler: @escaping (_ isResponse : User) -> Void) {
+        let user = Auth.auth().currentUser
+        if let u = user {
+            let cred = EmailAuthProvider.credential(withEmail:u.email!, password: currentPassword);
+            user?.reauthenticateAndRetrieveData(with: cred, completion: { (authDataResult, error) in
+                if let authenticated = authDataResult {
+                    completionHandler(authenticated.user)
+                }
+            })
+        }
+    }
+    
+    func changePassword(fromPassword: String, toPassword: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        reauthenticateUser(currentPassword: fromPassword) { (user) in
+            user.updatePassword(to: toPassword, completion: { (error) in
+                if let error = error {
+                    print(error)
+                    completionHandler(false)
+                    return
+                } else {
+                    completionHandler(true)
+                }
+            })
+        }
+    }
+    
+    func changeEmail(password: String, toEmail: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        reauthenticateUser(currentPassword: password) { (user) in
+            user.updateEmail(to: toEmail, completion: { (error) in
+                if let error = error {
+                    print(error)
+                    completionHandler(false)
+                    return
+                } else {
+                    completionHandler(true)
+                }
+            })
+        }
+    }
+    
+    func changeUsername(password: String, toUsername: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        reauthenticateUser(currentPassword: password) { (user) in
+            if let UID = self.UID {
+                let path = "Accounts/\(UID)/Username"
+                let database = Database.database().reference()
+                
+                database.child(path).setValue(toUsername)
+                completionHandler(true)
+            }
+            completionHandler(false)
         }
     }
 }
