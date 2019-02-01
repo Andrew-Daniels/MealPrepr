@@ -47,6 +47,7 @@
 		312F5A3A21BC511F0017B534 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A3921BC511F0017B534 /* Admin.swift */; };
 		313088B221FFDEBF0088AA5B /* RecipeDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313088B121FFDEBF0088AA5B /* RecipeDetailsDelegate.swift */; };
 		313088B4220126FE0088AA5B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313088B3220126FE0088AA5B /* Settings.swift */; };
+		313088B6220291F30088AA5B /* ChangeAccountInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313088B5220291F30088AA5B /* ChangeAccountInfoAlert.swift */; };
 		3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */; };
 		31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE521FD64EB00789B2F /* UsernameAlert.swift */; };
 		31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */; };
@@ -133,6 +134,7 @@
 		312F5A3921BC511F0017B534 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
 		313088B121FFDEBF0088AA5B /* RecipeDetailsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsDelegate.swift; sourceTree = "<group>"; };
 		313088B3220126FE0088AA5B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		313088B5220291F30088AA5B /* ChangeAccountInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAccountInfoAlert.swift; sourceTree = "<group>"; };
 		3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
 		31611AE521FD64EB00789B2F /* UsernameAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAlert.swift; sourceTree = "<group>"; };
 		31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNavigationController.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				3193139221ED682700DBF55B /* CategoryAlert.swift */,
 				31FAEAE921EEC5BF004D006E /* CategorySelector.swift */,
 				31611AE521FD64EB00789B2F /* UsernameAlert.swift */,
+				313088B5220291F30088AA5B /* ChangeAccountInfoAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
 				310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */,
 				31B9572B21E2755D00D15CCD /* RecipeDetails.swift in Sources */,
+				313088B6220291F30088AA5B /* ChangeAccountInfoAlert.swift in Sources */,
 				310D026621C0817000EA8BA0 /* Ingredients.swift in Sources */,
 				310D30D521B74DE200D0E079 /* AppDelegate.swift in Sources */,
 				31FAEAE721EEC459004D006E /* CategoryCell.swift in Sources */,

@@ -26,6 +26,7 @@ class Account {
     var userLevel: UserLevel = .Guest
     var recipeCategories = [String]()
     var dateJoined: Date?
+    var isFBAuth: Bool = false
     private var profilePicture: UIImage?
     
     init() {
@@ -112,13 +113,29 @@ class Account {
     func setProfilePicture(image: UIImage) {
         self.profilePicture = image
         //Save image to account
+        if let data = image.pngData(), let UID = self.UID {
+            let storage = Storage.storage().reference()
+        
+            let path = "ProfilePictures/\(UID)"
+            let photoRef = storage.child(path)
+            photoRef.putData(data, metadata: nil) { (metadata, error) in
+                guard let _ = metadata else {
+                // Uh-oh, an error occurred!
+                return
+                }
+            }
+        }
     }
     
-    private func reauthenticateUser(currentPassword: String, completionHandler: @escaping (_ isResponse : User) -> Void) {
+    private func reauthenticateUser(currentPassword: String, completionHandler: @escaping (_ isResponse : User?) -> Void) {
         let user = Auth.auth().currentUser
         if let u = user {
             let cred = EmailAuthProvider.credential(withEmail:u.email!, password: currentPassword);
-            user?.reauthenticateAndRetrieveData(with: cred, completion: { (authDataResult, error) in
+            u.reauthenticateAndRetrieveData(with: cred, completion: { (authDataResult, error) in
+                if let error = error {
+                    print(error)
+                    completionHandler(nil)
+                }
                 if let authenticated = authDataResult {
                     completionHandler(authenticated.user)
                 }
@@ -128,42 +145,63 @@ class Account {
     
     func changePassword(fromPassword: String, toPassword: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         reauthenticateUser(currentPassword: fromPassword) { (user) in
-            user.updatePassword(to: toPassword, completion: { (error) in
-                if let error = error {
-                    print(error)
-                    completionHandler(false)
-                    return
-                } else {
-                    completionHandler(true)
-                }
-            })
+            if let u = user {
+                u.updatePassword(to: toPassword, completion: { (error) in
+                    if let error = error {
+                        print(error)
+                        completionHandler(false)
+                        return
+                    } else {
+                        Auth.auth().signIn(withEmail: u.email!, password: toPassword, completion: nil)
+                        completionHandler(true)
+                    }
+                })
+            } else {
+                completionHandler(false)
+            }
         }
     }
     
     func changeEmail(password: String, toEmail: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         reauthenticateUser(currentPassword: password) { (user) in
-            user.updateEmail(to: toEmail, completion: { (error) in
-                if let error = error {
-                    print(error)
-                    completionHandler(false)
-                    return
-                } else {
-                    completionHandler(true)
-                }
-            })
+            if let u = user {
+                u.updateEmail(to: toEmail, completion: { (error) in
+                    if let error = error {
+                        print(error)
+                        completionHandler(false)
+                        return
+                    } else {
+                        Auth.auth().signIn(withEmail: toEmail, password: password, completion: nil)
+                        completionHandler(true)
+                    }
+                })
+            } else {
+                completionHandler(false)
+            }
         }
     }
     
     func changeUsername(password: String, toUsername: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
-        reauthenticateUser(currentPassword: password) { (user) in
+        if !isFBAuth {
+            reauthenticateUser(currentPassword: password) { (user) in
+                if let UID = self.UID, let _ = user {
+                    self.changeUsername(UID: UID, toUsername: toUsername)
+                    completionHandler(true)
+                }
+                completionHandler(false)
+            }
+        } else {
             if let UID = self.UID {
-                let path = "Accounts/\(UID)/Username"
-                let database = Database.database().reference()
-                
-                database.child(path).setValue(toUsername)
+                self.changeUsername(UID: UID, toUsername: toUsername)
                 completionHandler(true)
             }
-            completionHandler(false)
         }
+    }
+    
+    private func changeUsername(UID: String, toUsername: String) {
+        let path = "Accounts/\(UID)/Username"
+        let database = Database.database().reference()
+        
+        database.child(path).setValue(toUsername)
     }
 }

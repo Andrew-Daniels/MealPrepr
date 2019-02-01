@@ -117,7 +117,7 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
-    internal func categorySelected(category: String) {
+    func categorySelected(category: String) {
         
         self.category = category
         

@@ -78,7 +78,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
                 }
                 //User is signed in
                 if let user = authResult?.user {
-                    self.handleUser(user: user)
+                    self.handleUser(user: user, isFBAuth: true)
                 }
             }
         } else if let user = Auth.auth().currentUser {
@@ -87,8 +87,9 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         }
     }
     
-    private func handleUser(user: User) {
+    private func handleUser(user: User, isFBAuth: Bool = false) {
         self.account = Account(UID: user.uid, completionHandler: { (actCreated) in
+            self.account.isFBAuth = isFBAuth
             if actCreated {
                 //perform segue to homepage
                 self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
