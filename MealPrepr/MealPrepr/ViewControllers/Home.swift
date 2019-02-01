@@ -133,6 +133,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
         collectionView.reloadData()
     }
     
