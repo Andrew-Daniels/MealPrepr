@@ -114,6 +114,13 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         
     }
     
+//    override func didMove(toParent parent: UIViewController?) {
+//        if parent is RecipeDetails {
+//            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//            layout.scrollDirection = .horizontal
+//        }
+//    }
+    
     
 //    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //        return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
