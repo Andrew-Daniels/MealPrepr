@@ -49,7 +49,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         fbLoginBtn.delegate = self
         fbLoginBtn.readPermissions = ["public_profile", "email"]
         
-        handleAuthToken()
+        //handleAuthToken()
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -70,6 +70,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     
     private func handleAuthToken() {
         if let token = FBSDKAccessToken.current() {
+            self.startLoading(withText: "Logging in")
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
             Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                 if let error = error {
@@ -83,6 +84,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
             }
         } else if let user = Auth.auth().currentUser {
             //User is signed in
+            self.startLoading(withText: "Logging in")
             handleUser(user: user)
         }
     }
@@ -92,11 +94,19 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
             self.account.isFBAuth = isFBAuth
             if actCreated {
                 //perform segue to homepage
-                self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+                self.finishLoading(completionHandler: { (finished) in
+                    if finished {
+                        self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+                    }
+                })
             } else {
                 //Request username to create a new account
                 //then perform segue to homepage
-                self.performSegue(withIdentifier: usernameAlertSegueIdentifier, sender: nil)
+                self.finishLoading(completionHandler: { (finished) in
+                    if finished {
+                        self.performSegue(withIdentifier: usernameAlertSegueIdentifier, sender: nil)
+                    }
+                })
             }
         })
     }
@@ -115,6 +125,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        handleAuthToken()
         if(segueToSignUp) {
             performSegue(withIdentifier: signUpSegueIdentifier, sender: nil)
             segueToSignUp = false

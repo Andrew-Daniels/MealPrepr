@@ -124,7 +124,7 @@
                                                         <constraint firstItem="Qv7-Y7-nWM" firstAttribute="top" secondItem="GBk-S5-RX1" secondAttribute="top" constant="10" id="t7d-vo-L1d"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Edit_Black" translatesAutoresizingMaskIntoConstraints="NO" id="sPn-Vj-0uc">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sPn-Vj-0uc">
                                                     <rect key="frame" x="20" y="0.0" width="160" height="97"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="160" id="ZG7-Wp-T34"/>
