@@ -125,6 +125,7 @@ class FirebaseHelper {
                             ]
                             
                             self.database.updateChildValues(updates)
+                            recipe.GUID = reference.key
                             completionHandler(true)
                         }
                     }
@@ -167,6 +168,9 @@ class FirebaseHelper {
             let UID = account.UID {
             
             let userLevel = account.userLevel
+            if account.dateJoined == nil {
+                account.dateJoined = Date()
+            }
             
             let path = "Accounts/\(UID)"
             self.database.child(path).child("Username").setValue(username)

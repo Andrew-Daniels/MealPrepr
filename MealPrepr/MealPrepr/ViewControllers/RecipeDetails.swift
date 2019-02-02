@@ -198,13 +198,6 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
         let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteRecipeAction = UIAlertAction(title: actionTitle, style: .default) { (action) in
             self.recipe.delete()
-//            if let tabBarVC = self.tabBarController as? HomeTabBarController {
-//                if let homeNVC = tabBarVC.getVC(controller: .Home) as? HomeNavigationController {
-//                    if let homeVC = homeNVC.viewControllers.first as? Home, let _ = homeVC.collectionView {
-//                        homeVC.reloadRecipes()
-//                    }
-//                }
-//            }
             if let nav =  self.navigationController {
                 nav.popViewController(animated: true)
             } else {

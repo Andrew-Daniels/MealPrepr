@@ -142,7 +142,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-XS-Kcm">
-                                        <rect key="frame" x="144" y="267" width="146" height="36"/>
+                                        <rect key="frame" x="148" y="272" width="142" height="40"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="forgot password">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,7 +152,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-7h-9aK">
-                                        <rect key="frame" x="129" y="311" width="161" height="36"/>
+                                        <rect key="frame" x="132" y="320" width="158" height="40"/>
                                         <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                         <state key="normal" title="I need an account">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,7 +173,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uit-LP-7uh" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="209" width="250" height="50"/>
+                                        <rect key="frame" x="40" y="214" width="250" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="Hiq-Hf-m6d"/>
@@ -185,7 +185,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-iH-P01">
-                                        <rect key="frame" x="127.66666666666666" y="440" width="75" height="47"/>
+                                        <rect key="frame" x="122.66666666666666" y="439" width="85" height="48"/>
                                         <fontDescription key="fontDescription" name="Phosphate-Solid" family="Phosphate" pointSize="30"/>
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,7 +215,7 @@
                                     <constraint firstAttribute="bottom" secondItem="fJE-iH-P01" secondAttribute="bottom" constant="50" id="dBU-B6-k20"/>
                                     <constraint firstItem="GS5-7h-9aK" firstAttribute="trailing" secondItem="nC9-XS-Kcm" secondAttribute="trailing" id="dTt-Oe-I54"/>
                                     <constraint firstAttribute="bottom" secondItem="fJE-iH-P01" secondAttribute="bottom" constant="60" id="eWv-eW-a7Q"/>
-                                    <constraint firstItem="uit-LP-7uh" firstAttribute="top" secondItem="IEu-sb-RQE" secondAttribute="bottom" constant="10" id="to2-HF-dAX"/>
+                                    <constraint firstItem="uit-LP-7uh" firstAttribute="top" secondItem="IEu-sb-RQE" secondAttribute="bottom" constant="15" id="to2-HF-dAX"/>
                                     <constraint firstItem="nC9-XS-Kcm" firstAttribute="top" secondItem="uit-LP-7uh" secondAttribute="bottom" constant="8" id="uRW-ze-mpe"/>
                                     <constraint firstItem="GS5-7h-9aK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H1W-tj-46m" secondAttribute="leading" constant="10" id="yra-D3-Ih8"/>
                                     <constraint firstItem="GS5-7h-9aK" firstAttribute="top" secondItem="nC9-XS-Kcm" secondAttribute="bottom" constant="8" id="z4R-wm-AiQ"/>
@@ -260,11 +260,11 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gk9-wN-bbo" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="180" y="780" width="54" height="34"/>
+                                <rect key="frame" x="180" y="784" width="54" height="34"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-vh-V1A">
-                                <rect key="frame" x="125.66666666666669" y="724" width="163" height="36"/>
+                                <rect key="frame" x="126.66666666666669" y="724" width="161" height="40"/>
                                 <fontDescription key="fontDescription" name="Nadeem" family="Nadeem" pointSize="20"/>
                                 <state key="normal" title="Continue as guest">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

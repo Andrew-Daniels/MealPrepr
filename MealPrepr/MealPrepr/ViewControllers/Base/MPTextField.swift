@@ -143,6 +143,8 @@ class MPTextField: UIControl, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if (self.authFieldType != .Username) {
             self.removeError()
+        } else if self.authFieldType == .Username && self.hasError && self.text != ErrorHelper.getErrorMsg(errorKey: .UsernameTaken) {
+            self.removeError()
         }
         return true
     }
