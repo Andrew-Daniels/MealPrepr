@@ -57,6 +57,9 @@
 		3188551D22062B6100BA6A93 /* Weekplan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188551C22062B6100BA6A93 /* Weekplan.storyboard */; };
 		3188551F22062BAA00BA6A93 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188551E22062BAA00BA6A93 /* Settings.storyboard */; };
 		3188552122062BE900BA6A93 /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552022062BE900BA6A93 /* Categories.storyboard */; };
+		3188552322062C2B00BA6A93 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552222062C2B00BA6A93 /* Home.storyboard */; };
+		3188552522062CBD00BA6A93 /* CreateRecipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552422062CBD00BA6A93 /* CreateRecipe.storyboard */; };
+		3188552722062D3F00BA6A93 /* RecipeDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */; };
 		318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
@@ -147,6 +150,9 @@
 		3188551C22062B6100BA6A93 /* Weekplan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Weekplan.storyboard; sourceTree = "<group>"; };
 		3188551E22062BAA00BA6A93 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		3188552022062BE900BA6A93 /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
+		3188552222062C2B00BA6A93 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		3188552422062CBD00BA6A93 /* CreateRecipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateRecipe.storyboard; sourceTree = "<group>"; };
+		3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RecipeDetails.storyboard; sourceTree = "<group>"; };
 		318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorDelegate.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -387,6 +393,9 @@
 		3188551B22062B0400BA6A93 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */,
+				3188552422062CBD00BA6A93 /* CreateRecipe.storyboard */,
+				3188552222062C2B00BA6A93 /* Home.storyboard */,
 				3188552022062BE900BA6A93 /* Categories.storyboard */,
 				3188551E22062BAA00BA6A93 /* Settings.storyboard */,
 				3188551C22062B6100BA6A93 /* Weekplan.storyboard */,
@@ -551,12 +560,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */,
+				3188552322062C2B00BA6A93 /* Home.storyboard in Resources */,
 				310D30E221B74DE300D0E079 /* LaunchScreen.storyboard in Resources */,
+				3188552522062CBD00BA6A93 /* CreateRecipe.storyboard in Resources */,
 				310D30DF21B74DE300D0E079 /* Assets.xcassets in Resources */,
 				3188551F22062BAA00BA6A93 /* Settings.storyboard in Resources */,
 				3188552122062BE900BA6A93 /* Categories.storyboard in Resources */,
 				31D8094321B8C81E00555CBE /* Nadeem.ttc in Resources */,
 				310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */,
+				3188552722062D3F00BA6A93 /* RecipeDetails.storyboard in Resources */,
 				3188551D22062B6100BA6A93 /* Weekplan.storyboard in Resources */,
 				310D30FB21B757E000D0E079 /* GoogleService-Info.plist in Resources */,
 			);
