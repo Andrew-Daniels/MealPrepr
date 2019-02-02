@@ -171,6 +171,7 @@ class FirebaseHelper {
             if account.dateJoined == nil {
                 account.dateJoined = Date()
             }
+            FirebaseHelper().loadCategories(account: account)
             
             let path = "Accounts/\(UID)"
             self.database.child(path).child("Username").setValue(username)
@@ -209,6 +210,7 @@ class FirebaseHelper {
     
     public func loadCategories(account: Account) {
         if let UID = account.UID {
+            account.savingCategories()
             let path = "Accounts/\(UID)/Categories"
             database.child(path).observe(.value) { (snapshot) in
                 if let value = snapshot.value as? [String] {
