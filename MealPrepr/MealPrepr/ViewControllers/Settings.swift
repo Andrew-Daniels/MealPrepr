@@ -46,6 +46,11 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
         self.usernameLabel.text = self.account.username
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let _ = checkForGuestAccount()
+    }
+    
     @IBAction func changePhotoBtnClicked(_ sender: Any) {
         showImagePickerController()
     }

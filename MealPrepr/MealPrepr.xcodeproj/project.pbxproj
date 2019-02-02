@@ -60,6 +60,8 @@
 		3188552322062C2B00BA6A93 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552222062C2B00BA6A93 /* Home.storyboard */; };
 		3188552522062CBD00BA6A93 /* CreateRecipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552422062CBD00BA6A93 /* CreateRecipe.storyboard */; };
 		3188552722062D3F00BA6A93 /* RecipeDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */; };
+		3188552B220635A900BA6A93 /* Weekplan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3188552A220635A900BA6A93 /* Weekplan.swift */; };
+		3188552D22063CF100BA6A93 /* WeekplanRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */; };
 		318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
@@ -153,6 +155,8 @@
 		3188552222062C2B00BA6A93 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3188552422062CBD00BA6A93 /* CreateRecipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateRecipe.storyboard; sourceTree = "<group>"; };
 		3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RecipeDetails.storyboard; sourceTree = "<group>"; };
+		3188552A220635A900BA6A93 /* Weekplan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekplan.swift; sourceTree = "<group>"; };
+		3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekplanRecipeCell.swift; sourceTree = "<group>"; };
 		318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorDelegate.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 				31B9572A21E2755D00D15CCD /* RecipeDetails.swift */,
 				3193138F21ED66A600DBF55B /* Categories.swift */,
 				313088B3220126FE0088AA5B /* Settings.swift */,
+				3188552A220635A900BA6A93 /* Weekplan.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				31FAEAE621EEC459004D006E /* CategoryCell.swift */,
+				3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -681,6 +687,7 @@
 				312F5A2C21BC36010017B534 /* HomeNavigationController.swift in Sources */,
 				310D026B21C08C5400EA8BA0 /* IngredientAlert.swift in Sources */,
 				31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */,
+				3188552D22063CF100BA6A93 /* WeekplanRecipeCell.swift in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
 				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,
@@ -695,6 +702,7 @@
 				310D027121C0B0DD00EA8BA0 /* UtensilCell.swift in Sources */,
 				310D026F21C0967800EA8BA0 /* Ingredient.swift in Sources */,
 				3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */,
+				3188552B220635A900BA6A93 /* Weekplan.swift in Sources */,
 				3193139021ED66A600DBF55B /* Categories.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
 				310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */,
