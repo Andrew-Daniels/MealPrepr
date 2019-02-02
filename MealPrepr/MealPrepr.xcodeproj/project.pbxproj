@@ -54,6 +54,9 @@
 		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
 		3171CAEE21BCCF3E0026CC18 /* MPCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */; };
 		3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */; };
+		3188551D22062B6100BA6A93 /* Weekplan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188551C22062B6100BA6A93 /* Weekplan.storyboard */; };
+		3188551F22062BAA00BA6A93 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188551E22062BAA00BA6A93 /* Settings.storyboard */; };
+		3188552122062BE900BA6A93 /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552022062BE900BA6A93 /* Categories.storyboard */; };
 		318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
@@ -141,6 +144,9 @@
 		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
 		3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionView.swift; sourceTree = "<group>"; };
 		3171CAEF21BF562B0026CC18 /* CreateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipe.swift; sourceTree = "<group>"; };
+		3188551C22062B6100BA6A93 /* Weekplan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Weekplan.storyboard; sourceTree = "<group>"; };
+		3188551E22062BAA00BA6A93 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		3188552022062BE900BA6A93 /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorDelegate.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 		310D30D321B74DE200D0E079 /* MealPrepr */ = {
 			isa = PBXGroup;
 			children = (
+				3188551B22062B0400BA6A93 /* Storyboard */,
 				3193138C21EC14F500DBF55B /* Extensions */,
 				3171CAEC21BCCDCC0026CC18 /* Cells */,
 				31D8093F21B8C61E00555CBE /* Fonts */,
@@ -316,7 +323,6 @@
 				310D30FC21B75C8600D0E079 /* ViewControllers */,
 				310D30F921B74FDF00D0E079 /* Classes */,
 				310D30D421B74DE200D0E079 /* AppDelegate.swift */,
-				310D30D821B74DE200D0E079 /* Main.storyboard */,
 				310D30DE21B74DE300D0E079 /* Assets.xcassets */,
 				310D30E021B74DE300D0E079 /* LaunchScreen.storyboard */,
 				310D30E321B74DE300D0E079 /* Info.plist */,
@@ -376,6 +382,17 @@
 				3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		3188551B22062B0400BA6A93 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3188552022062BE900BA6A93 /* Categories.storyboard */,
+				3188551E22062BAA00BA6A93 /* Settings.storyboard */,
+				3188551C22062B6100BA6A93 /* Weekplan.storyboard */,
+				310D30D821B74DE200D0E079 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		3193138C21EC14F500DBF55B /* Extensions */ = {
@@ -536,8 +553,11 @@
 				31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */,
 				310D30E221B74DE300D0E079 /* LaunchScreen.storyboard in Resources */,
 				310D30DF21B74DE300D0E079 /* Assets.xcassets in Resources */,
+				3188551F22062BAA00BA6A93 /* Settings.storyboard in Resources */,
+				3188552122062BE900BA6A93 /* Categories.storyboard in Resources */,
 				31D8094321B8C81E00555CBE /* Nadeem.ttc in Resources */,
 				310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */,
+				3188551D22062B6100BA6A93 /* Weekplan.storyboard in Resources */,
 				310D30FB21B757E000D0E079 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
