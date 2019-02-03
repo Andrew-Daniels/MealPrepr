@@ -67,7 +67,19 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func handleErrorViewVisibility(visible: Bool) {
+        let didConnectionStateDidChange = isConnectedToInternet == visible
+        
+        self.isConnectedToInternet = !visible
+        
+        if didConnectionStateDidChange {
+            connectionStateDidChange()
+        }
+        
         setViewMargins(slideUp: visible)
+    }
+    
+    func connectionStateDidChange() {
+        
     }
     
     private func setViewMargins(slideUp: Bool) {

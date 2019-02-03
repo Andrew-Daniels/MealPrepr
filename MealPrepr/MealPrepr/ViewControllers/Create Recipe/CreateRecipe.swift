@@ -321,16 +321,9 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         let _ = servingsTextField.resignFirstResponder()
     }
     
-    override func handleErrorViewVisibility(visible: Bool) {
-        let connectionStateDidChange = isConnectedToInternet == visible
-        
-        self.isConnectedToInternet = !visible
-        
-        if connectionStateDidChange {
-            for v in viewControllers.values {
-                v.isConnectedToInternet = isConnectedToInternet
-            }
+    override func connectionStateDidChange() {
+        for v in viewControllers.values {
+            v.isConnectedToInternet = isConnectedToInternet
         }
-        super.handleErrorViewVisibility(visible: visible)
     }
 }
