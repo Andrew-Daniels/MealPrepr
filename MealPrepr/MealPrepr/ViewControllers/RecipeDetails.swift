@@ -139,14 +139,14 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
         }
     }
     @IBAction func favoritesBtnClicked(_ sender: Any) {
-        if !checkForGuestAccount() {
+        if !checkForGuestAccount() && checkForInternetConnection() {
             (sender as! UIButton).isSelected = true
             self.account.viewingCategories()
             performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: sender)
         }
     }
     @IBAction func flagBtnClicked(_ sender: Any) {
-        if !checkForGuestAccount() {
+        if !checkForGuestAccount() && checkForInternetConnection() {
             (sender as! UIButton).isSelected = true
         }
     }
