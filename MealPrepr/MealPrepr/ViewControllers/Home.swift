@@ -146,7 +146,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         if (account.userLevel == .Guest && segue.identifier != backToSignUpSegueIdentifier) {
             MPAlertController.show(message: "You must sign in first before you can use this feature.", type: .CreateAccount, presenter: self)
         }
-        if segue.identifier == createRecipeSegueIdentifier {
+        if segue.identifier == createRecipeSegueIdentifier && checkForInternetConnection() {
             if let vc = segue.destination as? CreateRecipe {
                 vc.hidesBottomBarWhenPushed = true
             }
