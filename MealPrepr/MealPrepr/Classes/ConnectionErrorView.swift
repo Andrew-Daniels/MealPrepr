@@ -99,7 +99,6 @@ class ConnectionErrorView {
                 if self.connectionViewStatus == .ConstrainedVisible {
                     self.connectionViewStatus = .Constrained
                 }
-                self.delegate?.handleErrorViewVisibility(visible: false)
             }
         }
         
@@ -124,9 +123,34 @@ class ConnectionErrorView {
     }
     
     private func setConnectionViewsVisible(visible: Bool) {
-        connectionStatusLabel.isHidden = !visible
-        connectionStatusView.isHidden = !visible
         
-        delegate?.handleErrorViewVisibility(visible: visible)
+        var asyncAfterTime: DispatchTime = .now()
+        
+        if !visible {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2) {
+                    self.connectionStatusView.backgroundColor = .green
+                    self.connectionStatusLabel.textColor = .white
+                    self.connectionStatusLabel.text = "Connected"
+                }
+            }
+            asyncAfterTime = .now() + .seconds(2)
+        } else {
+            DispatchQueue.main.async {
+                self.connectionStatusView.backgroundColor = .white
+                self.connectionStatusLabel.textColor = .black
+                self.connectionStatusLabel.text = "Not connected"
+            }
+            
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: asyncAfterTime) {
+            UIView.animate(withDuration: 0.4) {
+                self.connectionStatusLabel.isHidden = !visible
+                self.connectionStatusView.isHidden = !visible
+                self.delegate?.handleErrorViewVisibility(visible: visible)
+            }
+        }
+        
     }
 }
