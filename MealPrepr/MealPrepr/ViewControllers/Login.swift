@@ -168,6 +168,12 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         performSegue(withIdentifier: loggedInSegueIdentifier, sender: sender)
     }
     @IBAction func loginBtnClicked(_ sender: UIButton) {
+        
+        if !isConnectedToInternet {
+            presentConnectionAlert()
+            return
+        }
+        
         let email = emailTextField.text
         let password = passwordTextField.text
         

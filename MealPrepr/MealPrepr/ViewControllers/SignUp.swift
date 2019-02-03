@@ -33,6 +33,12 @@ class SignUp: MPViewController, MPTextFieldDelegate {
     }
     
     @IBAction func signUpBtnClicked(_ sender: UIButton) {
+        
+        if !isConnectedToInternet {
+            presentConnectionAlert()
+            return
+        }
+        
         let email = emailTextField.text
         let username = usernameTextField.text
         let password = passwordTextField.text
