@@ -173,6 +173,12 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         }
     }
     @IBAction func saveBtnPressed(_ sender: Any) {
+        
+        if !isConnectedToInternet {
+            presentConnectionAlert()
+            return
+        }
+        
         //Check if ingredients > 0
         //Check if title is present
         //Check if calServings is present and a number

@@ -152,7 +152,7 @@ class ConnectionErrorView {
                     self.connectionStatusLabel.text = "Connected"
                 }
             }
-            asyncAfterTime = .now() + .seconds(2)
+            asyncAfterTime = .now() + .seconds(1)
         } else {
             DispatchQueue.main.async {
                 self.connectionStatusView.backgroundColor = .white
