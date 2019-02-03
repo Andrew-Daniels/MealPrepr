@@ -8,12 +8,15 @@
 
 import UIKit
 
-class MPTabBarController: UITabBarController {
+class MPTabBarController: UITabBarController, ConnectionErrorViewDelegate {
 
     var account: Account!
+    private var defaultTabBarOrigin: CGPoint!
+    var connectionErrorView: ConnectionErrorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultTabBarOrigin = self.view.bounds.origin
         if let controllers = self.viewControllers {
             for controller in controllers {
                 if let navController = controller as? MPNavigationController {
@@ -21,18 +24,25 @@ class MPTabBarController: UITabBarController {
                 }
             }
         }
-        // Do any additional setup after loading the view.
+        connectionErrorView = ConnectionErrorView(parent: self, bottomViewConstant: 50.0)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func setTabBarOrigin(slideUp: Bool) {
+        
+        DispatchQueue.main.async {
+            if slideUp {
+                let tabBarOrigin = CGPoint(x: self.defaultTabBarOrigin.x, y: self.defaultTabBarOrigin.y + 50)
+                self.view.bounds.origin = tabBarOrigin
+            } else {
+                self.view.bounds.origin = self.defaultTabBarOrigin
+            }
+        }
+        
     }
-    */
+
+    func handleErrorViewVisibility(visible: Bool) {
+        setTabBarOrigin(slideUp: visible)
+    }
 
 }

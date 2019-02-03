@@ -47,7 +47,7 @@ class SignUp: MPViewController, MPTextFieldDelegate {
         usernameTextField.setError(errorMsg: errorMsg)
         
         if (!emailTextField.hasError && !passwordTextField.hasError && !usernameTextField.hasError) {
-            
+            self.startLoading(withText: "Creating account")
             //Try to create the account
                 Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
                     if let error = error,
@@ -57,23 +57,38 @@ class SignUp: MPViewController, MPTextFieldDelegate {
                         
                         self.emailTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
                         self.passwordTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
-                        
+                        self.finishLoadingWithError(completionHandler: { (finished) in
+                            
+                        })
                     } else if let error = error {
                         
-                        MPAlertController.show(message: error.localizedDescription, type: .SignUp, presenter: self)
-                        
+                        self.finishLoading(completionHandler: { (finished) in
+                            if finished {
+                                MPAlertController.show(message: error.localizedDescription, type: .SignUp, presenter: self)
+                                
+                            }
+                        })
                     }
                     guard let user = authResult?.user else { return }
-                    self.account = Account(UID: user.uid, username: username, userLevel: .User)
                     
-                    self._FBHelper.saveAccount(account: self.account)
-                    self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
+                    self.finishLoading(completionHandler: { (finished) in
+                        if finished {
+                            self.account = Account(UID: user.uid, username: username, userLevel: .User)
+                            
+                            self._FBHelper.saveAccount(account: self.account)
+                            self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
+                        }
+                    })
                 }
         }
         else {
-            self.emailTextField.notifyOfError()
-            self.passwordTextField.notifyOfError()
-            self.usernameTextField.notifyOfError()
+            self.finishLoading { (finished) in
+                if finished {
+                    self.emailTextField.notifyOfError()
+                    self.passwordTextField.notifyOfError()
+                    self.usernameTextField.notifyOfError()
+                }
+            }
         }
     }
     

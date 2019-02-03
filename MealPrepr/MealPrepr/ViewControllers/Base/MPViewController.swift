@@ -10,13 +10,16 @@ import UIKit
 
 private let loadingVCSBIdentifer = "LoadingVC"
 
-class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AlertDelegate {
+class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AlertDelegate, ConnectionErrorViewDelegate {
     
     var account: Account!
     var searchController: UISearchController?
     var selectedImage: UIImage?
     var collectionViewCellWidth: CGFloat?
     private var loadingVC: Loading?
+    let reachability = Reachability()!
+    private var defaultLayoutMargins: UIEdgeInsets!
+    var connectionErrorView: ConnectionErrorView!
     
     var hasSearchController: Bool = false {
         didSet {
@@ -53,6 +56,58 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem?.tintColor = .white
         // Do any additional setup after loading the view.
+        defaultLayoutMargins = self.view.layoutMargins
+        connectionErrorView = ConnectionErrorView(parent: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi")
+        case .cellular:
+            print("Reachable via Cellular")
+        case .none:
+            print("Network not reachable")
+        }
+        
+        if let tabBarController = self.tabBarController, self.tabBarController is MPTabBarController {
+            let t = tabBarController as! MPTabBarController
+            
+            t.connectionErrorView.setConnectionStatus(status: reachability.connection)
+            connectionErrorView.setConnectionStatus(status: reachability.connection, containedInTabController: true)
+            //self.setViewMargins(slideUp: true)
+        } else {
+            connectionErrorView.setConnectionStatus(status: reachability.connection)
+        }
+    }
+    
+    func handleErrorViewVisibility(visible: Bool) {
+        setViewMargins(slideUp: visible)
+    }
+    
+    private func setViewMargins(slideUp: Bool) {
+        DispatchQueue.main.async {
+            if slideUp {
+                self.view.layoutMargins = UIEdgeInsets.init(top: self.view.layoutMargins.top, left: self.view.layoutMargins.left, bottom: self.view.layoutMargins.bottom + 50, right: self.view.layoutMargins.right)
+                self.viewLayoutMarginsDidChange()
+            } else {
+                self.view.layoutMargins = self.defaultLayoutMargins
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,7 +141,6 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     func setupSearchControllerDelegates(searchResultsUpdater: UISearchResultsUpdating, searchDelegate: UISearchBarDelegate) {
         searchController?.searchResultsUpdater = searchResultsUpdater
-        //searchController?.searchBar.delegate = searchDelegate
     }
 
     @objc func createAccountBtnClicked() {

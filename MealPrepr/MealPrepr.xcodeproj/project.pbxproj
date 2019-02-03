@@ -62,6 +62,10 @@
 		3188552722062D3F00BA6A93 /* RecipeDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */; };
 		3188552B220635A900BA6A93 /* Weekplan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3188552A220635A900BA6A93 /* Weekplan.swift */; };
 		3188552D22063CF100BA6A93 /* WeekplanRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */; };
+		3188552F2206795100BA6A93 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3188552E2206795100BA6A93 /* Reachability.swift */; };
+		318855312206AE0F00BA6A93 /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855302206AE0F00BA6A93 /* ConnectionErrorView.swift */; };
+		318855332206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */; };
+		318855352206BC9C00BA6A93 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855342206BC9C00BA6A93 /* ConnectionManager.swift */; };
 		318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
@@ -157,6 +161,10 @@
 		3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RecipeDetails.storyboard; sourceTree = "<group>"; };
 		3188552A220635A900BA6A93 /* Weekplan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekplan.swift; sourceTree = "<group>"; };
 		3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekplanRecipeCell.swift; sourceTree = "<group>"; };
+		3188552E2206795100BA6A93 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		318855302206AE0F00BA6A93 /* ConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorView.swift; sourceTree = "<group>"; };
+		318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorViewDelegate.swift; sourceTree = "<group>"; };
+		318855342206BC9C00BA6A93 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorDelegate.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -361,6 +369,9 @@
 				312F5A2921BB4ED60017B534 /* Account.swift */,
 				310D027621C1F29B00EA8BA0 /* ImageHelper.swift */,
 				31DD2FE421D7EDC800AE8974 /* RecipeHelper.swift */,
+				3188552E2206795100BA6A93 /* Reachability.swift */,
+				318855302206AE0F00BA6A93 /* ConnectionErrorView.swift */,
+				318855342206BC9C00BA6A93 /* ConnectionManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -435,6 +446,7 @@
 				318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */,
 				3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */,
 				313088B121FFDEBF0088AA5B /* RecipeDetailsDelegate.swift */,
+				318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -669,6 +681,7 @@
 				310D30F821B74FD900D0E079 /* RoundedUIView.swift in Sources */,
 				310D027321C0B2A200EA8BA0 /* Utensils.swift in Sources */,
 				310D027F21C32F3100EA8BA0 /* InstructionIngredientCell.swift in Sources */,
+				318855332206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift in Sources */,
 				31B9572521E0789D00D15CCD /* RecipeDelegate.swift in Sources */,
 				312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */,
 				31B9572721E120AC00D15CCD /* Loading.swift in Sources */,
@@ -677,6 +690,7 @@
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
 				310D028721D1A0D700EA8BA0 /* Instruction.swift in Sources */,
+				3188552F2206795100BA6A93 /* Reachability.swift in Sources */,
 				31DD2FE721DADA0A00AE8974 /* Recipe.swift in Sources */,
 				31DD2FE321D7DEAD00AE8974 /* InstructionCellDelegate.swift in Sources */,
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
@@ -692,6 +706,7 @@
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
 				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,
 				318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */,
+				318855352206BC9C00BA6A93 /* ConnectionManager.swift in Sources */,
 				312F5A3821BC51120017B534 /* Home.swift in Sources */,
 				310D027D21C32F0F00EA8BA0 /* InstructionCell.swift in Sources */,
 				313088B4220126FE0088AA5B /* Settings.swift in Sources */,
@@ -703,6 +718,7 @@
 				310D026F21C0967800EA8BA0 /* Ingredient.swift in Sources */,
 				3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */,
 				3188552B220635A900BA6A93 /* Weekplan.swift in Sources */,
+				318855312206AE0F00BA6A93 /* ConnectionErrorView.swift in Sources */,
 				3193139021ED66A600DBF55B /* Categories.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
 				310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */,
