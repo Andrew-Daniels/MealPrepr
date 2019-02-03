@@ -16,11 +16,13 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var shoppingCartBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBarBtn: UIBarButtonItem!
+    @IBOutlet weak var weekplanNotExistView: UIView!
+    @IBOutlet weak var weekplanExistsView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupWeekplan()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,21 +40,29 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func addBarBtnClicked(_ sender: Any) {
+        
     }
     
     @IBAction func editBtnClicked(_ sender: Any) {
+        
     }
     
     @IBAction func shoppingCartBtnClicked(_ sender: Any) {
+        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func weekplanExists() -> Bool {
+        return false
     }
-    */
+    
+    private func setupWeekplan() {
+        if weekplanExists() {
+            //Show weekplan
+            weekplanExistsView.isHidden = false
+        } else {
+            //Show create weekplan message
+            weekplanNotExistView.isHidden = false
+        }
+    }
 
 }

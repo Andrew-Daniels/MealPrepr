@@ -65,6 +65,8 @@
 		3188552F2206795100BA6A93 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3188552E2206795100BA6A93 /* Reachability.swift */; };
 		318855312206AE0F00BA6A93 /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855302206AE0F00BA6A93 /* ConnectionErrorView.swift */; };
 		318855332206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */; };
+		318855372207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855362207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift */; };
+		3188553A2207AF8B00BA6A93 /* CreateWeekplan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855392207AF8B00BA6A93 /* CreateWeekplan.swift */; };
 		318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
@@ -163,6 +165,8 @@
 		3188552E2206795100BA6A93 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		318855302206AE0F00BA6A93 /* ConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorView.swift; sourceTree = "<group>"; };
 		318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorViewDelegate.swift; sourceTree = "<group>"; };
+		318855362207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekplanCreationRecipeCell.swift; sourceTree = "<group>"; };
+		318855392207AF8B00BA6A93 /* CreateWeekplan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWeekplan.swift; sourceTree = "<group>"; };
 		318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorDelegate.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -376,6 +380,7 @@
 		310D30FC21B75C8600D0E079 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				318855382207AF6C00BA6A93 /* Weekplan */,
 				31FAEAE821EEC464004D006E /* Cells */,
 				3193139121ED680C00DBF55B /* Alerts */,
 				310D026421C0814300EA8BA0 /* Admin */,
@@ -390,7 +395,6 @@
 				31B9572A21E2755D00D15CCD /* RecipeDetails.swift */,
 				3193138F21ED66A600DBF55B /* Categories.swift */,
 				313088B3220126FE0088AA5B /* Settings.swift */,
-				3188552A220635A900BA6A93 /* Weekplan.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -415,6 +419,15 @@
 				310D30D821B74DE200D0E079 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		318855382207AF6C00BA6A93 /* Weekplan */ = {
+			isa = PBXGroup;
+			children = (
+				3188552A220635A900BA6A93 /* Weekplan.swift */,
+				318855392207AF8B00BA6A93 /* CreateWeekplan.swift */,
+			);
+			path = Weekplan;
 			sourceTree = "<group>";
 		};
 		3193138C21EC14F500DBF55B /* Extensions */ = {
@@ -473,6 +486,7 @@
 			children = (
 				31FAEAE621EEC459004D006E /* CategoryCell.swift */,
 				3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */,
+				318855362207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -686,6 +700,7 @@
 				310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */,
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
+				318855372207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift in Sources */,
 				310D028721D1A0D700EA8BA0 /* Instruction.swift in Sources */,
 				3188552F2206795100BA6A93 /* Reachability.swift in Sources */,
 				31DD2FE721DADA0A00AE8974 /* Recipe.swift in Sources */,
@@ -699,6 +714,7 @@
 				310D026B21C08C5400EA8BA0 /* IngredientAlert.swift in Sources */,
 				31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */,
 				3188552D22063CF100BA6A93 /* WeekplanRecipeCell.swift in Sources */,
+				3188553A2207AF8B00BA6A93 /* CreateWeekplan.swift in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
 				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,

@@ -122,6 +122,10 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return checkForInternetConnection()
+    }
+    
     func categorySelected(category: String) {
         
         self.category = category
