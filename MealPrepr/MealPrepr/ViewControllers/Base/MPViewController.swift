@@ -253,12 +253,16 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         }
     }
     
-    func presentConnectionAlert() {
-        let alert = UIAlertController(title: "Connection Offline", message: "You aren't connected to the internet, check your connection and try again.", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+    func checkForInternetConnection() -> Bool {
         
-        alert.addAction(ok)
-        
-        self.present(alert, animated: true, completion: nil)
+        if !isConnectedToInternet {
+            let alert = UIAlertController(title: "Connection Offline", message: "You aren't connected to the internet, check your connection and try again.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alert.addAction(ok)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        return isConnectedToInternet    
     }
 }

@@ -174,8 +174,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     }
     @IBAction func saveBtnPressed(_ sender: Any) {
         
-        if !isConnectedToInternet {
-            presentConnectionAlert()
+        if !checkForInternetConnection() {
             return
         }
         

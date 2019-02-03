@@ -34,8 +34,7 @@ class SignUp: MPViewController, MPTextFieldDelegate {
     
     @IBAction func signUpBtnClicked(_ sender: UIButton) {
         
-        if !isConnectedToInternet {
-            presentConnectionAlert()
+        if !checkForInternetConnection() {
             return
         }
         

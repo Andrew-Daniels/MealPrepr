@@ -169,8 +169,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     }
     @IBAction func loginBtnClicked(_ sender: UIButton) {
         
-        if !isConnectedToInternet {
-            presentConnectionAlert()
+        if !checkForInternetConnection() {
             return
         }
         

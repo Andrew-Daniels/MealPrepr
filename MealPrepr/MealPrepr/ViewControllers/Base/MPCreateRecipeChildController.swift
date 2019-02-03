@@ -96,9 +96,6 @@ class MPCreateRecipeChildController: MPViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if !isConnectedToInternet {
-            presentConnectionAlert()
-        }
-        return isConnectedToInternet
+        return checkForInternetConnection()
     }
 }

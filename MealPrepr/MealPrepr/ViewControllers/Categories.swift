@@ -62,8 +62,7 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
     
     @IBAction func favoritesBtnClicked(_ sender: Any) {
         
-        if !isConnectedToInternet {
-            presentConnectionAlert()
+        if !checkForInternetConnection() {
             return
         }
         
