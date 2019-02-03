@@ -87,13 +87,16 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !readOnly {
+        if !readOnly && isConnectedToInternet {
             performSegue(withIdentifier: editIngredientAlertSegueIdentifier, sender: ingredients[indexPath.row])
             ingredientBeingEdited = ingredients[indexPath.row]
             ingredientIndexBeingEdited = indexPath
             isEditingExistingIngredient = true
-            tableView.deselectRow(at: indexPath, animated: true)
         }
+        if !isConnectedToInternet {
+            presentConnectionAlert()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     @IBAction func addIngredientBtnClicked(_ sender: Any) {

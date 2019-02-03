@@ -31,7 +31,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         case Photos = 3
     }
     
-    private var viewControllers = [Controller: MPViewController]()
+    private var viewControllers = [Controller: MPCreateRecipeChildController]()
     private var ingredientUnits = [String]() {
         didSet {
             if let vc = getVC(atIndex: .Ingredients) as? Ingredients {
@@ -77,7 +77,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         
     }
     
-    private func createControllerForSelectedIndex(index: Controller?) -> MPViewController? {
+    private func createControllerForSelectedIndex(index: Controller?) -> MPCreateRecipeChildController? {
         let main = UIStoryboard(name: mainStoryboardIdentifier, bundle: nil)
         guard let index = index else { return nil }
         var vcIdentifier: String!
@@ -93,7 +93,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         case .Photos:
             vcIdentifier = createPhotosIdentifier
         }
-        guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPViewController else {return nil}
+        guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPCreateRecipeChildController else {return nil}
         
         viewControllers[index] = vc
         
@@ -113,6 +113,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         activeVC.constrainToContainerView()
         
         activeVC.didMove(toParent: self)
+        activeVC.isConnectedToInternet = isConnectedToInternet
         
         switch (atIndex) {
             
@@ -312,5 +313,18 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         let _ = titleTextField.resignFirstResponder()
         let _ = caloriesTextField.resignFirstResponder()
         let _ = servingsTextField.resignFirstResponder()
+    }
+    
+    override func handleErrorViewVisibility(visible: Bool) {
+        let connectionStateDidChange = isConnectedToInternet == visible
+        
+        self.isConnectedToInternet = !visible
+        
+        if connectionStateDidChange {
+            for v in viewControllers.values {
+                v.isConnectedToInternet = isConnectedToInternet
+            }
+        }
+        super.handleErrorViewVisibility(visible: visible)
     }
 }

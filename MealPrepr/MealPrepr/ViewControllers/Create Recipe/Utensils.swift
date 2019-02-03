@@ -56,8 +56,11 @@ class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !readOnly {
+        if !readOnly && isConnectedToInternet {
             performSegue(withIdentifier: editUtensilAlertSegueIdentifier, sender: nil)
+        }
+        if !isConnectedToInternet {
+            presentConnectionAlert()
         }
     }
     

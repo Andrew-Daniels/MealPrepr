@@ -61,13 +61,16 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !readOnly {
+        if !readOnly && isConnectedToInternet {
             performSegue(withIdentifier: editInstructionAlertSegueIdentifier, sender: instructions[indexPath.row])
             instructionBeingEdited = instructions[indexPath.row]
             instructionIndexBeingEdited = indexPath
             isEditingExistingInstruction = true
-            tableView.deselectRow(at: indexPath, animated: true)
         }
+        if !isConnectedToInternet {
+            presentConnectionAlert()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

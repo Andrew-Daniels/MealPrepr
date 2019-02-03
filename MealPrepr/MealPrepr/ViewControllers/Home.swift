@@ -40,24 +40,6 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
         imageViewTitle.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageViewTitle
         imageViewTitle.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        
-        
-//        reachability.whenReachable = { reachability in
-//            if reachability.connection == .wifi {
-//                print("Reachable via WiFi")
-//            } else {
-//                print("Reachable via Cellular")
-//            }
-//        }
-//        reachability.whenUnreachable = { _ in
-//            print("Not reachable")
-//        }
-//
-//        do {
-//            try reachability.startNotifier()
-//        } catch {
-//            print("Unable to start notifier")
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

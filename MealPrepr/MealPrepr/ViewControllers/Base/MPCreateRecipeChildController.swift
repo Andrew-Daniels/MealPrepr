@@ -23,6 +23,10 @@ class MPCreateRecipeChildController: MPViewController {
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewDidLoad() {
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -89,5 +93,12 @@ class MPCreateRecipeChildController: MPViewController {
                 self.tableView.setEditing(false, animated: false)
             }
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if !isConnectedToInternet {
+            presentConnectionAlert()
+        }
+        return isConnectedToInternet
     }
 }

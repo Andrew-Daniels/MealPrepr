@@ -17,9 +17,9 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     var selectedImage: UIImage?
     var collectionViewCellWidth: CGFloat?
     private var loadingVC: Loading?
-    let reachability = Reachability()!
     private var defaultLayoutMargins: UIEdgeInsets!
     var connectionErrorView: ConnectionErrorView!
+    var isConnectedToInternet: Bool = true
     
     var hasSearchController: Bool = false {
         didSet {
@@ -63,36 +63,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
-        do{
-            try reachability.startNotifier()
-        }catch{
-            print("could not start reachability notifier")
-        }
-    }
-    
-    @objc func reachabilityChanged(note: Notification) {
-        
-        let reachability = note.object as! Reachability
-        
-        switch reachability.connection {
-        case .wifi:
-            print("Reachable via WiFi")
-        case .cellular:
-            print("Reachable via Cellular")
-        case .none:
-            print("Network not reachable")
-        }
-        
-        if let tabBarController = self.tabBarController, self.tabBarController is MPTabBarController {
-            let t = tabBarController as! MPTabBarController
-            
-            t.connectionErrorView.setConnectionStatus(status: reachability.connection)
-            connectionErrorView.setConnectionStatus(status: reachability.connection, containedInTabController: true)
-            //self.setViewMargins(slideUp: true)
-        } else {
-            connectionErrorView.setConnectionStatus(status: reachability.connection)
-        }
+        connectionErrorView?.startNotifier()
     }
     
     func handleErrorViewVisibility(visible: Bool) {
@@ -102,7 +73,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     private func setViewMargins(slideUp: Bool) {
         DispatchQueue.main.async {
             if slideUp {
-                self.view.layoutMargins = UIEdgeInsets.init(top: self.view.layoutMargins.top, left: self.view.layoutMargins.left, bottom: self.view.layoutMargins.bottom + 50, right: self.view.layoutMargins.right)
+                self.view.layoutMargins = UIEdgeInsets.init(top: self.defaultLayoutMargins.top, left: self.defaultLayoutMargins.left, bottom: self.defaultLayoutMargins.bottom + 50, right: self.defaultLayoutMargins.right)
                 self.viewLayoutMarginsDidChange()
             } else {
                 self.view.layoutMargins = self.defaultLayoutMargins
@@ -111,6 +82,8 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //connectionErrorView?.stopNotifier()
+        
         if let vc = segue.destination as? MPViewController {
             vc.account = account
         } else if let vc = segue.destination as? MPNavigationController {
@@ -266,5 +239,14 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             self.extendedLayoutIncludesOpaqueBars = false
             self.navigationController?.view.layoutSubviews()
         }
+    }
+    
+    func presentConnectionAlert() {
+        let alert = UIAlertController(title: "Connection Offline", message: "You aren't connected to the internet, check your connection and try again.", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

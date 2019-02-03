@@ -19,6 +19,7 @@ class ConnectionErrorView {
     private var delegate: ConnectionErrorViewDelegate?
     private var bottomViewConstant: CGFloat!
     private var connectedToInternet: Bool!
+    private let reachability = Reachability()!
     
     init(parent: UIViewController, bottomViewConstant: CGFloat = 0) {
         self.parent = parent
@@ -36,12 +37,29 @@ class ConnectionErrorView {
         
         self.connectionStatusView = view
         self.connectionStatusLabel = label
+        
+        startNotifier()
     }
     
     enum ConnectionViewStatus: Int {
         case Constrained
         case NotConstrained
         case ConstrainedVisible
+    }
+    
+    public func startNotifier() {
+        DispatchQueue.main.async {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(note:)), name: .reachabilityChanged, object: self.reachability)
+            do{
+                try self.reachability.startNotifier()
+            }catch{
+                print("could not start reachability notifier")
+            }
+        }
+    }
+    
+    public func stopNotifier() {
+        reachability.stopNotifier()
     }
     
     public func hasConnectionViews() -> Bool {
@@ -152,5 +170,22 @@ class ConnectionErrorView {
             }
         }
         
+    }
+    
+    @objc private func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi")
+        case .cellular:
+            print("Reachable via Cellular")
+        case .none:
+            print("Network not reachable")
+        }
+        
+        let containedInTabController = parent.tabBarController is MPTabBarController
+        setConnectionStatus(status: reachability.connection, containedInTabController: containedInTabController)
     }
 }
