@@ -433,8 +433,10 @@
                                             <outlet property="caloriesLabel" destination="L8c-G8-J83" id="f2Z-37-xaR"/>
                                             <outlet property="cookLabel" destination="vNG-zT-6fb" id="NRi-Gh-OkY"/>
                                             <outlet property="imageView" destination="cTE-oZ-Cf2" id="KTu-ea-QIw"/>
+                                            <outlet property="ingredientBackView" destination="YnX-AY-iiD" id="xad-AR-eRz"/>
                                             <outlet property="ingredientCountLabel" destination="RmX-Wu-h1C" id="K4i-PQ-x25"/>
                                             <outlet property="prepLabel" destination="CaH-wX-uaf" id="p0C-At-E1t"/>
+                                            <outlet property="titleBackView" destination="irm-ES-OMF" id="m8e-9N-WMD"/>
                                             <outlet property="titleLabel" destination="MCc-iq-Jqk" id="tbq-vj-Nfn"/>
                                         </connections>
                                     </collectionViewCell>

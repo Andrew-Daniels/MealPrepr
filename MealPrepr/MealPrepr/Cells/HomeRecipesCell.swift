@@ -67,6 +67,8 @@ class HomeRecipesCell: UICollectionViewCell {
     @IBOutlet weak var prepLabel: UILabel!
     @IBOutlet weak var cookLabel: UILabel!
     @IBOutlet weak var ingredientCountLabel: UILabel!
+    @IBOutlet weak var titleBackView: RoundedUIView!
+    @IBOutlet weak var ingredientBackView: RoundedUIView!
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +76,15 @@ class HomeRecipesCell: UICollectionViewCell {
     }
     
     private func initHomeRecipesCell() {
+        
+        ingredientBackView.clipsToBounds = true
+        ingredientBackView.layer.cornerRadius = 12
+        ingredientBackView.layer.maskedCorners = [.layerMinXMaxYCorner]
+        
+        titleBackView.clipsToBounds = true
+        titleBackView.layer.cornerRadius = 12
+        titleBackView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
         if let r = recipe {
             self.title = r.title
             self.calories = r.calServing
