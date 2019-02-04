@@ -118,6 +118,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        connectionErrorView?.startNotifier()
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             // ...
         }

@@ -46,6 +46,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         cell.imageView.layer.cornerRadius = 12
         cell.imageView.clipsToBounds = true
         cell.recipe = recipe
+        recipe.recipeDelegate = self
         return cell
     }
     
