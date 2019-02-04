@@ -256,19 +256,42 @@
                                 <rect key="frame" x="0.0" y="54" width="414" height="468"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y4I-k7-zhb">
-                                    <size key="itemSize" width="200" height="150"/>
+                                    <size key="itemSize" width="190" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="weekplanCreationRecipeCell" id="uxN-Ih-wAy" customClass="WeekplanCreationRecipeCell" customModule="MealPrepr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="190" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7M-mp-FZR" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="52.666666666666657" width="55" height="45"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v5-YS-Zj0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                                            <state key="normal" image="Add"/>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="3v5-YS-Zj0" secondAttribute="trailing" constant="10" id="e5r-QS-EUn"/>
+                                                        <constraint firstAttribute="bottom" secondItem="3v5-YS-Zj0" secondAttribute="bottom" id="nDa-Ol-kGV"/>
+                                                        <constraint firstItem="3v5-YS-Zj0" firstAttribute="top" secondItem="Z7M-mp-FZR" secondAttribute="top" id="oNS-NI-UPz"/>
+                                                        <constraint firstAttribute="width" constant="55" id="oax-3K-V3m"/>
+                                                        <constraint firstItem="3v5-YS-Zj0" firstAttribute="leading" secondItem="Z7M-mp-FZR" secondAttribute="leading" id="qjV-1u-COq"/>
+                                                        <constraint firstAttribute="height" constant="45" id="vKq-17-fMX"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTE-oZ-Cf2">
                                                     <rect key="frame" x="50" y="0.0" width="150" height="150"/>
                                                 </imageView>
@@ -384,29 +407,6 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="clips" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7M-mp-FZR" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="52.666666666666657" width="55" height="45"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v5-YS-Zj0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
-                                                            <state key="normal" image="Add"/>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="3v5-YS-Zj0" secondAttribute="trailing" constant="10" id="e5r-QS-EUn"/>
-                                                        <constraint firstAttribute="bottom" secondItem="3v5-YS-Zj0" secondAttribute="bottom" id="nDa-Ol-kGV"/>
-                                                        <constraint firstItem="3v5-YS-Zj0" firstAttribute="top" secondItem="Z7M-mp-FZR" secondAttribute="top" id="oNS-NI-UPz"/>
-                                                        <constraint firstAttribute="width" constant="55" id="oax-3K-V3m"/>
-                                                        <constraint firstItem="3v5-YS-Zj0" firstAttribute="leading" secondItem="Z7M-mp-FZR" secondAttribute="leading" id="qjV-1u-COq"/>
-                                                        <constraint firstAttribute="height" constant="45" id="vKq-17-fMX"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="12"/>
-                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>

@@ -95,7 +95,12 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let recipe = recipes[indexPath.row]
+        var recipe = Recipe()
+        if isFiltering() {
+            recipe = filteredRecipes[indexPath.row]
+        } else {
+            recipe = recipes[indexPath.row]
+        }
         self.showRecipeDetails(recipe: recipe)
     }
     
