@@ -134,6 +134,75 @@ class FirebaseHelper {
         }
     }
     
+    public func saveFlag(flag: Flag, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        
+        let path = "Flags/\(flag.recipe.GUID!)/"
+        let reference = database.child(path).childByAutoId()
+        let updates = [
+            path + "\(reference.key)": flag.flagDict
+        ]
+        
+        findRecipeFlagForUser(recipe: flag.recipe, account: flag.issuer) { (flag) in
+            if let f = flag {
+                f.delete(completionHandler: { (success) in
+                    self.database.updateChildValues(updates)
+                })
+            } else {
+                self.database.updateChildValues(updates)
+            }
+        }
+    }
+    
+    public func deleteFlag(flag: Flag, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        if let uid = flag.uid {
+            let path = "Flags/\(uid)"
+            database.child(path).removeValue()
+            completionHandler(true)
+            return
+        }
+        completionHandler(false)
+    }
+    
+    public func findRecipeFlagForUser(recipe: Recipe, account: Account, completionHandler: @escaping (_ isResponse : Flag?) -> Void) {
+        let path = "Flags/\(recipe.GUID!)"
+        database.child(path)
+            .queryOrdered(byChild: "Issuer")
+            .queryEqual(toValue: account.UID)
+            .observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? NSDictionary {
+                let flag = Flag()
+                flag.uid = snapshot.key
+                
+                if let dateCreated = value["Date"] as? String {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+                    flag.date = dateFormatter.date(from: dateCreated)
+                    if flag.date == nil {
+                        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
+                        flag.date = dateFormatter.date(from: dateCreated)
+                    }
+                }
+                
+                if let issuerUID = value["Issuer"] as? String {
+                    let issuer = Account(UID: issuerUID, completionHandler: { (created) in
+                        if !created {
+                            print("Issuer for flag couldn't be found")
+                        }
+                    })
+                    flag.issuer = issuer
+                }
+                
+                if let reason = value["Reason"] as? String {
+                    flag.reason = reason
+                }
+                
+                completionHandler(flag)
+                return
+            }
+                completionHandler(nil)
+        }
+    }
+    
     public func saveRecipeToCategory(account: Account, category: String, recipe: Recipe) {
         if let UID = account.UID, let GUID = recipe.GUID {
             let path = "Accounts/\(UID)/SavedRecipes/\(GUID)"

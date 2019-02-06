@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CategoryCell: UITableViewCell {
+class SelectorCell: UITableViewCell {
 
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

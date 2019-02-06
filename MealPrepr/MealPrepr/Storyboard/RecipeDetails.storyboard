@@ -242,6 +242,10 @@
                                 <exclude reference="wo4-K0-vLD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="kON-B1-ib8"/>
+                                <exclude reference="Efi-fC-Y35"/>
+                                <exclude reference="PXm-tS-VFW"/>
+                                <exclude reference="Xuh-gp-GHr"/>
                                 <exclude reference="A4m-Jk-z1o"/>
                                 <exclude reference="QPP-eG-k5U"/>
                                 <exclude reference="S9L-8q-rMd"/>
@@ -249,12 +253,11 @@
                                 <exclude reference="q0n-PL-kZa"/>
                                 <exclude reference="tYR-wY-hLJ"/>
                                 <exclude reference="xBJ-Ay-ZAi"/>
-                                <exclude reference="D7E-wN-M3L"/>
-                                <exclude reference="L5a-qj-36q"/>
-                                <exclude reference="kON-B1-ib8"/>
                                 <exclude reference="5TM-IY-pJG"/>
                                 <exclude reference="LNW-M1-0WD"/>
                                 <exclude reference="vgN-s9-kKR"/>
+                                <exclude reference="D7E-wN-M3L"/>
+                                <exclude reference="L5a-qj-36q"/>
                                 <exclude reference="M0h-ua-uRv"/>
                                 <exclude reference="17U-2H-JIL"/>
                                 <exclude reference="ahu-wR-LWk"/>
@@ -262,9 +265,6 @@
                                 <exclude reference="p2h-SN-aDG"/>
                                 <exclude reference="47s-Yq-oOb"/>
                                 <exclude reference="sJu-rW-fTm"/>
-                                <exclude reference="Efi-fC-Y35"/>
-                                <exclude reference="PXm-tS-VFW"/>
-                                <exclude reference="Xuh-gp-GHr"/>
                                 <exclude reference="9k8-pX-5kR"/>
                                 <exclude reference="Che-VY-OZb"/>
                             </mask>
@@ -276,19 +276,19 @@
                                 <include reference="wo4-K0-vLD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="kON-B1-ib8"/>
+                                <include reference="Efi-fC-Y35"/>
+                                <include reference="PXm-tS-VFW"/>
+                                <include reference="Xuh-gp-GHr"/>
                                 <include reference="S9L-8q-rMd"/>
                                 <include reference="q0n-PL-kZa"/>
                                 <include reference="xBJ-Ay-ZAi"/>
-                                <include reference="L5a-qj-36q"/>
-                                <include reference="kON-B1-ib8"/>
                                 <include reference="LNW-M1-0WD"/>
+                                <include reference="L5a-qj-36q"/>
                                 <include reference="ahu-wR-LWk"/>
                                 <include reference="gRi-tJ-jBd"/>
                                 <include reference="p2h-SN-aDG"/>
                                 <include reference="47s-Yq-oOb"/>
-                                <include reference="Efi-fC-Y35"/>
-                                <include reference="PXm-tS-VFW"/>
-                                <include reference="Xuh-gp-GHr"/>
                                 <include reference="9k8-pX-5kR"/>
                                 <include reference="Che-VY-OZb"/>
                             </mask>
@@ -302,9 +302,9 @@
                                 <include reference="QPP-eG-k5U"/>
                                 <include reference="bgQ-0Q-t8m"/>
                                 <include reference="tYR-wY-hLJ"/>
-                                <include reference="D7E-wN-M3L"/>
                                 <include reference="5TM-IY-pJG"/>
                                 <include reference="vgN-s9-kKR"/>
+                                <include reference="D7E-wN-M3L"/>
                                 <include reference="M0h-ua-uRv"/>
                                 <include reference="17U-2H-JIL"/>
                                 <include reference="sJu-rW-fTm"/>
@@ -323,6 +323,7 @@
                         <outlet property="servingLabel" destination="Oh1-Ie-Rg5" id="jIF-E6-zgd"/>
                         <segue destination="pnO-aM-rNn" kind="presentation" identifier="categorySelector" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="oee-e7-zFS"/>
                         <segue destination="ODn-SS-SVM" kind="unwind" identifier="backToSignUp" unwindAction="backToSignUpWithSegue:" id="jIx-Vd-AoW"/>
+                        <segue destination="wyy-oF-viX" kind="presentation" identifier="flagSelector" id="6Ue-fi-JS8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKV-UK-t8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,7 +349,7 @@
                                             <constraint firstAttribute="height" constant="300" id="fTM-3A-VTL"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" id="LPq-bD-BTG" customClass="CategoryCell" customModule="MealPrepr" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" id="LPq-bD-BTG" customClass="SelectorCell" customModule="MealPrepr" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="354" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LPq-bD-BTG" id="bzt-xP-Mvn">
@@ -356,7 +357,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgy-Oj-3R7">
-                                                            <rect key="frame" x="10" y="0.0" width="271" height="49.666666666666664"/>
+                                                            <rect key="frame" x="10" y="0.0" width="306" height="49.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -371,7 +372,7 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <outlet property="categoryLabel" destination="Mgy-Oj-3R7" id="Kpo-pt-J20"/>
+                                                    <outlet property="label" destination="Mgy-Oj-3R7" id="Kpo-pt-J20"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -420,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V01-7c-eqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7489.8550724637689" y="-723.21428571428567"/>
+            <point key="canvasLocation" x="7507" y="-723"/>
         </scene>
         <!--Create-Photos-->
         <scene sceneID="Kyh-9V-1UY">
@@ -429,6 +430,98 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNE-EW-WAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6405.46875" y="-1387.554904831625"/>
+        </scene>
+        <!--Flag Selector-->
+        <scene sceneID="aWq-6l-nJJ">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="wyy-oF-viX" customClass="FlagSelector" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gxD-5R-LgD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqn-UB-Uls" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
+                                <rect key="frame" x="30" y="463" width="354" height="350"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vJf-4Q-BE9">
+                                        <rect key="frame" x="0.0" y="50" width="354" height="300"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="3Nr-dd-DI0"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="flagCell" id="kO5-lV-m5M" customClass="SelectorCell" customModule="MealPrepr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="354" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kO5-lV-m5M" id="SVp-XZ-jJC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="316" height="49.666666666666664"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZT-b3-5pC">
+                                                            <rect key="frame" x="10" y="0.0" width="306" height="49.666666666666664"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="XZT-b3-5pC" secondAttribute="bottom" id="Nls-wI-bEI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XZT-b3-5pC" secondAttribute="trailing" id="bvT-xx-aE8"/>
+                                                        <constraint firstItem="XZT-b3-5pC" firstAttribute="leading" secondItem="SVp-XZ-jJC" secondAttribute="leading" constant="10" id="kpH-rO-YYX"/>
+                                                        <constraint firstItem="XZT-b3-5pC" firstAttribute="top" secondItem="SVp-XZ-jJC" secondAttribute="top" id="oil-pg-9im"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <outlet property="label" destination="XZT-b3-5pC" id="R0e-Le-uij"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="wyy-oF-viX" id="EBb-Jc-cM9"/>
+                                            <outlet property="delegate" destination="wyy-oF-viX" id="PGv-yQ-cCj"/>
+                                        </connections>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Reason for Flagging Recipe:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1Z-tM-EIh">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="w1Z-tM-EIh" secondAttribute="trailing" id="4FU-Rr-72Y"/>
+                                    <constraint firstItem="w1Z-tM-EIh" firstAttribute="top" secondItem="xqn-UB-Uls" secondAttribute="top" id="Bsj-QJ-1RN"/>
+                                    <constraint firstAttribute="height" constant="350" id="XNc-NW-guP"/>
+                                    <constraint firstAttribute="trailing" secondItem="vJf-4Q-BE9" secondAttribute="trailing" id="XVD-f5-i05"/>
+                                    <constraint firstAttribute="bottom" secondItem="vJf-4Q-BE9" secondAttribute="bottom" id="tUD-ss-yEm"/>
+                                    <constraint firstItem="w1Z-tM-EIh" firstAttribute="leading" secondItem="xqn-UB-Uls" secondAttribute="leading" id="uDC-R8-z09"/>
+                                    <constraint firstItem="vJf-4Q-BE9" firstAttribute="leading" secondItem="xqn-UB-Uls" secondAttribute="leading" id="ubk-aw-qY5"/>
+                                    <constraint firstItem="vJf-4Q-BE9" firstAttribute="top" secondItem="w1Z-tM-EIh" secondAttribute="bottom" id="x2C-uB-qgZ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xqn-UB-Uls" firstAttribute="leading" secondItem="0ra-oE-RAt" secondAttribute="leading" constant="30" id="Kbf-4m-B4C"/>
+                            <constraint firstItem="0ra-oE-RAt" firstAttribute="trailing" secondItem="xqn-UB-Uls" secondAttribute="trailing" constant="30" id="LS4-nu-Iyz"/>
+                            <constraint firstItem="0ra-oE-RAt" firstAttribute="bottom" secondItem="xqn-UB-Uls" secondAttribute="bottom" constant="49" id="lQt-ZY-HSN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0ra-oE-RAt"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="xqn-UB-Uls" id="wmw-xx-b3c"/>
+                        <outlet property="tableView" destination="vJf-4Q-BE9" id="ree-B8-blS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="az3-Xg-l7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5583" y="-723"/>
         </scene>
     </scenes>
     <resources>

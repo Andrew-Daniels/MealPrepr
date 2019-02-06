@@ -10,8 +10,9 @@ import UIKit
 
 private let photosVCSegueIdentifier = "containedPhotos"
 private let categorySelectorSegueIdentifier = "categorySelector"
+private let flagSelectorSegueIdentifier = "flagSelector"
 
-class RecipeDetails: MPViewController, CategorySelectorDelegate {
+class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDelegate {
     
     enum Controller: Int {
         case Instructions = 0
@@ -148,6 +149,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
     @IBAction func flagBtnClicked(_ sender: Any) {
         if !checkForGuestAccount() && checkForInternetConnection() {
             (sender as! UIButton).isSelected = true
+            performSegue(withIdentifier: flagSelectorSegueIdentifier, sender: sender)
         }
     }
     
@@ -167,6 +169,13 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
             return
         case categorySelectorSegueIdentifier:
             if let vc = segue.destination as? CategorySelector {
+                vc.delegate = self
+                vc.sender = sender
+                vc.alertDelegate = self
+            }
+            return
+        case flagSelectorSegueIdentifier:
+            if let vc = segue.destination as? FlagSelector {
                 vc.delegate = self
                 vc.sender = sender
                 vc.alertDelegate = self
@@ -221,5 +230,15 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate {
                 }
             }
         }
+    }
+    
+    func flagSelected(reason: String) {
+        let flag = Flag()
+        flag.date = Date()
+        flag.recipe = recipe
+        flag.issuer = self.account
+        flag.reason = reason
+        
+        flag.save()
     }
 }

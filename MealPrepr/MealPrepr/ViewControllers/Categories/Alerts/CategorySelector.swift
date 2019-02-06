@@ -22,7 +22,6 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     var showsAll = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         // Do any additional setup after loading the view.
         alertDelegate?.alertShown()
     }
@@ -37,7 +36,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CategoryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! SelectorCell
         
         var category = "All"
         
@@ -49,7 +48,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
             }
         }
         
-        cell.categoryLabel.text = category
+        cell.label.text = category
         return cell
     }
     
