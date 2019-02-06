@@ -41,6 +41,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         vc.delegate = self
         vc.account = self.account
         vc.showsAll = true
+        vc.alertDelegate = self
         present(vc, animated: true, completion: nil)
         
     }

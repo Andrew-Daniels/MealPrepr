@@ -700,7 +700,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pWH-Zo-2SM" firstAttribute="bottom" secondItem="dea-7Z-csn" secondAttribute="bottom" id="6vV-6O-3Zg"/>
+                            <constraint firstItem="pWH-Zo-2SM" firstAttribute="bottom" secondItem="Mus-QO-KzP" secondAttribute="bottomMargin" id="6vV-6O-3Zg"/>
                             <constraint firstItem="dea-7Z-csn" firstAttribute="trailing" secondItem="5SD-Pf-rM1" secondAttribute="trailing" id="Ct1-VM-yxn"/>
                             <constraint firstItem="5SD-Pf-rM1" firstAttribute="top" secondItem="2s1-iJ-IWa" secondAttribute="bottom" constant="10" id="NI6-I9-rOE"/>
                             <constraint firstItem="pWH-Zo-2SM" firstAttribute="top" secondItem="5SD-Pf-rM1" secondAttribute="bottom" id="UWg-I6-DDi"/>
