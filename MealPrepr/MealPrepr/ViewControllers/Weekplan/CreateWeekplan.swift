@@ -10,48 +10,103 @@ import UIKit
 
 private let weekplanCreationCellIdentifier = "weekplanCreationRecipeCell"
 
-class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout {
+class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout, WeekplanCreationCellDelegate, CategorySelectorDelegate {
 
     @IBOutlet weak var currentWeekPlanCollectionView: UICollectionView!
-    
     @IBOutlet weak var recipeListCollectionView: UICollectionView!
-    
-    
     @IBOutlet weak var randomizeBtn: UIButton!
     @IBOutlet weak var favoritesBtn: UIButton!
-    private var allRecipes = [Recipe]()
+    private var recipes = [Recipe]()
+    private var weekplanRecipes = [Recipe]()
+    private var selectedCategory: String!
+    
+    private enum CollectionView: Int {
+        case RecipeList = 0
+        case Weekplan = 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        retrieveRecipes()
+        retrieveRecipes(category: "All")
     }
 
     @IBAction func randomizeBtnClicked(_ sender: Any) {
     }
     
     @IBAction func favoritesBtnClicked(_ sender: Any) {
+        
+        let categories = UIStoryboard(name: "Categories", bundle: nil)
+        let vc = categories.instantiateViewController(withIdentifier: "CategorySelector") as! CategorySelector
+        vc.delegate = self
+        vc.account = self.account
+        vc.showsAll = true
+        present(vc, animated: true, completion: nil)
+        
     }
     @IBAction func saveBtnClicked(_ sender: Any) {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allRecipes.count
+        
+        guard let cV = CollectionView(rawValue: collectionView.tag) else { return 0 }
+        return numberOfItemsInSection(collectionView: cV)
+        
+    }
+    
+    private func numberOfItemsInSection(collectionView: CollectionView) -> Int {
+        
+        switch collectionView {
+        case .RecipeList:
+            return recipes.count
+        case .Weekplan:
+            return weekplanRecipes.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weekplanCreationCellIdentifier, for: indexPath) as! WeekplanCreationRecipeCell
         
-        let recipe = allRecipes[indexPath.row]
+        var recipe = Recipe()
+        var isContainedInWeekplan = false
+        
+        guard let cV = CollectionView(rawValue: collectionView.tag) else { return cell }
+        
+        switch cV {
+        case .RecipeList:
+            recipe = recipes[indexPath.row]
+            isContainedInWeekplan = weekplanRecipes.contains(where: { (r) -> Bool in
+                return r.GUID == recipe.GUID
+            })
+        case .Weekplan:
+            recipe = weekplanRecipes[indexPath.row]
+            isContainedInWeekplan = true
+        }
+
         cell.imageView.layer.cornerRadius = 12
         cell.imageView.clipsToBounds = true
+        cell.isContainedInWeekplan = isContainedInWeekplan
         cell.recipe = recipe
         recipe.recipeDelegate = self
+        cell.weekplanCellDelegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let recipe = allRecipes[indexPath.row]
+        
+        guard let cV = CollectionView(rawValue: collectionView.tag) else { return }
+        
+        var recipe = Recipe()
+        
+        switch cV {
+        case .RecipeList:
+            recipe = recipes[indexPath.row]
+        case .Weekplan:
+            recipe = weekplanRecipes[indexPath.row]
+        }
+        
+        
         showRecipeDetails(recipe: recipe)
     }
     
@@ -60,22 +115,38 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
     }
     
-    public func retrieveRecipes() {
-        FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
-            self.allRecipes = data
-            self.recipeListCollectionView.reloadData()
+    public func retrieveRecipes(category: String = "All") {
+        
+        if category != selectedCategory {
+            
+            if category == "All" {
+                FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
+                    self.favoritesBtn.setTitle(category, for: .normal)
+                    self.recipes = data
+                    self.recipeListCollectionView.reloadData()
+                }
+            } else {
+                FirebaseHelper().loadRecipesForCategory(account: self.account, category: category) { (data) in
+                    self.favoritesBtn.setTitle(category, for: .normal)
+                    self.recipes = data
+                    self.recipeListCollectionView.reloadData()
+                }
+            }
+            
+            selectedCategory = category
         }
+        
     }
     
     func photoDownloaded(sender: Recipe) {
-        let firstIndex = self.allRecipes.firstIndex { (recipe) -> Bool in
+        let firstIndex = self.recipes.firstIndex { (recipe) -> Bool in
             if recipe.GUID == sender.GUID {
                 return true
             }
             return false
         }
         guard let nonNilIndex = firstIndex else { return }
-        let row = allRecipes.startIndex.distance(to: nonNilIndex)
+        let row = recipes.startIndex.distance(to: nonNilIndex)
         let indexPath = IndexPath(row: row, section: 0)
         self.recipeListCollectionView.reloadItems(at: [indexPath])
     }
@@ -86,6 +157,31 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
     
     func recipeDeleted(GUID: String) {
         
+    }
+    
+    func editBtnClicked(recipe: Recipe) {
+        //Remove recipe from weekplan list - if exists
+        //Change image on recipe list
+        //Reload collectionviews
+        
+        if weekplanRecipes.contains(where: { (r) -> Bool in
+            return r.GUID == recipe.GUID
+        }) {
+            weekplanRecipes.removeAll { (r) -> Bool in
+                return r.GUID == recipe.GUID
+            }
+        } else {
+            weekplanRecipes.append(recipe)
+        }
+        
+        
+        
+        currentWeekPlanCollectionView.reloadData()
+        recipeListCollectionView.reloadData()
+    }
+    
+    func categorySelected(category: String) {
+        retrieveRecipes(category: category)
     }
     
 }

@@ -57,7 +57,7 @@ class HomeRecipesCell: UICollectionViewCell {
     
     public var recipe: Recipe! {
         didSet {
-            initHomeRecipesCell()
+            initCell()
         }
     }
     
@@ -75,11 +75,11 @@ class HomeRecipesCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    private func initHomeRecipesCell() {
+    internal func initCell() {
         
         ingredientBackView.clipsToBounds = true
         ingredientBackView.layer.cornerRadius = 12
-        ingredientBackView.layer.maskedCorners = [.layerMinXMaxYCorner]
+        ingredientBackView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
         
         titleBackView.clipsToBounds = true
         titleBackView.layer.cornerRadius = 12

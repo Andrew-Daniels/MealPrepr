@@ -19,6 +19,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     var delegate: CategorySelectorDelegate?
     var alertDelegate: AlertDelegate?
     var sender: Any?
+    var showsAll = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +33,37 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.account.recipeCategories.count
+        return showsAll ? self.account.recipeCategories.count + 1 : self.account.recipeCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! CategoryCell
-        let category = self.account.recipeCategories[indexPath.row]
+        
+        var category = "All"
+        
+        if !showsAll {
+            category = self.account.recipeCategories[indexPath.row]
+        } else {
+            if indexPath.row > 0 {
+                category = self.account.recipeCategories[indexPath.row - 1]
+            }
+        }
+        
         cell.categoryLabel.text = category
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = self.account.recipeCategories[indexPath.row]
+        var category = "All"
+        
+        if !showsAll {
+            category = self.account.recipeCategories[indexPath.row]
+        } else {
+            if indexPath.row > 0 {
+                category = self.account.recipeCategories[indexPath.row - 1]
+            }
+        }
+        
         delegate?.categorySelected(category: category)
         dismiss()
     }

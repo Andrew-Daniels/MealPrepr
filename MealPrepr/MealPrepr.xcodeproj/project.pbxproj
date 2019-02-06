@@ -67,6 +67,7 @@
 		318855332206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */; };
 		318855372207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855362207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift */; };
 		3188553A2207AF8B00BA6A93 /* CreateWeekplan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318855392207AF8B00BA6A93 /* CreateWeekplan.swift */; };
+		3188553D2207FA3100BA6A93 /* WeekplanCreationCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3188553C2207FA3100BA6A93 /* WeekplanCreationCellDelegate.swift */; };
 		318DCF6521F7F28300BE33D1 /* CategorySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */; };
 		3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138D21EC150800DBF55B /* DateExtensions.swift */; };
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
@@ -167,6 +168,7 @@
 		318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionErrorViewDelegate.swift; sourceTree = "<group>"; };
 		318855362207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekplanCreationRecipeCell.swift; sourceTree = "<group>"; };
 		318855392207AF8B00BA6A93 /* CreateWeekplan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWeekplan.swift; sourceTree = "<group>"; };
+		3188553C2207FA3100BA6A93 /* WeekplanCreationCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekplanCreationCellDelegate.swift; sourceTree = "<group>"; };
 		318DCF6421F7F28300BE33D1 /* CategorySelectorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorDelegate.swift; sourceTree = "<group>"; };
 		3193138D21EC150800DBF55B /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -424,10 +426,29 @@
 		318855382207AF6C00BA6A93 /* Weekplan */ = {
 			isa = PBXGroup;
 			children = (
+				3188553E220A64C200BA6A93 /* Cells */,
+				3188553B2207FA0E00BA6A93 /* Protocols */,
 				3188552A220635A900BA6A93 /* Weekplan.swift */,
 				318855392207AF8B00BA6A93 /* CreateWeekplan.swift */,
 			);
 			path = Weekplan;
+			sourceTree = "<group>";
+		};
+		3188553B2207FA0E00BA6A93 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3188553C2207FA3100BA6A93 /* WeekplanCreationCellDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3188553E220A64C200BA6A93 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */,
+				318855362207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3193138C21EC14F500DBF55B /* Extensions */ = {
@@ -485,8 +506,6 @@
 			isa = PBXGroup;
 			children = (
 				31FAEAE621EEC459004D006E /* CategoryCell.swift */,
-				3188552C22063CF100BA6A93 /* WeekplanRecipeCell.swift */,
-				318855362207A7CB00BA6A93 /* WeekplanCreationRecipeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -733,6 +752,7 @@
 				318855312206AE0F00BA6A93 /* ConnectionErrorView.swift in Sources */,
 				3193139021ED66A600DBF55B /* Categories.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,
+				3188553D2207FA3100BA6A93 /* WeekplanCreationCellDelegate.swift in Sources */,
 				310D028321C34A3B00EA8BA0 /* InstructionAlert.swift in Sources */,
 				31B9572B21E2755D00D15CCD /* RecipeDetails.swift in Sources */,
 				313088B6220291F30088AA5B /* ChangeAccountInfoAlert.swift in Sources */,
