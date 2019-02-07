@@ -100,7 +100,7 @@ class FirebaseHelper {
         let reference = database.child(path).childByAutoId()
         var photoPaths = [String]()
         
-        for (index, photo) in recipe.photos.enumerated() {
+        for (index, photo) in recipe.photos {
             if let data = photo.pngData() {
                 let photoRef = storage.child(path + "\(reference.key)" + "\(index)")
                     photoRef.putData(data, metadata: nil) { (metadata, error) in

@@ -17,7 +17,7 @@ class Recipe {
     var ingredients: [Ingredient]!
     var utensils: [Utensil]!
     var instructions: [Instruction]!
-    var photos: [UIImage]!
+    var photos = [Int: UIImage]()
     var dateCreated: Date!
     var status: Status = .Active
     private var downloadedPhotos: [String: UIImage]!
@@ -154,7 +154,7 @@ class Recipe {
         self.instructions = instructions
     }
     
-    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction], photos: [UIImage]) {
+    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction], photos: [Int: UIImage]) {
         self.title = title
         self.calServing = calServing
         self.numServings = numServings
@@ -164,7 +164,7 @@ class Recipe {
         self.photos = photos
     }
     
-    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction], photos: [UIImage], creator: String?) {
+    init(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction], photos: [Int: UIImage], creator: String?) {
         self.title = title
         self.calServing = calServing
         self.numServings = numServings
@@ -265,6 +265,7 @@ class Recipe {
             for (index, path) in self.photoPaths.enumerated() {
                 FirebaseHelper().downloadImage(atPath: path, renderMode: .alwaysOriginal) { (image) in
                     self.downloadedPhotos[path] = image
+                    self.photos[index] = image
                     self.recipeDelegate?.photoDownloaded(sender: self)
                     self.recipeDelegate?.photoDownloaded(photoPath: index)
                 }

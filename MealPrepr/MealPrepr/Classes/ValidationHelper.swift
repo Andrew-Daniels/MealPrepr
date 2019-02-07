@@ -25,7 +25,7 @@ struct ValidationHelper {
         return nil
     }
     
-    public static func validateRecipePhotos(photos: [UIImage]) -> String? {
+    public static func validateRecipePhotos(photos: [Int: UIImage]) -> String? {
         if photos.count > 0 {
             return nil
         }

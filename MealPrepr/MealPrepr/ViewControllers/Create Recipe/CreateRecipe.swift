@@ -203,7 +203,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         var ingredients: [Ingredient]!
         var utensils: [Utensil]!
         var instructions: [Instruction]!
-        var photos: [UIImage]!
+        var photos: [Int: UIImage]!
         
         if !self.titleTextField.hasError && !caloriesTextField.hasError && !servingsTextField.hasError {
             var errorMsg: String!

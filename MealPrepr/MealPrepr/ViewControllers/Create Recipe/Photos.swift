@@ -13,7 +13,7 @@ private let photoCellIdentifier = "PhotoCell"
 class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoCellDelegate, RecipeDelegate {
     
     @IBOutlet weak var collectionView: MPCollectionView!
-    var images = [UIImage]()
+    var images = [Int: UIImage]()
     @IBOutlet weak var roundedUIView: RoundedUIView!
     
     override func viewDidLoad() {
@@ -28,11 +28,16 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         if readOnly {
             roundedUIView.hasEffectView = false
         }
+        
+        recipe?.recipeDelegate = self
+        if let r = recipe {
+            images = r.photos
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let recipe = recipe {
-            return recipe.photoPaths.count
+        if readOnly {
+            return recipe?.photoPaths.count ?? 0
         }
         return images.count
     }
@@ -42,10 +47,6 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         
         if let r = recipe, let image = r.photoAtIndex(index: indexPath.row) {
             cell.imageView.image = image
-            r.recipeDelegate = self
-            self.images.insert(image, at: indexPath.row)
-        } else {
-            cell.imageView.image = images[indexPath.row]
         }
         
         if readOnly {
@@ -80,7 +81,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     }
     
     func addImage(image: UIImage) {
-        images.append(image)
+        images[images.count] = image
         collectionView.reloadData()
         self.collectionView.collectionViewLayout.invalidateLayout()
     }
@@ -99,7 +100,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     func deleteBtnPressed(sender: PhotoCell) {
         let indexPath = self.collectionView.indexPath(for: sender)
         if let path = indexPath {
-            self.images.remove(at: path.row)
+            self.images.removeValue(forKey: path.row)
             self.collectionView.deleteItems(at: [path])
         }
     }
@@ -111,8 +112,8 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     func photoDownloaded(photoPath index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         collectionView.reloadItems(at: [indexPath])
-//        guard let images = recipe?.photos else { return }
-//        self.images = images
+        guard let images = recipe?.photos else { return }
+        self.images = images
     }
     
     func recipeDeleted(GUID: String) {
