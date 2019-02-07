@@ -14,7 +14,6 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     
     @IBOutlet weak var collectionView: MPCollectionView!
     var images = [UIImage]()
-    var recipe: Recipe?
     @IBOutlet weak var roundedUIView: RoundedUIView!
     
     override func viewDidLoad() {
@@ -41,13 +40,17 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PhotoCell
         
-        if let recipe = recipe {
-            cell.imageView.image = recipe.photoAtIndex(index: indexPath.row)
-            cell.deleteBtn.isHidden = true
-            cell.deleteBtn.isEnabled = false
-            recipe.recipeDelegate = self
+        if let r = recipe, let image = r.photoAtIndex(index: indexPath.row) {
+            cell.imageView.image = image
+            r.recipeDelegate = self
+            self.images.insert(image, at: indexPath.row)
         } else {
             cell.imageView.image = images[indexPath.row]
+        }
+        
+        if readOnly {
+            cell.deleteBtn.isHidden = true
+            cell.deleteBtn.isEnabled = false
         }
         
         cell.clipsToBounds = true
@@ -108,6 +111,8 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     func photoDownloaded(photoPath index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         collectionView.reloadItems(at: [indexPath])
+//        guard let images = recipe?.photos else { return }
+//        self.images = images
     }
     
     func recipeDeleted(GUID: String) {

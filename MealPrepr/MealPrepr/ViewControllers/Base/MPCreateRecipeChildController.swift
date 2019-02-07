@@ -22,6 +22,7 @@ class MPCreateRecipeChildController: MPViewController {
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    var recipe: Recipe?
     
     override func viewDidLoad() {
         

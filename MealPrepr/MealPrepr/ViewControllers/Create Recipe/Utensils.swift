@@ -16,7 +16,7 @@ private let cancelledEditSegueIdentifier = "cancelledEdit"
 
 class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UtensilDelegate {
     
-    var utensils = [Utensil]()
+    var utensils: [Utensil]!
     @IBOutlet weak var collectionView: UICollectionView!
     var utensilIndexBeingEdited: IndexPath!
     var isEditingExistingUtensil = false
@@ -26,6 +26,12 @@ class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         FirebaseHelper().loadUtensils { (utensils) in
             self.availableUtensils = utensils
+        }
+        
+        if let r = recipe {
+            self.utensils = r.utensils
+        } else {
+            self.utensils = []
         }
     }
     

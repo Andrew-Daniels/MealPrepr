@@ -219,6 +219,10 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     @objc func editBarBtnClicked() {
+        let createRecipe = UIStoryboard(name: "CreateRecipe", bundle: nil)
+        guard let vc = createRecipe.instantiateViewController(withIdentifier: "UIViewController-eGc-Uf-BP7") as? CreateRecipe else { return }
+        vc.recipe = recipe
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func categorySelected(category: String) {

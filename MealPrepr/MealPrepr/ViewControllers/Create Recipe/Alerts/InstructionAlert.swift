@@ -19,7 +19,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         case Hours
     }
     
-    var availableIngredients = [Ingredient]()
+    var availableIngredients: [Ingredient]!
     var instruction: Instruction!
     var tempInstruction: Instruction! = Instruction()
     var minutesPickerViewModel: [String]?
@@ -56,7 +56,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return availableIngredients.count
+        return availableIngredients?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -244,7 +244,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
             segmentedControl.selectedSegmentIndex = instruction.type.rawValue
             
             for ingredient in instruction.ingredients {
-                let index = availableIngredients.firstIndex { (containedIngredient) -> Bool in
+                let index = availableIngredients?.firstIndex { (containedIngredient) -> Bool in
                     if containedIngredient.toString() == ingredient.toString() {
                         return true
                     }

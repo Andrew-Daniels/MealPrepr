@@ -17,7 +17,7 @@ private let cancelledEditSegueIdentifier = "cancelledEdit"
 class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var ingredients = [Ingredient]() {
+    var ingredients: [Ingredient]! {
         didSet {
             self.tableViewModelDidChange(modelCount: ingredients.count)
         }
@@ -38,6 +38,10 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let r = recipe, ingredients == nil, instructions == nil {
+            self.instructions = r.instructions
+            self.ingredients = r.ingredients
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +49,7 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ingredients.count
+        return ingredients?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

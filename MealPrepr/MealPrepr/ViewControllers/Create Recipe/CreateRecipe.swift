@@ -53,6 +53,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         caloriesTextField.delegate = self
         servingsTextField.delegate = self
         
+        setupWithRecipe()
+        
         let index = Controller(rawValue: segmentedControl.selectedSegmentIndex)
         presentChildVC(atIndex: index)
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
@@ -95,6 +97,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         }
         guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPCreateRecipeChildController else {return nil}
         
+        vc.recipe = recipe
         viewControllers[index] = vc
         
         return vc
@@ -170,6 +173,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         }
         if segue.identifier == containedPhotosViewControllerSegueIdentifier {
             viewControllers[.Photos] = segue.destination as? Photos
+            viewControllers[.Photos]?.recipe = recipe
         }
     }
     @IBAction func saveBtnPressed(_ sender: Any) {
@@ -323,6 +327,15 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     override func connectionStateDidChange() {
         for v in viewControllers.values {
             v.isConnectedToInternet = isConnectedToInternet
+        }
+    }
+    
+    private func setupWithRecipe() {
+        if let r = recipe {
+            self.navigationItem.title = "Editing Recipe"
+            self.titleTextField.text = r.title
+            self.caloriesTextField.text = r.calServing
+            self.servingsTextField.text = r.numServings
         }
     }
 }

@@ -16,8 +16,8 @@ private let ingredientAlertSegueIdentifier = "ingredientAlert"
 
 class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableViewDataSource {
     
-    var availableIngredients = [Ingredient]()
-    var instructions = [Instruction]() {
+    var availableIngredients: [Ingredient]!
+    var instructions: [Instruction]! {
         didSet {
             self.tableViewModelDidChange(modelCount: instructions.count)
         }
@@ -32,13 +32,19 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+        
+        if let r = recipe, instructions == nil {
+            self.instructions = r.instructions
+        } else {
+            self.instructions = []
+        }
     }
 
     @IBAction func addInstructionBtnClicked(_ sender: Any) {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return instructions.count
+        return instructions?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
