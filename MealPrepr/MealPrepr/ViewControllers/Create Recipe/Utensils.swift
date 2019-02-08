@@ -109,6 +109,7 @@ class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UIColle
             if let alertVC = segue.destination as? UtensilAlert {
                 alertVC.availableUtensils = availableUtensils
                 alertVC.selectedUtensils = utensils
+                alertVC.alertDelegate = self
             }
         }
     }

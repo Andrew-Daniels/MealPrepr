@@ -97,12 +97,18 @@ class FirebaseHelper {
     
     public func saveRecipe(recipe: Recipe, userId: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         let path = "Recipes/"
-        let reference = database.child(path).childByAutoId()
+        var referenceKey: String!
+        if let GUID = recipe.GUID {
+            referenceKey = GUID
+        } else {
+            referenceKey = database.child(path).childByAutoId().key
+        }
         var photoPaths = [String]()
         
-        for (index, photo) in recipe.photos {
-            if let data = photo.pngData() {
-                let photoRef = storage.child(path + "\(reference.key)" + "\(index)")
+        for index in 0...recipe.photos.count {
+            let photo = recipe.photos[index]
+            if let data = photo?.pngData(), let key = referenceKey {
+                let photoRef = storage.child(path + "\(key)" + "\(index)")
                     photoRef.putData(data, metadata: nil) { (metadata, error) in
                     guard let _ = metadata else {
                         // Uh-oh, an error occurred!
@@ -121,11 +127,11 @@ class FirebaseHelper {
                             recipe.photoPaths = photoPaths
                             
                             let updates = [
-                                path + "\(reference.key)": recipe.recipeDict
+                                path + "\(key)": recipe.recipeDict
                             ]
                             
                             self.database.updateChildValues(updates)
-                            recipe.GUID = reference.key
+                            recipe.GUID = key
                             completionHandler(true)
                         }
                     }

@@ -104,12 +104,14 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
             let alert = segue.destination as! InstructionAlert
             alert.hidesBottomBarWhenPushed = true
             alert.availableIngredients = availableIngredients
+            alert.alertDelegate = self
         }
         if segue.identifier == editInstructionAlertSegueIdentifier {
             let alert = segue.destination as! InstructionAlert
             alert.hidesBottomBarWhenPushed = true
             alert.availableIngredients = availableIngredients
             alert.instruction = sender as? Instruction
+            alert.alertDelegate = self
         }
     }
     

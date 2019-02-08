@@ -210,6 +210,16 @@ class Recipe {
         FirebaseHelper().deleteRecipe(recipe: self)
     }
     
+    func update(title: String, calServing: String, numServings: String, ingredients: [Ingredient], utensils: [Utensil], instructions: [Instruction], photos: [Int: UIImage]) {
+        self.title = title
+        self.calServing = calServing
+        self.numServings = numServings
+        self.ingredients = ingredients
+        self.utensils = utensils
+        self.instructions = instructions
+        self.photos = photos
+    }
+    
     private func initWithRecipeValue(recipeValue: [String: Any]) {
         if let dateCreated = recipeValue["DateCreated"] as? String {
             let dateFormatter = DateFormatter()

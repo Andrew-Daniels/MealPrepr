@@ -18,6 +18,7 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
     var availableUtensils: [Utensil]!
     var filteredUtensils: [Utensil]!
     var selectedUtensils = [Utensil]()
+    var alertDelegate: AlertDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -25,10 +26,12 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
         
         setupAlertWithUtensil()
         self.searchBar.showsCancelButton = true
+        alertDelegate?.alertShown()
     }
     
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.alertDelegate?.alertDismissed()
         self.view.endEditing(true)
     }
     @IBAction func addBtnClicked(_ sender: Any) {
@@ -36,6 +39,7 @@ class UtensilAlert: MPViewController, MPTextFieldDelegate, UtensilDelegate, UICo
         
         
         self.view.endEditing(true)
+        self.alertDelegate?.alertDismissed()
         performSegue(withIdentifier: backToUtensilsIdentifier, sender: self)
         
     }

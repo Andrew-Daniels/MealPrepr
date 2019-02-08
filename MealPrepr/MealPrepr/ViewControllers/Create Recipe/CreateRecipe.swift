@@ -272,9 +272,18 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                 MPAlertController.show(message: errorMsg, type: .Standard, presenter: self)
             } else {
                //There aren't any errors perform save here
-                let recipe = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
+                
+                var recipeToSave: Recipe!
+                
+                if let r = self.recipe {
+                    r.update(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos)
+                    recipeToSave = r
+                } else {
+                    recipeToSave = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
+                }
+                
                 self.startLoading(withText: "Saving")
-                recipe.save { (success) in
+                recipeToSave.save { (success) in
                     if success {
                         self.finishLoading(completionHandler: { (finished) in
                             //Do Animation to dismiss this view controller
@@ -295,7 +304,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                                 })
                             })
                             
-                            (homeVC as! Home).recipes.insert(recipe, at: 0)
+                            (homeVC as! Home).recipes.insert(recipeToSave, at: 0)
                             self.navigationController?.popToRootViewController(animated: true)
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000), execute: {
                                 // Put your code which should be executed with a delay here

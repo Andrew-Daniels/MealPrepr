@@ -26,6 +26,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     var hoursPickerViewModel: [String]?
     var indexPathsOfSelectedIngredients = [IndexPath]()
     var isEditingExistingInstruction = false
+    var alertDelegate: AlertDelegate?
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var instructionTextView: UITextView!
@@ -38,10 +39,12 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         
         setupAlertWithInstruction()
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
+        alertDelegate?.alertShown()
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
         self.view.endEditing(true)
+        self.alertDelegate?.alertDismissed()
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addBtnClicked(_ sender: Any) {
@@ -51,6 +54,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
         if isEditingExistingInstruction {
             instruction = tempInstruction
         }
+        self.alertDelegate?.alertDismissed()
         performSegue(withIdentifier: backToInstructionsSegueIdentifier, sender: self)
         
     }

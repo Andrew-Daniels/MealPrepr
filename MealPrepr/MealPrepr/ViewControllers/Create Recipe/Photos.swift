@@ -14,6 +14,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     
     @IBOutlet weak var collectionView: MPCollectionView!
     var images = [Int: UIImage]()
+    var hasLoadedImagesFromRecipe: Bool = false
     @IBOutlet weak var roundedUIView: RoundedUIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -40,7 +41,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
             return
         }
         
-        if let r = recipe, images.count < r.photoPaths.count {
+        if !hasLoadedImagesFromRecipe, let r = recipe, images.count < r.photoPaths.count {
             
             guard let paths = r.photoPaths else { return }
             
@@ -53,6 +54,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
                     if self.images.count == paths.count {
                         self.addBtn.isEnabled = true
                         self.activityIndicator.stopAnimating()
+                        self.hasLoadedImagesFromRecipe = true
                         self.collectionView.reloadData()
                     }
                 }
@@ -124,6 +126,15 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         let indexPath = self.collectionView.indexPath(for: sender)
         if let path = indexPath {
             self.images.removeValue(forKey: path.row)
+            var newImages = [Int: UIImage]()
+            for (index, image) in images {
+                if index > path.row {
+                    newImages[index - 1] = image
+                } else {
+                    newImages[index] = image
+                }
+            }
+            self.images = newImages
             self.collectionView.deleteItems(at: [path])
         }
     }
