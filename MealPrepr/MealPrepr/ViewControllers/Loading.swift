@@ -28,6 +28,10 @@ class Loading: UIViewController {
         indicatorView.stopAnimating()
         errorImageView.isHidden = false
     }
+    
+//    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+//        super.dismiss(animated: flag, completion: nil)
+//    }
     /*
     // MARK: - Navigation
 

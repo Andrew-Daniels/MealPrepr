@@ -15,6 +15,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var collectionView: MPCollectionView!
     var images = [Int: UIImage]()
     @IBOutlet weak var roundedUIView: RoundedUIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +30,39 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
             roundedUIView.hasEffectView = false
         }
         
-        recipe?.recipeDelegate = self
-        if let r = recipe {
-            images = r.photos
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if readOnly {
+            recipe?.recipeDelegate = self
+            return
+        }
+        
+        if let r = recipe, images.count < r.photoPaths.count {
+            
+            guard let paths = r.photoPaths else { return }
+            
+            self.addBtn.isEnabled = false
+            self.activityIndicator.startAnimating()
+            
+            for (index, path) in paths.enumerated() {
+                FirebaseHelper().downloadImage(atPath: path, renderMode: .alwaysOriginal) { (image) in
+                    self.images[index] = image
+                    if self.images.count == paths.count {
+                        self.addBtn.isEnabled = true
+                        self.activityIndicator.stopAnimating()
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if readOnly {
-            return recipe?.photoPaths.count ?? 0
+            return recipe?.photoPaths?.count ?? 0
         }
         return images.count
     }
@@ -45,13 +70,15 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PhotoCell
         
-        if let r = recipe, let image = r.photoAtIndex(index: indexPath.row) {
-            cell.imageView.image = image
-        }
-        
         if readOnly {
             cell.deleteBtn.isHidden = true
             cell.deleteBtn.isEnabled = false
+            
+            if let image = recipe?.photoAtIndex(index: indexPath.row) {
+                cell.imageView.image = image
+            }
+        } else if let image = images[indexPath.row] {
+            cell.imageView.image = image
         }
         
         cell.clipsToBounds = true
@@ -66,11 +93,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
             return CGSize.init(width: 200, height: 200)
         }
         let iv = UIImageView()
-        if let recipe = recipe {
-            iv.image = recipe.photoAtIndex(index: indexPath.row)
-        } else {
-            iv.image = images[indexPath.row]
-        }
+        iv.image = images[indexPath.row]
         iv.sizeToFit()
         let size = iv.frame.size
         return size

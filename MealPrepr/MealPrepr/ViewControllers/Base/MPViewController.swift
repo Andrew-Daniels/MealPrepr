@@ -16,7 +16,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     var searchController: UISearchController?
     var selectedImage: UIImage?
     var collectionViewCellWidth: CGFloat?
-    private var loadingVC: Loading?
+    var loadingVC: Loading?
     private var defaultLayoutMargins: UIEdgeInsets!
     var connectionErrorView: ConnectionErrorView!
     var isConnectedToInternet: Bool = true
@@ -195,14 +195,18 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func startLoading(withText: String?) {
-        let main = UIStoryboard(name: mainStoryboardIdentifier, bundle: nil)
         
-        guard let vc = main.instantiateViewController(withIdentifier: loadingVCSBIdentifer) as? Loading else {return}
-        if let loadingText = withText {
-            vc.loadingText = loadingText
+        DispatchQueue.main.async {
+            let main = UIStoryboard(name: "CreateRecipe", bundle: nil)
+            
+            guard let vc = main.instantiateViewController(withIdentifier: loadingVCSBIdentifer) as? Loading else {return}
+            if let loadingText = withText {
+                vc.loadingText = loadingText
+            }
+            self.loadingVC = vc
+            self.present(vc, animated: true, completion: nil)
         }
-        self.loadingVC = vc
-        self.present(vc, animated: true, completion: nil)
+        
     }
     
     func finishLoading(completionHandler: @escaping (_ isResponse : Bool) -> Void) {

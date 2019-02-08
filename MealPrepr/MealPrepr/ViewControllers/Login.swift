@@ -49,7 +49,6 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         fbLoginBtn.delegate = self
         fbLoginBtn.readPermissions = ["public_profile", "email"]
         
-        //handleAuthToken()
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {

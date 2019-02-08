@@ -188,12 +188,13 @@ class Recipe {
     }
     
     func photoAtIndex(index: Int) -> UIImage? {
-        let key = photoPaths[index]
-        if downloadedPhotos != nil {
-            return downloadedPhotos[key]
-        } else {
-            return photos[index]
+        if index > photoPaths.count {
+            if downloadedPhotos != nil {
+                let key = photoPaths[index]
+                return downloadedPhotos[key]
+            }
         }
+        return photos[index]
     }
     
     func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
