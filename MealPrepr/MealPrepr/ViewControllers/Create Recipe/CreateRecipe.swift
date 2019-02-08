@@ -213,6 +213,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                 if let msg = ValidationHelper.validateRecipeIngredients(ingredients: ingredientVC.ingredients) {
                     errorMsg = msg + "\n"
                 }
+            } else if isEditingRecipe() {
+                ingredients = recipe?.ingredients
             } else {
                 errorMsg = ErrorHelper.getErrorMsg(errorKey: .NoIngredients)! + "\n"
             }
@@ -226,6 +228,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                         errorMsg = msg + "\n"
                     }
                 }
+            } else if isEditingRecipe() {
+                utensils = recipe?.utensils
             } else {
                 if errorMsg != nil {
                     errorMsg += ErrorHelper.getErrorMsg(errorKey: .NoUtensils)! + "\n"
@@ -243,6 +247,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                         errorMsg = msg + "\n"
                     }
                 }
+            } else if isEditingRecipe() {
+                instructions = recipe?.instructions
             } else {
                 if errorMsg != nil {
                     errorMsg += ErrorHelper.getErrorMsg(errorKey: .NoInstructions)! + "\n"
@@ -274,12 +280,10 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                //There aren't any errors perform save here
                 
                 var recipeToSave: Recipe!
-                var isUpdate = false
                 
                 if let r = self.recipe {
                     r.update(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos)
                     recipeToSave = r
-                    isUpdate = true
                 } else {
                     recipeToSave = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
                 }
@@ -314,7 +318,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                                 // Put your code which should be executed with a delay here
                                 if let collectionView = (homeVC as! Home).collectionView {
                                     if collectionView.numberOfItems(inSection: 0) > 0 {
-                                        if isUpdate {
+                                        if self.isEditingRecipe() {
                                             collectionView.reloadData()
                                         } else {
                                             collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
@@ -354,5 +358,9 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
             self.caloriesTextField.text = r.calServing
             self.servingsTextField.text = r.numServings
         }
+    }
+    
+    private func isEditingRecipe() -> Bool {
+        return recipe != nil
     }
 }

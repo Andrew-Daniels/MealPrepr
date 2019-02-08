@@ -105,39 +105,52 @@ class FirebaseHelper {
         }
         var photoPaths = [String]()
         
-        for index in 0...recipe.photos.count {
-            let photo = recipe.photos[index]
-            if let data = photo?.pngData(), let key = referenceKey {
-                let photoRef = storage.child(path + "\(key)" + "\(index)")
+        if recipe.photos.count > 0 {
+            for index in 0...recipe.photos.count {
+                let photo = recipe.photos[index]
+                if let data = photo?.pngData(), let key = referenceKey {
+                    let photoRef = storage.child(path + "\(key)" + "\(index)")
                     photoRef.putData(data, metadata: nil) { (metadata, error) in
-                    guard let _ = metadata else {
-                        // Uh-oh, an error occurred!
-                        completionHandler(false)
-                        return
-                    }
-                    
-                    photoRef.downloadURL { (url, error) in
-                        guard let _ = url else {
+                        guard let _ = metadata else {
                             // Uh-oh, an error occurred!
                             completionHandler(false)
                             return
                         }
-                        photoPaths.append(photoRef.fullPath)
-                        if (photoPaths.count == recipe.photos.count) {
-                            recipe.photoPaths = photoPaths
-                            
-                            let updates = [
-                                path + "\(key)": recipe.recipeDict
-                            ]
-                            
-                            self.database.updateChildValues(updates)
-                            recipe.GUID = key
-                            completionHandler(true)
+                        
+                        photoRef.downloadURL { (url, error) in
+                            guard let _ = url else {
+                                // Uh-oh, an error occurred!
+                                completionHandler(false)
+                                return
+                            }
+                            photoPaths.append(photoRef.fullPath)
+                            if (photoPaths.count == recipe.photos.count) {
+                                recipe.photoPaths = photoPaths
+                                
+                                let updates = [
+                                    path + "\(key)": recipe.recipeDict
+                                ]
+                                
+                                self.database.updateChildValues(updates)
+                                recipe.GUID = key
+                                completionHandler(true)
+                            }
                         }
                     }
                 }
             }
+        } else {
+            
+            if let key = referenceKey {
+                let updates = [
+                    path + "\(key)": recipe.recipeDict
+                ]
+                self.database.updateChildValues(updates)
+                completionHandler(true)
+            }
+            
         }
+        
     }
     
     public func saveFlag(flag: Flag, completionHandler: @escaping (_ isResponse : Bool) -> Void) {

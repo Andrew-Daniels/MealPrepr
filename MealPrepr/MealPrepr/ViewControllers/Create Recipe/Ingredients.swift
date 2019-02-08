@@ -41,6 +41,8 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
         if let r = recipe, ingredients == nil, instructions == nil {
             self.instructions = r.instructions
             self.ingredients = r.ingredients
+        } else if ingredients == nil {
+            ingredients = []
         }
     }
     

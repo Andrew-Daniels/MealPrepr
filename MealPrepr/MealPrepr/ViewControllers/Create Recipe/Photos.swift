@@ -31,6 +31,8 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
             roundedUIView.hasEffectView = false
         }
         
+        loadImagesFromRecipe()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,19 +43,23 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
             return
         }
         
-        if !hasLoadedImagesFromRecipe, let r = recipe, images.count < r.photoPaths.count {
-            
+        if !hasLoadedImagesFromRecipe {
+            loadImagesFromRecipe()
+        }
+    }
+    
+    func loadImagesFromRecipe() {
+        if let r = recipe, images.count < r.photoPaths.count {
             guard let paths = r.photoPaths else { return }
             
-            self.addBtn.isEnabled = false
-            self.activityIndicator.startAnimating()
+            self.addBtn?.isEnabled = false
             
             for (index, path) in paths.enumerated() {
                 FirebaseHelper().downloadImage(atPath: path, renderMode: .alwaysOriginal) { (image) in
                     self.images[index] = image
                     if self.images.count == paths.count {
-                        self.addBtn.isEnabled = true
-                        self.activityIndicator.stopAnimating()
+                        self.addBtn?.isEnabled = true
+                        self.activityIndicator?.stopAnimating()
                         self.hasLoadedImagesFromRecipe = true
                         self.collectionView.reloadData()
                     }

@@ -199,7 +199,9 @@ class Recipe {
     
     func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         if let creatorUID = creatorUID {
-            self.dateCreated = Date()
+            if self.dateCreated == nil {
+                self.dateCreated = Date()
+            }
             FirebaseHelper().saveRecipe(recipe: self, userId: creatorUID) { (success) in
                 completionHandler(success)
             }
