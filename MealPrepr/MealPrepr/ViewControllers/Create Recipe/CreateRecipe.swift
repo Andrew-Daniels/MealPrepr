@@ -274,10 +274,12 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                //There aren't any errors perform save here
                 
                 var recipeToSave: Recipe!
+                var isUpdate = false
                 
                 if let r = self.recipe {
                     r.update(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos)
                     recipeToSave = r
+                    isUpdate = true
                 } else {
                     recipeToSave = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
                 }
@@ -303,14 +305,20 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                                     }
                                 })
                             })
-                            
+                            (homeVC as! Home).recipes.removeAll(where: { (r) -> Bool in
+                                return r.GUID == recipeToSave.GUID
+                            })
                             (homeVC as! Home).recipes.insert(recipeToSave, at: 0)
                             self.navigationController?.popToRootViewController(animated: true)
                             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000), execute: {
                                 // Put your code which should be executed with a delay here
                                 if let collectionView = (homeVC as! Home).collectionView {
                                     if collectionView.numberOfItems(inSection: 0) > 0 {
-                                        collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                                        if isUpdate {
+                                            collectionView.reloadData()
+                                        } else {
+                                            collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                                        }
                                     }
                                 }
                             })
