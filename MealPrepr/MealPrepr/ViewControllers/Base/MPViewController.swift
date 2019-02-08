@@ -197,20 +197,24 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     func startLoading(withText: String?) {
         
         DispatchQueue.main.async {
-            let main = UIStoryboard(name: "CreateRecipe", bundle: nil)
             
-            guard let vc = main.instantiateViewController(withIdentifier: loadingVCSBIdentifer) as? Loading else {return}
-            if let loadingText = withText {
-                vc.loadingText = loadingText
+            if self.loadingVC == nil {
+                let main = UIStoryboard(name: "CreateRecipe", bundle: nil)
+                
+                guard let vc = main.instantiateViewController(withIdentifier: loadingVCSBIdentifer) as? Loading else {return}
+                if let loadingText = withText {
+                    vc.loadingText = loadingText
+                }
+                self.loadingVC = vc
+                self.present(vc, animated: true, completion: nil)
             }
-            self.loadingVC = vc
-            self.present(vc, animated: true, completion: nil)
         }
         
     }
     
     func finishLoading(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         self.loadingVC?.dismiss(animated: true) {
+            self.loadingVC = nil
             completionHandler(true)
         }
     }

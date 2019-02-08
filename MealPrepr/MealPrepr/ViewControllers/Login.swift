@@ -183,6 +183,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         passwordTextField.setError(errorMsg: errorMsg)
         
         if (!emailTextField.hasError && !passwordTextField.hasError) {
+            self.startLoading(withText: "Logging in")
             Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
                 if let error = error,
                     let errorCode = AuthErrorCode(rawValue: error._code) {
@@ -194,7 +195,12 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
                     
                 } else if let error = error {
                     
-                    MPAlertController.show(message: error.localizedDescription, type: .Login, presenter: self)
+                    self.finishLoading(completionHandler: { (finished) in
+                        if finished {
+                            MPAlertController.show(message: error.localizedDescription, type: .Login, presenter: self)
+                        }
+                    })
+                    
                     
                 }
                 if let u = user {
@@ -202,7 +208,12 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
                     self.account = Account(UID: u.user.uid, completionHandler: { (accountCreated) in
                         if(accountCreated) {
                             //Perform segue to homescreen here
-                            self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+                            self.finishLoading(completionHandler: { (finished) in
+                                if finished {
+                                    self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+                                }
+                            })
+                            
                         }
                     })
                 }
