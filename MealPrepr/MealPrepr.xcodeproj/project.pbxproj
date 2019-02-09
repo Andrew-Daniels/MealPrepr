@@ -75,6 +75,7 @@
 		3193139021ED66A600DBF55B /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193138F21ED66A600DBF55B /* Categories.swift */; };
 		3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193139221ED682700DBF55B /* CategoryAlert.swift */; };
 		3197C31A220A863A0079809D /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197C319220A863A0079809D /* Flag.swift */; };
+		3197C31D220F32270079809D /* WeekplanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197C31C220F32270079809D /* WeekplanModel.swift */; };
 		31B9572521E0789D00D15CCD /* RecipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572421E0789D00D15CCD /* RecipeDelegate.swift */; };
 		31B9572721E120AC00D15CCD /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572621E120AC00D15CCD /* Loading.swift */; };
 		31B9572921E1351A00D15CCD /* PhotoCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */; };
@@ -179,6 +180,7 @@
 		3193138F21ED66A600DBF55B /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		3193139221ED682700DBF55B /* CategoryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAlert.swift; sourceTree = "<group>"; };
 		3197C319220A863A0079809D /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		3197C31C220F32270079809D /* WeekplanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekplanModel.swift; sourceTree = "<group>"; };
 		31B9572421E0789D00D15CCD /* RecipeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDelegate.swift; sourceTree = "<group>"; };
 		31B9572621E120AC00D15CCD /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellDelegate.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 		318855382207AF6C00BA6A93 /* Weekplan */ = {
 			isa = PBXGroup;
 			children = (
+				3197C31B220F32170079809D /* Models */,
 				3188553E220A64C200BA6A93 /* Cells */,
 				3188553B2207FA0E00BA6A93 /* Protocols */,
 				3188552A220635A900BA6A93 /* Weekplan.swift */,
@@ -530,6 +533,14 @@
 			isa = PBXGroup;
 			children = (
 				3197C319220A863A0079809D /* Flag.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3197C31B220F32170079809D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3197C31C220F32270079809D /* WeekplanModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -762,6 +773,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3197C31D220F32270079809D /* WeekplanModel.swift in Sources */,
 				3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */,
 				31B9573121EA479C00D15CCD /* MPCreateRecipeChildController.swift in Sources */,
 				310D30FE21B7618A00D0E079 /* ValidationHelper.swift in Sources */,

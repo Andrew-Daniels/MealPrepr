@@ -110,7 +110,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         let numberOfCells = floor(self.view.frame.size.width / cellWidth)
         let edgeInsets = (self.view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
-        return UIEdgeInsets.init(top: 15, left: edgeInsets, bottom: 0, right: edgeInsets)
+        return UIEdgeInsets.init(top: 10, left: edgeInsets, bottom: 10, right: edgeInsets)
     }
     
     func checkIfTouchesAreInside(touches: Set<UITouch>, ofView: UIView) -> Bool {

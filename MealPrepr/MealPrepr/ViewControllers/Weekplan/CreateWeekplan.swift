@@ -17,7 +17,8 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var randomizeBtn: UIButton!
     @IBOutlet weak var favoritesBtn: UIButton!
     private var recipes = [Recipe]()
-    private var weekplanRecipes = [Recipe]()
+    var weekplan = WeekplanModel()
+    //private var weekplanRecipes = [Recipe]()
     private var selectedCategory: String!
     
     private enum CollectionView: Int {
@@ -46,6 +47,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     @IBAction func saveBtnClicked(_ sender: Any) {
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,7 +63,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         case .RecipeList:
             return recipes.count
         case .Weekplan:
-            return weekplanRecipes.count
+            return weekplan.recipes?.count ?? 0
         }
         
     }
@@ -69,7 +71,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: weekplanCreationCellIdentifier, for: indexPath) as! WeekplanCreationRecipeCell
         
-        var recipe = Recipe()
+        var recipe: Recipe? = Recipe()
         var isContainedInWeekplan = false
         
         guard let cV = CollectionView(rawValue: collectionView.tag) else { return cell }
@@ -77,11 +79,11 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         switch cV {
         case .RecipeList:
             recipe = recipes[indexPath.row]
-            isContainedInWeekplan = weekplanRecipes.contains(where: { (r) -> Bool in
-                return r.GUID == recipe.GUID
-            })
+            isContainedInWeekplan = weekplan.recipes?.contains(where: { (r) -> Bool in
+                return r.GUID == recipe?.GUID
+            }) ?? false
         case .Weekplan:
-            recipe = weekplanRecipes[indexPath.row]
+            recipe = weekplan.recipes?[indexPath.row]
             isContainedInWeekplan = true
         }
 
@@ -89,7 +91,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         cell.imageView.clipsToBounds = true
         cell.isContainedInWeekplan = isContainedInWeekplan
         cell.recipe = recipe
-        recipe.recipeDelegate = self
+        recipe?.recipeDelegate = self
         cell.weekplanCellDelegate = self
         return cell
     }
@@ -104,7 +106,8 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         case .RecipeList:
             recipe = recipes[indexPath.row]
         case .Weekplan:
-            recipe = weekplanRecipes[indexPath.row]
+            guard let r = weekplan.recipes?[indexPath.row] else { return }
+            recipe = r
         }
         
         
@@ -165,17 +168,15 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         //Change image on recipe list
         //Reload collectionviews
         
-        if weekplanRecipes.contains(where: { (r) -> Bool in
+        if weekplan.recipes?.contains(where: { (r) -> Bool in
             return r.GUID == recipe.GUID
-        }) {
-            weekplanRecipes.removeAll { (r) -> Bool in
+        }) ?? false {
+            weekplan.recipes?.removeAll { (r) -> Bool in
                 return r.GUID == recipe.GUID
             }
         } else {
-            weekplanRecipes.append(recipe)
+            weekplan.recipes?.append(recipe)
         }
-        
-        
         
         currentWeekPlanCollectionView.reloadData()
         recipeListCollectionView.reloadData()

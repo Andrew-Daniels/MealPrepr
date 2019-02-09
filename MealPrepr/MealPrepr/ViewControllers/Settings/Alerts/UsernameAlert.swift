@@ -20,7 +20,7 @@ class UsernameAlert: MPViewController, MPTextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.alertView.layer.cornerRadius = 16
+        self.alertView.layer.cornerRadius = 4
         
         usernameTextField.authFieldType = .Username
         usernameTextField.delegate = self

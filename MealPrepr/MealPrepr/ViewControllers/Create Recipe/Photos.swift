@@ -90,7 +90,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         }
         
         cell.clipsToBounds = true
-        cell.layer.cornerRadius = 8
+        cell.layer.cornerRadius = 4
         cell.delegate = self
         return cell
     }
