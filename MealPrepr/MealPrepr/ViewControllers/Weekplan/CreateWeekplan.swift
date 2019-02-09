@@ -11,14 +11,13 @@ import UIKit
 private let weekplanCreationCellIdentifier = "weekplanCreationRecipeCell"
 
 class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout, WeekplanCreationCellDelegate, CategorySelectorDelegate {
-
+    
     @IBOutlet weak var currentWeekPlanCollectionView: UICollectionView!
     @IBOutlet weak var recipeListCollectionView: UICollectionView!
     @IBOutlet weak var randomizeBtn: UIButton!
     @IBOutlet weak var favoritesBtn: UIButton!
     private var recipes = [Recipe]()
     var weekplan = WeekplanModel()
-    //private var weekplanRecipes = [Recipe]()
     private var selectedCategory: String!
     
     private enum CollectionView: Int {
@@ -29,9 +28,9 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        retrieveRecipes(category: "All")
+        retrieveRecipes()
     }
-
+    
     @IBAction func randomizeBtnClicked(_ sender: Any) {
     }
     
@@ -47,6 +46,34 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     @IBAction func saveBtnClicked(_ sender: Any) {
+        
+        self.startLoading(withText: "Saving") { (shown) in
+            if shown {
+                if let _ = self.weekplan.recipes {
+                    let saved = self.weekplan.save { (saved) in
+                        if saved {
+                            self.finishLoading(completionHandler: { (finished) in
+                                if finished {
+                                    //perform segue back
+                                }
+                            })
+                        }
+                    }
+                    if !saved {
+                        self.weekplan.owner = self.account.UID
+                        let _ = self.weekplan.save { (saved) in
+                            if saved {
+                                self.finishLoading(completionHandler: { (finished) in
+                                    if finished {
+                                        //perform segue back
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            }
+        }
         
     }
     
@@ -86,7 +113,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
             recipe = weekplan.recipes?[indexPath.row]
             isContainedInWeekplan = true
         }
-
+        
         cell.imageView.layer.cornerRadius = 12
         cell.imageView.clipsToBounds = true
         cell.isContainedInWeekplan = isContainedInWeekplan

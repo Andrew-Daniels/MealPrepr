@@ -26,6 +26,7 @@ class Recipe {
     var GUID: String!
     var recipeDelegate: RecipeDelegate?
     var utensilDelegate: UtensilDelegate?
+    var weekplanStatus: WeekplanModel.RecipeStatus?
     private var cook: (minutes: Int, hours: Int)!
     private var prep: (minutes: Int, hours: Int)!
     

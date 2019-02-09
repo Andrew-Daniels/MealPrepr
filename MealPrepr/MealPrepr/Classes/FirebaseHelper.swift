@@ -95,6 +95,24 @@ class FirebaseHelper {
         }
     }
     
+    public func saveWeekplan(weekplan: WeekplanModel, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        let path = "Weekplans/"
+        var referenceKey: String!
+        if let GUID = weekplan.GUID {
+            referenceKey = GUID
+        } else {
+            referenceKey = database.child(path).childByAutoId().key
+        }
+        
+        if let key = referenceKey {
+            let updates = [
+                path + "\(key)": weekplan.weekplanDict
+            ]
+            self.database.updateChildValues(updates)
+            completionHandler(true)
+        }
+    }
+    
     public func saveRecipe(recipe: Recipe, userId: String, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         let path = "Recipes/"
         var referenceKey: String!

@@ -69,22 +69,32 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     
     private func handleAuthToken() {
         if let token = FBSDKAccessToken.current() {
-            self.startLoading(withText: "Logging in")
-            let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
-            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                //User is signed in
-                if let user = authResult?.user {
-                    self.handleUser(user: user, isFBAuth: true)
+            //self.startLoading(withText: "Logging in")
+            self.startLoading(withText: "Logging in") { (shown) in
+                if shown {
+                    let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+                    Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            return
+                        }
+                        //User is signed in
+                        if let user = authResult?.user {
+                            self.handleUser(user: user, isFBAuth: true)
+                        }
+                    }
                 }
             }
+            
         } else if let user = Auth.auth().currentUser {
             //User is signed in
-            self.startLoading(withText: "Logging in")
-            handleUser(user: user)
+            //self.startLoading(withText: "Logging in")
+            self.startLoading(withText: "Logging in") { (shown) in
+                if shown {
+                    self.handleUser(user: user)
+                }
+            }
+            //handleUser(user: user)
         }
     }
     
@@ -183,39 +193,43 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         passwordTextField.setError(errorMsg: errorMsg)
         
         if (!emailTextField.hasError && !passwordTextField.hasError) {
-            self.startLoading(withText: "Logging in")
-            Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
-                if let error = error,
-                    let errorCode = AuthErrorCode(rawValue: error._code) {
-                    
-                    let authError = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode)
-                    
-                    self.emailTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
-                    self.passwordTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
-                    
-                } else if let error = error {
-                    
-                    self.finishLoading(completionHandler: { (finished) in
-                        if finished {
-                            MPAlertController.show(message: error.localizedDescription, type: .Login, presenter: self)
-                        }
-                    })
-                    
-                    
-                }
-                if let u = user {
-                    //Get the username and userlevel here
-                    self.account = Account(UID: u.user.uid, completionHandler: { (accountCreated) in
-                        if(accountCreated) {
-                            //Perform segue to homescreen here
+            //self.startLoading(withText: "Logging in")
+            self.startLoading(withText: "Logging in") { (shown) in
+                if shown {
+                    Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+                        if let error = error,
+                            let errorCode = AuthErrorCode(rawValue: error._code) {
+                            
+                            let authError = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode)
+                            
+                            self.emailTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
+                            self.passwordTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
+                            
+                        } else if let error = error {
+                            
                             self.finishLoading(completionHandler: { (finished) in
                                 if finished {
-                                    self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+                                    MPAlertController.show(message: error.localizedDescription, type: .Login, presenter: self)
                                 }
                             })
                             
+                            
                         }
-                    })
+                        if let u = user {
+                            //Get the username and userlevel here
+                            self.account = Account(UID: u.user.uid, completionHandler: { (accountCreated) in
+                                if(accountCreated) {
+                                    //Perform segue to homescreen here
+                                    self.finishLoading(completionHandler: { (finished) in
+                                        if finished {
+                                            self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
+                                        }
+                                    })
+                                    
+                                }
+                            })
+                        }
+                    }
                 }
             }
         }

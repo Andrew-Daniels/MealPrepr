@@ -17,7 +17,7 @@ private let containedPhotosViewControllerSegueIdentifier = "containedPhotos"
 public let mainStoryboardIdentifier = "Main"
 
 class CreateRecipe: MPViewController, MPTextFieldDelegate {
-
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleTextField: MPTextField!
@@ -277,7 +277,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
             if errorMsg != nil {
                 MPAlertController.show(message: errorMsg, type: .Standard, presenter: self)
             } else {
-               //There aren't any errors perform save here
+                //There aren't any errors perform save here
                 
                 var recipeToSave: Recipe!
                 
@@ -288,45 +288,50 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                     recipeToSave = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
                 }
                 
-                self.startLoading(withText: "Saving")
-                recipeToSave.save { (success) in
-                    if success {
-                        self.finishLoading(completionHandler: { (finished) in
-                            //Do Animation to dismiss this view controller
-                            let homeVC = self.navigationController?.viewControllers.first(where: { (vc) -> Bool in
-                                if vc is Home {
-                                    return true
-                                }
-                                return false
-                            })
-                            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200), execute: {
-                                // Put your code which should be executed with a delay here
-                                UIView.animate(withDuration: 0.2, animations: {
-                                    if let collectionView = (homeVC as! Home).collectionView {
-                                        if collectionView.numberOfItems(inSection: 0) > 0 {
-                                            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: UICollectionView.ScrollPosition.top, animated: true)
+                //self.startLoading(withText: "Saving")
+                self.startLoading(withText: "Saving") { (shown) in
+                    if shown {
+                        recipeToSave.save { (success) in
+                            if success {
+                                self.finishLoading(completionHandler: { (finished) in
+                                    //Do Animation to dismiss this view controller
+                                    let homeVC = self.navigationController?.viewControllers.first(where: { (vc) -> Bool in
+                                        if vc is Home {
+                                            return true
                                         }
-                                    }
+                                        return false
+                                    })
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200), execute: {
+                                        // Put your code which should be executed with a delay here
+                                        UIView.animate(withDuration: 0.2, animations: {
+                                            if let collectionView = (homeVC as! Home).collectionView {
+                                                if collectionView.numberOfItems(inSection: 0) > 0 {
+                                                    collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: UICollectionView.ScrollPosition.top, animated: true)
+                                                }
+                                            }
+                                        })
+                                    })
+                                    (homeVC as! Home).recipes.removeAll(where: { (r) -> Bool in
+                                        return r.GUID == recipeToSave.GUID
+                                    })
+                                    (homeVC as! Home).recipes.insert(recipeToSave, at: 0)
+                                    self.navigationController?.popToRootViewController(animated: true)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000), execute: {
+                                        // Put your code which should be executed with a delay here
+                                        if let collectionView = (homeVC as! Home).collectionView {
+                                            if collectionView.numberOfItems(inSection: 0) > 0 {
+                                                if self.isEditingRecipe() {
+                                                    collectionView.reloadData()
+                                                } else {
+                                                    collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                                                }
+                                            }
+                                        }
+                                    })
                                 })
-                            })
-                            (homeVC as! Home).recipes.removeAll(where: { (r) -> Bool in
-                                return r.GUID == recipeToSave.GUID
-                            })
-                            (homeVC as! Home).recipes.insert(recipeToSave, at: 0)
-                            self.navigationController?.popToRootViewController(animated: true)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000), execute: {
-                                // Put your code which should be executed with a delay here
-                                if let collectionView = (homeVC as! Home).collectionView {
-                                    if collectionView.numberOfItems(inSection: 0) > 0 {
-                                        if self.isEditingRecipe() {
-                                            collectionView.reloadData()
-                                        } else {
-                                            collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
-                                        }
-                                    }
-                                }
-                            })
-                        })
+                            }
+                        }
+                        
                     } else {
                         self.finishLoadingWithError(completionHandler: { (finished) in
                             //Do stuff here

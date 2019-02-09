@@ -11,7 +11,7 @@ import FirebaseAuth
 import Firebase
 
 class SignUp: MPViewController, MPTextFieldDelegate {
-
+    
     @IBOutlet weak var emailTextField: MPTextField!
     @IBOutlet weak var usernameTextField: MPTextField!
     @IBOutlet weak var passwordTextField: MPTextField!
@@ -20,7 +20,7 @@ class SignUp: MPViewController, MPTextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         emailTextField.delegate = self
         emailTextField.authFieldType = .Email
@@ -52,39 +52,43 @@ class SignUp: MPViewController, MPTextFieldDelegate {
         usernameTextField.setError(errorMsg: errorMsg)
         
         if (!emailTextField.hasError && !passwordTextField.hasError && !usernameTextField.hasError) {
-            self.startLoading(withText: "Creating account")
-            //Try to create the account
-                Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
-                    if let error = error,
-                        let errorCode = AuthErrorCode(rawValue: error._code) {
-                        
-                        let authError = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode)
-                        
-                        self.emailTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
-                        self.passwordTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
-                        self.finishLoadingWithError(completionHandler: { (finished) in
+            //self.startLoading(withText: "Creating account")
+            self.startLoading(withText: "Creating account") { (shown) in
+                if shown {
+                    Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
+                        if let error = error,
+                            let errorCode = AuthErrorCode(rawValue: error._code) {
                             
-                        })
-                    } else if let error = error {
+                            let authError = ErrorHelper.getFirebaseErrorMsg(authErrorCode: errorCode)
+                            
+                            self.emailTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
+                            self.passwordTextField.setAuthError(errorMsg: authError.errorMsg, authFieldType: authError.authFieldType)
+                            self.finishLoadingWithError(completionHandler: { (finished) in
+                                
+                            })
+                        } else if let error = error {
+                            
+                            self.finishLoading(completionHandler: { (finished) in
+                                if finished {
+                                    MPAlertController.show(message: error.localizedDescription, type: .SignUp, presenter: self)
+                                    
+                                }
+                            })
+                        }
+                        guard let user = authResult?.user else { return }
                         
                         self.finishLoading(completionHandler: { (finished) in
                             if finished {
-                                MPAlertController.show(message: error.localizedDescription, type: .SignUp, presenter: self)
+                                self.account = Account(UID: user.uid, username: username, userLevel: .User)
                                 
+                                self._FBHelper.saveAccount(account: self.account)
+                                self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
                             }
                         })
                     }
-                    guard let user = authResult?.user else { return }
-                    
-                    self.finishLoading(completionHandler: { (finished) in
-                        if finished {
-                            self.account = Account(UID: user.uid, username: username, userLevel: .User)
-                            
-                            self._FBHelper.saveAccount(account: self.account)
-                            self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
-                        }
-                    })
                 }
+            }
+            
         }
         else {
             self.finishLoading { (finished) in

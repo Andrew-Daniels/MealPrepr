@@ -194,7 +194,7 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         }
     }
     
-    func startLoading(withText: String?) {
+    func startLoading(withText: String?, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         
         DispatchQueue.main.async {
             
@@ -206,7 +206,10 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
                     vc.loadingText = loadingText
                 }
                 self.loadingVC = vc
-                self.present(vc, animated: true, completion: nil)
+                self.present(vc, animated: true, completion: {
+                    completionHandler(true)
+                })
+                //self.present(vc, animated: true, completion: nil)
             }
         }
         
