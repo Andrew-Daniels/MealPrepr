@@ -499,40 +499,39 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="394" height="74.666666666666671"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fjn-PQ-6G0">
-                                                            <rect key="frame" x="30" y="0.0" width="197" height="74.666666666666671"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-Kf-DSu">
-                                                            <rect key="frame" x="232" y="0.0" width="42" height="74.666666666666671"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gwF-6V-VBg">
-                                                            <rect key="frame" x="279" y="0.0" width="105" height="74.666666666666671"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qxg-mf-wLY">
+                                                            <rect key="frame" x="10" y="0.0" width="374" height="74.666666666666671"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="999" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fjn-PQ-6G0">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="74.666666666666671"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W4h-Kf-DSu">
+                                                                    <rect key="frame" x="212.00000000000003" y="0.0" width="115.33333333333334" height="74.666666666666671"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gwF-6V-VBg">
+                                                                    <rect key="frame" x="332.33333333333331" y="0.0" width="41.666666666666686" height="74.666666666666671"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="gwF-6V-VBg" secondAttribute="bottom" id="6zg-3b-Var"/>
-                                                        <constraint firstItem="fjn-PQ-6G0" firstAttribute="width" secondItem="Ron-QE-k0l" secondAttribute="width" multiplier="0.5" id="A5D-wF-98s"/>
-                                                        <constraint firstItem="fjn-PQ-6G0" firstAttribute="leading" secondItem="Ron-QE-k0l" secondAttribute="leadingMargin" constant="10" id="Ei5-GD-SAd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="gwF-6V-VBg" secondAttribute="trailing" constant="10" id="Nda-fY-LQx"/>
-                                                        <constraint firstItem="W4h-Kf-DSu" firstAttribute="leading" secondItem="fjn-PQ-6G0" secondAttribute="trailing" constant="5" id="Tms-fv-E4x"/>
-                                                        <constraint firstItem="gwF-6V-VBg" firstAttribute="leading" secondItem="W4h-Kf-DSu" secondAttribute="trailing" constant="5" id="XQs-EJ-I7c"/>
-                                                        <constraint firstItem="W4h-Kf-DSu" firstAttribute="top" secondItem="Ron-QE-k0l" secondAttribute="top" id="k5L-F5-2kh"/>
-                                                        <constraint firstItem="gwF-6V-VBg" firstAttribute="top" secondItem="Ron-QE-k0l" secondAttribute="top" id="nyN-yL-4F4"/>
-                                                        <constraint firstAttribute="bottom" secondItem="fjn-PQ-6G0" secondAttribute="bottom" id="o05-WJ-zG3"/>
-                                                        <constraint firstAttribute="bottom" secondItem="W4h-Kf-DSu" secondAttribute="bottom" id="oYW-87-CXg"/>
-                                                        <constraint firstItem="fjn-PQ-6G0" firstAttribute="top" secondItem="Ron-QE-k0l" secondAttribute="top" id="rOx-4t-aLB"/>
+                                                        <constraint firstItem="Qxg-mf-wLY" firstAttribute="top" secondItem="Ron-QE-k0l" secondAttribute="top" id="4YP-bI-gCr"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Qxg-mf-wLY" secondAttribute="trailing" constant="10" id="5UI-Zr-M4g"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Qxg-mf-wLY" secondAttribute="bottom" id="KNK-br-Wex"/>
+                                                        <constraint firstItem="Qxg-mf-wLY" firstAttribute="leading" secondItem="Ron-QE-k0l" secondAttribute="leading" constant="10" id="j9X-ys-Nzp"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
                                                     <outlet property="ingredientLabel" destination="fjn-PQ-6G0" id="sXf-FW-Y5o"/>
                                                     <outlet property="quantityLabel" destination="W4h-Kf-DSu" id="yOU-oK-CCa"/>
