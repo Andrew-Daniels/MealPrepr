@@ -9,6 +9,7 @@
 import UIKit
 
 private let weekplanCellIdentifier = "weekplanCell"
+private let editWeekplanSegueIdentifier = "editWeekplan"
 
 class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, RecipeDelegate {
     
@@ -109,6 +110,19 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
     
     func recipeDeleted(GUID: String) {
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == editWeekplanSegueIdentifier {
+            if let vc = segue.destination as? CreateWeekplan, let wp = self.weekplan {
+                vc.navigationItem.title = "Editing Weekplan"
+                vc.weekplan.recipes = wp.recipes
+                vc.weekplan.dateCreated = wp.dateCreated
+                vc.weekplan.GUID = wp.GUID
+                vc.weekplan.owner = wp.owner
+            }
+        }
     }
     
 }

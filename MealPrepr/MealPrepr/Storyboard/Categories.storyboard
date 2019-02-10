@@ -189,7 +189,10 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kq1-Zm-ioj">
-                                <rect key="frame" x="164" y="10" width="86" height="24"/>
+                                <rect key="frame" x="164" y="0.0" width="86" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PH4-uk-zmr"/>
+                                </constraints>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Favorites" image="Filter_White"/>
                                 <connections>
@@ -200,11 +203,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MhW-qy-BEt" firstAttribute="leading" secondItem="O5b-yh-fty" secondAttribute="leading" id="2AN-zU-oMk"/>
-                            <constraint firstItem="MhW-qy-BEt" firstAttribute="top" secondItem="kq1-Zm-ioj" secondAttribute="bottom" constant="10" id="3OV-fL-yGY"/>
+                            <constraint firstItem="MhW-qy-BEt" firstAttribute="top" secondItem="kq1-Zm-ioj" secondAttribute="bottom" id="3OV-fL-yGY"/>
                             <constraint firstItem="O5b-yh-fty" firstAttribute="bottom" secondItem="MhW-qy-BEt" secondAttribute="bottom" id="6hd-Y4-V9l"/>
                             <constraint firstItem="kq1-Zm-ioj" firstAttribute="centerX" secondItem="Vlg-H7-ivl" secondAttribute="centerX" id="Ddz-ji-8Fc"/>
                             <constraint firstItem="O5b-yh-fty" firstAttribute="trailing" secondItem="MhW-qy-BEt" secondAttribute="trailing" id="U93-SO-ubT"/>
-                            <constraint firstItem="kq1-Zm-ioj" firstAttribute="top" secondItem="O5b-yh-fty" secondAttribute="top" constant="10" id="xTX-II-chs"/>
+                            <constraint firstItem="kq1-Zm-ioj" firstAttribute="top" secondItem="O5b-yh-fty" secondAttribute="top" id="xTX-II-chs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O5b-yh-fty"/>
                     </view>

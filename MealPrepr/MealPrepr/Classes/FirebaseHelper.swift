@@ -121,7 +121,6 @@ class FirebaseHelper {
                 let _ = WeekplanModel(owner: snapshot.key, weekplanValue: value, completionHandler: { (weekplan) in
                     completionHandler(weekplan)
                 })
-                //completionHandler(WeekplanModel(owner: snapshot.key, weekplanValue: value))
                 return
             }
             completionHandler(nil)
