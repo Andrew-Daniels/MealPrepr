@@ -48,7 +48,7 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        self.collectionViewCellWidth = 170.0
+        self.collectionViewCellWidth = 192.0
         return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
     }
     
