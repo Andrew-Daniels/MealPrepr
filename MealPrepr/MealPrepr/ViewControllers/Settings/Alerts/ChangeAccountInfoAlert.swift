@@ -60,6 +60,7 @@ class ChangeAccountInfoAlert: MPViewController, MPTextFieldDelegate {
             passwordTextField.placeholderText = "Current Password"
             otherTextField.placeholderText = "New Username"
             otherTextField.authFieldType = .Username
+            otherTextField.textLimit = 20
         case .Password:
             label.text = "Change Password"
             otherTextField.placeholderText = "New Password"

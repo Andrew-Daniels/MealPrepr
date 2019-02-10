@@ -85,6 +85,9 @@ class MPTextField: UIControl, UITextFieldDelegate {
         }
     }
     
+    @IBInspectable
+    public var textLimit: Int = 0
+    
     var textField: UITextField = UITextField()
     var errorLabel: UILabel = UILabel()
     var textFieldLabel: UILabel = UILabel()
@@ -141,6 +144,14 @@ class MPTextField: UIControl, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textLimit > 0 {
+            let currentString: NSString? = textField.text as NSString?
+            let newString: NSString? =
+                currentString?.replacingCharacters(in: range, with: string) as NSString?
+            if let text = newString, text.length > textLimit {
+                return false
+            }
+        }
         if (self.authFieldType != .Username) {
             self.removeError()
         } else if self.authFieldType == .Username && self.hasError && self.text != ErrorHelper.getErrorMsg(errorKey: .UsernameTaken) {
