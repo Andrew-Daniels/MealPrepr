@@ -33,6 +33,40 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @IBAction func randomizeBtnClicked(_ sender: Any) {
+        //Get number of recipes to retrieve
+        var numRecipesToRetrieve = weekplan.recipes?.count != nil ? 7 - weekplan.recipes!.count : 7
+        
+        //Get indexes of recipes in recipe list already contained in weekplan
+        var recipesAlreadyContainedInWeekplan = [Int]()
+        if let wpRecipes = weekplan.recipes {
+            for r in wpRecipes {
+                let firstIndex = self.recipes.firstIndex { (recipe) -> Bool in
+                    return r.GUID == recipe.GUID
+                }
+                guard let nonNilIndex = firstIndex else { break }
+                let index = self.recipes.startIndex.distance(to: nonNilIndex)
+                recipesAlreadyContainedInWeekplan.append(index)
+            }
+        }
+        
+        //Check if list of recipes has the amount recipes we need
+        if numRecipesToRetrieve > recipes.count - recipesAlreadyContainedInWeekplan.count {
+            numRecipesToRetrieve = recipes.count - recipesAlreadyContainedInWeekplan.count
+        }
+        
+        var indexesChosen = [Int]()
+        
+        var randomRecipeIndex = Int.random(in: 0...self.recipes.count - 1)
+        while(numRecipesToRetrieve > indexesChosen.count) {
+            while indexesChosen.contains(randomRecipeIndex) || recipesAlreadyContainedInWeekplan.contains(randomRecipeIndex) {
+                randomRecipeIndex = Int.random(in: 0...self.recipes.count - 1)
+            }
+            weekplan.recipes?.append(self.recipes[randomRecipeIndex])
+            indexesChosen.append(randomRecipeIndex)
+        }
+        
+        currentWeekPlanCollectionView.reloadData()
+        recipeListCollectionView.reloadData()
     }
     
     @IBAction func favoritesBtnClicked(_ sender: Any) {
