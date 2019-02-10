@@ -96,7 +96,7 @@ class FirebaseHelper {
     }
     
     public func saveWeekplan(weekplan: WeekplanModel, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
-        let path = "Weekplans/"
+        let path = "Weekplans/\(weekplan.owner!)"
         var referenceKey: String!
         if let GUID = weekplan.GUID {
             referenceKey = GUID
@@ -106,10 +106,25 @@ class FirebaseHelper {
         
         if let key = referenceKey {
             let updates = [
-                path + "\(key)": weekplan.weekplanDict
+                path + "/\(key)": weekplan.weekplanDict
             ]
             self.database.updateChildValues(updates)
             completionHandler(true)
+        }
+    }
+    
+    public func loadWeekplan(account: Account, completionHandler: @escaping (_ isResponse : WeekplanModel?) -> Void) {
+        let path = "Weekplans/\(account.UID!)"
+        
+        self.database.child(path).queryOrdered(byChild: "DateCreated").queryLimited(toLast: 1).observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String: Any] {
+                let _ = WeekplanModel(owner: snapshot.key, weekplanValue: value, completionHandler: { (weekplan) in
+                    completionHandler(weekplan)
+                })
+                //completionHandler(WeekplanModel(owner: snapshot.key, weekplanValue: value))
+                return
+            }
+            completionHandler(nil)
         }
     }
     

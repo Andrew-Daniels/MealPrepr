@@ -54,11 +54,11 @@ class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UIColle
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let cellWidth: CGFloat = 130.0
-        
-        let numberOfCells = floor((self.collectionView.frame.size.width - 20) / cellWidth)
-        let edgeInsets = (self.collectionView.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
-        return UIEdgeInsets.init(top: 15, left: edgeInsets, bottom: 0, right: edgeInsets)
+//        let cellWidth: CGFloat = 130.0
+//
+//        let numberOfCells = floor((self.collectionView.frame.size.width - 20) / cellWidth)
+//        let edgeInsets = (self.collectionView.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
+        return UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -69,9 +69,9 @@ class Utensils: MPCreateRecipeChildController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if readOnly {
-            return CGSize.init(width: 80, height: 100)
+            return CGSize.init(width: 85, height: 85)
         }
-        return CGSize.init(width: 120, height: 130)
+        return CGSize.init(width: 85, height: 85)
     }
     
     func photoDownloaded(sender: Utensil) {

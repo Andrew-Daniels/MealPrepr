@@ -23,7 +23,6 @@ class WeekplanModel {
     var weekplanDict: [String: Any] {
         get {
             return [
-                "Owner": owner!,
                 "DateCreated": dateCreated?.description ?? Date().description,
                 "Recipes": recipesArray
             ]
@@ -36,8 +35,7 @@ class WeekplanModel {
             if let recipes = self.recipes {
                 for recipe in recipes {
                     var recipeDict = [String: Any]()
-                    recipeDict["Recipe"] = recipe.GUID!
-                    recipeDict["Status"] = recipe.weekplanStatus?.rawValue ?? RecipeStatus.Active.rawValue
+                    recipeDict[recipe.GUID!] = recipe.weekplanStatus?.rawValue ?? RecipeStatus.Active.rawValue
                     array.append(recipeDict)
                 }
             }
@@ -49,6 +47,17 @@ class WeekplanModel {
         self.recipes = []
     }
     
+    convenience init(owner: String, weekplanValue: [String: Any], completionHandler: @escaping (_ isResponse : WeekplanModel) -> Void) {
+        self.init()
+        self.owner = owner
+        self.GUID = weekplanValue.keys.first
+        self.initWithWeekplanValue(weekplanValue: weekplanValue[self.GUID!] as! [String : Any]) { (completed) in
+            if completed {
+                completionHandler(self)
+            }
+        }
+    }
+    
     func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) -> Bool {
         if let _ = owner {
             FirebaseHelper().saveWeekplan(weekplan: self) { (saved) in
@@ -58,6 +67,37 @@ class WeekplanModel {
         }
         completionHandler(false)
         return false
+    }
+    
+    private func initWithWeekplanValue(weekplanValue: [String: Any], completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        
+        if let dateCreated = weekplanValue["DateCreated"] as? String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+            self.dateCreated = dateFormatter.date(from: dateCreated)
+            if self.dateCreated == nil {
+                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
+                self.dateCreated = dateFormatter.date(from: dateCreated)
+            }
+        }
+        
+        if let recipes = weekplanValue["Recipes"] as? [[String: String]] {
+            for recipe in recipes {
+                guard let recipeGUID = recipe.keys.first,
+                let recipeStatus = recipe[recipeGUID] else { return }
+                
+                //var recipe = Recipe()
+                
+                FirebaseHelper().loadRecipe(guid: recipeGUID) { (r) in
+                    r.weekplanStatus = RecipeStatus.init(rawValue: recipeStatus) ?? RecipeStatus.Active
+                    self.recipes?.append(r)
+                    if self.recipes?.count == recipes.count {
+                        completionHandler(true)
+                    }
+                }
+                
+            }
+        }
     }
     
 }

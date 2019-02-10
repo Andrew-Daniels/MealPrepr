@@ -60,7 +60,7 @@ class InstructionCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         label.sizeToFit()
         var size = label.frame.size
         size.height += 10
-        size.width += 6
+        size.width += 15
         return size
     }
     

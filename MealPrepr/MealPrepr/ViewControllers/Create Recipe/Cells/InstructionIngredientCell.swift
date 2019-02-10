@@ -50,7 +50,7 @@ class InstructionIngredientCell: UICollectionViewCell {
         if ingredientLabel != nil {
             return
         }
-        self.layer.cornerRadius = 8
+        self.layer.cornerRadius = 4
         setBorder()
 
         ingredientLabel = UILabel()

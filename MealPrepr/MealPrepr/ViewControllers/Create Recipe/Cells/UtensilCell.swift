@@ -16,7 +16,6 @@ class UtensilCell: UICollectionViewCell {
     var isSel: Bool = false {
         didSet {
             self.backgroundColor = isSel ? redColor : UIColor.clear
-            //self.titleLabel.textColor = isSel ? UIColor.black : UIColor.white
         }
     }
     

@@ -9,6 +9,7 @@
 import UIKit
 
 private let weekplanCreationCellIdentifier = "weekplanCreationRecipeCell"
+private let backToWeekplanSegueIdentifier = "backToWeekplan"
 
 class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionViewDataSource, RecipeDelegate, UICollectionViewDelegateFlowLayout, WeekplanCreationCellDelegate, CategorySelectorDelegate {
     
@@ -55,6 +56,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
                             self.finishLoading(completionHandler: { (finished) in
                                 if finished {
                                     //perform segue back
+                                    self.performSegue(withIdentifier: backToWeekplanSegueIdentifier, sender: nil)
                                 }
                             })
                         }
@@ -66,6 +68,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
                                 self.finishLoading(completionHandler: { (finished) in
                                     if finished {
                                         //perform segue back
+                                        self.performSegue(withIdentifier: backToWeekplanSegueIdentifier, sender: nil)
                                     }
                                 })
                             }
@@ -114,7 +117,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
             isContainedInWeekplan = true
         }
         
-        cell.imageView.layer.cornerRadius = 12
+        cell.imageView.layer.cornerRadius = 4
         cell.imageView.clipsToBounds = true
         cell.isContainedInWeekplan = isContainedInWeekplan
         cell.recipe = recipe
