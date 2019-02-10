@@ -25,6 +25,9 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         if UIDevice.current.userInterfaceIdiom == .pad {
             let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.scrollDirection = .horizontal
+        } else if !readOnly {
+            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+            layout.scrollDirection = .vertical
         }
         
         if readOnly {
