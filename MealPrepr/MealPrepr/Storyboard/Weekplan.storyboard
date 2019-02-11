@@ -292,13 +292,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTE-oZ-Cf2">
-                                                    <rect key="frame" x="45" y="0.0" width="150" height="155"/>
+                                                    <rect key="frame" x="45" y="0.0" width="145" height="155"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irm-ES-OMF" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                                    <rect key="frame" x="45" y="115" width="150" height="40"/>
+                                                    <rect key="frame" x="45" y="115" width="145" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCc-iq-Jqk">
-                                                            <rect key="frame" x="5" y="2" width="140" height="25.333333333333332"/>
+                                                            <rect key="frame" x="5" y="2" width="135" height="25.333333333333332"/>
                                                             <attributedString key="attributedText">
                                                                 <fragment content="Black Bean Breakfast Bowl Testing">
                                                                     <attributes>
@@ -359,7 +359,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnX-AY-iiD" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
-                                                    <rect key="frame" x="135" y="0.0" width="60" height="47"/>
+                                                    <rect key="frame" x="130" y="0.0" width="60" height="47"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmX-Wu-h1C">
                                                             <rect key="frame" x="20.666666666666657" y="2" width="19" height="19.666666666666668"/>
@@ -710,7 +710,7 @@
                         <viewLayoutGuide key="safeArea" id="dea-7Z-csn"/>
                     </view>
                     <navigationItem key="navigationItem" title="Creating Weekplan" id="9Vz-v7-zFa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wr1-mo-47T">
+                        <barButtonItem key="rightBarButtonItem" image="Done_Black" id="wr1-mo-47T">
                             <connections>
                                 <action selector="saveBtnClicked:" destination="w1k-Oj-iHG" id="EQX-Ji-02H"/>
                             </connections>
@@ -732,6 +732,7 @@
     </scenes>
     <resources>
         <image name="Add" width="24" height="24"/>
+        <image name="Done_Black" width="33" height="33"/>
         <image name="Edit_Black" width="24" height="24"/>
         <image name="Filter_White" width="24" height="24"/>
         <image name="List_Black" width="24" height="24"/>

@@ -24,14 +24,17 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseHelper().loadWeekplan(account: self.account) { (weekplan) in
-            self.weekplan = weekplan
-            self.setupWeekplan()
+        if self.account.userLevel != .Guest {
+            FirebaseHelper().loadWeekplan(account: self.account) { (weekplan) in
+                self.weekplan = weekplan
+                self.setupWeekplan()
+            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         let _ = checkForGuestAccount()
     }
     
