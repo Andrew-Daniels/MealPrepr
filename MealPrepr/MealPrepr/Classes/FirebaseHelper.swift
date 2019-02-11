@@ -109,6 +109,7 @@ class FirebaseHelper {
                 path + "/\(key)": weekplan.weekplanDict
             ]
             self.database.updateChildValues(updates)
+            weekplan.GUID = key
             completionHandler(true)
         }
     }
