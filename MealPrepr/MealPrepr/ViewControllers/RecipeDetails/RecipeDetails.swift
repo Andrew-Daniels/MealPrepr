@@ -11,6 +11,7 @@ import UIKit
 private let photosVCSegueIdentifier = "containedPhotos"
 private let categorySelectorSegueIdentifier = "categorySelector"
 private let flagSelectorSegueIdentifier = "flagSelector"
+private let reviewsIdentifier = "RecipeDetails-Reviews"
 
 class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDelegate {
     
@@ -55,9 +56,10 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     private func createControllerForSelectedIndex(index: Controller?) -> MPViewController? {
-        let main = UIStoryboard(name: mainStoryboardIdentifier, bundle: nil)
+        
         guard let index = index else { return nil }
         var vcIdentifier: String!
+        var storyboardIdentifier: String = mainStoryboardIdentifier
         
         switch (index) {
             
@@ -70,9 +72,12 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         case .Photos:
             vcIdentifier = createPhotosIdentifier
         case .Reviews:
-            return nil
+            vcIdentifier = reviewsIdentifier
+            storyboardIdentifier = "RecipeDetails"
         }
-        guard let vc = main.instantiateViewController(withIdentifier: vcIdentifier) as? MPViewController else { return nil }
+        
+        let storyboard = UIStoryboard(name: storyboardIdentifier, bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: vcIdentifier) as? MPViewController else { return nil }
         
         viewControllers[index] = vc
         
