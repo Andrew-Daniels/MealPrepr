@@ -57,23 +57,19 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
-        print("Keyboard will show")
-        
-        
         
         if let userInfo = notification.userInfo {
             
             let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
             let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
             
-            bottomButtonBottomConstraint.constant = isKeyboardShowing ? (-keyboardFrame.height) + 44 + (self.tabBarController?.tabBar.frame.height ?? 0) : 0
+            bottomButtonBottomConstraint.constant = isKeyboardShowing ? (-keyboardFrame.height) + 34 + (self.tabBarController?.tabBar.frame.height ?? 0) : 0
             containerViewHeightConstraint.constant = isKeyboardShowing ? 50 : 200
         }
         
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
-        
         
     }
     
