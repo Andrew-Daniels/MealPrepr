@@ -34,6 +34,8 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     @IBOutlet weak var servingLabel: UILabel!
     @IBOutlet weak var caloriesServingLabel: UILabel!
     @IBOutlet weak var likesImageView: UIImageView!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomButtonBottomConstraint: NSLayoutConstraint!
     
     private var viewControllers = [Controller: MPViewController]()
     
@@ -47,8 +49,32 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         presentChildVC(atIndex: index)
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         setupWithRecipe()
         setupBarButtons()
+    }
+    
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        print("Keyboard will show")
+        
+        
+        
+        if let userInfo = notification.userInfo {
+            
+            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            
+            bottomButtonBottomConstraint.constant = isKeyboardShowing ? (-keyboardFrame.height) + 44 + (self.tabBarController?.tabBar.frame.height ?? 0) : 0
+            containerViewHeightConstraint.constant = isKeyboardShowing ? 50 : 200
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
