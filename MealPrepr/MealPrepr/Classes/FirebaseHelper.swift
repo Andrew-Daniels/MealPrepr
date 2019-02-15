@@ -138,13 +138,15 @@ class FirebaseHelper {
         let path = "Reviews/\(recipe.GUID!)"
         
         self.database.child(path).queryOrdered(byChild: "DateCreated").observeSingleEvent(of: .value) { (snapshot) in
-            if let value = snapshot.value as? [String: [String: String]] {
+            if let value = snapshot.value as? [String: [String: Any]] {
                 for (guid, reviewData) in value {
                     print("guid \(guid) reviewData \(reviewData)")
                     
-                    guard let reviewerGUID = reviewData["Reviewer"],
-                    let reviewDetail = reviewData["ReviewDetail"],
-                    let dateCreated = reviewData["DateCreated"] else { break }
+                    guard let reviewerGUID = reviewData["Reviewer"] as? String,
+                    let reviewDetail = reviewData["ReviewDetail"] as? String,
+                    let dateCreated = reviewData["DateCreated"] as? String,
+                    let timeAccuracy = reviewData["TimeAccuracy"] as? Int,
+                    let taste = reviewData["Taste"] as? Int else { break }
                 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
@@ -165,6 +167,8 @@ class FirebaseHelper {
                     review.recipeGUID = recipe.GUID
                     review.reviewer = reviewer
                     review.delegate = reviewDelegate
+                    review.taste = Review.Rating(rawValue: taste) ?? Review.Rating.NotRated
+                    review.timeAccuracy = Review.Rating(rawValue: timeAccuracy) ?? Review.Rating.NotRated
                     
                     recipe.reviews.append(review)
                     

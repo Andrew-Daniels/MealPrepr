@@ -17,6 +17,14 @@ class Review: AccountDelegate {
     var recipeGUID: String!
     var dateCreated: Date?
     var delegate: ReviewDelegate?
+    var taste: Rating?
+    var timeAccuracy: Rating?
+    
+    enum Rating: Int {
+        case NotRated = -1
+        case Like = 0
+        case Dislike = 1
+    }
     
     var reviewDict: [String: Any] {
         get {
@@ -24,7 +32,9 @@ class Review: AccountDelegate {
                 "Reviewer": reviewer.UID!,
                 "Recipe": recipeGUID!,
                 "ReviewDetail": reviewDetail!,
-                "DateCreated": dateCreated?.description ?? Date().description
+                "DateCreated": dateCreated?.description ?? Date().description,
+                "Taste": taste?.rawValue ?? Rating.NotRated.rawValue,
+                "TimeAccuracy": timeAccuracy?.rawValue ?? Rating.NotRated.rawValue
             ]
         }
     }

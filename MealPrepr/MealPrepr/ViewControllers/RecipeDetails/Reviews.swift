@@ -84,7 +84,7 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
         self.textView.selectedTextRange = self.textView.textRange(from: self.textView.beginningOfDocument, to: self.textView.beginningOfDocument)
         self.textView.centerVertically()
         self.reviewBtn.isEnabled = false
-        
+        self.textViewContainerHeightConstraint.constant = 44.0
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {
@@ -162,6 +162,7 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
         textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         textView.textContainerInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 55)
         textView.centerVertically()
+        reviewBtn.isEnabled = false
     }
 
 }
