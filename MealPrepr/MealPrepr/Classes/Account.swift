@@ -27,7 +27,7 @@ class Account {
     var recipeCategories = [String]()
     var dateJoined: Date?
     var isFBAuth: Bool = false
-    var profilePicture: UIImage?
+    private var profilePicture: UIImage?
     
     init() {
         

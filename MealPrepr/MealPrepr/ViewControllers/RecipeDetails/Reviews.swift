@@ -36,7 +36,16 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     func reviewProfileImageLoaded(sender: Review) {
-        print("Image loaded")
+        let firstIndex = self.recipe.reviews.firstIndex { (review) -> Bool in
+            if review.guid == sender.guid {
+                return true
+            }
+            return false
+        }
+        guard let nonNilIndex = firstIndex else { return }
+        let row = recipe.reviews.startIndex.distance(to: nonNilIndex)
+        let indexPath = IndexPath(row: row, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
     func reviewAccountLoaded() {

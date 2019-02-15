@@ -35,10 +35,13 @@ class ReviewCell: UITableViewCell {
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
         self.profileImageView.layer.borderColor = redColor.cgColor
         self.profileImageView.layer.borderWidth  = 1
+        self.profileImageView.clipsToBounds = true
         
         self.reviewDetail.text = review?.reviewDetail
-        self.reviewer.text = review?.reviewer.username
-        self.profileImageView.image = UIImage()
+        self.reviewer.text = review!.reviewer.username! + " says:"
+        review.reviewer.getProfilePicture(completionHandler: { (image) in
+            self.profileImageView.image = image
+        })
     }
     
 }

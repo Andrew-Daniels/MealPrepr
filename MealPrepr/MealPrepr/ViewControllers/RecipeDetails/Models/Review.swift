@@ -52,8 +52,8 @@ class Review: AccountDelegate {
     func accountLoaded() {
         //Load the photo
         delegate?.reviewAccountLoaded()
-        FirebaseHelper().downloadImage(atPath: "ProfilePictures/\(reviewer.UID!)", renderMode: .alwaysOriginal) { (image) in
-            self.reviewer.profilePicture = image
+        self.reviewer.getProfilePicture { (image) in
+            self.delegate?.reviewProfileImageLoaded(sender: self)
         }
     }
     
