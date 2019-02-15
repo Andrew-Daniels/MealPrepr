@@ -227,6 +227,10 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     @objc func segmentedControlIndexChanged() {
         guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         presentChildVC(atIndex: index)
+        
+        if let vc = viewControllers[.Reviews] {
+            vc.endEditing()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

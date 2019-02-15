@@ -135,6 +135,12 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
         textView.centerVertically()
         reviewBtn.isEnabled = false
     }
+    
+    override func endEditing() {
+        super.endEditing()
+        
+        textView.resignFirstResponder()
+    }
 
 }
 
