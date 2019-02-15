@@ -27,6 +27,8 @@ class Recipe {
     var recipeDelegate: RecipeDelegate?
     var utensilDelegate: UtensilDelegate?
     var weekplanStatus: WeekplanModel.RecipeStatus?
+    var reviews = [Review]()
+    var reviewCount = 0
     private var cook: (minutes: Int, hours: Int)!
     private var prep: (minutes: Int, hours: Int)!
     

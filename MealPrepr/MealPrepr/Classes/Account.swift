@@ -27,7 +27,7 @@ class Account {
     var recipeCategories = [String]()
     var dateJoined: Date?
     var isFBAuth: Bool = false
-    private var profilePicture: UIImage?
+    var profilePicture: UIImage?
     
     init() {
         
@@ -46,6 +46,12 @@ class Account {
                 return
             }
             completionHandler(false)
+        }
+    }
+    
+    convenience init(UID: String, accountDelegate: AccountDelegate?) {
+        self.init(UID: UID) { (completed) in
+            accountDelegate?.accountLoaded()
         }
     }
     

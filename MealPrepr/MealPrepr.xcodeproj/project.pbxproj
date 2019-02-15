@@ -87,6 +87,8 @@
 		31D4679A221252D800757CEE /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D46799221252D800757CEE /* Reviews.swift */; };
 		31D4679D2212530C00757CEE /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4679C2212530C00757CEE /* ReviewCell.swift */; };
 		31D4679F2212552200757CEE /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4679E2212552200757CEE /* Review.swift */; };
+		31D467A2221631D100757CEE /* ReviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D467A1221631D100757CEE /* ReviewDelegate.swift */; };
+		31D467A42216449C00757CEE /* AccountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D467A32216449C00757CEE /* AccountDelegate.swift */; };
 		31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */; };
 		31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094021B8C63700555CBE /* Phosphate.ttc */; };
 		31D8094321B8C81E00555CBE /* Nadeem.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 31D8094221B8C81E00555CBE /* Nadeem.ttc */; };
@@ -195,6 +197,8 @@
 		31D46799221252D800757CEE /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		31D4679C2212530C00757CEE /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		31D4679E2212552200757CEE /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		31D467A1221631D100757CEE /* ReviewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDelegate.swift; sourceTree = "<group>"; };
+		31D467A32216449C00757CEE /* AccountDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDelegate.swift; sourceTree = "<group>"; };
 		31D8093D21B8BECB00555CBE /* MPTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextFieldDelegate.swift; sourceTree = "<group>"; };
 		31D8094021B8C63700555CBE /* Phosphate.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphate.ttc; sourceTree = "<group>"; };
 		31D8094221B8C81E00555CBE /* Nadeem.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nadeem.ttc; sourceTree = "<group>"; };
@@ -467,6 +471,7 @@
 		3188553F220A7D8E00BA6A93 /* RecipeDetails */ = {
 			isa = PBXGroup;
 			children = (
+				31D467A0221631BA00757CEE /* Protocols */,
 				31D4679B221252E700757CEE /* Cells */,
 				3197C318220A862A0079809D /* Models */,
 				31885540220A7DBA00BA6A93 /* Alerts */,
@@ -562,6 +567,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		31D467A0221631BA00757CEE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				31D467A1221631D100757CEE /* ReviewDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		31D8093C21B8BEB300555CBE /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +584,7 @@
 				313088B121FFDEBF0088AA5B /* RecipeDetailsDelegate.swift */,
 				318855322206AFF200BA6A93 /* ConnectionErrorViewDelegate.swift */,
 				31885548220A805200BA6A93 /* FlagSelectorDelegate.swift */,
+				31D467A32216449C00757CEE /* AccountDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -802,6 +816,7 @@
 				312F5A3621BC447D0017B534 /* AdminNavigationViewController.swift in Sources */,
 				31B9572721E120AC00D15CCD /* Loading.swift in Sources */,
 				313088B221FFDEBF0088AA5B /* RecipeDetailsDelegate.swift in Sources */,
+				31D467A2221631D100757CEE /* ReviewDelegate.swift in Sources */,
 				310D027921C1FB2A00EA8BA0 /* Photos.swift in Sources */,
 				312F5A3A21BC511F0017B534 /* Admin.swift in Sources */,
 				312F5A2E21BC36180017B534 /* HomeTabBarController.swift in Sources */,
@@ -860,6 +875,7 @@
 				3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */,
 				31B9572D21E6FBF000D15CCD /* Utensil.swift in Sources */,
 				31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */,
+				31D467A42216449C00757CEE /* AccountDelegate.swift in Sources */,
 				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,
 				3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */,
 				31B9572F21E6FEBC00D15CCD /* UtensilDelegate.swift in Sources */,

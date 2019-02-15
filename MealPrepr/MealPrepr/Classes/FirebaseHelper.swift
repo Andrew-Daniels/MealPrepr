@@ -114,6 +114,69 @@ class FirebaseHelper {
         }
     }
     
+    public func saveReview(review: Review, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        let path = "Reviews/\(review.recipeGUID!)"
+        var referenceKey: String!
+        if let guid = review.guid {
+            referenceKey = guid
+        } else {
+            referenceKey = database.child(path).childByAutoId().key
+        }
+        
+        if let key = referenceKey {
+            let updates = [
+                path + "/\(key)": review.reviewDict
+            ]
+            self.database.updateChildValues(updates)
+            review.guid = key
+            completionHandler(true)
+        }
+    }
+    
+    public func loadReviews(recipe: Recipe, reviewDelegate: ReviewDelegate, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        
+        let path = "Reviews/\(recipe.GUID!)"
+        
+        self.database.child(path).queryOrdered(byChild: "DateCreated").observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? [String: [String: String]] {
+                for (guid, reviewData) in value {
+                    print("guid \(guid) reviewData \(reviewData)")
+                    
+                    guard let reviewerGUID = reviewData["Reviewer"],
+                    let reviewDetail = reviewData["ReviewDetail"],
+                    let dateCreated = reviewData["DateCreated"] else { break }
+                
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+                    var date = dateFormatter.date(from: dateCreated)
+                    if date == nil {
+                        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
+                        date = dateFormatter.date(from: dateCreated)
+                    }
+                    
+                    recipe.reviewCount = value.count
+                    let review = Review()
+                    
+                    let reviewer = Account(UID: reviewerGUID, accountDelegate: review)
+                    
+                    review.guid = guid
+                    review.reviewDetail = reviewDetail
+                    review.dateCreated = date
+                    review.recipeGUID = recipe.GUID
+                    review.reviewer = reviewer
+                    review.delegate = reviewDelegate
+                    
+                    recipe.reviews.append(review)
+                    
+                    if recipe.reviews.count == value.count {
+                        completionHandler(true)
+                    }
+                }
+            }
+        }
+        
+    }
+    
     public func loadWeekplan(account: Account, completionHandler: @escaping (_ isResponse : WeekplanModel?) -> Void) {
         let path = "Weekplans/\(account.UID!)"
         

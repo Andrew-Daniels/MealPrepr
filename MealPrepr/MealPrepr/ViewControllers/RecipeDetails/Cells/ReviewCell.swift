@@ -37,7 +37,7 @@ class ReviewCell: UITableViewCell {
         self.profileImageView.layer.borderWidth  = 1
         
         self.reviewDetail.text = review?.reviewDetail
-        self.reviewer.text = review?.reviewerUsername
+        self.reviewer.text = review?.reviewer.username
         self.profileImageView.image = UIImage()
     }
     

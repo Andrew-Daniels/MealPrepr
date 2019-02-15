@@ -437,7 +437,7 @@
                                             <constraint firstAttribute="height" constant="44" id="yq7-CA-0Yk"/>
                                         </constraints>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="Send"/>
+                                        <state key="normal" image="ArrowUp"/>
                                         <connections>
                                             <action selector="reviewBtnClicked:" destination="So1-0z-RU9" eventType="touchUpInside" id="fKm-cz-kvk"/>
                                         </connections>
@@ -672,11 +672,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ArrowUp" width="30" height="30"/>
         <image name="Favorite_Black" width="24" height="24"/>
         <image name="Favorite_White" width="24" height="24"/>
         <image name="Flag_Black" width="24" height="24"/>
         <image name="Flag_White" width="24" height="24"/>
-        <image name="Send" width="30" height="30"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

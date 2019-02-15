@@ -9,20 +9,52 @@
 import Foundation
 
 
-class Review {
+class Review: AccountDelegate {
     
     var guid: String!
-    var reviewerGUID: String!
-    var reviewerUsername: String!
+    var reviewer: Account!
     var reviewDetail: String!
     var recipeGUID: String!
+    var dateCreated: Date?
+    var delegate: ReviewDelegate?
     
-    init(guid: String, reviewerGUID: String, reviewerUsername: String, reviewDetail: String, recipeGUID: String) {
-        self.guid = guid
-        self.reviewerGUID = reviewerGUID
-        self.reviewerUsername = reviewerUsername
+    var reviewDict: [String: Any] {
+        get {
+            return [
+                "Reviewer": reviewer.UID!,
+                "Recipe": recipeGUID!,
+                "ReviewDetail": reviewDetail!,
+                "DateCreated": dateCreated?.description ?? Date().description
+            ]
+        }
+    }
+    
+    init() {
+        
+    }
+    
+    init(reviewer: Account, reviewDetail: String, recipeGUID: String) {
+        self.reviewer = reviewer
         self.reviewDetail = reviewDetail
         self.recipeGUID = recipeGUID
+    }
+    
+    func save(completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        FirebaseHelper().saveReview(review: self) { (completed) in
+            completionHandler(completed)
+        }
+    }
+    
+    func delete() {
+        
+    }
+    
+    func accountLoaded() {
+        //Load the photo
+        delegate?.reviewAccountLoaded()
+        FirebaseHelper().downloadImage(atPath: "ProfilePictures/\(reviewer.UID!)", renderMode: .alwaysOriginal) { (image) in
+            self.reviewer.profilePicture = image
+        }
     }
     
 }

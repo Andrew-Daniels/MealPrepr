@@ -10,38 +10,72 @@ import UIKit
 
 private let recipeCellIdentifier = "ReviewCell"
 
-class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
+class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, ReviewDelegate {
     
     @IBOutlet weak var reviewBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewContainerHeightConstraint: NSLayoutConstraint!
+    let placeHolderText = "Say something.."
+    var reviewAccountsLoaded = 0
     
-    var reviews = [Review]()
+    var recipe: Recipe! {
+        didSet {
+            if recipe.reviews.count == 0 {
+                FirebaseHelper().loadReviews(recipe: self.recipe, reviewDelegate: self) { (loaded) in
+                    
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reviews = [
-            Review(guid: "", reviewerGUID: "", reviewerUsername: "Tom", reviewDetail: "This is my review", recipeGUID: ""),
-            Review(guid: "", reviewerGUID: "", reviewerUsername: "Mary", reviewDetail: "This is my review also.", recipeGUID: ""),
-            Review(guid: "", reviewerGUID: "", reviewerUsername: "Username1994", reviewDetail: "This is my review, isn't it great?! This review is much longer than all the other ones. I hope this still fits on the screen and allows me to read the whole review. If it doesn't I'll be pretty sad. Won't you?", recipeGUID: "")
-        ]
+        
         setupTextView()
     }
     
+    func reviewProfileImageLoaded(sender: Review) {
+        print("Image loaded")
+    }
+    
+    func reviewAccountLoaded() {
+        reviewAccountsLoaded += 1
+        if reviewAccountsLoaded == self.recipe.reviewCount {
+            self.tableView.reloadData()
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
+        return recipe?.reviews.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: recipeCellIdentifier, for: indexPath) as! ReviewCell
-        let review = reviews[indexPath.row]
+        let review = recipe.reviews[indexPath.row]
         cell.review = review
         return cell
     }
     
     @IBAction func reviewBtnClicked(_ sender: Any) {
+        let review = Review(reviewer: self.account, reviewDetail: self.textView.text, recipeGUID: recipe.GUID)
+        review.save { (saved) in
+            if saved {
+                self.recipe.reviews.append(review)
+                self.tableView.reloadData()
+                self.resetTextViewText()
+            }
+        }
+    }
+    
+    func resetTextViewText() {
+        
+        self.textView.text = self.placeHolderText
+        self.textView.textColor = UIColor.lightGray
+        self.textView.selectedTextRange = self.textView.textRange(from: self.textView.beginningOfDocument, to: self.textView.beginningOfDocument)
+        self.textView.centerVertically()
+        self.reviewBtn.isEnabled = false
+        
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {
@@ -62,11 +96,8 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
         // and set the cursor to the beginning of the text view
         if updatedText.isEmpty {
             
-            textView.text = "Say something.."
-            textView.textColor = UIColor.lightGray
+            self.resetTextViewText()
             
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-            textView.centerVertically()
         }
             
             // Else if the text view's placeholder is showing and the
@@ -76,6 +107,11 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
         else if textView.textColor == UIColor.lightGray && !text.isEmpty {
             textView.textColor = UIColor.black
             textView.text = text
+            
+            if text.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                reviewBtn.isEnabled = true
+            }
+            
         }
             
             // For every other case, the text should change with the usual
@@ -109,7 +145,7 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     private func setupTextView() {
-        textView.text = "Say something.."
+        textView.text = placeHolderText
         textView.textColor = UIColor.lightGray
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.lightGray.cgColor

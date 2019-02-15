@@ -143,6 +143,10 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         case .Photos:
             break
         case .Reviews:
+            if let reviewsVC = viewControllers[.Reviews] as? Reviews {
+                reviewsVC.recipe = self.recipe
+                reviewsVC.account = self.account
+            }
             break
         }
     }
