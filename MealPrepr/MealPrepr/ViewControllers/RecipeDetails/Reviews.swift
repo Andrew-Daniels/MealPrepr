@@ -10,49 +10,20 @@ import UIKit
 
 private let recipeCellIdentifier = "ReviewCell"
 
-class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, ReviewDelegate {
+class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     
     @IBOutlet weak var reviewBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewContainerHeightConstraint: NSLayoutConstraint!
     let placeHolderText = "Say something.."
-    var reviewAccountsLoaded = 0
     
-    var recipe: Recipe! {
-        didSet {
-            if recipe.reviews.count == 0 {
-                FirebaseHelper().loadReviews(recipe: self.recipe, reviewDelegate: self) { (loaded) in
-                    
-                }
-            }
-        }
-    }
+    var recipe: Recipe!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTextView()
-    }
-    
-    func reviewProfileImageLoaded(sender: Review) {
-        let firstIndex = self.recipe.reviews.firstIndex { (review) -> Bool in
-            if review.guid == sender.guid {
-                return true
-            }
-            return false
-        }
-        guard let nonNilIndex = firstIndex else { return }
-        let row = recipe.reviews.startIndex.distance(to: nonNilIndex)
-        let indexPath = IndexPath(row: row, section: 0)
-        self.tableView.reloadRows(at: [indexPath], with: .fade)
-    }
-    
-    func reviewAccountLoaded() {
-        reviewAccountsLoaded += 1
-        if reviewAccountsLoaded == self.recipe.reviewCount {
-            self.tableView.reloadData()
-        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

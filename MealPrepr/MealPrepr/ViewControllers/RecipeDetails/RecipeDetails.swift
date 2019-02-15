@@ -13,7 +13,7 @@ private let categorySelectorSegueIdentifier = "categorySelector"
 private let flagSelectorSegueIdentifier = "flagSelector"
 private let reviewsIdentifier = "RecipeDetails-Reviews"
 
-class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDelegate {
+class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDelegate, ReviewDelegate {
     
     enum Controller: Int {
         case Instructions = 0
@@ -38,6 +38,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     @IBOutlet weak var bottomButtonBottomConstraint: NSLayoutConstraint!
     
     private var viewControllers = [Controller: MPViewController]()
+    private var reviewAccountsLoaded = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,8 +169,47 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             }
             self.servingLabel.text = r.numServings
             self.caloriesServingLabel.text = r.calServing
+            
+            if self.recipe.reviews.count == 0 {
+                FirebaseHelper().loadReviews(recipe: self.recipe, reviewDelegate: self) { (loaded) in
+                    
+                }
+            }
+            
         }
     }
+    
+    func reviewProfileImageLoaded(sender: Review) {
+        
+        if let vc = viewControllers[.Reviews] as? Reviews {
+            let firstIndex = self.recipe.reviews.firstIndex { (review) -> Bool in
+                if review.guid == sender.guid {
+                    return true
+                }
+                return false
+            }
+            guard let nonNilIndex = firstIndex else { return }
+            let row = recipe.reviews.startIndex.distance(to: nonNilIndex)
+            let indexPath = IndexPath(row: row, section: 0)
+            vc.tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+        
+    }
+    
+    func reviewAccountLoaded() {
+        
+        reviewAccountsLoaded += 1
+        
+        if let vc = viewControllers[.Reviews] as? Reviews {
+            
+            if reviewAccountsLoaded == self.recipe.reviewCount {
+                vc.tableView.reloadData()
+            }
+            
+        }
+        
+    }
+    
     @IBAction func favoritesBtnClicked(_ sender: Any) {
         if !checkForGuestAccount() && checkForInternetConnection() {
             (sender as! UIButton).isSelected = true
