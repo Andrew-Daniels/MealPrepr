@@ -30,6 +30,7 @@ class ReviewAlert: MPViewController, MPLikeControlDelegate {
     
     @IBAction func doneBtnClicked(_ sender: Any) {
         
+        self.endEditing()
         let review = Review(reviewer: self.account, reviewDetail: textView.text, recipeGUID: recipe.GUID)
         review.difficulty = difficultyLikeCtrl.rating
         review.taste = tasteLikeCtrl.rating
@@ -56,6 +57,7 @@ class ReviewAlert: MPViewController, MPLikeControlDelegate {
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.endEditing()
         dismiss(animated: true, completion: nil)
     }
     
@@ -93,5 +95,11 @@ class ReviewAlert: MPViewController, MPLikeControlDelegate {
             self.view.layoutIfNeeded()
         }
         
+    }
+    
+    override func endEditing() {
+        super.endEditing()
+        
+        textView.resignFirstResponder()
     }
 }

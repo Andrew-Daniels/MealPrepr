@@ -23,6 +23,7 @@ class Account {
     
     var UID: String?
     var username: String?
+    var email: String?
     var userLevel: UserLevel = .Guest
     var recipeCategories = [String]()
     var dateJoined: Date?

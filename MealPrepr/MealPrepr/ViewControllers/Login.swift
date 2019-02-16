@@ -117,6 +117,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
                     }
                 })
             }
+            self.account.email = user.email
         })
     }
 

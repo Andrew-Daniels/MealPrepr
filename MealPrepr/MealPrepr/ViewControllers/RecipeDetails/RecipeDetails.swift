@@ -63,7 +63,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
             let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
             
-            bottomButtonBottomConstraint.constant = isKeyboardShowing ? (-keyboardFrame.height) + 34 + (self.tabBarController?.tabBar.frame.height ?? 0) : 0
+            bottomButtonBottomConstraint.constant = isKeyboardShowing ? keyboardFrame.height - (self.tabBarController?.tabBar.frame.height ?? 0) : 0
             containerViewHeightConstraint.constant = isKeyboardShowing ? 50 : 200
         }
         
@@ -170,7 +170,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             }
             //setup datecreated label
             if let d = r.dateCreated {
-                self.dateCreatedLabel.text = "Date Created: \(d.detail)"
+                self.dateCreatedLabel.text = "created: \(d.detail.lowercased())"
             }
             //setup serving/calories labels
             self.servingLabel.text = r.numServings
@@ -334,7 +334,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             reviewBtn!.tintColor = UIColor.white
             reviewBtn!.image = UIImage(named: "Done_Black")
             if let _ = self.navigationItem.rightBarButtonItems {
-                self.navigationItem.rightBarButtonItems?.append(reviewBtn!)
+                self.navigationItem.rightBarButtonItems?.insert(reviewBtn!, at: 0)
             } else {
                 self.navigationItem.rightBarButtonItem = reviewBtn
             }
@@ -390,11 +390,19 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     override func alertDismissed() {
         super.alertDismissed()
-        self.navigationItem.rightBarButtonItems?.removeAll(where: { (button) -> Bool in
-            return button == reviewBtn
+        
+        let firstRecipe = weekplan?.recipes?.first(where: { (r) -> Bool in
+            return r.GUID == self.recipe.GUID && r.weekplanStatus == .Completed
         })
-        if let vc = viewControllers[.Reviews] as? Reviews {
-            vc.tableView.reloadData()
+        
+        if let _ = firstRecipe {
+            self.navigationItem.rightBarButtonItems?.removeAll(where: { (button) -> Bool in
+                return button == reviewBtn
+            })
+            if let vc = viewControllers[.Reviews] as? Reviews {
+                vc.tableView.reloadData()
+            }
         }
+        
     }
 }

@@ -80,7 +80,7 @@ class SignUp: MPViewController, MPTextFieldDelegate {
                         self.finishLoading(completionHandler: { (finished) in
                             if finished {
                                 self.account = Account(UID: user.uid, username: username, userLevel: .User)
-                                
+                                self.account.email = user.email
                                 self._FBHelper.saveAccount(account: self.account)
                                 self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
                             }
