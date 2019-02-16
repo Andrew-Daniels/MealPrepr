@@ -15,6 +15,8 @@ class WeekplanRecipeCell: UITableViewCell {
     @IBOutlet weak var prepLabel: UILabel!
     @IBOutlet weak var cookLabel: UILabel!
     @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var completedView: UIView!
+    @IBOutlet weak var completedImage: UIImageView!
     public var recipe: Recipe! {
         didSet {
             initWeekplanRecipeCellWithRecipe()
@@ -38,6 +40,9 @@ class WeekplanRecipeCell: UITableViewCell {
             } else {
                 self.prepLabel.text = "prep \(recipe.totalPrepTime.hours)hr\(recipe.totalPrepTime.minutes)m"
             }
+            self.completedImage.image = UIImage(named: "Done_Black")?.withRenderingMode(.alwaysTemplate)
+            self.completedImage.tintColor = redColor
+            self.completedView.isHidden = recipe.weekplanStatus == .Active
         }
     }
 }

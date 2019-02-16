@@ -13,6 +13,7 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var reviewer: UILabel!
     @IBOutlet weak var reviewDetail: UILabel!
+    @IBOutlet weak var ratingImageView: UIImageView!
     
     var review: Review! {
         didSet {
@@ -36,12 +37,29 @@ class ReviewCell: UITableViewCell {
         self.profileImageView.layer.borderColor = redColor.cgColor
         self.profileImageView.layer.borderWidth  = 1
         self.profileImageView.clipsToBounds = true
+        self.ratingImageView.tintColor = redColor
+        self.ratingImageView.layer.cornerRadius = self.ratingImageView.frame.height / 2
         
         self.reviewDetail.text = review?.reviewDetail
         self.reviewer.text = review!.reviewer.username! + " says:"
         review.reviewer.getProfilePicture(completionHandler: { (image) in
             self.profileImageView.image = image
         })
+        
+        if review.taste != .NotRated {
+            self.ratingImageView.isHidden = false
+            if review.taste == .Like {
+                let image = UIImage(named: "Like")?.withRenderingMode(.alwaysTemplate)
+                self.ratingImageView.image = image
+                self.reviewer.text = review!.reviewer.username! + " liked this recipe."
+            } else {
+                let image = UIImage(named: "Dislike")?.withRenderingMode(.alwaysTemplate)
+                self.ratingImageView.image = image
+                self.reviewer.text = review!.reviewer.username! + " disliked this recipe."
+            }
+        } else {
+            self.ratingImageView.isHidden = true
+        }
     }
     
 }

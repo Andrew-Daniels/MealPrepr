@@ -19,6 +19,7 @@ class ReviewAlert: MPViewController, MPLikeControlDelegate {
     @IBOutlet weak var textViewBottomConstraint: NSLayoutConstraint!
     
     var recipe: Recipe!
+    var weekplan: WeekplanModel?
     var alertDelegate: AlertDelegate?
     
     override func viewDidLoad() {
@@ -30,12 +31,26 @@ class ReviewAlert: MPViewController, MPLikeControlDelegate {
     @IBAction func doneBtnClicked(_ sender: Any) {
         
         let review = Review(reviewer: self.account, reviewDetail: textView.text, recipeGUID: recipe.GUID)
+        review.difficulty = difficultyLikeCtrl.rating
+        review.taste = tasteLikeCtrl.rating
+        review.timeAccuracy = accuracyLikeCtrl.rating
+        
+        let weekplanRecipe = weekplan?.recipes?.first(where: { (r) -> Bool in
+            return r.GUID == recipe.GUID
+        })
         
         review.save { (saved) in
             if saved {
                 self.recipe.reviews.append(review)
-                self.alertDelegate?.alertDismissed()
-                self.dismiss(animated: true, completion: nil)
+                weekplanRecipe?.weekplanStatus = .Completed
+                
+                let _  = self.weekplan?.save(completionHandler: { (completed) in
+                    if completed {
+                        self.alertDelegate?.alertDismissed()
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+                
             }
         }
     }

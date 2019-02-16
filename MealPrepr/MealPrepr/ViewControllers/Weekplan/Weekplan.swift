@@ -36,6 +36,7 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
         super.viewDidAppear(animated)
         
         let _ = checkForGuestAccount()
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,7 +56,7 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
         tableView.deselectRow(at: indexPath, animated: true)
         guard let recipe = weekplan?.recipes?[indexPath.row] else { return }
         
-        self.showRecipeDetails(recipe: recipe, viewingWeekplan: true)
+        self.showRecipeDetails(recipe: recipe, weekplan: weekplan)
     }
     
     @IBAction func addBarBtnClicked(_ sender: Any) {

@@ -19,6 +19,7 @@ class Review: AccountDelegate {
     var delegate: ReviewDelegate?
     var taste: Rating?
     var timeAccuracy: Rating?
+    var difficulty: Rating?
     
     enum Rating: Int {
         case NotRated = -1
@@ -34,7 +35,8 @@ class Review: AccountDelegate {
                 "ReviewDetail": reviewDetail!,
                 "DateCreated": dateCreated?.description ?? Date().description,
                 "Taste": taste?.rawValue ?? Rating.NotRated.rawValue,
-                "TimeAccuracy": timeAccuracy?.rawValue ?? Rating.NotRated.rawValue
+                "TimeAccuracy": timeAccuracy?.rawValue ?? Rating.NotRated.rawValue,
+                "Difficulty": difficulty?.rawValue ?? Rating.NotRated.rawValue
             ]
         }
     }

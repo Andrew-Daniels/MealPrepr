@@ -24,6 +24,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     var recipe: Recipe!
+    var weekplan: WeekplanModel?
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -37,9 +38,9 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomButtonBottomConstraint: NSLayoutConstraint!
     
+    private var reviewBtn: UIBarButtonItem?
     private var viewControllers = [Controller: MPViewController]()
     private var reviewAccountsLoaded = 0
-    var viewingWeekplan: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,24 +174,27 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             
             if self.recipe.reviews.count == 0 {
                 FirebaseHelper().loadReviews(recipe: self.recipe, reviewDelegate: self) { (loaded) in
-                    
+                    if loaded {
+                        let reviews = self.recipe.reviews.filter({ (r) -> Bool in
+                            return r.taste == .Like
+                        })
+                        self.likesLabel.text = "\(reviews.count) likes"
+                    } else {
+                        self.likesLabel.text = "0 likes"
+                    }
                 }
-            }
-            
-            if viewingWeekplan {
-                
-                let reviewBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(showReviewAlert))
-                reviewBtn.tintColor = UIColor.white
-                reviewBtn.image = UIImage(named: "Done_Black")
-                if let _ = self.navigationItem.rightBarButtonItems {
-                    self.navigationItem.rightBarButtonItems?.append(reviewBtn)
-                } else {
-                    self.navigationItem.rightBarButtonItem = reviewBtn
-                }
-                
+            } else {
+                let reviews = self.recipe.reviews.filter({ (r) -> Bool in
+                    return r.taste == .Like
+                })
+                self.likesLabel.text = "\(reviews.count) likes"
             }
             
         }
+    }
+    
+    private func viewingWeekplan() -> Bool {
+        return weekplan != nil
     }
     
     @objc func showReviewAlert() {
@@ -198,6 +202,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         guard let vc = weekplanSB.instantiateViewController(withIdentifier: "ReviewAlert") as? ReviewAlert else { return }
         NotificationCenter.default.removeObserver(self)
         vc.recipe = self.recipe
+        vc.weekplan = self.weekplan
         vc.account = self.account
         vc.alertDelegate = self
         present(vc, animated: true, completion: nil)
@@ -297,6 +302,27 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             
             self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn]
         }
+        
+        if viewingWeekplan() {
+            
+            let weekplanRecipe = weekplan?.recipes?.first(where: { (r) -> Bool in
+                return r.GUID == self.recipe.GUID
+            })
+            
+            if weekplanRecipe?.weekplanStatus == .Completed {
+                return
+            }
+            
+            reviewBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(showReviewAlert))
+            reviewBtn!.tintColor = UIColor.white
+            reviewBtn!.image = UIImage(named: "Done_Black")
+            if let _ = self.navigationItem.rightBarButtonItems {
+                self.navigationItem.rightBarButtonItems?.append(reviewBtn!)
+            } else {
+                self.navigationItem.rightBarButtonItem = reviewBtn
+            }
+            
+        }
     }
     
     @objc func deleteBarBtnClicked() {
@@ -346,6 +372,9 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     override func alertDismissed() {
+        self.navigationItem.rightBarButtonItems?.removeAll(where: { (button) -> Bool in
+            return button == reviewBtn
+        })
         if let vc = viewControllers[.Reviews] as? Reviews {
             vc.tableView.reloadData()
         }

@@ -166,10 +166,12 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="151" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oXN-Aw-v3K">
-                                <rect key="frame" x="54.000000000000007" y="294.33333333333331" width="25.333333333333336" height="44"/>
-                                <color key="backgroundColor" red="0.96862745100000003" green="0.35294117650000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oXN-Aw-v3K">
+                                <rect key="frame" x="54" y="294.33333333333331" width="41.666666666666657" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.25882352939999997" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -242,6 +244,7 @@
                                 <exclude reference="wo4-K0-vLD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="kON-B1-ib8"/>
                                 <exclude reference="A4m-Jk-z1o"/>
                                 <exclude reference="QPP-eG-k5U"/>
                                 <exclude reference="S9L-8q-rMd"/>
@@ -252,20 +255,19 @@
                                 <exclude reference="5TM-IY-pJG"/>
                                 <exclude reference="LNW-M1-0WD"/>
                                 <exclude reference="vgN-s9-kKR"/>
-                                <exclude reference="kON-B1-ib8"/>
                                 <exclude reference="D7E-wN-M3L"/>
                                 <exclude reference="L5a-qj-36q"/>
-                                <exclude reference="M0h-ua-uRv"/>
-                                <exclude reference="9k8-pX-5kR"/>
-                                <exclude reference="Che-VY-OZb"/>
-                                <exclude reference="Efi-fC-Y35"/>
-                                <exclude reference="PXm-tS-VFW"/>
-                                <exclude reference="Xuh-gp-GHr"/>
                                 <exclude reference="17U-2H-JIL"/>
                                 <exclude reference="ahu-wR-LWk"/>
                                 <exclude reference="gRi-tJ-jBd"/>
                                 <exclude reference="p2h-SN-aDG"/>
                                 <exclude reference="sJu-rW-fTm"/>
+                                <exclude reference="Efi-fC-Y35"/>
+                                <exclude reference="PXm-tS-VFW"/>
+                                <exclude reference="Xuh-gp-GHr"/>
+                                <exclude reference="M0h-ua-uRv"/>
+                                <exclude reference="9k8-pX-5kR"/>
+                                <exclude reference="Che-VY-OZb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -275,20 +277,20 @@
                                 <include reference="wo4-K0-vLD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="kON-B1-ib8"/>
                                 <include reference="S9L-8q-rMd"/>
                                 <include reference="q0n-PL-kZa"/>
                                 <include reference="xBJ-Ay-ZAi"/>
                                 <include reference="LNW-M1-0WD"/>
-                                <include reference="kON-B1-ib8"/>
                                 <include reference="L5a-qj-36q"/>
-                                <include reference="9k8-pX-5kR"/>
-                                <include reference="Che-VY-OZb"/>
-                                <include reference="Efi-fC-Y35"/>
-                                <include reference="PXm-tS-VFW"/>
-                                <include reference="Xuh-gp-GHr"/>
                                 <include reference="ahu-wR-LWk"/>
                                 <include reference="gRi-tJ-jBd"/>
                                 <include reference="p2h-SN-aDG"/>
+                                <include reference="Efi-fC-Y35"/>
+                                <include reference="PXm-tS-VFW"/>
+                                <include reference="Xuh-gp-GHr"/>
+                                <include reference="9k8-pX-5kR"/>
+                                <include reference="Che-VY-OZb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -303,9 +305,9 @@
                                 <include reference="5TM-IY-pJG"/>
                                 <include reference="vgN-s9-kKR"/>
                                 <include reference="D7E-wN-M3L"/>
-                                <include reference="M0h-ua-uRv"/>
                                 <include reference="17U-2H-JIL"/>
                                 <include reference="sJu-rW-fTm"/>
+                                <include reference="M0h-ua-uRv"/>
                             </mask>
                         </variation>
                     </view>
@@ -374,24 +376,35 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9h-Ck-Yup">
+                                                            <rect key="frame" x="2.6666666666666679" y="2.6666666666666679" width="30.000000000000004" height="30.000000000000004"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="1sM-8s-vCe"/>
+                                                                <constraint firstAttribute="width" constant="30" id="3Ai-72-96A"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="I74-kp-wZP" firstAttribute="leading" secondItem="Zwy-oN-P4l" secondAttribute="trailing" constant="10" id="6kJ-7R-Hk9"/>
                                                         <constraint firstAttribute="trailing" secondItem="76o-7y-oiB" secondAttribute="trailing" constant="10" id="9Jy-XX-daw"/>
                                                         <constraint firstItem="I74-kp-wZP" firstAttribute="top" secondItem="Zwy-oN-P4l" secondAttribute="top" id="9zl-zK-hbM"/>
+                                                        <constraint firstItem="O9h-Ck-Yup" firstAttribute="centerY" secondItem="Zwy-oN-P4l" secondAttribute="centerY" multiplier="0.5" id="BkD-5w-jTc"/>
+                                                        <constraint firstItem="O9h-Ck-Yup" firstAttribute="centerX" secondItem="Zwy-oN-P4l" secondAttribute="centerX" multiplier="0.5" id="JO2-45-nAN"/>
                                                         <constraint firstItem="Zwy-oN-P4l" firstAttribute="top" secondItem="z7M-j7-YRa" secondAttribute="top" constant="10" id="KxK-0r-lEF"/>
                                                         <constraint firstItem="76o-7y-oiB" firstAttribute="top" secondItem="I74-kp-wZP" secondAttribute="bottom" constant="5" id="diY-gQ-bWD"/>
                                                         <constraint firstItem="76o-7y-oiB" firstAttribute="leading" secondItem="Zwy-oN-P4l" secondAttribute="trailing" constant="10" id="fzQ-gc-g1x"/>
                                                         <constraint firstAttribute="trailing" secondItem="I74-kp-wZP" secondAttribute="trailing" constant="10" id="h6f-fm-IBQ"/>
                                                         <constraint firstItem="Zwy-oN-P4l" firstAttribute="leading" secondItem="z7M-j7-YRa" secondAttribute="leading" constant="10" id="j9k-ne-voF"/>
-                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Zwy-oN-P4l" secondAttribute="bottom" constant="10" id="tYE-2i-7O8"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Zwy-oN-P4l" secondAttribute="bottom" priority="999" constant="10" id="tYE-2i-7O8"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="76o-7y-oiB" secondAttribute="bottom" constant="10" id="wAG-J0-fEo"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="profileImageView" destination="Zwy-oN-P4l" id="K9g-GD-7Ib"/>
+                                                    <outlet property="ratingImageView" destination="O9h-Ck-Yup" id="ehV-06-JVK"/>
                                                     <outlet property="reviewDetail" destination="76o-7y-oiB" id="plP-ex-fCA"/>
                                                     <outlet property="reviewer" destination="I74-kp-wZP" id="4DG-CG-map"/>
                                                 </connections>

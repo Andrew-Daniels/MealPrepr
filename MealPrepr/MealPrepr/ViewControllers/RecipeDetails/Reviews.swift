@@ -39,6 +39,10 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     @IBAction func reviewBtnClicked(_ sender: Any) {
         let review = Review(reviewer: self.account, reviewDetail: self.textView.text, recipeGUID: recipe.GUID)
+        review.taste = .NotRated
+        review.difficulty = .NotRated
+        review.timeAccuracy = .NotRated
+        
         review.save { (saved) in
             if saved {
                 self.recipe.reviews.append(review)

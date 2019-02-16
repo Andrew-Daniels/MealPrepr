@@ -148,20 +148,43 @@
                                                                 <constraint firstAttribute="width" constant="160" id="MAg-QW-lJ3"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06f-GN-e9K">
+                                                            <rect key="frame" x="10" y="5" width="160" height="108"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JfD-cx-cGk">
+                                                                    <rect key="frame" x="45" y="19" width="70" height="70"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="70" id="2Ij-2t-arT"/>
+                                                                        <constraint firstAttribute="width" constant="70" id="rLM-9m-thZ"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="JfD-cx-cGk" firstAttribute="centerX" secondItem="06f-GN-e9K" secondAttribute="centerX" id="ENr-4h-jEm"/>
+                                                                <constraint firstItem="JfD-cx-cGk" firstAttribute="centerY" secondItem="06f-GN-e9K" secondAttribute="centerY" id="yKf-i4-9td"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="6dJ-6A-eRb" firstAttribute="top" secondItem="9NW-qx-llN" secondAttribute="top" constant="5" id="7Qc-bb-Mkc"/>
+                                                        <constraint firstItem="06f-GN-e9K" firstAttribute="trailing" secondItem="6dJ-6A-eRb" secondAttribute="trailing" id="8Yn-It-6ze"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="Ufy-dh-IxX" secondAttribute="bottom" constant="10" id="C2Y-lw-dSS"/>
+                                                        <constraint firstItem="06f-GN-e9K" firstAttribute="leading" secondItem="6dJ-6A-eRb" secondAttribute="leading" id="MQF-OI-ocV"/>
                                                         <constraint firstAttribute="trailing" secondItem="Qv7-Y7-nWM" secondAttribute="trailing" constant="10" id="P72-fp-hTy"/>
                                                         <constraint firstAttribute="bottom" secondItem="6dJ-6A-eRb" secondAttribute="bottom" constant="5" id="TW4-AA-ouS"/>
+                                                        <constraint firstItem="06f-GN-e9K" firstAttribute="bottom" secondItem="6dJ-6A-eRb" secondAttribute="bottom" id="VQQ-lX-0AS"/>
                                                         <constraint firstItem="6dJ-6A-eRb" firstAttribute="leading" secondItem="9NW-qx-llN" secondAttribute="leading" constant="10" id="a3k-We-w79"/>
                                                         <constraint firstItem="Qv7-Y7-nWM" firstAttribute="leading" secondItem="6dJ-6A-eRb" secondAttribute="trailing" constant="10" id="efu-9O-D67"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ufy-dh-IxX" secondAttribute="trailing" constant="10" id="h8G-1z-JL2"/>
                                                         <constraint firstItem="Ufy-dh-IxX" firstAttribute="leading" secondItem="6dJ-6A-eRb" secondAttribute="trailing" constant="10" id="ngT-4m-Je1"/>
                                                         <constraint firstItem="Qv7-Y7-nWM" firstAttribute="top" secondItem="9NW-qx-llN" secondAttribute="topMargin" constant="10" id="poa-Az-7Y5"/>
+                                                        <constraint firstItem="06f-GN-e9K" firstAttribute="top" secondItem="6dJ-6A-eRb" secondAttribute="top" id="uPW-vm-jlx"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="completedImage" destination="JfD-cx-cGk" id="uJL-1o-V4C"/>
+                                                    <outlet property="completedView" destination="06f-GN-e9K" id="tAs-bc-gb2"/>
                                                     <outlet property="cookLabel" destination="h1W-fp-DvI" id="xnq-Xg-enC"/>
                                                     <outlet property="prepLabel" destination="8Ni-gs-00j" id="xZb-33-fGx"/>
                                                     <outlet property="recipeImageView" destination="6dJ-6A-eRb" id="lJP-nn-jV5"/>

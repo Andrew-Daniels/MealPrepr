@@ -146,7 +146,8 @@ class FirebaseHelper {
                     let reviewDetail = reviewData["ReviewDetail"] as? String,
                     let dateCreated = reviewData["DateCreated"] as? String,
                     let timeAccuracy = reviewData["TimeAccuracy"] as? Int,
-                    let taste = reviewData["Taste"] as? Int else { break }
+                    let taste = reviewData["Taste"] as? Int,
+                    let difficulty = reviewData["Difficulty"] as? Int else { break }
                 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
@@ -169,14 +170,17 @@ class FirebaseHelper {
                     review.delegate = reviewDelegate
                     review.taste = Review.Rating(rawValue: taste) ?? Review.Rating.NotRated
                     review.timeAccuracy = Review.Rating(rawValue: timeAccuracy) ?? Review.Rating.NotRated
+                    review.difficulty = Review.Rating(rawValue: difficulty) ?? Review.Rating.NotRated
                     
                     recipe.reviews.append(review)
                     
                     if recipe.reviews.count == value.count {
                         completionHandler(true)
+                        return
                     }
                 }
             }
+            completionHandler(false)
         }
         
     }
