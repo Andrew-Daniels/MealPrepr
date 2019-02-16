@@ -55,7 +55,7 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
         tableView.deselectRow(at: indexPath, animated: true)
         guard let recipe = weekplan?.recipes?[indexPath.row] else { return }
         
-        self.showRecipeDetails(recipe: recipe)
+        self.showRecipeDetails(recipe: recipe, viewingWeekplan: true)
     }
     
     @IBAction func addBarBtnClicked(_ sender: Any) {

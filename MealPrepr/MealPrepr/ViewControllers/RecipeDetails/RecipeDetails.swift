@@ -39,6 +39,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     private var viewControllers = [Controller: MPViewController]()
     private var reviewAccountsLoaded = 0
+    var viewingWeekplan: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +50,6 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         let index = Controller(rawValue: segmentedControl.selectedSegmentIndex)
         presentChildVC(atIndex: index)
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         setupWithRecipe()
         setupBarButtons()
@@ -76,6 +74,9 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func createControllerForSelectedIndex(index: Controller?) -> MPViewController? {
@@ -176,7 +177,30 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
                 }
             }
             
+            if viewingWeekplan {
+                
+                let reviewBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(showReviewAlert))
+                reviewBtn.tintColor = UIColor.white
+                reviewBtn.image = UIImage(named: "Done_Black")
+                if let _ = self.navigationItem.rightBarButtonItems {
+                    self.navigationItem.rightBarButtonItems?.append(reviewBtn)
+                } else {
+                    self.navigationItem.rightBarButtonItem = reviewBtn
+                }
+                
+            }
+            
         }
+    }
+    
+    @objc func showReviewAlert() {
+        let weekplanSB = UIStoryboard(name: "Weekplan", bundle: nil)
+        guard let vc = weekplanSB.instantiateViewController(withIdentifier: "ReviewAlert") as? ReviewAlert else { return }
+        NotificationCenter.default.removeObserver(self)
+        vc.recipe = self.recipe
+        vc.account = self.account
+        vc.alertDelegate = self
+        present(vc, animated: true, completion: nil)
     }
     
     func reviewProfileImageLoaded(sender: Review) {
@@ -319,5 +343,11 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         flag.reason = reason
         
         flag.save()
+    }
+    
+    override func alertDismissed() {
+        if let vc = viewControllers[.Reviews] as? Reviews {
+            vc.tableView.reloadData()
+        }
     }
 }
