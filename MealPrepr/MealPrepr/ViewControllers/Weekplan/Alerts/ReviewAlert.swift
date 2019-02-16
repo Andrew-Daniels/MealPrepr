@@ -72,6 +72,7 @@ class ReviewAlert: MPViewController, MPLikeControlDelegate {
         
         textView.layer.cornerRadius = 4
         textView.tintColor = .black
+        textView.becomeFirstResponder()
         tasteLikeCtrl.delegate = self
         difficultyLikeCtrl.delegate = self
         accuracyLikeCtrl.delegate = self

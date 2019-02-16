@@ -14,6 +14,7 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var reviewer: UILabel!
     @IBOutlet weak var reviewDetail: UILabel!
     @IBOutlet weak var ratingImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     var review: Review! {
         didSet {
@@ -43,7 +44,19 @@ class ReviewCell: UITableViewCell {
         self.reviewDetail.text = review?.reviewDetail
         self.reviewer.text = review!.reviewer.username! + " says:"
         review.reviewer.getProfilePicture(completionHandler: { (image) in
-            self.profileImageView.image = image
+            
+            if let i = image {
+                self.profileImageView.image = i
+                self.usernameLabel.isHidden = true
+            } else {
+                self.usernameLabel.isHidden = false
+                let text = self.review!.reviewer.username!.uppercased()
+                let index = text.index(text.startIndex, offsetBy: 2)
+                let finalText = text[..<index]
+                self.usernameLabel.text = finalText.description
+                self.profileImageView.image = nil
+            }
+            
         })
         
         if review.taste != .NotRated {

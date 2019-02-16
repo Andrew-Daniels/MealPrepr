@@ -156,6 +156,8 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
 
     private func setupWithRecipe() {
         if let r = recipe {
+            
+            //Setup cook/prep labels
             if r.totalCookTime.hours == 0 {
                 self.cookLabel.text = "\(r.totalCookTime.minutes)m cook"
             } else {
@@ -166,12 +168,15 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             } else {
                 self.prepLabel.text = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m prep"
             }
+            //setup datecreated label
             if let d = r.dateCreated {
                 self.dateCreatedLabel.text = "Date Created: \(d.detail)"
             }
+            //setup serving/calories labels
             self.servingLabel.text = r.numServings
             self.caloriesServingLabel.text = r.calServing
             
+            //retrieve reviews for recipe
             if self.recipe.reviews.count == 0 {
                 FirebaseHelper().loadReviews(recipe: self.recipe, reviewDelegate: self) { (loaded) in
                     if loaded {
@@ -241,14 +246,14 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     @IBAction func favoritesBtnClicked(_ sender: Any) {
         if !checkForGuestAccount() && checkForInternetConnection() {
-            (sender as! UIButton).isSelected = true
+            //(sender as! UIButton).isSelected = true
             self.account.viewingCategories()
             performSegue(withIdentifier: categorySelectorSegueIdentifier, sender: sender)
         }
     }
     @IBAction func flagBtnClicked(_ sender: Any) {
         if !checkForGuestAccount() && checkForInternetConnection() {
-            (sender as! UIButton).isSelected = true
+            //(sender as! UIButton).isSelected = true
             performSegue(withIdentifier: flagSelectorSegueIdentifier, sender: sender)
         }
     }
@@ -291,7 +296,17 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     func setupBarButtons() {
-        if account.UID == self.recipe.creatorUID {
+        
+        let isOwnerOfRecipe = account.UID == self.recipe.creatorUID
+        
+        let favoritesBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(favoritesBtnClicked(_:)))
+        favoritesBtn.image = UIImage(named: "Favorite_White")?.withRenderingMode(.alwaysTemplate)
+        favoritesBtn.tintColor = UIColor.white
+        let flagBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(flagBtnClicked(_:)))
+        flagBtn.image = UIImage(named: "Flag_White")?.withRenderingMode(.alwaysTemplate)
+        flagBtn.tintColor = UIColor.white
+        
+        if isOwnerOfRecipe {
             let deleteBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(deleteBarBtnClicked))
             deleteBtn.image = UIImage(named: "Delete_White")?.withRenderingMode(.alwaysTemplate)
             deleteBtn.tintColor = UIColor.white
@@ -300,7 +315,9 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             editBtn.image = UIImage(named: "Edit_White")?.withRenderingMode(.alwaysTemplate)
             editBtn.tintColor = UIColor.white
             
-            self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn]
+            self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn, favoritesBtn]
+        } else {
+            self.navigationItem.rightBarButtonItems = [favoritesBtn, flagBtn]
         }
         
         if viewingWeekplan() {
@@ -372,6 +389,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     override func alertDismissed() {
+        super.alertDismissed()
         self.navigationItem.rightBarButtonItems?.removeAll(where: { (button) -> Bool in
             return button == reviewBtn
         })

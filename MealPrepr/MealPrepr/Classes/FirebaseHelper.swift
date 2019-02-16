@@ -87,11 +87,13 @@ class FirebaseHelper {
         }
     }
     
-    public func downloadImage(atPath: String, renderMode: UIImage.RenderingMode, completionHandler: @escaping (_ isResponse : UIImage) -> Void) {
+    public func downloadImage(atPath: String, renderMode: UIImage.RenderingMode, completionHandler: @escaping (_ isResponse : UIImage?) -> Void) {
         storage.child(atPath).getData(maxSize: (1000 * 500)) { (data, error) in
             if let data = data, let image = UIImage(data: data)?.withRenderingMode(renderMode) {
                 completionHandler(image)
+                return
             }
+            completionHandler(nil)
         }
     }
     

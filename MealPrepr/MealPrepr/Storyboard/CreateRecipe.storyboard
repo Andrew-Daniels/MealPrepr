@@ -662,7 +662,7 @@
                                             <constraint firstAttribute="width" constant="44" id="SXD-i3-sOE"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="Edit_White"/>
+                                        <state key="normal" image="Add"/>
                                         <connections>
                                             <segue destination="fJU-wp-l6i" kind="presentation" identifier="UtensilAlert" modalPresentationStyle="overCurrentContext" id="DC9-fp-NYg">
                                                 <segue key="commit" inheritsFrom="parent" id="8cG-7V-DUR"/>
@@ -1724,7 +1724,6 @@
         <image name="Add" width="24" height="24"/>
         <image name="Cancel" width="33" height="33"/>
         <image name="Done_Black" width="33" height="33"/>
-        <image name="Edit_White" width="24" height="24"/>
         <image name="delete" width="24" height="24"/>
         <image name="error" width="24" height="24"/>
     </resources>

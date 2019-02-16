@@ -102,7 +102,7 @@ class Account {
         }
     }
     
-    func getProfilePicture(completionHandler: @escaping (_ isResponse : UIImage) -> Void) {
+    func getProfilePicture(completionHandler: @escaping (_ isResponse : UIImage?) -> Void) {
         if let p = profilePicture {
             completionHandler(p)
             return
