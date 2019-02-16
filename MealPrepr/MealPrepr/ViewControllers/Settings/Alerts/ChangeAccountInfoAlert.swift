@@ -24,6 +24,7 @@ class ChangeAccountInfoAlert: MPViewController, MPTextFieldDelegate {
     
     var changeType: ChangeType?
     var requiresCurrentPassword: Bool = true
+    var delegate: AlertDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +107,8 @@ class ChangeAccountInfoAlert: MPViewController, MPTextFieldDelegate {
                 case .Email:
                     self.account.changeEmail(password: passwordTextField.text!, toEmail: otherTextField.text!) { (success) in
                         if success {
+                            self.delegate?.alertDismissed()
+                            self.endEditing()
                             self.dismiss(animated: true, completion: nil)
                         } else {
                             self.passwordTextField.setError(errorMsg: "Password entered isn't correct.")
@@ -114,6 +117,8 @@ class ChangeAccountInfoAlert: MPViewController, MPTextFieldDelegate {
                 case .Username:
                     self.account.changeUsername(password: passwordTextField.text!, toUsername: otherTextField.text!) { (success) in
                         if success {
+                            self.delegate?.alertDismissed()
+                            self.endEditing()
                             self.dismiss(animated: true, completion: nil)
                         } else {
                             self.passwordTextField.setError(errorMsg: "Password entered isn't correct.")
@@ -122,6 +127,8 @@ class ChangeAccountInfoAlert: MPViewController, MPTextFieldDelegate {
                 case .Password:
                     self.account.changePassword(fromPassword: passwordTextField.text!, toPassword: otherTextField.text!) { (success) in
                         if success {
+                            self.delegate?.alertDismissed()
+                            self.endEditing()
                             self.dismiss(animated: true, completion: nil)
                         } else {
                             self.passwordTextField.setError(errorMsg: "Password entered isn't correct.")

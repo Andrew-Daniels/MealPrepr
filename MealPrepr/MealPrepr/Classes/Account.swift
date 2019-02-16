@@ -179,6 +179,7 @@ class Account {
                         return
                     } else {
                         Auth.auth().signIn(withEmail: toEmail, password: password, completion: nil)
+                        self.email = toEmail
                         completionHandler(true)
                     }
                 })
@@ -208,7 +209,7 @@ class Account {
     private func changeUsername(UID: String, toUsername: String) {
         let path = "Accounts/\(UID)/Username"
         let database = Database.database().reference()
-        
+        self.username = toUsername
         database.child(path).setValue(toUsername)
     }
 }

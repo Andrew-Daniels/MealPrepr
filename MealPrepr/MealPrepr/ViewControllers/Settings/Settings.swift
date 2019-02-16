@@ -17,7 +17,9 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var changePhotoBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var dateJoinedLabel: UILabel!
+    
     var settingsTableViewModel = [SettingsOption]()
     
     enum SettingsOption: String {
@@ -43,7 +45,7 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
         if let date = self.account.dateJoined?.detail {
             self.dateJoinedLabel.text = "Date Joined: \(date)"
         }
-        self.usernameLabel.text = self.account.username
+        setupAccountInfoFields()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -112,6 +114,8 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
             let setting = sender as? SettingsOption,
             let vc = segue.destination as? ChangeAccountInfoAlert {
             
+            vc.delegate = self
+            
             switch setting {
                 
             case .ChangeUsername:
@@ -131,6 +135,17 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
             }
             
         }
+    }
+    
+    private func setupAccountInfoFields() {
+        self.usernameLabel.text = self.account.username
+        self.emailLabel.text = self.account.email
+    }
+    
+    override func alertDismissed() {
+        super.alertDismissed()
+        
+        setupAccountInfoFields()
     }
 
 }
