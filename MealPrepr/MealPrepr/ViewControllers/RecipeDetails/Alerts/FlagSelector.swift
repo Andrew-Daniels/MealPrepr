@@ -37,7 +37,12 @@ class FlagSelector: MPViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SelectorCell
         
-        cell.label.text = flagTypes[indexPath.row]
+        let reason = flagTypes[indexPath.row]
+        
+        cell.label.text = reason
+        cell.cancelImageView.isHidden = !(flag?.reason != nil && flag?.reason == reason)
+        cell.accessoryType = cell.cancelImageView.isHidden ? .disclosureIndicator : .none
+        
         return cell
     }
     
@@ -46,10 +51,12 @@ class FlagSelector: MPViewController, UITableViewDelegate, UITableViewDataSource
         
         let reason = flagTypes[indexPath.row]
         
-        if let flag = flag {
+        let isDelete = flag?.reason != nil && flag?.reason == reason
+        
+        if let flag = flag, !isDelete {
             flag.reason = reason
             flag.save()
-        } else {
+        } else if !isDelete {
             flag = Flag()
             flag?.date = Date()
             flag?.issuer = self.account
@@ -57,6 +64,13 @@ class FlagSelector: MPViewController, UITableViewDelegate, UITableViewDataSource
             flag?.recipeGUID = recipe?.GUID
             flag?.save()
             recipe?.flags.append(flag!)
+        } else {
+            flag?.delete(completionHandler: { (deleted) in
+                
+            })
+            recipe?.flags.removeAll(where: { (f) -> Bool in
+                return f.reason == flag?.reason
+            })
         }
         
         delegate?.flagSelected()

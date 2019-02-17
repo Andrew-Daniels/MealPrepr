@@ -16,7 +16,7 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewContainerHeightConstraint: NSLayoutConstraint!
-    let placeHolderText = "Say something.."
+    let placeHolderText = "Ask a question.."
     
     var recipe: Recipe!
     

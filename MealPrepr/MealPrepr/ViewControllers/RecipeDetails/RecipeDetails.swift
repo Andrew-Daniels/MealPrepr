@@ -16,10 +16,10 @@ private let reviewsIdentifier = "RecipeDetails-Reviews"
 class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDelegate, ReviewDelegate {
     
     enum Controller: Int {
-        case Instructions = 0
+        case Ingredients = 0
         case Utensils = 1
-        case Ingredients = 2
-        case Reviews = 3
+        case Instructions = 2
+        case Feedback = 3
         case Photos = 4
     }
     
@@ -99,7 +99,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             vcIdentifier = createInstructionsIdentifier
         case .Photos:
             vcIdentifier = createPhotosIdentifier
-        case .Reviews:
+        case .Feedback:
             vcIdentifier = reviewsIdentifier
             storyboardIdentifier = "RecipeDetails"
         }
@@ -148,8 +148,8 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             break
         case .Photos:
             break
-        case .Reviews:
-            if let reviewsVC = viewControllers[.Reviews] as? Reviews {
+        case .Feedback:
+            if let reviewsVC = viewControllers[.Feedback] as? Reviews {
                 reviewsVC.recipe = self.recipe
                 reviewsVC.account = self.account
             }
@@ -222,7 +222,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     func reviewProfileImageLoaded(sender: Review) {
         
-        if let vc = viewControllers[.Reviews] as? Reviews {
+        if let vc = viewControllers[.Feedback] as? Reviews {
             let firstIndex = self.recipe.reviews.firstIndex { (review) -> Bool in
                 if review.guid == sender.guid {
                     return true
@@ -241,7 +241,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         
         reviewAccountsLoaded += 1
         
-        if let vc = viewControllers[.Reviews] as? Reviews {
+        if let vc = viewControllers[.Feedback] as? Reviews {
             
             if reviewAccountsLoaded == self.recipe.reviewCount {
                 vc.tableView.reloadData()
@@ -269,7 +269,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         presentChildVC(atIndex: index)
         
-        if let vc = viewControllers[.Reviews] {
+        if let vc = viewControllers[.Feedback] {
             vc.endEditing()
         }
     }
@@ -408,7 +408,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             self.navigationItem.rightBarButtonItems?.removeAll(where: { (button) -> Bool in
                 return button == reviewBtn
             })
-            if let vc = viewControllers[.Reviews] as? Reviews {
+            if let vc = viewControllers[.Feedback] as? Reviews {
                 vc.tableView.reloadData()
             }
         }

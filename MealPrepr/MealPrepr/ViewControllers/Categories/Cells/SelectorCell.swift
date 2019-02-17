@@ -11,16 +11,21 @@ import UIKit
 class SelectorCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var cancelImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        initCell()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    private func initCell() {
+        cancelImageView.image = UIImage(named: "Cancel")?.withRenderingMode(.alwaysTemplate)
+        cancelImageView.tintColor = .white
     }
 
 }
