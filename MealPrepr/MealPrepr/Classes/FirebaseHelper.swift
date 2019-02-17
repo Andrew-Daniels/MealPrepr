@@ -469,4 +469,14 @@ class FirebaseHelper {
             database.child(path).setValue(Recipe.Status.Deleted.rawValue)
         }
     }
+    
+    public func loadRecipesFor(user userId: String, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
+        let path = "Recipes"
+        
+        database.child(path).queryOrdered(byChild: "Creator").queryEqual(toValue: userId).observeSingleEvent(of: .value) { (snapshot) in
+            self.recipesFromSnapshot(snapshot: snapshot, completionHandler: { (recipes) in
+                completionHandler(recipes)
+            })
+        }
+    }
 }

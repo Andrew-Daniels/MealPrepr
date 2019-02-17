@@ -35,6 +35,7 @@ class WeekplanModel {
             if let recipes = self.recipes {
                 for recipe in recipes {
                     var recipeDict = [String: Any]()
+                    recipe.weekplanStatus = recipe.weekplanStatus ?? RecipeStatus.Active
                     recipeDict[recipe.GUID!] = recipe.weekplanStatus?.rawValue ?? RecipeStatus.Active.rawValue
                     array.append(recipeDict)
                 }
