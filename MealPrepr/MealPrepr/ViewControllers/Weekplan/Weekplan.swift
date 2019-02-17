@@ -20,6 +20,8 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
     @IBOutlet weak var weekplanNotExistView: UIView!
     @IBOutlet weak var weekplanExistsView: UIView!
     private var weekplan: WeekplanModel?
+    private var editBtn: UIBarButtonItem?
+    private var groceryListBtn: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
     }
     
     @IBAction func editBtnClicked(_ sender: Any) {
-        
+        performSegue(withIdentifier: "editWeekplan", sender: sender)
     }
     
     @IBAction func shoppingCartBtnClicked(_ sender: Any) {
@@ -81,11 +83,25 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
             tableView.reloadData()
             weekplanExistsView.isHidden = false
             weekplanNotExistView.isHidden = true
+            setupBarButtons()
         } else {
             //Show create weekplan message
             weekplanExistsView.isHidden = true
             weekplanNotExistView.isHidden = false
         }
+    }
+    
+    private func setupBarButtons() {
+        
+        editBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(editBtnClicked(_:)))
+        editBtn?.image = UIImage(named: "Edit_Black")?.withRenderingMode(.alwaysTemplate)
+        editBtn?.tintColor = UIColor.white
+//        groceryListBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(shoppingCartBtnClicked(_:)))
+//        groceryListBtn?.image = UIImage(named: "ShoppingCart_Black")?.withRenderingMode(.alwaysTemplate)
+//        groceryListBtn?.tintColor = UIColor.white
+        
+        self.navigationItem.rightBarButtonItems?.append(editBtn!)
+        //self.navigationItem.leftBarButtonItem = groceryListBtn!
     }
 
     @IBAction func backToWeekplan(segue: UIStoryboardSegue) {
