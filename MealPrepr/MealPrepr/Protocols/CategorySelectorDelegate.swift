@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CategorySelectorDelegate {
-    func categorySelected(category: String)
+    func categorySelected(category: String?)
 }

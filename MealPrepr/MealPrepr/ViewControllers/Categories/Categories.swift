@@ -126,11 +126,14 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
         return checkForInternetConnection()
     }
     
-    func categorySelected(category: String) {
+    func categorySelected(category: String?) {
         
-        self.category = category
+        if let c = category {
+            self.category = c
+            
+            reloadRecipes()
+        }
         
-        reloadRecipes()
     }
     
     public func reloadRecipes() {

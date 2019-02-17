@@ -400,10 +400,13 @@ class FirebaseHelper {
         }
     }
     
-    public func saveRecipeToCategory(account: Account, category: String, recipe: Recipe) {
-        if let UID = account.UID, let GUID = recipe.GUID {
+    public func saveRecipeToCategory(account: Account, category: String?, recipe: Recipe) {
+        if let UID = account.UID, let GUID = recipe.GUID, let c = category {
             let path = "Accounts/\(UID)/SavedRecipes/\(GUID)"
-            database.child(path).setValue(category)
+            database.child(path).setValue(c)
+        } else if let UID = account.UID, let GUID = recipe.GUID {
+            let path = "Accounts/\(UID)/SavedRecipes/\(GUID)"
+            database.child(path).removeValue()
         }
     }
     
@@ -530,6 +533,19 @@ class FirebaseHelper {
                     })
                 }) { (error) in
                     print(error)
+                }
+            }
+        }
+    }
+    
+    public func getCategoryForRecipe(recipe: Recipe, account: Account, completionHandler: @escaping (_ isResponse : String?) -> Void) {
+        if let recipeGUID = recipe.GUID, let accountGUID = account.UID {
+            let path = "Accounts/\(accountGUID)/SavedRecipes/\(recipeGUID)"
+            database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                if let value = snapshot.value as? String {
+                    completionHandler(value)
+                } else {
+                    completionHandler(nil)
                 }
             }
         }

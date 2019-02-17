@@ -30,6 +30,7 @@ class Recipe {
     var reviews = [Review]()
     var flags = [Flag]()
     var reviewCount = 0
+    private var category: String?
     private var cook: (minutes: Int, hours: Int)!
     private var prep: (minutes: Int, hours: Int)!
     
@@ -311,6 +312,26 @@ class Recipe {
                 print("flags weren't loaded")
             }
         }
+    }
+    
+    func getCategory(account: Account, completionHandler: @escaping (_ isResponse : String?) -> Void) -> String? {
+        if let c = category {
+            return c
+        } else {
+            FirebaseHelper().getCategoryForRecipe(recipe: self, account: account) { (category) in
+                self.category = category
+                completionHandler(category)
+            }
+        }
+        return nil
+    }
+    
+    func getCategory() -> String? {
+        return category
+    }
+    
+    func setCategory(category: String?) {
+        self.category = category
     }
     
 }

@@ -17,7 +17,6 @@ class FlagSelector: MPViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet var containerView: UIView!
     var delegate: FlagSelectorDelegate?
     var alertDelegate: AlertDelegate?
-    var sender: Any?
     var flag: Flag?
     var recipe: Recipe?
     
@@ -85,9 +84,6 @@ class FlagSelector: MPViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     private func dismiss() {
-        if let sender = self.sender as? UIButton {
-            sender.isSelected = false
-        }
         self.account.finishedViewingCategories()
         self.dismiss(animated: true, completion: nil)
     }

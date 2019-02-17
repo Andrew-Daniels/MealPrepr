@@ -24,8 +24,11 @@ class SelectorCell: UITableViewCell {
     }
     
     private func initCell() {
-        cancelImageView.image = UIImage(named: "Cancel")?.withRenderingMode(.alwaysTemplate)
-        cancelImageView.tintColor = .white
+        if cancelImageView != nil {
+            cancelImageView.image = UIImage(named: "Cancel")?.withRenderingMode(.alwaysTemplate)
+            cancelImageView.tintColor = .white
+        }
+        
     }
 
 }

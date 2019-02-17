@@ -183,9 +183,9 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         return super.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
     }
     
-    public func retrieveRecipes(category: String = "All") {
+    public func retrieveRecipes(category: String? = "All") {
         
-        if category != selectedCategory {
+        if category != selectedCategory, let category = category {
             
             if category == "All" {
                 FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
@@ -246,7 +246,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
         recipeListCollectionView.reloadData()
     }
     
-    func categorySelected(category: String) {
+    func categorySelected(category: String?) {
         retrieveRecipes(category: category)
     }
     

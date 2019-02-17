@@ -202,6 +202,12 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
                 return f.issuer.UID == self.account.UID
             }
             
+            let _ = recipe.getCategory(account: self.account) { (category) in
+                if category != nil {
+                    self.favoritesBtn?.tintColor = redColor
+                }
+            }
+            
         }
     }
     
@@ -286,14 +292,13 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         case categorySelectorSegueIdentifier:
             if let vc = segue.destination as? CategorySelector {
                 vc.delegate = self
-                vc.sender = sender
+                vc.recipe = recipe
                 vc.alertDelegate = self
             }
             return
         case flagSelectorSegueIdentifier:
             if let vc = segue.destination as? FlagSelector {
                 vc.delegate = self
-                vc.sender = sender
                 vc.alertDelegate = self
                 vc.recipe = recipe
                 vc.flag = flag
@@ -376,7 +381,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func categorySelected(category: String) {
+    func categorySelected(category: String?) {
         FirebaseHelper().saveRecipeToCategory(account: self.account, category: category, recipe: self.recipe)
         if let tabBarVC = self.tabBarController as? HomeTabBarController {
             if let catNVC = tabBarVC.getVC(controller: .Categories) as? CategoriesNavigationController {
@@ -384,6 +389,11 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
                     catVC.reloadRecipes()
                 }
             }
+        }
+        if recipe.getCategory() != nil {
+            self.favoritesBtn?.tintColor = redColor
+        } else {
+            self.favoritesBtn?.tintColor = .white
         }
     }
     

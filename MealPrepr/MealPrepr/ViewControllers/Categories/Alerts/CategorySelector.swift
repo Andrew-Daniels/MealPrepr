@@ -19,10 +19,10 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     var delegate: CategorySelectorDelegate?
     var alertDelegate: AlertDelegate?
     var sender: Any?
+    var recipe: Recipe?
     var showsAll = false
     
     override func viewDidLoad() {
-        // Do any additional setup after loading the view.
         alertDelegate?.alertShown()
     }
     
@@ -42,6 +42,11 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
         
         if !showsAll {
             category = self.account.recipeCategories[indexPath.row]
+            let recipeCat = recipe?.getCategory(account: self.account, completionHandler: { (category) in
+                
+            })
+            cell.cancelImageView?.isHidden = !(recipeCat != nil && recipeCat == category)
+            cell.accessoryType = cell.cancelImageView != nil && cell.cancelImageView.isHidden ? .disclosureIndicator : .none
         } else {
             if indexPath.row > 0 {
                 category = self.account.recipeCategories[indexPath.row - 1]
@@ -53,10 +58,17 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var category = "All"
+        var category: String? = "All"
         
         if !showsAll {
             category = self.account.recipeCategories[indexPath.row]
+            
+            if let r = recipe, r.getCategory() != category {
+                r.setCategory(category: category)
+            } else if let r = recipe {
+                r.setCategory(category: nil)
+                category = nil
+            }
         } else {
             if indexPath.row > 0 {
                 category = self.account.recipeCategories[indexPath.row - 1]
@@ -80,15 +92,5 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
         self.account.finishedViewingCategories()
         self.dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
