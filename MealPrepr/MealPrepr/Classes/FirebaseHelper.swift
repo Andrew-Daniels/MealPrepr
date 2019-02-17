@@ -263,6 +263,7 @@ class FirebaseHelper {
         
         let path = "Flags/\(flag.recipeGUID!)/"
         var referenceKey: String!
+        flag.date = Date()
         if let uid = flag.uid {
             referenceKey = uid
         } else {
@@ -290,8 +291,8 @@ class FirebaseHelper {
     }
     
     public func deleteFlag(flag: Flag, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
-        if let uid = flag.uid {
-            let path = "Flags/\(uid)"
+        if let uid = flag.uid, let recipeGUID = flag.recipeGUID {
+            let path = "Flags/\(recipeGUID)/\(uid)"
             database.child(path).removeValue()
             completionHandler(true)
             return
