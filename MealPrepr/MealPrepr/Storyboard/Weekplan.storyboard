@@ -220,7 +220,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fej-sB-Z2s">
                             <connections>
                                 <action selector="addBarBtnClicked:" destination="W2f-DU-o0E" id="lnx-3z-PQt"/>
-                                <segue destination="w1k-Oj-iHG" kind="show" id="t18-oE-dVg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -232,6 +231,7 @@
                         <outlet property="weekplanNotExistView" destination="f2I-xw-2gM" id="2HR-xM-mca"/>
                         <segue destination="NqR-lY-aS9" kind="unwind" identifier="backToSignUp" unwindAction="backToSignUpWithSegue:" id="Dtg-Sz-VDH"/>
                         <segue destination="w1k-Oj-iHG" kind="show" identifier="editWeekplan" id="eQT-SE-Yar"/>
+                        <segue destination="w1k-Oj-iHG" kind="show" identifier="addWeekplan" id="tMb-lu-n7D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nW4-rR-vKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -895,7 +895,7 @@
         <image name="ShoppingCart_Black" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eQT-SE-Yar"/>
+        <segue reference="tMb-lu-n7D"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
