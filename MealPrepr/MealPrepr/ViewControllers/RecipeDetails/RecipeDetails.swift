@@ -170,7 +170,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             }
             //setup datecreated label
             if let d = r.dateCreated {
-                self.dateCreatedLabel.text = "created: \(d.detail.lowercased())"
+                self.dateCreatedLabel.text = " created: \(d.detail.lowercased())"
             }
             //setup serving/calories labels
             self.servingLabel.text = r.numServings

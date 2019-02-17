@@ -1259,7 +1259,7 @@
                                     </collectionView>
                                     <searchBar contentMode="redraw" placeholder="Search Utensils" translatesAutoresizingMaskIntoConstraints="NO" id="Qad-np-I1f">
                                         <rect key="frame" x="0.0" y="102" width="414" height="56"/>
-                                        <color key="barTintColor" red="0.94901960784313721" green="0.25882352941176467" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" red="0.96862745098039216" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="fJU-wp-l6i" id="xvv-cd-czp"/>
