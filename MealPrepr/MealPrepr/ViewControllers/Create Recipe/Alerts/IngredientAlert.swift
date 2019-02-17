@@ -106,4 +106,8 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate, UIPickerViewDelega
         let title = self.ingredientUnits[row]
         return NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
 }

@@ -157,5 +157,9 @@ class ChangeAccountInfoAlert: MPViewController, MPTextFieldDelegate {
         let _ = passwordTextField.resignFirstResponder()
         let _ = otherTextField.resignFirstResponder()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
 
 }
