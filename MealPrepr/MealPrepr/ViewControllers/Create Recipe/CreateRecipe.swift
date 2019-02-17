@@ -320,11 +320,12 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                                         // Put your code which should be executed with a delay here
                                         if let collectionView = (homeVC as! Home).collectionView {
                                             if collectionView.numberOfItems(inSection: 0) > 0 {
-                                                if self.isEditingRecipe() {
-                                                    collectionView.reloadData()
-                                                } else {
-                                                    collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
-                                                }
+//                                                if self.isEditingRecipe() {
+//                                                    collectionView.reloadData()
+//                                                } else {
+//                                                    collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+//                                                }
+                                                collectionView.reloadData()
                                             }
                                         }
                                     })

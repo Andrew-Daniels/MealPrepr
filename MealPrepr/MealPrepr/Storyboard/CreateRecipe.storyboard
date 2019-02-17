@@ -1454,7 +1454,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYT-mE-oBy">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYT-mE-oBy">
                                         <rect key="frame" x="358" y="40" width="44" height="44"/>
                                         <state key="normal" image="Done_Black"/>
                                         <connections>
@@ -1706,6 +1706,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addBtn" destination="MYT-mE-oBy" id="1b6-dO-5JA"/>
                         <outlet property="collectionView" destination="AiU-h1-3R1" id="hpi-wz-nGo"/>
                         <outlet property="hoursPickerView" destination="4pj-Yk-aly" id="Qb9-i0-dNa"/>
                         <outlet property="instructionTextView" destination="Z6s-nP-yQS" id="CEs-aI-UMX"/>

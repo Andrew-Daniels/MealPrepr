@@ -33,6 +33,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var hoursPickerView: UIPickerView!
     @IBOutlet weak var minutesPickerView: UIPickerView!
+    @IBOutlet weak var addBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,9 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.endEditing()
+        
         let cell = collectionView.cellForItem(at: indexPath) as! InstructionIngredientCell
         cell.selectedIngredient = !cell.selectedIngredient
         if cell.selectedIngredient {
@@ -131,6 +135,14 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
             textView.text = ""
             return
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        self.addBtn.isEnabled =
+            !textView.text.isEmpty &&
+            textView.text.trimmingCharacters(in: .whitespacesAndNewlines) != ""
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -246,6 +258,7 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
             
             instructionTextView.text = instruction.instruction
             segmentedControl.selectedSegmentIndex = instruction.type.rawValue
+            addBtn.isEnabled = true
             
             for ingredient in instruction.ingredients {
                 let index = availableIngredients?.firstIndex { (containedIngredient) -> Bool in
@@ -273,5 +286,11 @@ class InstructionAlert: MPViewController, UICollectionViewDataSource, UICollecti
     
     @objc func panGestureRecognizerHandler() {
         self.instructionTextView.resignFirstResponder()
+    }
+    
+    override func endEditing() {
+        super.endEditing()
+        
+        self.instructionTextView.endEditing(true)
     }
 }
