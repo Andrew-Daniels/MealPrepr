@@ -293,14 +293,14 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Difficulty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zha-hb-Sxh">
-                                        <rect key="frame" x="144.66666666666666" y="219" width="124.99999999999997" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Was this difficult?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zha-hb-Sxh">
+                                        <rect key="frame" x="139" y="219" width="136" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep and Cook Time Accuracy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcZ-Xp-6mz">
-                                        <rect key="frame" x="91.666666666666686" y="324" width="231" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did it require the amount of time as expected?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcZ-Xp-6mz">
+                                        <rect key="frame" x="30.666666666666657" y="324" width="353" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -336,7 +336,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PIq-sj-D9g">
-                                        <rect key="frame" x="17" y="460" width="380" height="436"/>
+                                        <rect key="frame" x="17" y="460" width="380" height="394"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -355,7 +355,7 @@
                                     <constraint firstItem="PIq-sj-D9g" firstAttribute="leading" secondItem="kxn-AP-MOM" secondAttribute="leading" id="Hac-Hq-icS"/>
                                     <constraint firstItem="HIe-2k-6XB" firstAttribute="leading" secondItem="yNr-qq-LgW" secondAttribute="leading" constant="12" id="JCJ-E8-j9q"/>
                                     <constraint firstItem="CJ0-7w-7a6" firstAttribute="centerX" secondItem="yNr-qq-LgW" secondAttribute="centerX" id="Ma9-uD-Hdk"/>
-                                    <constraint firstAttribute="bottom" secondItem="PIq-sj-D9g" secondAttribute="bottom" id="R2B-zG-f5c"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="PIq-sj-D9g" secondAttribute="bottom" id="R2B-zG-f5c"/>
                                     <constraint firstItem="024-h8-GWG" firstAttribute="top" secondItem="n9b-dg-xa3" secondAttribute="bottom" constant="40" id="Rjy-vT-3h5"/>
                                     <constraint firstItem="PIq-sj-D9g" firstAttribute="top" secondItem="kxn-AP-MOM" secondAttribute="bottom" constant="10" id="XoP-1F-psg"/>
                                     <constraint firstItem="n9b-dg-xa3" firstAttribute="centerX" secondItem="yNr-qq-LgW" secondAttribute="centerX" id="b1s-aQ-nzS"/>

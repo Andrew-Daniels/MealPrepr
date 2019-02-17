@@ -421,6 +421,10 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             if let vc = viewControllers[.Feedback] as? Reviews {
                 vc.tableView.reloadData()
             }
+            
+            segmentedControl.selectedSegmentIndex = Controller.Feedback.rawValue
+            self.presentChildVC(atIndex: .Feedback)
+
         }
         
     }

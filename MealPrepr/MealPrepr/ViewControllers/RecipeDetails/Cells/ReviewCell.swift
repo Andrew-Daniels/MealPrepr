@@ -43,7 +43,7 @@ class ReviewCell: UITableViewCell {
         self.ratingImageView.layer.cornerRadius = self.ratingImageView.frame.height / 2
         
         self.reviewDetail.text = review?.reviewDetail
-        self.reviewer.text = review!.reviewer.username! + " says:"
+        self.reviewer.text = review!.reviewer.username! + " asks:"
         review.reviewer.getProfilePicture(completionHandler: { (image) in
             
             if let i = image {
