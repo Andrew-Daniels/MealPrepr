@@ -28,6 +28,7 @@ class Recipe {
     var utensilDelegate: UtensilDelegate?
     var weekplanStatus: WeekplanModel.RecipeStatus?
     var reviews = [Review]()
+    var flags = [Flag]()
     var reviewCount = 0
     private var cook: (minutes: Int, hours: Int)!
     private var prep: (minutes: Int, hours: Int)!
@@ -226,6 +227,8 @@ class Recipe {
     }
     
     private func initWithRecipeValue(recipeValue: [String: Any]) {
+        let fbh = FirebaseHelper()
+        
         if let dateCreated = recipeValue["DateCreated"] as? String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
@@ -266,7 +269,7 @@ class Recipe {
             for utensil in utensils {
                 let u = Utensil()
                 u.title = utensil
-                FirebaseHelper().loadUtensil(utensil: u) { (success) in
+                fbh.loadUtensil(utensil: u) { (success) in
                     if success {
                         self.utensilDelegate?.photoDownloaded(sender: u)
                     }
@@ -279,7 +282,7 @@ class Recipe {
             self.photoPaths = photoPaths
             self.downloadedPhotos = [String: UIImage]()
             for (index, path) in self.photoPaths.enumerated() {
-                FirebaseHelper().downloadImage(atPath: path, renderMode: .alwaysOriginal) { (image) in
+                fbh.downloadImage(atPath: path, renderMode: .alwaysOriginal) { (image) in
                     self.downloadedPhotos[path] = image
                     self.photos[index] = image
                     self.recipeDelegate?.photoDownloaded(sender: self)
@@ -299,6 +302,14 @@ class Recipe {
         }
         if let status = recipeValue["Status"] as? Int {
             self.status = Status.init(rawValue: status) ?? .Inactive
+        }
+        
+        fbh.loadFlagsForRecipe(recipe: self) { (completed) in
+            if completed {
+                print("flags loaded successfully")
+            } else {
+                print("flags weren't loaded")
+            }
         }
     }
     

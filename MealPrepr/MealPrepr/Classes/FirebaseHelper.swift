@@ -261,21 +261,32 @@ class FirebaseHelper {
     
     public func saveFlag(flag: Flag, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
         
-        let path = "Flags/\(flag.recipe.GUID!)/"
-        let reference = database.child(path).childByAutoId()
-        let updates = [
-            path + "\(reference.key)": flag.flagDict
-        ]
-        
-        findRecipeFlagForUser(recipe: flag.recipe, account: flag.issuer) { (flag) in
-            if let f = flag {
-                f.delete(completionHandler: { (success) in
-                    self.database.updateChildValues(updates)
-                })
-            } else {
-                self.database.updateChildValues(updates)
-            }
+        let path = "Flags/\(flag.recipeGUID!)/"
+        var referenceKey: String!
+        if let uid = flag.uid {
+            referenceKey = uid
+        } else {
+            referenceKey = database.child(path).childByAutoId().key
         }
+        
+        if let key = referenceKey {
+            let updates = [
+                path + "\(key)": flag.flagDict
+            ]
+            flag.uid = key
+            self.database.updateChildValues(updates)
+            completionHandler(true)
+        }
+        
+//        findRecipeFlagForUser(recipeGUID: flag.recipeGUID, account: flag.issuer) { (flag) in
+//            if let f = flag {
+//                f.delete(completionHandler: { (success) in
+//                    self.database.updateChildValues(updates)
+//                })
+//            } else {
+//                self.database.updateChildValues(updates)
+//            }
+//        }
     }
     
     public func deleteFlag(flag: Flag, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
@@ -288,8 +299,8 @@ class FirebaseHelper {
         completionHandler(false)
     }
     
-    public func findRecipeFlagForUser(recipe: Recipe, account: Account, completionHandler: @escaping (_ isResponse : Flag?) -> Void) {
-        let path = "Flags/\(recipe.GUID!)"
+    public func findRecipeFlagForUser(recipeGUID: String, account: Account, completionHandler: @escaping (_ isResponse : Flag?) -> Void) {
+        let path = "Flags/\(recipeGUID)"
         database.child(path)
             .queryOrdered(byChild: "Issuer")
             .queryEqual(toValue: account.UID)
@@ -325,6 +336,66 @@ class FirebaseHelper {
                 return
             }
                 completionHandler(nil)
+        }
+    }
+    
+    public func loadFlagsForRecipe(recipe: Recipe, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
+        let path = "Flags/\(recipe.GUID!)"
+        database.child(path)
+            .observeSingleEvent(of: .value) { (snapshot) in
+                self.flagsFromSnapshot(snapshot: snapshot, completionHandler: { (flags) in
+                    recipe.flags = flags
+                    completionHandler(true)
+                    return
+                })
+        }
+    }
+    
+    private func flagsFromSnapshot(snapshot: DataSnapshot, completionHandler: @escaping (_ isResponse : [Flag]) -> Void) {
+        var flags = [Flag]()
+        if let value = snapshot.value as? NSDictionary {
+            
+            for flagInfo in value {
+                
+                if let guid = flagInfo.key as? String {
+                    
+                    let flag = Flag()
+                    flag.uid = guid
+                    flag.recipeGUID = snapshot.key
+                    guard let flagInfo = flagInfo.value as? [String: Any] else { break }
+                    
+                    if let dateCreated = flagInfo["Date"] as? String {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+                        flag.date = dateFormatter.date(from: dateCreated)
+                        if flag.date == nil {
+                            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
+                            flag.date = dateFormatter.date(from: dateCreated)
+                        }
+                    }
+                    
+                    if let issuerUID = flagInfo["Issuer"] as? String {
+                        let issuer = Account(UID: issuerUID, completionHandler: { (created) in
+                            if !created {
+                                print("Issuer for flag couldn't be found")
+                            }
+                        })
+                        flag.issuer = issuer
+                    }
+                    
+                    if let reason = flagInfo["Reason"] as? String {
+                        flag.reason = reason
+                    }
+                    
+                    flags.append(flag)
+                    
+                    if flags.count == value.count {
+                        completionHandler(flags)
+                    }
+                }
+            }
+        } else {
+            completionHandler(flags)
         }
     }
     

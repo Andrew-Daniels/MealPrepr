@@ -39,8 +39,11 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     @IBOutlet weak var bottomButtonBottomConstraint: NSLayoutConstraint!
     
     private var reviewBtn: UIBarButtonItem?
+    private var favoritesBtn: UIBarButtonItem?
+    private var flagBtn: UIBarButtonItem?
     private var viewControllers = [Controller: MPViewController]()
     private var reviewAccountsLoaded = 0
+    private var flag: Flag?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,6 +198,10 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
                 self.likesLabel.text = "\(reviews.count) likes"
             }
             
+            flag = recipe.flags.first { (f) -> Bool in
+                return f.issuer.UID == self.account.UID
+            }
+            
         }
     }
     
@@ -288,6 +295,8 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
                 vc.delegate = self
                 vc.sender = sender
                 vc.alertDelegate = self
+                vc.recipe = recipe
+                vc.flag = flag
             }
             return
         default:
@@ -299,12 +308,12 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         
         let isOwnerOfRecipe = account.UID == self.recipe.creatorUID
         
-        let favoritesBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(favoritesBtnClicked(_:)))
-        favoritesBtn.image = UIImage(named: "Favorite_White")?.withRenderingMode(.alwaysTemplate)
-        favoritesBtn.tintColor = UIColor.white
-        let flagBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(flagBtnClicked(_:)))
-        flagBtn.image = UIImage(named: "Flag_White")?.withRenderingMode(.alwaysTemplate)
-        flagBtn.tintColor = UIColor.white
+        favoritesBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(favoritesBtnClicked(_:)))
+        favoritesBtn?.image = UIImage(named: "Favorite_White")?.withRenderingMode(.alwaysTemplate)
+        favoritesBtn?.tintColor = UIColor.white
+        flagBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(flagBtnClicked(_:)))
+        flagBtn?.image = UIImage(named: "Flag_White")?.withRenderingMode(.alwaysTemplate)
+        flagBtn?.tintColor = flag != nil ? redColor : UIColor.white
         
         if isOwnerOfRecipe {
             let deleteBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(deleteBarBtnClicked))
@@ -315,9 +324,9 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             editBtn.image = UIImage(named: "Edit_White")?.withRenderingMode(.alwaysTemplate)
             editBtn.tintColor = UIColor.white
             
-            self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn, favoritesBtn]
+            self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn, favoritesBtn!]
         } else {
-            self.navigationItem.rightBarButtonItems = [favoritesBtn, flagBtn]
+            self.navigationItem.rightBarButtonItems = [favoritesBtn!, flagBtn!]
         }
         
         if viewingWeekplan() {
@@ -378,14 +387,14 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         }
     }
     
-    func flagSelected(reason: String) {
-        let flag = Flag()
-        flag.date = Date()
-        flag.recipe = recipe
-        flag.issuer = self.account
-        flag.reason = reason
+    func flagSelected() {
         
-        flag.save()
+        flag = recipe.flags.first { (f) -> Bool in
+            return f.issuer.UID == self.account.UID
+        }
+        
+        flagBtn?.tintColor = flag != nil ? redColor : UIColor.white
+        
     }
     
     override func alertDismissed() {

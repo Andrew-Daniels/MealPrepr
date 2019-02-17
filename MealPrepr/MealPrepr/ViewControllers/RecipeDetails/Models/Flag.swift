@@ -15,7 +15,7 @@ class Flag {
     var date: Date!
     var issuer: Account!
     var reason: String!
-    var recipe: Recipe!
+    var recipeGUID: String!
     
     var flagDict: [String: Any] {
         get {

@@ -18,6 +18,8 @@ class FlagSelector: MPViewController, UITableViewDelegate, UITableViewDataSource
     var delegate: FlagSelectorDelegate?
     var alertDelegate: AlertDelegate?
     var sender: Any?
+    var flag: Flag?
+    var recipe: Recipe?
     
     override func viewDidLoad() {
         alertDelegate?.alertShown()
@@ -42,7 +44,22 @@ class FlagSelector: MPViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Save flag to recipe here
         
-        delegate?.flagSelected(reason: flagTypes[indexPath.row])
+        let reason = flagTypes[indexPath.row]
+        
+        if let flag = flag {
+            flag.reason = reason
+            flag.save()
+        } else {
+            flag = Flag()
+            flag?.date = Date()
+            flag?.issuer = self.account
+            flag?.reason = reason
+            flag?.recipeGUID = recipe?.GUID
+            flag?.save()
+            recipe?.flags.append(flag!)
+        }
+        
+        delegate?.flagSelected()
         
         dismiss()
     }

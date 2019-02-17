@@ -9,5 +9,5 @@
 import Foundation
 
 protocol FlagSelectorDelegate {
-    func flagSelected(reason: String)
+    func flagSelected()
 }
