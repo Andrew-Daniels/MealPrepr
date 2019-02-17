@@ -159,14 +159,14 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             
             //Setup cook/prep labels
             if r.totalCookTime.hours == 0 {
-                self.cookLabel.text = "\(r.totalCookTime.minutes)m cook"
+                self.cookLabel.text = "\(r.totalCookTime.minutes)m"
             } else {
-                self.cookLabel.text = "\(r.totalCookTime.hours)hr\(r.totalCookTime.minutes)m cook"
+                self.cookLabel.text = "\(r.totalCookTime.hours)hr\(r.totalCookTime.minutes)m"
             }
             if r.totalPrepTime.hours == 0 {
-                self.prepLabel.text = "\(r.totalPrepTime.minutes)m prep"
+                self.prepLabel.text = "\(r.totalPrepTime.minutes)m"
             } else {
-                self.prepLabel.text = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m prep"
+                self.prepLabel.text = "\(r.totalPrepTime.hours)hr\(r.totalPrepTime.minutes)m"
             }
             //setup datecreated label
             if let d = r.dateCreated {
