@@ -11,6 +11,7 @@ import Foundation
 class WeekplanModel {
     
     var recipes: [Recipe]?
+    var groceryList: [GroceryItem]?
     var dateCreated: Date?
     var owner: String?
     var GUID: String?

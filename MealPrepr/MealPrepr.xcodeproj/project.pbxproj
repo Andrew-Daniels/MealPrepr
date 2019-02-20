@@ -49,6 +49,10 @@
 		313088B4220126FE0088AA5B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313088B3220126FE0088AA5B /* Settings.swift */; };
 		313088B6220291F30088AA5B /* ChangeAccountInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313088B5220291F30088AA5B /* ChangeAccountInfoAlert.swift */; };
 		3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */; };
+		313D81C9221CD07E00B594B9 /* GroceryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313D81C8221CD07E00B594B9 /* GroceryList.storyboard */; };
+		313D81CC221CDB0200B594B9 /* GroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D81CB221CDB0200B594B9 /* GroceryList.swift */; };
+		313D81CF221CFB5D00B594B9 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D81CE221CFB5D00B594B9 /* GroceryItem.swift */; };
+		313D81D2221D095700B594B9 /* GroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D81D1221D095700B594B9 /* GroceryListCell.swift */; };
 		31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE521FD64EB00789B2F /* UsernameAlert.swift */; };
 		31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */; };
 		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
@@ -162,6 +166,10 @@
 		313088B3220126FE0088AA5B /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		313088B5220291F30088AA5B /* ChangeAccountInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAccountInfoAlert.swift; sourceTree = "<group>"; };
 		3132F9BA21FD15CC00D02EDE /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
+		313D81C8221CD07E00B594B9 /* GroceryList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroceryList.storyboard; sourceTree = "<group>"; };
+		313D81CB221CDB0200B594B9 /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
+		313D81CE221CFB5D00B594B9 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		313D81D1221D095700B594B9 /* GroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListCell.swift; sourceTree = "<group>"; };
 		31611AE521FD64EB00789B2F /* UsernameAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAlert.swift; sourceTree = "<group>"; };
 		31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNavigationController.swift; sourceTree = "<group>"; };
 		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
@@ -407,6 +415,7 @@
 		310D30FC21B75C8600D0E079 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				313D81CA221CDAD500B594B9 /* GroceryList */,
 				31885543220A7E0900BA6A93 /* Settings */,
 				31885541220A7DD700BA6A93 /* Categories */,
 				3188553F220A7D8E00BA6A93 /* RecipeDetails */,
@@ -422,6 +431,32 @@
 				31B9572621E120AC00D15CCD /* Loading.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		313D81CA221CDAD500B594B9 /* GroceryList */ = {
+			isa = PBXGroup;
+			children = (
+				313D81D0221D093C00B594B9 /* Cells */,
+				313D81CD221CFB3A00B594B9 /* Models */,
+				313D81CB221CDB0200B594B9 /* GroceryList.swift */,
+			);
+			path = GroceryList;
+			sourceTree = "<group>";
+		};
+		313D81CD221CFB3A00B594B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				313D81CE221CFB5D00B594B9 /* GroceryItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		313D81D0221D093C00B594B9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				313D81D1221D095700B594B9 /* GroceryListCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3171CAEC21BCCDCC0026CC18 /* Cells */ = {
@@ -442,6 +477,7 @@
 				3188551E22062BAA00BA6A93 /* Settings.storyboard */,
 				3188551C22062B6100BA6A93 /* Weekplan.storyboard */,
 				310D30D821B74DE200D0E079 /* Main.storyboard */,
+				313D81C8221CD07E00B594B9 /* GroceryList.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -724,6 +760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31D8094121B8C63700555CBE /* Phosphate.ttc in Resources */,
+				313D81C9221CD07E00B594B9 /* GroceryList.storyboard in Resources */,
 				3188552322062C2B00BA6A93 /* Home.storyboard in Resources */,
 				310D30E221B74DE300D0E079 /* LaunchScreen.storyboard in Resources */,
 				3188552522062CBD00BA6A93 /* CreateRecipe.storyboard in Resources */,
@@ -822,6 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3197C31D220F32270079809D /* WeekplanModel.swift in Sources */,
+				313D81CF221CFB5D00B594B9 /* GroceryItem.swift in Sources */,
 				31D467AB2217A70200757CEE /* MPLikeControlDelegate.swift in Sources */,
 				3193138E21EC150800DBF55B /* DateExtensions.swift in Sources */,
 				31B9573121EA479C00D15CCD /* MPCreateRecipeChildController.swift in Sources */,
@@ -844,6 +882,7 @@
 				31DD2FE721DADA0A00AE8974 /* Recipe.swift in Sources */,
 				31DD2FE321D7DEAD00AE8974 /* InstructionCellDelegate.swift in Sources */,
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
+				313D81D2221D095700B594B9 /* GroceryListCell.swift in Sources */,
 				31D4679D2212530C00757CEE /* ReviewCell.swift in Sources */,
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
 				310D028121C3302300EA8BA0 /* Instructions.swift in Sources */,
@@ -858,6 +897,7 @@
 				3188553A2207AF8B00BA6A93 /* CreateWeekplan.swift in Sources */,
 				310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */,
 				312F5A2A21BB4ED60017B534 /* Account.swift in Sources */,
+				313D81CC221CDB0200B594B9 /* GroceryList.swift in Sources */,
 				31D4679F2212552200757CEE /* Review.swift in Sources */,
 				31D467A922179B9100757CEE /* MPLikeControl.swift in Sources */,
 				310D026921C0821C00EA8BA0 /* IngredientCell.swift in Sources */,

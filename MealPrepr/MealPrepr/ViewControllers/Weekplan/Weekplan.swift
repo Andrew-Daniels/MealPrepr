@@ -79,6 +79,11 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
     
     @IBAction func shoppingCartBtnClicked(_ sender: Any) {
         
+        let groceryList = UIStoryboard(name: "GroceryList", bundle: nil)
+        guard let vc = groceryList.instantiateViewController(withIdentifier: "GroceryList") as? GroceryList else { return }
+        vc.recipes = self.weekplan?.recipes
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     private func weekplanExists() -> Bool {
