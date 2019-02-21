@@ -14,6 +14,9 @@ class GroceryListCell: UITableViewCell {
     @IBOutlet weak var quantity: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var indicator: UIImageView!
+    
+    var delegate: GroceryListCellDelegate?
+    
     var groceryItem: GroceryItem! {
         didSet {
             initCell()
@@ -38,7 +41,7 @@ class GroceryListCell: UITableViewCell {
         if status == .Need {
             
             quantity.text = "\(ingredient.quantity!) \(ingredient.unit!)"
-            image = UIImage(named: "Done_Black")?.withRenderingMode(.alwaysTemplate)
+            indicator.backgroundColor = redColor
             
         } else {
             
@@ -47,13 +50,14 @@ class GroceryListCell: UITableViewCell {
         
         title.text = ingredient.title
         indicator.image = image
+        indicator.layer.cornerRadius = indicator.frame.height / 2
         indicator.tintColor = redColor
         
     }
 
     @IBAction func editQuantityBtnClicked(_ sender: Any) {
         
-        
+        delegate?.editGroceryItem(groceryItem: groceryItem)
         
     }
 }

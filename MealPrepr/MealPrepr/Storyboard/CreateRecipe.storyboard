@@ -337,7 +337,7 @@
         <!--Ingredient Alert-->
         <scene sceneID="aJq-uo-6Zr">
             <objects>
-                <viewController id="WlR-9H-Wwy" customClass="IngredientAlert" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IngredientAlert" modalPresentationStyle="overCurrentContext" id="WlR-9H-Wwy" customClass="IngredientAlert" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y07-ce-mgB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -482,6 +482,7 @@
                         <outlet property="quantityTextField" destination="3Qb-xE-lYX" id="7h3-VS-daZ"/>
                         <outlet property="unitPicker" destination="VzY-XO-yjJ" id="VLy-K4-0YS"/>
                         <segue destination="b3M-YT-ljP" kind="unwind" identifier="backToIngredients" unwindAction="backToIngredientsWithSegue:" id="ud2-hv-dGW"/>
+                        <segue destination="b3M-YT-ljP" kind="unwind" identifier="backToGroceryList" unwindAction="backToGroceryListWithSegue:" id="Pv7-yY-c6y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seW-sq-enD" userLabel="First Responder" sceneMemberID="firstResponder"/>

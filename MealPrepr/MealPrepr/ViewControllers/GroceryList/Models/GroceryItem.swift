@@ -58,7 +58,7 @@ class GroceryItem {
         if let title = self.title,
             let unit = self.unit,
             let quantity = self.quantity,
-            groceryItem.title == title,
+            groceryItem.title?.lowercased() == title.lowercased(),
             groceryItem.unit == unit,
             let groceryQuantity = groceryItem.quantity {
             
@@ -86,6 +86,10 @@ class GroceryItem {
         list.append(self)
         
         return list
+    }
+    
+    func toString() -> String {
+        return ingredient.toString() + status.rawValue.description
     }
     
 }

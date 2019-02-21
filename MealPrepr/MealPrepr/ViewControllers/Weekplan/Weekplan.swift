@@ -81,7 +81,7 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
         
         let groceryList = UIStoryboard(name: "GroceryList", bundle: nil)
         guard let vc = groceryList.instantiateViewController(withIdentifier: "GroceryList") as? GroceryList else { return }
-        vc.recipes = self.weekplan?.recipes
+        vc.weekplan = self.weekplan
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

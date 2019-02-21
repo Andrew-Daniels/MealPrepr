@@ -8,17 +8,36 @@
 
 import UIKit
 
-class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource {
+private let backToGroceryListUnwindIdentifier = "backToGroceryList"
+
+class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource, GroceryListCellDelegate {
     
     @IBOutlet weak var needTableView: UITableView!
     @IBOutlet weak var haveTableView: UITableView!
     
-    var recipes: [Recipe]?
-    var groceryList: [GroceryItem] = []
+    //var recipes: [Recipe]?
+    //var groceryList: [GroceryItem] = []
+    var weekplan: WeekplanModel?
+    
+    private var ingredientAlert: IngredientAlert?
+    private var editingIndexRow: Int?
+    
+    private var ingredientUnits = [String]() {
+        didSet {
+            if let vc = ingredientAlert {
+                vc.ingredientUnits = self.ingredientUnits
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupWithRecipes()
+        
+        FirebaseHelper().loadIngredientUnits { (units) in
+            self.ingredientUnits = units
+        }
+        
+        setupWithWeekplan()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +78,7 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource 
         }
         
         cell.groceryItem = item
+        cell.delegate = self
         
         return cell
         
@@ -112,9 +132,13 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource 
         
     }
     
-    private func getGroceryList(type: GroceryItem.GroceryStatus) -> [GroceryItem]{
+    private func getGroceryList(type: GroceryItem.GroceryStatus) -> [GroceryItem] {
         
-        let list = groceryList.filter { (item) -> Bool in
+        if self.weekplan?.groceryList == nil {
+            self.weekplan?.groceryList = []
+        }
+        
+        let list = self.weekplan!.groceryList!.filter { (item) -> Bool in
             return item.status == type
         }
         
@@ -122,26 +146,68 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource 
         
     }
     
-    private func setupWithRecipes() {
+    private func setupWithWeekplan() {
         
-        if let recipes = recipes {
+        if let recipes = self.weekplan?.recipes, self.weekplan?.groceryList == nil {
+            
+            self.weekplan?.groceryList = []
             
             for recipe in recipes {
                 
                 for ingredient in recipe.ingredients {
                     
                     let item = GroceryItem(ingredient: ingredient)
-                    groceryList = item.addGroceryItemToList(groceryList: groceryList)
+                    self.weekplan!.groceryList! = item.addGroceryItemToList(groceryList: self.weekplan!.groceryList!)
                     
                 }
                 
             }
-            
-            haveTableView?.reloadData()
-            needTableView?.reloadData()
-            
         }
+        
+        haveTableView?.reloadData()
+        needTableView?.reloadData()
         
     }
 
+    func editGroceryItem(groceryItem: GroceryItem) {
+        
+        let createRecipe = UIStoryboard(name: "CreateRecipe", bundle: nil)
+        guard let vc = createRecipe.instantiateViewController(withIdentifier: "IngredientAlert") as? IngredientAlert else { return }
+        vc.ingredient = groceryItem.ingredient
+        vc.unwindSegueIdentifier = backToGroceryListUnwindIdentifier
+        vc.ingredientUnits = ingredientUnits
+        vc.delegate = self
+        ingredientAlert = vc
+        
+        let firstIndex = getGroceryList(type: .Need).firstIndex(where: { (g) -> Bool in
+            return g.toString() == groceryItem.toString()
+        })
+        
+        if let nonNilIndex = firstIndex {
+            editingIndexRow = getGroceryList(type: .Need).startIndex.distance(to: nonNilIndex)
+        }
+        
+        present(vc, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func backToGroceryList(segue: UIStoryboardSegue) {
+        
+    }
+    
+    override func alertShown() {
+        
+    }
+    
+    override func alertDismissed() {
+        if editingIndexRow != nil {
+            
+            let indexPath = IndexPath(row: editingIndexRow!, section: 0)
+            needTableView.reloadRows(at: [indexPath], with: .right)
+            
+        }
+        
+        editingIndexRow = nil
+    }
+    
 }

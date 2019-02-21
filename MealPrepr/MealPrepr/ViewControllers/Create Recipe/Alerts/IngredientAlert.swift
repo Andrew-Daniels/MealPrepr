@@ -21,6 +21,8 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate, UIPickerViewDelega
     var availableIngredients: [Ingredient]!
     var isEditingExistingIngredient = false
     var originalTitle: String?
+    var unwindSegueIdentifier: String?
+    var delegate: AlertDelegate?
     var ingredientUnits = [String]() {
         didSet {
             if let picker = self.unitPicker {
@@ -37,10 +39,18 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate, UIPickerViewDelega
         let _ = ingredientTextField.becomeFirstResponder()
         
         setupAlertWithIngredient()
+        delegate?.alertShown()
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
+        
         self.view.endEditing(true)
+        
+        if unwindSegueIdentifier != nil {
+            performSegue(withIdentifier: unwindSegueIdentifier!, sender: self)
+        } else {
+            delegate?.alertDismissed()
+        }
     }
     @IBAction func addBtnClicked(_ sender: Any) {
         
@@ -67,7 +77,8 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate, UIPickerViewDelega
         }
         
         self.view.endEditing(true)
-        performSegue(withIdentifier: backToIngredientsIdentifier, sender: self)
+        delegate?.alertDismissed()
+        performSegue(withIdentifier: unwindSegueIdentifier ?? backToIngredientsIdentifier, sender: self)
         
     }
     
