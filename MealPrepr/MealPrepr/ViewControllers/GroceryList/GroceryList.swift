@@ -128,6 +128,7 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
             
         }
         
+        saveWeekplan()
         tableView.reloadData()
         
     }
@@ -164,10 +165,8 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
             }
             
             wp.groceryListNeedsUpdate = false
-            let _ = wp.save { (saved) in
-                //saved
-                print("weekplan is saved")
-            }
+            saveWeekplan()
+            
             haveTableView?.reloadData()
             needTableView?.reloadData()
         }
@@ -210,9 +209,20 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
             let indexPath = IndexPath(row: editingIndexRow!, section: 0)
             needTableView.reloadRows(at: [indexPath], with: .right)
             
+            saveWeekplan()
+            
         }
         
         editingIndexRow = nil
+    }
+    
+    func saveWeekplan() {
+        
+        let _ = self.weekplan?.save { (saved) in
+            //saved
+            print("weekplan is saved")
+        }
+        
     }
     
 }
