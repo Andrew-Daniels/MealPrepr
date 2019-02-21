@@ -30,4 +30,12 @@ class Ingredient {
         }
         return ""
     }
+    
+    func toDict() -> [String: Any] {
+        var dict = [String: Any]()
+        dict["Title"] = self.title
+        dict["Quantity"] = ("\(self.quantity!)")
+        dict["Unit"] = self.unit
+        return dict
+    }
 }

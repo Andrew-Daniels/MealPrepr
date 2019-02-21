@@ -10,8 +10,13 @@ import Foundation
 
 class WeekplanModel {
     
-    var recipes: [Recipe]?
+    var recipes: [Recipe]? {
+        didSet {
+            groceryListNeedsUpdate = true
+        }
+    }
     var groceryList: [GroceryItem]?
+    var groceryListNeedsUpdate = true
     var dateCreated: Date?
     var owner: String?
     var GUID: String?
@@ -25,7 +30,8 @@ class WeekplanModel {
         get {
             return [
                 "DateCreated": dateCreated?.description ?? Date().description,
-                "Recipes": recipesArray
+                "Recipes": recipesArray,
+                "GroceryList": groceryListArray
             ]
         }
     }
@@ -39,6 +45,21 @@ class WeekplanModel {
                     recipe.weekplanStatus = recipe.weekplanStatus ?? RecipeStatus.Active
                     recipeDict[recipe.GUID!] = recipe.weekplanStatus?.rawValue ?? RecipeStatus.Active.rawValue
                     array.append(recipeDict)
+                }
+            }
+            return array
+        }
+    }
+    
+    private var groceryListArray: [[String: Any]] {
+        
+        get {
+            var array = [[String: Any]]()
+            if let groceryItems = self.groceryList {
+                for item in groceryItems {
+                    var groceryDict = [String: Any]()
+                    groceryDict[item.status.rawValue.description] = item.ingredient.toDict()
+                    array.append(groceryDict)
                 }
             }
             return array

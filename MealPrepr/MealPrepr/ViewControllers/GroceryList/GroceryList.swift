@@ -148,7 +148,7 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
     
     private func setupWithWeekplan() {
         
-        if let recipes = self.weekplan?.recipes, self.weekplan?.groceryList == nil {
+        if let wp = self.weekplan, let recipes = wp.recipes, wp.groceryListNeedsUpdate {
             
             self.weekplan?.groceryList = []
             
@@ -162,10 +162,15 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
                 }
                 
             }
+            
+            wp.groceryListNeedsUpdate = false
+            let _ = wp.save { (saved) in
+                //saved
+                print("weekplan is saved")
+            }
+            haveTableView?.reloadData()
+            needTableView?.reloadData()
         }
-        
-        haveTableView?.reloadData()
-        needTableView?.reloadData()
         
     }
 
