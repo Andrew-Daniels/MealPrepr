@@ -11,11 +11,11 @@ import Foundation
 class GroceryItem {
     
     var ingredient: Ingredient!
-    var status: GroceryStatus!
+    var status: GroceryStatus = .Need
     
-    enum GroceryStatus: Int {
-        case Have = 0
-        case Need = 1
+    enum GroceryStatus: String {
+        case Have = "5"
+        case Need = "10"
     }
     
     var quantity: Decimal? {

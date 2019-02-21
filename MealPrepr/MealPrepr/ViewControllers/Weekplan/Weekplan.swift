@@ -128,6 +128,7 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
     @IBAction func backToWeekplan(segue: UIStoryboardSegue) {
         if let vc = segue.source as? CreateWeekplan {
             self.weekplan?.recipes = vc.weekplan.recipes
+            self.weekplan?.groceryListNeedsUpdate = true
             self.setupWeekplan()
         }
     }

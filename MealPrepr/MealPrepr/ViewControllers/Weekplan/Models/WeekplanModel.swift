@@ -10,11 +10,7 @@ import Foundation
 
 class WeekplanModel {
     
-    var recipes: [Recipe]? {
-        didSet {
-            groceryListNeedsUpdate = true
-        }
-    }
+    var recipes: [Recipe]?
     var groceryList: [GroceryItem]?
     var groceryListNeedsUpdate = true
     var dateCreated: Date?
@@ -58,7 +54,8 @@ class WeekplanModel {
             if let groceryItems = self.groceryList {
                 for item in groceryItems {
                     var groceryDict = [String: Any]()
-                    groceryDict[item.status.rawValue.description] = item.ingredient.toDict()
+                    let statusString = item.status.rawValue
+                    groceryDict[statusString] = item.ingredient.toDict()
                     array.append(groceryDict)
                 }
             }
@@ -102,6 +99,35 @@ class WeekplanModel {
                 dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
                 self.dateCreated = dateFormatter.date(from: dateCreated)
             }
+        }
+        
+        if let groceryItems = weekplanValue["GroceryList"] as? [[String: [String: Any]]] {
+            
+            self.groceryList = []
+            self.groceryListNeedsUpdate = false
+            
+            for item in groceryItems {
+                for itemValue in item.values {
+                    
+                    guard let title = itemValue["Title"] as? String,
+                        let quantityString = itemValue["Quantity"] as? String,
+                        let unit = itemValue["Unit"] as? String,
+                        let quantity = Decimal(string: quantityString),
+                        let statusString = item.keys.first,
+                        let status = GroceryItem.GroceryStatus(rawValue: statusString) else { break }
+                    
+                    let ingredient = Ingredient()
+                    ingredient.title = title
+                    ingredient.quantity = quantity
+                    ingredient.unit = unit
+                    
+                    let groceryItem = GroceryItem(ingredient: ingredient, status: status)
+                    groceryList?.append(groceryItem)
+                    
+                }
+                
+            }
+            
         }
         
         if let recipes = weekplanValue["Recipes"] as? [[String: String]] {

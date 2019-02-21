@@ -15,8 +15,6 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var needTableView: UITableView!
     @IBOutlet weak var haveTableView: UITableView!
     
-    //var recipes: [Recipe]?
-    //var groceryList: [GroceryItem] = []
     var weekplan: WeekplanModel?
     
     private var ingredientAlert: IngredientAlert?
