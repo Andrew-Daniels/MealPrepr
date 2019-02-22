@@ -278,16 +278,54 @@ class FirebaseHelper {
             self.database.updateChildValues(updates)
             completionHandler(true)
         }
+    }
+    
+    public func loadFlags(completionHandler: @escaping (_ isResponse : [Flag]) -> Void) {
         
-//        findRecipeFlagForUser(recipeGUID: flag.recipeGUID, account: flag.issuer) { (flag) in
-//            if let f = flag {
-//                f.delete(completionHandler: { (success) in
-//                    self.database.updateChildValues(updates)
-//                })
-//            } else {
-//                self.database.updateChildValues(updates)
-//            }
-//        }
+        let path = "Flags"
+        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+            
+            var flags = [Flag]()
+            
+            if let value = snapshot.value as? [String: [String: [String: String]]] {
+                
+                for (recipeGUID, flagsInfo) in value {
+                    
+                    for flagInfo in flagsInfo {
+                        
+                        let flag = Flag(recipeGUID: recipeGUID, flagInfo: flagInfo)
+                        flags.append(flag)
+                        
+                    }
+                }
+                
+                completionHandler(flags)
+            }
+            
+        }
+        
+    }
+    
+    public func loadRecipeGUIDsWithFlags(completionHandler: @escaping (_ isResponse : [String]) -> Void) {
+        
+        let path = "Flags"
+        database.child(path).observeSingleEvent(of: .value) { (snapshot) in
+            
+            var recipeGUIDs = [String]()
+            
+            if let value = snapshot.value as? [String: [String: [String: String]]] {
+                
+                for (recipeGUID, _) in value {
+                    
+                    recipeGUIDs.append(recipeGUID)
+        
+                }
+                
+                completionHandler(recipeGUIDs)
+            }
+            
+        }
+        
     }
     
     public func deleteFlag(flag: Flag, completionHandler: @escaping (_ isResponse : Bool) -> Void) {
@@ -354,45 +392,16 @@ class FirebaseHelper {
     
     private func flagsFromSnapshot(snapshot: DataSnapshot, completionHandler: @escaping (_ isResponse : [Flag]) -> Void) {
         var flags = [Flag]()
-        if let value = snapshot.value as? NSDictionary {
+        if let value = snapshot.value as? [String: [String: String]] {
             
             for flagInfo in value {
                 
-                if let guid = flagInfo.key as? String {
-                    
-                    let flag = Flag()
-                    flag.uid = guid
-                    flag.recipeGUID = snapshot.key
-                    guard let flagInfo = flagInfo.value as? [String: Any] else { break }
-                    
-                    if let dateCreated = flagInfo["Date"] as? String {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
-                        flag.date = dateFormatter.date(from: dateCreated)
-                        if flag.date == nil {
-                            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
-                            flag.date = dateFormatter.date(from: dateCreated)
-                        }
-                    }
-                    
-                    if let issuerUID = flagInfo["Issuer"] as? String {
-                        let issuer = Account(UID: issuerUID, completionHandler: { (created) in
-                            if !created {
-                                print("Issuer for flag couldn't be found")
-                            }
-                        })
-                        flag.issuer = issuer
-                    }
-                    
-                    if let reason = flagInfo["Reason"] as? String {
-                        flag.reason = reason
-                    }
-                    
-                    flags.append(flag)
-                    
-                    if flags.count == value.count {
-                        completionHandler(flags)
-                    }
+                let flag = Flag(recipeGUID: snapshot.key, flagInfo: flagInfo)
+                
+                flags.append(flag)
+                
+                if flags.count == value.count {
+                    completionHandler(flags)
                 }
             }
         } else {

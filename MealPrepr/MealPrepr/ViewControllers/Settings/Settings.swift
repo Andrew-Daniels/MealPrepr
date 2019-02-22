@@ -101,9 +101,9 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
         if self.account.isFBAuth {
             settingsTableViewModel = [.ChangeUsername, .MyRecipes]
         }
-        if self.account.userLevel == .Admin {
-            settingsTableViewModel.append(.Admin)
-        }
+//        if self.account.userLevel == .Admin {
+//            settingsTableViewModel.append(.Admin)
+//        }
         self.tableView.reloadData()
     }
     

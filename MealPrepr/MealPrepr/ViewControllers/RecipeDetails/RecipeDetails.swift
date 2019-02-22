@@ -311,7 +311,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     func setupBarButtons() {
         
-        let isOwnerOfRecipe = account.UID == self.recipe.creatorUID
+        let isOwnerOfRecipe = account.UID == self.recipe.creatorUID || account.userLevel == .Admin
         
         favoritesBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(favoritesBtnClicked(_:)))
         favoritesBtn?.image = UIImage(named: "Favorite_White")?.withRenderingMode(.alwaysTemplate)

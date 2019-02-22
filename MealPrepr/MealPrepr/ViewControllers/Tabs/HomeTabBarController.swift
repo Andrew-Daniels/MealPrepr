@@ -9,20 +9,13 @@
 import UIKit
 
 class HomeTabBarController: MPTabBarController {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     enum Controller: Int {
         case Home
         case Categories
         case Weekplan
         case Settings
+        case Admin
     }
     
     override func viewDidLoad() {
@@ -60,9 +53,16 @@ class HomeTabBarController: MPTabBarController {
                 }
             }
         case .Weekplan:
-            break;
+            break
         case .Settings:
-            break;
+            break
+        case .Admin:
+            for vc in viewControllers {
+                if vc is AdminNavigationViewController {
+                    return vc as? AdminNavigationViewController
+                }
+            }
+            break
         }
         
         return nil

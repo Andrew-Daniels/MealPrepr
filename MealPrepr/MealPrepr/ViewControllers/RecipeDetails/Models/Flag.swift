@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import FirebaseDatabase
 
 class Flag {
     
@@ -25,6 +25,40 @@ class Flag {
                 "Reason": reason
             ]
         }
+    }
+    
+    init() {
+        
+    }
+    
+    init(recipeGUID: String, flagInfo: (key: String, value: [String : String])) {
+        
+        self.recipeGUID = recipeGUID
+        self.uid = flagInfo.key
+        
+        if let dateCreated = flagInfo.value["Date"] {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+            self.date = dateFormatter.date(from: dateCreated)
+            if self.date == nil {
+                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss +zzzz"
+                self.date = dateFormatter.date(from: dateCreated)
+            }
+        }
+        
+        if let issuerUID = flagInfo.value["Issuer"] {
+            let issuer = Account(UID: issuerUID, completionHandler: { (created) in
+                if !created {
+                    print("Issuer for flag couldn't be found")
+                }
+            })
+            self.issuer = issuer
+        }
+        
+        if let reason = flagInfo.value["Reason"] {
+            self.reason = reason
+        }
+        
     }
     
     func save() {

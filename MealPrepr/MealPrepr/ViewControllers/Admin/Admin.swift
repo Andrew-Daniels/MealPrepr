@@ -8,23 +8,73 @@
 
 import UIKit
 
-class Admin: MPViewController {
+private let cellIdentifier = "adminFlagListCell"
 
+class Admin: MPViewController, UITableViewDelegate, UITableViewDataSource, RecipeDelegate {
+
+    var recipes = [Recipe]()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        FirebaseHelper().loadRecipeGUIDsWithFlags { (recipeGUIDs) in
+            
+            for guid in recipeGUIDs {
+                
+                FirebaseHelper().loadRecipe(guid: guid, completionHandler: { (recipe) in
+                    self.recipes.append(recipe)
+                    
+                    if self.recipes.count == recipeGUIDs.count {
+                        self.tableView.reloadData()
+                    }
+                })
+                
+            }
+            
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recipes.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AdminRecipeListCell
+        
+        let recipe = self.recipes[indexPath.row]
+        
+        cell.recipe = recipe
+        recipe.recipeDelegate = self
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func photoDownloaded(sender: Recipe) {
+        let firstIndex = self.recipes.firstIndex { (recipe) -> Bool in
+            if recipe.GUID == sender.GUID {
+                return true
+            }
+            return false
+        }
+        guard let nonNilIndex = firstIndex else { return }
+        let row = recipes.startIndex.distance(to: nonNilIndex)
+        let indexPath = IndexPath(row: row, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
+    func photoDownloaded(photoPath index: Int) {
+        
+    }
+    
+    func recipeDeleted(GUID: String) {
+        
+    }
 
 }
