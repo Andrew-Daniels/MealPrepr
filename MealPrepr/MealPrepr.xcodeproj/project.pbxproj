@@ -55,6 +55,7 @@
 		313D81D2221D095700B594B9 /* GroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D81D1221D095700B594B9 /* GroceryListCell.swift */; };
 		313D81D5221E1C9600B594B9 /* GroceryListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D81D4221E1C9600B594B9 /* GroceryListCellDelegate.swift */; };
 		313D81D8221F85DE00B594B9 /* AdminRecipeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D81D7221F85DE00B594B9 /* AdminRecipeListCell.swift */; };
+		313D81DB2220B82C00B594B9 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313D81DA2220B82C00B594B9 /* Admin.storyboard */; };
 		31611AE621FD64EB00789B2F /* UsernameAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE521FD64EB00789B2F /* UsernameAlert.swift */; };
 		31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */; };
 		3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */; };
@@ -174,6 +175,7 @@
 		313D81D1221D095700B594B9 /* GroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListCell.swift; sourceTree = "<group>"; };
 		313D81D4221E1C9600B594B9 /* GroceryListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListCellDelegate.swift; sourceTree = "<group>"; };
 		313D81D7221F85DE00B594B9 /* AdminRecipeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminRecipeListCell.swift; sourceTree = "<group>"; };
+		313D81DA2220B82C00B594B9 /* Admin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		31611AE521FD64EB00789B2F /* UsernameAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAlert.swift; sourceTree = "<group>"; };
 		31611AE721FD786F00789B2F /* CategoriesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNavigationController.swift; sourceTree = "<group>"; };
 		3171CAEA21BCC4400026CC18 /* HomeRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecipesCell.swift; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 		3188551B22062B0400BA6A93 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				313D81DA2220B82C00B594B9 /* Admin.storyboard */,
 				3188552622062D3F00BA6A93 /* RecipeDetails.storyboard */,
 				3188552422062CBD00BA6A93 /* CreateRecipe.storyboard */,
 				3188552222062C2B00BA6A93 /* Home.storyboard */,
@@ -789,6 +792,7 @@
 				310D30DF21B74DE300D0E079 /* Assets.xcassets in Resources */,
 				3188551F22062BAA00BA6A93 /* Settings.storyboard in Resources */,
 				3188552122062BE900BA6A93 /* Categories.storyboard in Resources */,
+				313D81DB2220B82C00B594B9 /* Admin.storyboard in Resources */,
 				31D8094321B8C81E00555CBE /* Nadeem.ttc in Resources */,
 				310D30DA21B74DE200D0E079 /* Main.storyboard in Resources */,
 				3188552722062D3F00BA6A93 /* RecipeDetails.storyboard in Resources */,
