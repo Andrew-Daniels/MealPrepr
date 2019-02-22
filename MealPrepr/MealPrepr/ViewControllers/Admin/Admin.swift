@@ -9,6 +9,7 @@
 import UIKit
 
 private let cellIdentifier = "adminFlagListCell"
+private let flaggedRecipeDetailSegueIdentifier = "flaggedRecipeDetail"
 
 class Admin: MPViewController, UITableViewDelegate, UITableViewDataSource, RecipeDelegate {
 
