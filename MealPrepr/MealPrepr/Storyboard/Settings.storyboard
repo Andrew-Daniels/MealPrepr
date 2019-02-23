@@ -208,6 +208,10 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="AAE-Q4-27o"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="passwordField" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Old Password"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4p-se-rII" customClass="MPTextField" customModule="MealPrepr" customModuleProvider="target">
                                         <rect key="frame" x="30" y="41" width="240" height="50"/>
@@ -216,8 +220,7 @@
                                             <constraint firstAttribute="height" constant="50" id="EYY-t4-ce2"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="passwordField" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Old Password"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="passwordField" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
@@ -257,8 +260,8 @@
                     <connections>
                         <outlet property="changeBtn" destination="8ij-tb-4tb" id="4UN-KD-V7Y"/>
                         <outlet property="label" destination="c1Y-Up-XCn" id="kmj-aH-FAy"/>
-                        <outlet property="otherTextField" destination="0dc-LW-B1Z" id="Tnt-ac-M8e"/>
-                        <outlet property="passwordTextField" destination="w4p-se-rII" id="Tqo-If-KuU"/>
+                        <outlet property="otherTextField" destination="w4p-se-rII" id="Auj-eV-XGZ"/>
+                        <outlet property="passwordTextField" destination="0dc-LW-B1Z" id="OoF-5E-i6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9n-iE-7Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>

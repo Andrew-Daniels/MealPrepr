@@ -38,12 +38,14 @@ class ChangeAccountInfoAlert: MPViewController, MPTextFieldDelegate {
         passwordTextField.delegate = self
         otherTextField.delegate = self
         
-        if !requiresCurrentPassword {
-            passwordTextField.isHidden = true
-            let _ = otherTextField.becomeFirstResponder()
-        } else {
-           let _ = self.passwordTextField.becomeFirstResponder()
-        }
+//        if !requiresCurrentPassword {
+//            passwordTextField.isHidden = true
+//            let _ = otherTextField.becomeFirstResponder()
+//        } else {
+//           let _ = self.passwordTextField.becomeFirstResponder()
+//        }
+        
+        let _ = otherTextField.becomeFirstResponder()
     }
     
     func setupAlert(with changeType: ChangeType) {
