@@ -23,6 +23,10 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
         
         setupTextView()
     }
@@ -124,6 +128,7 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
         
         if contentHeight <= maxHeight && contentHeight >= minHeight {
             textViewContainerHeightConstraint.constant = contentHeight
+            textView.contentSize.height += 20
         } else if contentHeight < minHeight {
             textViewContainerHeightConstraint.constant = minHeight
         } else if contentHeight > maxHeight {
@@ -136,15 +141,13 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     private func setupTextView() {
-        textView.text = placeHolderText
-        textView.textColor = UIColor.lightGray
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.cornerRadius = 20
         textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         textView.textContainerInset = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 55)
-        textView.centerVertically()
-        reviewBtn.isEnabled = false
+        
+        resetTextViewText()
     }
     
     override func endEditing() {

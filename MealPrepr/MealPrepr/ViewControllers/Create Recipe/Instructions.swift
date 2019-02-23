@@ -99,7 +99,7 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return isPad && readOnly ? "Instructions" : nil
+        return isPad ? "Instructions" : nil
         
     }
 
@@ -135,10 +135,28 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
                 }
                 isEditingExistingInstruction = false
                 tableView.reloadRows(at: [instructionIndexBeingEdited], with: .right)
+                if isPad {
+                    DispatchQueue.main.async {
+                        if let parentVC = self.parent as? CreateRecipe {
+                            if let instructionsVC = parentVC.getVC(atIndex: CreateRecipe.Controller.Ingredients) as? Ingredients {
+                                instructionsVC.instructions = self.instructions
+                            }
+                        }
+                    }
+                }
                 return
             }
             instructions.append(vc.instruction)
             tableView.reloadData()
+            if isPad {
+                DispatchQueue.main.async {
+                    if let parentVC = self.parent as? CreateRecipe {
+                        if let instructionsVC = parentVC.getVC(atIndex: CreateRecipe.Controller.Ingredients) as? Ingredients {
+                            instructionsVC.instructions = self.instructions
+                        }
+                    }
+                }
+            }
             break;
         default:
             break;

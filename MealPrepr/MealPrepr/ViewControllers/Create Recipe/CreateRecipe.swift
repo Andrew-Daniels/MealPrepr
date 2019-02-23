@@ -23,6 +23,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     @IBOutlet weak var titleTextField: MPTextField!
     @IBOutlet weak var caloriesTextField: MPTextField!
     @IBOutlet weak var servingsTextField: MPTextField!
+    @IBOutlet weak var midContainerView: UIView!
+    @IBOutlet weak var rightContainerView: UIView!
     
     enum Controller: Int {
         case Ingredients = 0
@@ -31,6 +33,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         case Photos = 3
     }
     
+    private let isPad = UIDevice.current.userInterfaceIdiom == .pad
     private var viewControllers = [Controller: MPCreateRecipeChildController]()
     private var ingredientUnits = [String]() {
         didSet {
@@ -55,8 +58,8 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         
         setupWithRecipe()
         
-        let index = Controller(rawValue: segmentedControl.selectedSegmentIndex)
-        presentChildVC(atIndex: index)
+        let index = Controller(rawValue: segmentedControl.selectedSegmentIndex + getIndexOffset())
+        presentChildVC(atIndex: index, container: containerView)
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
         
         let _ = titleTextField.becomeFirstResponder()
@@ -68,13 +71,45 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func setupSegmentedControl() {
-        segmentedControl.setTitle("Ingredients", forSegmentAt: 0)
-        segmentedControl.setTitle("Utensils", forSegmentAt: 1)
-        segmentedControl.setTitle("Instructions", forSegmentAt: 2)
+    private func getIndexOffset() -> Int {
         
-        if (UIDevice.current.userInterfaceIdiom == .phone) {
+        var indexOffset = 0
+        let selectedIndex = segmentedControl.selectedSegmentIndex
+        
+        if isPad {
+            
+            if selectedIndex == 0 {
+                indexOffset = 1
+            } else {
+                indexOffset = 2
+            }
+            
+        }
+        
+        return indexOffset
+        
+    }
+    
+    func setupSegmentedControl() {
+        
+        
+        if (isPad) {
+            
+            segmentedControl.removeAllSegments()
+            segmentedControl.insertSegment(withTitle: "Utensils", at: 0, animated: false)
+            segmentedControl.insertSegment(withTitle: "Photos", at: 1, animated: false)
+            
+            segmentedControl.selectedSegmentIndex = 0
+            presentChildVC(atIndex: .Ingredients, container: self.midContainerView)
+            presentChildVC(atIndex: .Instructions, container: self.rightContainerView)
+            
+        } else {
+            
+            segmentedControl.setTitle("Ingredients", forSegmentAt: 0)
+            segmentedControl.setTitle("Utensils", forSegmentAt: 1)
+            segmentedControl.setTitle("Instructions", forSegmentAt: 2)
             segmentedControl.insertSegment(withTitle: "Photos", at: 3, animated: true)
+            
         }
         
     }
@@ -103,7 +138,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         return vc
     }
     
-    private func presentChildVC(atIndex: Controller?) {
+    private func presentChildVC(atIndex: Controller?, container: UIView!) {
         guard let atIndex = atIndex else { return }
         var vc = viewControllers[atIndex]
         if vc == nil {
@@ -112,7 +147,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
         
         guard let activeVC = vc else { return }
         addChild(activeVC)
-        containerView.addSubview(activeVC.view)
+        container.addSubview(activeVC.view)
         activeVC.constrainToContainerView()
         
         activeVC.didMove(toParent: self)
@@ -140,14 +175,15 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
     }
     
     @objc func segmentedControlIndexChanged() {
-        guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
-        presentChildVC(atIndex: index)
+        
+        guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex + getIndexOffset()) else { return }
+        presentChildVC(atIndex: index, container: containerView)
         self.endEditing()
     }
     
     func presentVC(atIndex: Controller) {
         self.segmentedControl.selectedSegmentIndex = atIndex.rawValue
-        presentChildVC(atIndex: atIndex)
+        presentChildVC(atIndex: atIndex, container: containerView)
     }
     
     func getVC(atIndex: Controller) -> MPViewController? {
@@ -320,11 +356,6 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                                         // Put your code which should be executed with a delay here
                                         if let collectionView = (homeVC as! Home).collectionView {
                                             if collectionView.numberOfItems(inSection: 0) > 0 {
-//                                                if self.isEditingRecipe() {
-//                                                    collectionView.reloadData()
-//                                                } else {
-//                                                    collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
-//                                                }
                                                 collectionView.reloadData()
                                             }
                                         }

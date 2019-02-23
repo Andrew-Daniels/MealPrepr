@@ -61,6 +61,7 @@ class MPAlertController {
             title = "Cannot Delete Ingredient"
             actionTitle = "Edit Instructions"
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
             let action = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let editInstructionsAction = UIAlertAction(title: actionTitle, style: .default) { (action) in
                 if let vc = presenter as? Ingredients, let parentVC = vc.parent as? CreateRecipe {
@@ -68,7 +69,11 @@ class MPAlertController {
                 }
             }
             alert.addAction(action)
-            alert.addAction(editInstructionsAction)
+            
+            let isPad = UIDevice.current.userInterfaceIdiom == .pad
+            if !isPad {
+                alert.addAction(editInstructionsAction)
+            }
             return alert
         }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

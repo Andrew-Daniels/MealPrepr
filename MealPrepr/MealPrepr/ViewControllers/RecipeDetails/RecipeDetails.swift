@@ -217,8 +217,8 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             
             if isPad {
                 
-                self.presentChildVC(atIndex: .Ingredients, container: self.leftContainerView)
-                self.presentChildVC(atIndex: .Utensils, container: self.midContainerView)
+                self.presentChildVC(atIndex: .Utensils, container: self.leftContainerView)
+                self.presentChildVC(atIndex: .Ingredients, container: self.midContainerView)
                 
             }
             

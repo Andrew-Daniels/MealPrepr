@@ -105,7 +105,7 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return isPad && readOnly ? "Ingredients" : nil
+        return isPad ? "Ingredients" : nil
         
     }
 
@@ -135,6 +135,15 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
             }
             ingredients.append(vc.ingredient)
             self.tableView.reloadData()
+            if isPad {
+                DispatchQueue.main.async {
+                    if let parentVC = self.parent as? CreateRecipe {
+                        if let instructionsVC = parentVC.getVC(atIndex: CreateRecipe.Controller.Instructions) as? Instructions {
+                            instructionsVC.availableIngredients = self.ingredients
+                        }
+                    }
+                }
+            }
             break;
         case cancelledEditSegueIdentifier:
             isEditingExistingIngredient = false
