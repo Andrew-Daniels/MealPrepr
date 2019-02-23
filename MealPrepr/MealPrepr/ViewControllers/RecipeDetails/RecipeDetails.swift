@@ -27,6 +27,8 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     var weekplan: WeekplanModel?
     var adminMode: Bool!
     
+    @IBOutlet weak var leftContainerView: UIView!
+    @IBOutlet weak var midContainerView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var likesLabel: UILabel!
@@ -38,6 +40,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     @IBOutlet weak var likesImageView: UIImageView!
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
     
     private var reviewBtn: UIBarButtonItem?
     private var favoritesBtn: UIBarButtonItem?
@@ -45,6 +48,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     private var viewControllers = [Controller: MPViewController]()
     private var reviewAccountsLoaded = 0
     private var flag: Flag?
+    private let isPad = UIDevice.current.userInterfaceIdiom == .pad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +57,12 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         likesImageView.tintColor = redColor
         
         let index = Controller(rawValue: segmentedControl.selectedSegmentIndex)
-        presentChildVC(atIndex: index)
+        presentChildVC(atIndex: index, container: self.containerView)
         segmentedControl.addTarget(self, action: #selector(segmentedControlIndexChanged), for: .valueChanged)
         
         setupWithRecipe()
         setupBarButtons()
+        setupSegmentedControl()
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
@@ -69,6 +74,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             
             bottomButtonBottomConstraint.constant = isKeyboardShowing ? keyboardFrame.height - (self.tabBarController?.tabBar.frame.height ?? 0) : 0
             containerViewHeightConstraint.constant = isKeyboardShowing ? 50 : 200
+            containerViewBottomConstraint.constant = isKeyboardShowing ? keyboardFrame.height - (self.tabBarController?.tabBar.frame.height ?? 0) : 10
         }
         
         UIView.animate(withDuration: 0.5) {
@@ -113,7 +119,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         return vc
     }
     
-    private func presentChildVC(atIndex: Controller?) {
+    private func presentChildVC(atIndex: Controller?, container: UIView!) {
         guard let atIndex = atIndex else { return }
         var vc = viewControllers[atIndex]
         if vc == nil {
@@ -122,7 +128,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         
         guard let activeVC = vc else { return }
         addChild(activeVC)
-        containerView.addSubview(activeVC.view)
+        container.addSubview(activeVC.view)
         activeVC.constrainToContainerView()
         
         activeVC.didMove(toParent: self)
@@ -209,6 +215,13 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
                 }
             }
             
+            if isPad {
+                
+                self.presentChildVC(atIndex: .Ingredients, container: self.leftContainerView)
+                self.presentChildVC(atIndex: .Utensils, container: self.midContainerView)
+                
+            }
+            
         }
     }
     
@@ -273,8 +286,11 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     }
     
     @objc func segmentedControlIndexChanged() {
-        guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex) else { return }
-        presentChildVC(atIndex: index)
+        
+        let indexOffset = isPad ? 2 : 0
+        
+        guard let index = Controller(rawValue: segmentedControl.selectedSegmentIndex + indexOffset) else { return }
+        presentChildVC(atIndex: index, container: self.containerView)
         
         if let vc = viewControllers[.Feedback] {
             vc.endEditing()
@@ -413,6 +429,20 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
         
     }
     
+    private func setupSegmentedControl() {
+        
+        if isPad {
+            
+            self.segmentedControl.removeAllSegments()
+            self.segmentedControl.insertSegment(withTitle: "Instructions", at: 0, animated: false)
+            self.segmentedControl.insertSegment(withTitle: "Feedback", at: 1, animated: false)
+            self.segmentedControl.selectedSegmentIndex = 0
+            presentChildVC(atIndex: .Instructions, container: self.containerView)
+            
+        }
+        
+    }
+    
     override func alertDismissed() {
         super.alertDismissed()
         
@@ -429,7 +459,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             }
             
             segmentedControl.selectedSegmentIndex = Controller.Feedback.rawValue
-            self.presentChildVC(atIndex: .Feedback)
+            self.presentChildVC(atIndex: .Feedback, container: self.containerView)
 
         }
         

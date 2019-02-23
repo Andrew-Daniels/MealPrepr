@@ -181,6 +181,9 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         alert.addAction(takePhotoAction)
         alert.addAction(choosePhotoAction)
         alert.addAction(cancelAction)
+        
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = self.view.bounds
         present(alert, animated: true, completion: nil)
     }
     

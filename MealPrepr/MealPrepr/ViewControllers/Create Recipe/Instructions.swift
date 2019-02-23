@@ -96,6 +96,12 @@ class Instructions: MPCreateRecipeChildController, UITableViewDelegate, UITableV
             self.tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return isPad && readOnly ? "Instructions" : nil
+        
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         endEditing()

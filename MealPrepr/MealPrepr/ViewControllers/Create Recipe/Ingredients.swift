@@ -102,6 +102,12 @@ class Ingredients: MPCreateRecipeChildController, UITableViewDelegate, UITableVi
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return isPad && readOnly ? "Ingredients" : nil
+        
+    }
 
     @IBAction func addIngredientBtnClicked(_ sender: Any) {
         

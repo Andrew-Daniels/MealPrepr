@@ -23,6 +23,7 @@ class MPCreateRecipeChildController: MPViewController {
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var recipe: Recipe?
+    internal let isPad = UIDevice.current.userInterfaceIdiom == .pad
     
     override func viewDidLoad() {
         

@@ -17,6 +17,7 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewContainerHeightConstraint: NSLayoutConstraint!
     let placeHolderText = "Ask a question.."
+    private let isPad = UIDevice.current.userInterfaceIdiom == .pad
     
     var recipe: Recipe!
     
@@ -35,6 +36,12 @@ class Reviews: MPViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let review = recipe.reviews[indexPath.row]
         cell.review = review
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return isPad ? "Feedback" : nil
+        
     }
     
     @IBAction func reviewBtnClicked(_ sender: Any) {
