@@ -62,15 +62,23 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
     }
     
     @IBAction func addBarBtnClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "Override Weekplan", message: "If you continue, you will override the current weekplan you have.", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let ok = UIAlertAction(title: "New", style: .default) { (action) in
+        
+        if weekplanExists() {
+            
+            let alert = UIAlertController(title: "Override Weekplan", message: "If you continue, you will override the current weekplan you have.", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let ok = UIAlertAction(title: "New", style: .default) { (action) in
+                self.performSegue(withIdentifier: "addWeekplan", sender: sender)
+            }
+            alert.addAction(cancel)
+            alert.addAction(ok)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
             self.performSegue(withIdentifier: "addWeekplan", sender: sender)
         }
-        alert.addAction(cancel)
-        alert.addAction(ok)
         
-        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func editBtnClicked(_ sender: Any) {
@@ -116,19 +124,18 @@ class Weekplan: MPViewController, UITableViewDelegate, UITableViewDataSource, Re
             
         }
         
-        
-//        groceryListBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(shoppingCartBtnClicked(_:)))
-//        groceryListBtn?.image = UIImage(named: "ShoppingCart_Black")?.withRenderingMode(.alwaysTemplate)
-//        groceryListBtn?.tintColor = UIColor.white
-        
-        
-        //self.navigationItem.leftBarButtonItem = groceryListBtn!
     }
 
     @IBAction func backToWeekplan(segue: UIStoryboardSegue) {
         if let vc = segue.source as? CreateWeekplan {
-            self.weekplan?.recipes = vc.weekplan.recipes
-            self.weekplan?.groceryListNeedsUpdate = true
+            
+            if weekplanExists() {
+                self.weekplan?.recipes = vc.weekplan.recipes
+                self.weekplan?.groceryListNeedsUpdate = true
+            } else {
+                self.weekplan = vc.weekplan
+            }
+            
             self.setupWeekplan()
         }
     }

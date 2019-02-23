@@ -16,6 +16,7 @@ class Admin: MPViewController, UITableViewDelegate, UITableViewDataSource, Recip
     var recipes = [Recipe]()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class Admin: MPViewController, UITableViewDelegate, UITableViewDataSource, Recip
                     self.recipes.append(recipe)
                     
                     if self.recipes.count == recipeGUIDs.count {
-                        self.tableView.reloadData()
+                        self.reloadTableView()
                     }
                 })
                 
@@ -55,6 +56,10 @@ class Admin: MPViewController, UITableViewDelegate, UITableViewDataSource, Recip
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let recipe = self.recipes[indexPath.row]
+        performSegue(withIdentifier: flaggedRecipeDetailSegueIdentifier, sender: recipe)
+        
     }
     
     func photoDownloaded(sender: Recipe) {
@@ -75,6 +80,25 @@ class Admin: MPViewController, UITableViewDelegate, UITableViewDataSource, Recip
     }
     
     func recipeDeleted(GUID: String) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == flaggedRecipeDetailSegueIdentifier {
+            
+            guard let vc = segue.destination as? RecipeManager else { return }
+            vc.recipe = sender as? Recipe
+            vc.admin = self
+        }
+    }
+    
+    func reloadTableView() {
+        
+        self.tableView.reloadData()
+        self.tableView.isHidden = self.recipes.count == 0
+        self.emptyView.isHidden = self.recipes.count > 0
         
     }
 

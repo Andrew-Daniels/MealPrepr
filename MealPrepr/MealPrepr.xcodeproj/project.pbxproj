@@ -34,6 +34,7 @@
 		310D30FE21B7618A00D0E079 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30FD21B7618A00D0E079 /* ValidationHelper.swift */; };
 		310D310021B7620500D0E079 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D30FF21B7620500D0E079 /* ErrorHelper.swift */; };
 		310D310221B772E800D0E079 /* MPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D310121B772E800D0E079 /* MPTextField.swift */; };
+		312894D22220D46A0086247E /* FlagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312894D12220D46A0086247E /* FlagCell.swift */; };
 		312F5A2621BA2A6E0017B534 /* MPAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2521BA2A6E0017B534 /* MPAlertController.swift */; };
 		312F5A2821BB47E20017B534 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2721BB47E20017B534 /* FirebaseHelper.swift */; };
 		312F5A2A21BB4ED60017B534 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312F5A2921BB4ED60017B534 /* Account.swift */; };
@@ -155,6 +156,7 @@
 		310D30FD21B7618A00D0E079 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		310D30FF21B7620500D0E079 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
 		310D310121B772E800D0E079 /* MPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTextField.swift; sourceTree = "<group>"; };
+		312894D12220D46A0086247E /* FlagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlagCell.swift; path = Cells/FlagCell.swift; sourceTree = "<group>"; };
 		312F5A2521BA2A6E0017B534 /* MPAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPAlertController.swift; sourceTree = "<group>"; };
 		312F5A2721BB47E20017B534 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		312F5A2921BB4ED60017B534 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				313D81D6221F81D400B594B9 /* Cells */,
 				312F5A3921BC511F0017B534 /* Admin.swift */,
 				313D81DC2220BE3F00B594B9 /* RecipeManager.swift */,
+				312894D12220D46A0086247E /* FlagCell.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 				310D026F21C0967800EA8BA0 /* Ingredient.swift in Sources */,
 				3171CAEB21BCC4400026CC18 /* HomeRecipesCell.swift in Sources */,
 				3188552B220635A900BA6A93 /* Weekplan.swift in Sources */,
+				312894D22220D46A0086247E /* FlagCell.swift in Sources */,
 				318855312206AE0F00BA6A93 /* ConnectionErrorView.swift in Sources */,
 				3193139021ED66A600DBF55B /* Categories.swift in Sources */,
 				31D8093E21B8BECB00555CBE /* MPTextFieldDelegate.swift in Sources */,

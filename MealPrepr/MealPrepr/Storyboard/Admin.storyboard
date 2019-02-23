@@ -42,7 +42,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hgQ-kr-gLm">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hgQ-kr-gLm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -177,10 +177,10 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgL-F1-fhE">
-                                                    <rect key="frame" x="202" y="38.666666666666664" width="163" height="49.999999999999993"/>
+                                                    <rect key="frame" x="202" y="38.666666666666664" width="202" height="49.999999999999993"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flagged: 5 times" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpM-Zw-k7s">
-                                                            <rect key="frame" x="20" y="15.000000000000002" width="133" height="19.666666666666671"/>
+                                                            <rect key="frame" x="20" y="15.000000000000002" width="172" height="19.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -228,30 +228,53 @@
                                     <outlet property="delegate" destination="TRP-rE-9BE" id="cnm-gS-eAR"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qD6-NY-nhP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no flagged recipes at the moment. Check back later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRZ-ab-Mss">
+                                        <rect key="frame" x="20" y="340.66666666666669" width="374" height="40.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="iRZ-ab-Mss" firstAttribute="centerY" secondItem="qD6-NY-nhP" secondAttribute="centerY" id="FkN-dL-UVS"/>
+                                    <constraint firstItem="iRZ-ab-Mss" firstAttribute="leading" secondItem="qD6-NY-nhP" secondAttribute="leading" constant="20" id="Qyx-TS-iVa"/>
+                                    <constraint firstItem="iRZ-ab-Mss" firstAttribute="centerX" secondItem="qD6-NY-nhP" secondAttribute="centerX" id="eTF-h3-P97"/>
+                                    <constraint firstAttribute="trailing" secondItem="iRZ-ab-Mss" secondAttribute="trailing" constant="20" id="tsy-de-BUl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g3Y-VR-NWS" firstAttribute="bottom" secondItem="hgQ-kr-gLm" secondAttribute="bottom" id="40g-YA-btb"/>
                             <constraint firstItem="g3Y-VR-NWS" firstAttribute="trailing" secondItem="hgQ-kr-gLm" secondAttribute="trailing" id="9nX-Ve-mrm"/>
                             <constraint firstItem="hgQ-kr-gLm" firstAttribute="leading" secondItem="g3Y-VR-NWS" secondAttribute="leading" id="aJW-Ot-5Xr"/>
+                            <constraint firstItem="g3Y-VR-NWS" firstAttribute="trailing" secondItem="qD6-NY-nhP" secondAttribute="trailing" id="ejg-DI-W16"/>
+                            <constraint firstItem="g3Y-VR-NWS" firstAttribute="bottom" secondItem="qD6-NY-nhP" secondAttribute="bottom" id="gW5-kl-fmk"/>
                             <constraint firstItem="hgQ-kr-gLm" firstAttribute="top" secondItem="g3Y-VR-NWS" secondAttribute="top" id="ny6-BC-p0H"/>
+                            <constraint firstItem="qD6-NY-nhP" firstAttribute="top" secondItem="g3Y-VR-NWS" secondAttribute="top" id="qAP-zr-hdF"/>
+                            <constraint firstItem="qD6-NY-nhP" firstAttribute="leading" secondItem="g3Y-VR-NWS" secondAttribute="leading" id="roX-U2-ADo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g3Y-VR-NWS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Admin" id="lwx-1o-ADv"/>
                     <connections>
+                        <outlet property="emptyView" destination="qD6-NY-nhP" id="btt-VE-nG1"/>
                         <outlet property="tableView" destination="hgQ-kr-gLm" id="yq0-6f-f4I"/>
                         <segue destination="Ypg-LV-SD4" kind="show" identifier="flaggedRecipeDetail" id="e3n-aG-VFq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUS-TZ-yT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4183" y="1451"/>
+            <point key="canvasLocation" x="4182.608695652174" y="1450.4464285714284"/>
         </scene>
         <!--Recipe Manager-->
         <scene sceneID="FrR-HX-MGt">
             <objects>
-                <viewController id="Ypg-LV-SD4" sceneMemberID="viewController">
+                <viewController id="Ypg-LV-SD4" customClass="RecipeManager" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o1r-W9-avR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +283,7 @@
                                 <rect key="frame" x="0.0" y="246" width="414" height="476"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="113" id="fXO-vo-LLP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeManagerCell" rowHeight="113" id="fXO-vo-LLP" customClass="FlagCell" customModule="MealPrepr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fXO-vo-LLP" id="uDM-cw-b6X">
@@ -324,6 +347,11 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="axm-3E-9tn" secondAttribute="bottom" constant="10" id="yme-Lw-xd1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="z2M-yc-2kB" id="sIU-pU-ncA"/>
+                                            <outlet property="flaggedByLabel" destination="f8O-vU-ilv" id="0bv-S5-dUj"/>
+                                            <outlet property="reasonLabel" destination="iWW-kf-BUy" id="Hy9-1d-dKA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -331,6 +359,13 @@
                                     <outlet property="delegate" destination="Ypg-LV-SD4" id="7La-2T-P4V"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rpB-MF-72N">
+                                <rect key="frame" x="111" y="10" width="192" height="192"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="192" id="BXW-j4-62k"/>
+                                    <constraint firstAttribute="height" constant="192" id="Fou-5a-chf"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhg-KF-Xbs" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                 <rect key="frame" x="233" y="10" width="70" height="55"/>
                                 <subviews>
@@ -382,13 +417,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clips" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rpB-MF-72N">
-                                <rect key="frame" x="111" y="10" width="192" height="192"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="192" id="BXW-j4-62k"/>
-                                    <constraint firstAttribute="height" constant="192" id="Fou-5a-chf"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEo-qW-DH3" customClass="RoundedUIView" customModule="MealPrepr" customModuleProvider="target">
                                 <rect key="frame" x="111" y="162" width="192" height="40"/>
                                 <subviews>
@@ -455,19 +483,27 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="M5Z-Zc-9MU">
-                                <rect key="frame" x="52" y="212" width="310" height="24"/>
+                                <rect key="frame" x="60.666666666666657" y="212" width="293" height="24"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlf-Mh-RfC">
                                         <rect key="frame" x="0.0" y="0.0" width="114" height="24"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Clear Flags" image="Clear_Black">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clearFlagsBtnClicked:" destination="Ypg-LV-SD4" eventType="touchUpInside" id="fI8-b0-ILt"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYg-gQ-xSa">
-                                        <rect key="frame" x="174" y="0.0" width="136" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYg-gQ-xSa">
+                                        <rect key="frame" x="174" y="0.0" width="119" height="24"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Delete Recipe" image="delete">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteBtnClicked:" destination="Ypg-LV-SD4" eventType="touchUpInside" id="M3C-E3-BZz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -491,6 +527,18 @@
                         <viewLayoutGuide key="safeArea" id="cMz-oM-dfV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recipe Manager" id="WsH-Vw-ZY3"/>
+                    <connections>
+                        <outlet property="calServLabel" destination="Eg6-ff-jHw" id="vD5-8h-Kd6"/>
+                        <outlet property="clearFlagsBtn" destination="mlf-Mh-RfC" id="fT8-yO-9AV"/>
+                        <outlet property="cookLabel" destination="kHi-St-eyQ" id="vai-wZ-2tI"/>
+                        <outlet property="deleteRecipeBtn" destination="hYg-gQ-xSa" id="1JA-Jt-zcD"/>
+                        <outlet property="ingredientBackView" destination="jhg-KF-Xbs" id="qDk-5i-N7x"/>
+                        <outlet property="ingredientCountLabel" destination="2H5-Id-5y7" id="tV9-98-jbd"/>
+                        <outlet property="prepLabel" destination="9sG-X1-0vA" id="W8H-hD-dDw"/>
+                        <outlet property="recipeImageView" destination="rpB-MF-72N" id="Wui-E7-XDk"/>
+                        <outlet property="recipeTitle" destination="t4v-CZ-eKD" id="diV-Yj-6Kd"/>
+                        <outlet property="recipeTitleBackView" destination="rEo-qW-DH3" id="748-0V-cEV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2Z-nN-c40" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
