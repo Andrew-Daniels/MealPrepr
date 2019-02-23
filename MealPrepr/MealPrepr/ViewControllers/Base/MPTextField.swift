@@ -116,6 +116,13 @@ class MPTextField: UIControl, UITextFieldDelegate {
         }
     }
     
+    public func setErrorNoShake(errorMsg: String?) {
+        if let errorMsg = errorMsg {
+            self.errorLabel.text = errorMsg
+            _hasError = true;
+        }
+    }
+    
     public func setAuthError(errorMsg: String?, authFieldType: ErrorHelper.AuthFieldType?) {
         if let _authFieldType = self.authFieldType, _authFieldType == authFieldType {
             setError(errorMsg: errorMsg)
@@ -177,6 +184,12 @@ class MPTextField: UIControl, UITextFieldDelegate {
         } else {
             self.textFieldLabel.isHidden = true
         }
+        
+        if self.passwordField {
+            let errorMsg = ValidationHelper.validatePassword(password: text)
+            self.setErrorNoShake(errorMsg: errorMsg)
+        }
+        
         self.delegate?.mpTextFieldTextDidChange(text: textField.text)
     }
     
