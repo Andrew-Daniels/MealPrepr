@@ -22,10 +22,7 @@ class Photos: MPCreateRecipeChildController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-            layout.scrollDirection = .vertical
-        } else if !readOnly {
+        if !readOnly {
             let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.scrollDirection = .vertical
         }

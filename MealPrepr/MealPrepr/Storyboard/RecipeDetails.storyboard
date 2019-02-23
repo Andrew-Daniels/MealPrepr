@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91x-ou-DMZ">
-                                <rect key="frame" x="0.0" y="30" width="745" height="200"/>
+                                <rect key="frame" x="0.0" y="30" width="755" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="sad-bY-JCH">
                                         <variation key="heightClass=regular-widthClass=regular" constant="200"/>
@@ -236,7 +236,9 @@
                             <constraint firstItem="O2H-pU-NQL" firstAttribute="top" secondItem="lRc-ff-Aoy" secondAttribute="bottom" constant="20" id="R7N-s3-e7W"/>
                             <constraint firstItem="snQ-y6-a2o" firstAttribute="top" secondItem="lRc-ff-Aoy" secondAttribute="bottom" constant="20" id="RAS-AJ-wvX"/>
                             <constraint firstItem="A7d-Tn-rYN" firstAttribute="trailing" secondItem="nzO-VH-bpc" secondAttribute="trailing" constant="10" id="S9L-8q-rMd"/>
-                            <constraint firstItem="wo4-K0-vLD" firstAttribute="leading" secondItem="91x-ou-DMZ" secondAttribute="trailing" id="U3O-ya-Kqj"/>
+                            <constraint firstItem="wo4-K0-vLD" firstAttribute="leading" secondItem="91x-ou-DMZ" secondAttribute="trailing" id="U3O-ya-Kqj">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-10"/>
+                            </constraint>
                             <constraint firstItem="mTr-7K-lR2" firstAttribute="centerY" secondItem="O2H-pU-NQL" secondAttribute="centerY" id="Uqu-31-2F9"/>
                             <constraint firstItem="9UX-pE-Hvx" firstAttribute="centerY" secondItem="91x-ou-DMZ" secondAttribute="centerY" id="Xuh-gp-GHr"/>
                             <constraint firstItem="nzO-VH-bpc" firstAttribute="top" secondItem="O2H-pU-NQL" secondAttribute="bottom" constant="10" id="YGJ-Hh-LIb"/>

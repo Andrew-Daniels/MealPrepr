@@ -19,6 +19,7 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
     @IBOutlet weak var collectionView: UICollectionView!
     var recipes = [Recipe]()
     var category = "Favorites"
+    private var isPad = UIDevice.current.userInterfaceIdiom == .pad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,24 +67,11 @@ class Categories: MPViewController, UICollectionViewDelegate, UICollectionViewDa
             return
         }
         
-        let idiom = UIDevice.current.userInterfaceIdiom
-        switch idiom {
-            
-        case .unspecified:
-            break
-        case .phone:
-            if let sender = sender as? UIButton {
-                sender.isSelected = true
-            }
-            performSegue(withIdentifier: selectorSegueIdentifier, sender: sender)
-            break
-        case .pad:
-            break
-        case .tv:
-            break
-        case .carPlay:
-            break
+        if let sender = sender as? UIButton {
+            sender.isSelected = true
         }
+        performSegue(withIdentifier: selectorSegueIdentifier, sender: sender)
+        
     }
     
     func photoDownloaded(sender: Recipe) {
