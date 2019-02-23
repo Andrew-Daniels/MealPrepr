@@ -127,6 +127,11 @@ class RecipeManager: MPViewController, UITableViewDelegate, UITableViewDataSourc
         
         recipeImageView.layer.cornerRadius = 4
         
+//        let gR = UITapGestureRecognizer(target: self, action: #selector(recipeClicked(_:)))
+//        recipeImageView.addGestureRecognizer(gR)
+//        ingredientBackView.addGestureRecognizer(gR)
+//        recipeTitleBackView.addGestureRecognizer(gR)
+        
         if let r = recipe {
             self.recipeTitle.text = r.title
             self.calServLabel.text = r.calServing
@@ -145,4 +150,7 @@ class RecipeManager: MPViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
+    @IBAction func recipeClicked(_ sender: Any) {
+        self.showRecipeDetails(recipe: self.recipe, weekplan: nil, adminMode: true)
+    }
 }

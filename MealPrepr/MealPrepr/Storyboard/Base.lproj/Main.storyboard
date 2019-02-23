@@ -430,7 +430,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhJ-L9-Lhe">
-                                        <rect key="frame" x="112.66666666666666" y="439" width="105" height="48"/>
+                                        <rect key="frame" x="112.66666666666666" y="357" width="105" height="48"/>
                                         <fontDescription key="fontDescription" name="Phosphate-Solid" family="Phosphate" pointSize="30"/>
                                         <state key="normal" title="SIGN UP">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -442,6 +442,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.19215686274509802" green="0.21176470588235294" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="LhJ-L9-Lhe" firstAttribute="top" secondItem="cFA-3l-uIQ" secondAttribute="bottom" constant="20" id="3sg-rg-jdX"/>
                                     <constraint firstItem="heK-cb-gEZ" firstAttribute="centerX" secondItem="vUs-WN-rAS" secondAttribute="centerX" id="58a-mv-I87"/>
                                     <constraint firstItem="fSQ-Fa-V6E" firstAttribute="centerX" secondItem="vUs-WN-rAS" secondAttribute="centerX" id="6pB-dJ-WSX"/>
                                     <constraint firstAttribute="bottom" secondItem="LhJ-L9-Lhe" secondAttribute="bottom" constant="25" id="7fe-X2-kpZ"/>
@@ -470,6 +471,11 @@
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="constraints">
                                         <exclude reference="o1v-S2-nUu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="7fe-X2-kpZ"/>
                                     </mask>
                                 </variation>
                             </view>

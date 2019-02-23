@@ -232,13 +232,14 @@ class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         })
     }
     
-    func showRecipeDetails(recipe: Recipe, weekplan: WeekplanModel? = nil) {
+    func showRecipeDetails(recipe: Recipe, weekplan: WeekplanModel? = nil, adminMode: Bool = false) {
         let main = UIStoryboard.init(name: "Main", bundle: nil)
         let recipeDetailsVC = main.instantiateViewController(withIdentifier: recipeDetailsStoryboardIdentifier) as! RecipeDetails
         recipeDetailsVC.recipe = recipe
         recipeDetailsVC.navigationItem.title = recipe.title
         recipeDetailsVC.account = self.account
         recipeDetailsVC.weekplan = weekplan
+        recipeDetailsVC.adminMode = adminMode
         self.navigationController?.pushViewController(recipeDetailsVC, animated: true)
         recipeDetailsVC.navigationController?.isNavigationBarHidden = false
     }

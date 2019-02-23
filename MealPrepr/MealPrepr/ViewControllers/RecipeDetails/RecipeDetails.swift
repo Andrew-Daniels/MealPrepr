@@ -25,6 +25,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     var recipe: Recipe!
     var weekplan: WeekplanModel?
+    var adminMode: Bool!
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -329,7 +330,12 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             editBtn.image = UIImage(named: "Edit_White")?.withRenderingMode(.alwaysTemplate)
             editBtn.tintColor = UIColor.white
             
-            self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn, favoritesBtn!]
+            if !adminMode {
+                self.navigationItem.rightBarButtonItems = [editBtn, deleteBtn, favoritesBtn!]
+            } else {
+                self.navigationItem.rightBarButtonItems = [editBtn]
+            }
+            
         } else {
             self.navigationItem.rightBarButtonItems = [favoritesBtn!, flagBtn!]
         }

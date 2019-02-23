@@ -15,10 +15,10 @@
             <objects>
                 <navigationController id="fvn-at-shJ" customClass="AdminNavigationViewController" customModule="MealPrepr" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Admin" image="Flag_Black" id="1eB-O6-UFt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="53z-UP-cz8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="53z-UP-cz8">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1215686275" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.12156862745098039" green="0.047058823529411764" blue="0.047058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -361,6 +361,7 @@
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rpB-MF-72N">
                                 <rect key="frame" x="111" y="10" width="192" height="192"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="192" id="BXW-j4-62k"/>
                                     <constraint firstAttribute="height" constant="192" id="Fou-5a-chf"/>
@@ -507,6 +508,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inS-in-xjg">
+                                <rect key="frame" x="111" y="10" width="192" height="192"/>
+                                <connections>
+                                    <action selector="recipeClicked:" destination="Ypg-LV-SD4" eventType="touchUpInside" id="ouH-Vv-ngB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -514,9 +521,13 @@
                             <constraint firstItem="wBI-pu-an3" firstAttribute="leading" secondItem="cMz-oM-dfV" secondAttribute="leading" id="Dvl-nm-qNV"/>
                             <constraint firstItem="jhg-KF-Xbs" firstAttribute="trailing" secondItem="rpB-MF-72N" secondAttribute="trailing" id="GQ8-64-Mvd"/>
                             <constraint firstItem="M5Z-Zc-9MU" firstAttribute="top" secondItem="rpB-MF-72N" secondAttribute="bottom" constant="10" id="Nyu-9e-1AB"/>
+                            <constraint firstItem="inS-in-xjg" firstAttribute="top" secondItem="rpB-MF-72N" secondAttribute="top" id="QvP-VB-scX"/>
                             <constraint firstItem="cMz-oM-dfV" firstAttribute="trailing" secondItem="wBI-pu-an3" secondAttribute="trailing" id="StL-nb-9Dr"/>
                             <constraint firstItem="rpB-MF-72N" firstAttribute="centerX" secondItem="o1r-W9-avR" secondAttribute="centerX" id="VJU-dM-mhc"/>
                             <constraint firstItem="wBI-pu-an3" firstAttribute="top" secondItem="M5Z-Zc-9MU" secondAttribute="bottom" constant="10" id="WTm-hG-Ofr"/>
+                            <constraint firstItem="inS-in-xjg" firstAttribute="leading" secondItem="rpB-MF-72N" secondAttribute="leading" id="fKk-GZ-sGz"/>
+                            <constraint firstItem="inS-in-xjg" firstAttribute="trailing" secondItem="rpB-MF-72N" secondAttribute="trailing" id="hKO-aT-7zz"/>
+                            <constraint firstItem="inS-in-xjg" firstAttribute="bottom" secondItem="rpB-MF-72N" secondAttribute="bottom" id="jIv-oV-R69"/>
                             <constraint firstItem="rEo-qW-DH3" firstAttribute="bottom" secondItem="rpB-MF-72N" secondAttribute="bottom" id="jJq-X0-L9O"/>
                             <constraint firstItem="jhg-KF-Xbs" firstAttribute="top" secondItem="rpB-MF-72N" secondAttribute="top" id="qke-aq-gvf"/>
                             <constraint firstItem="cMz-oM-dfV" firstAttribute="bottom" secondItem="wBI-pu-an3" secondAttribute="bottom" id="suD-fG-kF3"/>
