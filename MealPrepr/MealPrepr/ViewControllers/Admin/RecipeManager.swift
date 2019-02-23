@@ -63,7 +63,7 @@ class RecipeManager: MPViewController, UITableViewDelegate, UITableViewDataSourc
                                 parent.recipes.removeAll(where: { (r) -> Bool in
                                     return r.GUID == self.recipe.GUID
                                 })
-                                parent.tableView.reloadData()
+                                parent.reloadTableView()
                             }
                             self.navigationController?.popViewController(animated: true)
                         })
