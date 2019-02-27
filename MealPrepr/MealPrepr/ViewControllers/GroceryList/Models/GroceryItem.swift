@@ -10,6 +10,7 @@ import Foundation
 
 class GroceryItem {
     
+    var id: String?
     var ingredient: Ingredient!
     var status: GroceryStatus = .Need
     
@@ -60,7 +61,8 @@ class GroceryItem {
             let quantity = self.quantity,
             groceryItem.title?.lowercased() == title.lowercased(),
             groceryItem.unit == unit,
-            let groceryQuantity = groceryItem.quantity {
+            let groceryQuantity = groceryItem.quantity,
+            groceryItem.status == self.status {
             
             self.quantity = groceryQuantity + quantity
             return true
@@ -90,6 +92,22 @@ class GroceryItem {
     
     func toString() -> String {
         return ingredient.toString() + status.rawValue.description
+    }
+    
+    func tryMergeExcludingSelf(groceryList: [GroceryItem]) {
+        
+        var list = groceryList
+        
+        for item in groceryList {
+            
+            if item.mergeGroceryItem(groceryItem: self) {
+                
+                
+                
+            }
+            
+        }
+        
     }
     
 }

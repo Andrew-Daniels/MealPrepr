@@ -55,12 +55,15 @@ class WeekplanModel {
                 for item in groceryItems {
                     var groceryDict = [String: Any]()
                     let statusString = item.status.rawValue
-                    groceryDict[statusString] = item.ingredient.toDict()
+                    var ingredientDict = item.ingredient.toDict()
+                    ingredientDict["Id"] = item.id ?? FirebaseHelper().getAutoId()
+                    groceryDict[statusString] = ingredientDict
                     array.append(groceryDict)
                 }
             }
             return array
         }
+        
     }
     
     init() {
@@ -122,6 +125,9 @@ class WeekplanModel {
                     ingredient.unit = unit
                     
                     let groceryItem = GroceryItem(ingredient: ingredient, status: status)
+                    if let id = itemValue["Id"] as? String {
+                        groceryItem.id = id
+                    }
                     groceryList?.append(groceryItem)
                     
                 }

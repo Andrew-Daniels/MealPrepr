@@ -127,8 +127,8 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
         saveWeekplan()
-        tableView.reloadData()
-        
+        haveTableView?.reloadData()
+        needTableView?.reloadData()
     }
     
     private func getGroceryList(type: GroceryItem.GroceryStatus) -> [GroceryItem] {

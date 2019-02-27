@@ -18,6 +18,7 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     @IBOutlet weak var searchBar: UISearchBar!
     var recipes = [Recipe]()
     var filteredRecipes = [Recipe]()
+    var viewingUsersRecipes: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +48,16 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     public func retrieveRecipes() {
-        FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
-            self.recipes = data
-            self.collectionView.reloadData()
+        
+        if !viewingUsersRecipes {
+            
+            FirebaseHelper().loadRecipes(recipeDelegate: self) { (data) in
+                self.recipes = data
+                self.collectionView.reloadData()
+            }
+            
         }
+        
     }
     
     @objc func logoutBtnClicked() {

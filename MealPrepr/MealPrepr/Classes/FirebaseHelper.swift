@@ -576,4 +576,10 @@ class FirebaseHelper {
             })
         }
     }
+    
+    public func getAutoId() -> String {
+        
+        return database.childByAutoId().key
+        
+    }
 }

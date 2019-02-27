@@ -89,6 +89,7 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
         case .ChangePassword:
             performSegue(withIdentifier: changeAccountInfoAlertSegueIdentifier, sender: cellType)
         case .MyRecipes:
+            self.listRecipes()
             break
         case .Admin:
             break
@@ -146,6 +147,25 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
         super.alertDismissed()
         
         setupAccountInfoFields()
+    }
+    
+    private func listRecipes() {
+        
+        let main = UIStoryboard(name: "Home", bundle: nil)
+        guard let vc = main.instantiateViewController(withIdentifier: "Home") as? Home else { return }
+        
+        self.startLoading(withText: "Loading") { (loaded) in
+            FirebaseHelper().loadRecipesFor(user: self.account.UID!) { (recipes) in
+                vc.recipes = recipes
+                vc.account = self.account
+                vc.viewingUsersRecipes = true
+                self.finishLoading(completionHandler: { (finished) in
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+                
+            }
+        }
+        
     }
 
 }
