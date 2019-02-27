@@ -94,19 +94,15 @@ class GroceryItem {
         return ingredient.toString() + status.rawValue.description
     }
     
-    func tryMergeExcludingSelf(groceryList: [GroceryItem]) {
+    func tryMergeExcludingSelf(groceryList: [GroceryItem]) -> [GroceryItem] {
         
         var list = groceryList
         
-        for item in groceryList {
-            
-            if item.mergeGroceryItem(groceryItem: self) {
-                
-                
-                
-            }
-            
+        list.removeAll { (g) -> Bool in
+            return g.id == self.id
         }
+        
+        return addGroceryItemToList(groceryList: list)
         
     }
     

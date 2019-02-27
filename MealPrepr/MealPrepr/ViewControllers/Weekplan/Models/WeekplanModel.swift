@@ -141,8 +141,6 @@ class WeekplanModel {
                 guard let recipeGUID = recipe.keys.first,
                 let recipeStatus = recipe[recipeGUID] else { return }
                 
-                //var recipe = Recipe()
-                
                 FirebaseHelper().loadRecipe(guid: recipeGUID) { (r) in
                     r.weekplanStatus = RecipeStatus.init(rawValue: recipeStatus) ?? RecipeStatus.Active
                     self.recipes?.append(r)

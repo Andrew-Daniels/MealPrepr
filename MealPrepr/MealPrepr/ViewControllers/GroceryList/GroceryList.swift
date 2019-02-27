@@ -127,8 +127,7 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
         }
         
         saveWeekplan()
-        haveTableView?.reloadData()
-        needTableView?.reloadData()
+        reloadData()
     }
     
     private func getGroceryList(type: GroceryItem.GroceryStatus) -> [GroceryItem] {
@@ -165,8 +164,7 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
             wp.groceryListNeedsUpdate = false
             saveWeekplan()
             
-            haveTableView?.reloadData()
-            needTableView?.reloadData()
+            self.reloadData()
         }
         
     }
@@ -181,12 +179,20 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
         vc.delegate = self
         ingredientAlert = vc
         
-        let firstIndex = getGroceryList(type: .Need).firstIndex(where: { (g) -> Bool in
+//        let firstIndex = getGroceryList(type: .Need).firstIndex(where: { (g) -> Bool in
+//            return g.toString() == groceryItem.toString()
+//        })
+//
+//        if let nonNilIndex = firstIndex {
+//            editingIndexRow = getGroceryList(type: .Need).startIndex.distance(to: nonNilIndex)
+//        }
+        
+        let firstIndex = weekplan?.groceryList?.firstIndex(where: { (g) -> Bool in
             return g.toString() == groceryItem.toString()
         })
         
         if let nonNilIndex = firstIndex {
-            editingIndexRow = getGroceryList(type: .Need).startIndex.distance(to: nonNilIndex)
+            editingIndexRow = weekplan?.groceryList?.startIndex.distance(to: nonNilIndex)
         }
         
         present(vc, animated: true, completion: nil)
@@ -202,16 +208,27 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     override func alertDismissed() {
-        if editingIndexRow != nil {
+        
+//        if editingIndexRow != nil {
+//
+//            let indexPath = IndexPath(row: editingIndexRow!, section: 0)
+//            needTableView.reloadRows(at: [indexPath], with: .right)
+//
+//            saveWeekplan()
+//
+//        }
+//
+//        editingIndexRow = nil
+        
+        if let index = editingIndexRow, let list = self.weekplan?.groceryList {
             
-            let indexPath = IndexPath(row: editingIndexRow!, section: 0)
-            needTableView.reloadRows(at: [indexPath], with: .right)
+            let ingredient = list[index]
+            self.weekplan?.groceryList = ingredient.tryMergeExcludingSelf(groceryList: list)
             
-            saveWeekplan()
+            self.reloadData()
             
         }
         
-        editingIndexRow = nil
     }
     
     func saveWeekplan() {
@@ -220,6 +237,13 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
             //saved
             print("weekplan is saved")
         }
+        
+    }
+    
+    private func reloadData() {
+        
+        haveTableView?.reloadData()
+        needTableView?.reloadData()
         
     }
     
