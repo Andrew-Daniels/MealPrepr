@@ -9,16 +9,21 @@
 import UIKit
 
 private let backToGroceryListUnwindIdentifier = "backToGroceryList"
+private let editGroceryItemIdentifier = "backToGroceryList"
+private let newGroceryItemIdentifier = "backToGroceryListNew"
 
 class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource, GroceryListCellDelegate {
     
     @IBOutlet weak var needTableView: UITableView!
     @IBOutlet weak var haveTableView: UITableView!
+    @IBOutlet weak var addGroceryItemBtn: UIBarButtonItem?
+    
     
     var weekplan: WeekplanModel?
     
     private var ingredientAlert: IngredientAlert?
     private var editingIndexRow: Int?
+    
     
     private var ingredientUnits = [String]() {
         didSet {
@@ -174,18 +179,10 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
         let createRecipe = UIStoryboard(name: "CreateRecipe", bundle: nil)
         guard let vc = createRecipe.instantiateViewController(withIdentifier: "IngredientAlert") as? IngredientAlert else { return }
         vc.ingredient = groceryItem.ingredient
-        vc.unwindSegueIdentifier = backToGroceryListUnwindIdentifier
+        vc.unwindSegueIdentifier = editGroceryItemIdentifier
         vc.ingredientUnits = ingredientUnits
         vc.delegate = self
         ingredientAlert = vc
-        
-//        let firstIndex = getGroceryList(type: .Need).firstIndex(where: { (g) -> Bool in
-//            return g.toString() == groceryItem.toString()
-//        })
-//
-//        if let nonNilIndex = firstIndex {
-//            editingIndexRow = getGroceryList(type: .Need).startIndex.distance(to: nonNilIndex)
-//        }
         
         let firstIndex = weekplan?.groceryList?.firstIndex(where: { (g) -> Bool in
             return g.toString() == groceryItem.toString()
@@ -199,34 +196,47 @@ class GroceryList: MPViewController, UITableViewDelegate, UITableViewDataSource,
         
     }
     
+    @IBAction func addGroceryItem() {
+        
+        let createRecipe = UIStoryboard(name: "CreateRecipe", bundle: nil)
+        guard let vc = createRecipe.instantiateViewController(withIdentifier: "IngredientAlert") as? IngredientAlert else { return }
+        vc.unwindSegueIdentifier = newGroceryItemIdentifier
+        vc.ingredientUnits = ingredientUnits
+        vc.delegate = self
+        ingredientAlert = vc
+        
+        present(vc, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func backToGroceryList(segue: UIStoryboardSegue) {
         
-    }
-    
-    override func alertShown() {
+        guard let vc = segue.source as? IngredientAlert else { return }
         
-    }
-    
-    override func alertDismissed() {
-        
-//        if editingIndexRow != nil {
-//
-//            let indexPath = IndexPath(row: editingIndexRow!, section: 0)
-//            needTableView.reloadRows(at: [indexPath], with: .right)
-//
-//            saveWeekplan()
-//
-//        }
-//
-//        editingIndexRow = nil
-        
-        if let index = editingIndexRow, let list = self.weekplan?.groceryList {
+        switch segue.identifier {
             
-            let ingredient = list[index]
-            self.weekplan?.groceryList = ingredient.tryMergeExcludingSelf(groceryList: list)
+        case editGroceryItemIdentifier:
             
+            if let index = editingIndexRow, let list = self.weekplan?.groceryList {
+                
+                let ingredient = list[index]
+                self.weekplan?.groceryList = ingredient.tryMergeExcludingSelf(groceryList: list)
+                
+                self.reloadData()
+                self.saveWeekplan()
+            }
+            
+            break
+        case newGroceryItemIdentifier:
+            
+            let item = GroceryItem(ingredient: vc.ingredient, status: .Need)
+            self.weekplan?.groceryList = item.addGroceryItemToList(groceryList: self.weekplan!.groceryList!)
             self.reloadData()
+            self.saveWeekplan()
             
+            break
+        default:
+            return
         }
         
     }

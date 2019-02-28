@@ -534,6 +534,7 @@
                         <outlet property="unitPicker" destination="VzY-XO-yjJ" id="VLy-K4-0YS"/>
                         <segue destination="b3M-YT-ljP" kind="unwind" identifier="backToIngredients" unwindAction="backToIngredientsWithSegue:" id="ud2-hv-dGW"/>
                         <segue destination="b3M-YT-ljP" kind="unwind" identifier="backToGroceryList" unwindAction="backToGroceryListWithSegue:" id="Pv7-yY-c6y"/>
+                        <segue destination="b3M-YT-ljP" kind="unwind" identifier="backToGroceryListNew" unwindAction="backToGroceryListWithSegue:" id="P4r-Qy-xOt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seW-sq-enD" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -47,7 +47,8 @@ class IngredientAlert: MPViewController, MPTextFieldDelegate, UIPickerViewDelega
         self.view.endEditing(true)
         
         if unwindSegueIdentifier != nil {
-            performSegue(withIdentifier: unwindSegueIdentifier!, sender: self)
+            self.dismiss(animated: true, completion: nil)
+            //performSegue(withIdentifier: unwindSegueIdentifier!, sender: self)
         } else {
             delegate?.alertDismissed()
         }
