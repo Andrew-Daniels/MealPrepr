@@ -57,6 +57,7 @@ class WeekplanModel {
                     let statusString = item.status.rawValue
                     var ingredientDict = item.ingredient.toDict()
                     ingredientDict["Id"] = item.id ?? FirebaseHelper().getAutoId()
+                    item.id = ingredientDict["Id"] as? String
                     groceryDict[statusString] = ingredientDict
                     array.append(groceryDict)
                 }
