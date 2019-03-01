@@ -30,11 +30,12 @@ class Home: MPViewController, UICollectionViewDelegate, UICollectionViewDataSour
             let createAccountBtn = UIBarButtonItem(title: "Create Account", style: .done, target: self, action: #selector(createAccountBtnClicked))
             createAccountBtn.tintColor = UIColor.white
             self.navigationItem.leftBarButtonItem = createAccountBtn
-        } else {
-            let logoutBtn = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutBtnClicked))
-            logoutBtn.tintColor = UIColor.white
-            self.navigationItem.leftBarButtonItem = logoutBtn
         }
+//        else {
+//            let logoutBtn = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutBtnClicked))
+//            logoutBtn.tintColor = UIColor.white
+//            self.navigationItem.leftBarButtonItem = logoutBtn
+//        }
         
         //Setup UINavigationBarTitleView
         let imageViewTitle: UIImageView = UIImageView(image: UIImage(named: "Meal-Prepr-Logo"))

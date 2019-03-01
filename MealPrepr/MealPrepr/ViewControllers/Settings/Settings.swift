@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FBSDKLoginKit
 
 private let tableViewCellIdentifier = "settingCell"
 private let changeAccountInfoAlertSegueIdentifier = "changeAccountInfo"
@@ -28,6 +30,7 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
         case ChangePassword = "Change Password"
         case MyRecipes = "My Recipes"
         case Admin = "Admin"
+        case Logout = "Logout"
     }
     
     override func viewDidLoad() {
@@ -93,14 +96,17 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
             break
         case .Admin:
             break
+        case .Logout:
+            logout()
+            break
         }
         
     }
     
     func setupSettings() {
-        settingsTableViewModel = [.ChangeUsername, .ChangeEmail, .ChangePassword, .MyRecipes]
+        settingsTableViewModel = [.ChangeUsername, .ChangeEmail, .ChangePassword, .MyRecipes, .Logout]
         if self.account.isFBAuth {
-            settingsTableViewModel = [.ChangeUsername, .MyRecipes]
+            settingsTableViewModel = [.ChangeUsername, .MyRecipes, .Logout]
         }
 //        if self.account.userLevel == .Admin {
 //            settingsTableViewModel.append(.Admin)
@@ -133,6 +139,8 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
                 break
             case .Admin:
                 break
+            case .Logout:
+                break
             }
             
         }
@@ -164,6 +172,22 @@ class Settings: MPViewController, UITableViewDelegate, UITableViewDataSource {
                 })
                 
             }
+        }
+        
+    }
+    
+    private func logout() {
+        
+        do {
+            
+            let manager = FBSDKLoginManager()
+            manager.logOut()
+            
+            try Auth.auth().signOut()
+            
+            performSegue(withIdentifier: backToLoginSegueIdentifier, sender: nil)
+        } catch {
+            print("Error when trying to log user out.")
         }
         
     }

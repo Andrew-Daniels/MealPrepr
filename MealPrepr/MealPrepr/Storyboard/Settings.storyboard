@@ -189,9 +189,11 @@
                         <outlet property="tableView" destination="Xhl-l4-jSB" id="Cwy-1y-Lmg"/>
                         <outlet property="usernameLabel" destination="KuE-80-XrT" id="skH-lp-ztL"/>
                         <segue destination="jwQ-0E-UdW" kind="presentation" identifier="changeAccountInfo" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="tjf-63-fF8"/>
+                        <segue destination="oud-Nn-wRu" kind="unwind" identifier="backToLogin" unwindAction="backToLoginWithSegue:" id="Ddk-EM-6tT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPq-R2-mbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oud-Nn-wRu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1540.5797101449277" y="2288.8392857142858"/>
         </scene>
