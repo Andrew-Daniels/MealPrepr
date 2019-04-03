@@ -32,7 +32,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return showsAll ? self.account.recipeCategories.count + 1 : self.account.recipeCategories.count
+        return showsAll ? self.account.categories.count + 1 : self.account.categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +41,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
         var category = "All"
         
         if !showsAll {
-            category = self.account.recipeCategories[indexPath.row]
+            category = self.account.categories[indexPath.row]
             let recipeCat = recipe?.getCategory(account: self.account, completionHandler: { (category) in
                 
             })

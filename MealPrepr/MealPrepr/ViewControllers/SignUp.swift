@@ -30,6 +30,14 @@ class SignUp: MPViewController, MPTextFieldDelegate {
         passwordTextField.delegate = self
         passwordTextField.authFieldType = .Password
         _FBHelper = FirebaseHelper()
+        
+        let account = AccountModel(id: "6a1lj8TWuegQV8pijpOwQHcWlqI3")
+        account.populate { (complete) in
+            if complete {
+                print(account)
+            }
+        }
+        
     }
     
     @IBAction func signUpBtnClicked(_ sender: UIButton) {
@@ -79,9 +87,15 @@ class SignUp: MPViewController, MPTextFieldDelegate {
                         
                         self.finishLoading(completionHandler: { (finished) in
                             if finished {
-                                self.account = Account(UID: user.uid, username: username, userLevel: .User)
-                                self.account.email = user.email
-                                self._FBHelper.saveAccount(account: self.account)
+//                                self.account = Account(UID: user.uid, username: username, userLevel: .User)
+//                                self.account.email = user.email
+//                                self._FBHelper.saveAccount(account: self.account)
+                                self.account = AccountModel(id: user.uid)
+                                self.account.username = username
+                                self.account.userLevel = .User
+                                self.account.populate(completionHandler: { (complete) in
+                                    self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
+                                })
                                 self.performSegue(withIdentifier: registeredSegueIdentifier, sender: nil)
                             }
                         })

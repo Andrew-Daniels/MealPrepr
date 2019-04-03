@@ -15,7 +15,7 @@ import UIKit
 
 class Account {
     
-    public enum UserLevel: Int {
+    public enum UserLevel: Int, Codable {
         case Admin = 1
         case User = 0
         case Guest = -1

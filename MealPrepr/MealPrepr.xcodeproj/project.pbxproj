@@ -85,6 +85,8 @@
 		3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3193139221ED682700DBF55B /* CategoryAlert.swift */; };
 		3197C31A220A863A0079809D /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197C319220A863A0079809D /* Flag.swift */; };
 		3197C31D220F32270079809D /* WeekplanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197C31C220F32270079809D /* WeekplanModel.swift */; };
+		3199C7882252CE9300956842 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199C7872252CE9300956842 /* FirebaseModel.swift */; };
+		3199C78A2252DCA700956842 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199C7892252DCA700956842 /* AccountModel.swift */; };
 		31B9572521E0789D00D15CCD /* RecipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572421E0789D00D15CCD /* RecipeDelegate.swift */; };
 		31B9572721E120AC00D15CCD /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572621E120AC00D15CCD /* Loading.swift */; };
 		31B9572921E1351A00D15CCD /* PhotoCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */; };
@@ -207,6 +209,8 @@
 		3193139221ED682700DBF55B /* CategoryAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAlert.swift; sourceTree = "<group>"; };
 		3197C319220A863A0079809D /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		3197C31C220F32270079809D /* WeekplanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekplanModel.swift; sourceTree = "<group>"; };
+		3199C7872252CE9300956842 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
+		3199C7892252DCA700956842 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		31B9572421E0789D00D15CCD /* RecipeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDelegate.swift; sourceTree = "<group>"; };
 		31B9572621E120AC00D15CCD /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		31B9572821E1351A00D15CCD /* PhotoCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 				3171CAED21BCCF3E0026CC18 /* MPCollectionView.swift */,
 				31B9573021EA479C00D15CCD /* MPCreateRecipeChildController.swift */,
 				31D467A822179B9100757CEE /* MPLikeControl.swift */,
+				3199C7872252CE9300956842 /* FirebaseModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 				31DD2FE421D7EDC800AE8974 /* RecipeHelper.swift */,
 				3188552E2206795100BA6A93 /* Reachability.swift */,
 				318855302206AE0F00BA6A93 /* ConnectionErrorView.swift */,
+				3199C7892252DCA700956842 /* AccountModel.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -916,6 +922,7 @@
 				3171CAF021BF562B0026CC18 /* CreateRecipe.swift in Sources */,
 				313D81D2221D095700B594B9 /* GroceryListCell.swift in Sources */,
 				31D4679D2212530C00757CEE /* ReviewCell.swift in Sources */,
+				3199C78A2252DCA700956842 /* AccountModel.swift in Sources */,
 				310D30D721B74DE200D0E079 /* Login.swift in Sources */,
 				310D028121C3302300EA8BA0 /* Instructions.swift in Sources */,
 				31DD2FE521D7EDC800AE8974 /* RecipeHelper.swift in Sources */,
@@ -970,6 +977,7 @@
 				3132F9BB21FD15CC00D02EDE /* AlertDelegate.swift in Sources */,
 				31B9572D21E6FBF000D15CCD /* Utensil.swift in Sources */,
 				31611AE821FD786F00789B2F /* CategoriesNavigationController.swift in Sources */,
+				3199C7882252CE9300956842 /* FirebaseModel.swift in Sources */,
 				31D467A42216449C00757CEE /* AccountDelegate.swift in Sources */,
 				310D310221B772E800D0E079 /* MPTextField.swift in Sources */,
 				3193139321ED682700DBF55B /* CategoryAlert.swift in Sources */,

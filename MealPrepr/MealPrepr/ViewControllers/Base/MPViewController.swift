@@ -12,7 +12,7 @@ private let loadingVCSBIdentifer = "LoadingVC"
 
 class MPViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AlertDelegate, ConnectionErrorViewDelegate {
     
-    var account: Account!
+    var account: AccountModel!
     var searchController: UISearchController?
     var selectedImage: UIImage?
     var collectionViewCellWidth: CGFloat?

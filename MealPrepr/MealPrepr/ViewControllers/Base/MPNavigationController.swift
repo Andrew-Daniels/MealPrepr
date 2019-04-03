@@ -10,7 +10,7 @@ import UIKit
 
 class MPNavigationController: UINavigationController {
 
-    var account: Account!
+    var account: AccountModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

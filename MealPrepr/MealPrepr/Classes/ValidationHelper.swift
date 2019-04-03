@@ -10,12 +10,12 @@ import UIKit
 
 struct ValidationHelper {
     
-    public static func validateCategory(account: Account, category: String?) -> String? {
+    public static func validateCategory(account: AccountModel, category: String?) -> String? {
         if let errorMsg = self.checkIfEmpty(text: category) {
             return errorMsg
         }
         let trimmedCat = category!.trimmingCharacters(in: .whitespacesAndNewlines)
-        if account.recipeCategories.contains(trimmedCat) ||
+        if account.categories.contains(trimmedCat) ||
             trimmedCat.lowercased() == "favorites" ||
             trimmedCat.lowercased() == "all"
             {

@@ -99,26 +99,30 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
     }
     
     private func handleUser(user: User, isFBAuth: Bool = false) {
-        self.account = Account(UID: user.uid, completionHandler: { (actCreated) in
+        
+        self.account = AccountModel(id: user.uid)
+        self.account.populate { (complete) in
+            
             self.account.isFBAuth = isFBAuth
-            if actCreated {
-                //perform segue to homepage
+            if complete {
+                
                 self.finishLoading(completionHandler: { (finished) in
                     if finished {
                         self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
                     }
                 })
             } else {
-                //Request username to create a new account
-                //then perform segue to homepage
+                
                 self.finishLoading(completionHandler: { (finished) in
                     if finished {
                         self.performSegue(withIdentifier: usernameAlertSegueIdentifier, sender: nil)
                     }
                 })
+                
             }
             self.account.email = user.email
-        })
+        }
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -174,7 +178,7 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
         performSegue(withIdentifier: signUpSegueIdentifier, sender: sender)
     }
     @IBAction func guestBtnClicked(_ sender: UIButton) {
-        self.account = Account()
+        self.account = AccountModel(id: nil)
         //self.account.userLevel = .Admin
         performSegue(withIdentifier: loggedInSegueIdentifier, sender: sender)
     }
@@ -218,15 +222,14 @@ class Login: MPViewController, MPTextFieldDelegate, FBSDKLoginButtonDelegate {
                         }
                         if let u = user {
                             //Get the username and userlevel here
-                            self.account = Account(UID: u.user.uid, completionHandler: { (accountCreated) in
-                                if(accountCreated) {
-                                    //Perform segue to homescreen here
+                            self.account = AccountModel(id: u.user.uid)
+                            self.account.populate(completionHandler: { (accountCreated) in
+                                if accountCreated {
                                     self.finishLoading(completionHandler: { (finished) in
                                         if finished {
                                             self.performSegue(withIdentifier: loggedInSegueIdentifier, sender: nil)
                                         }
                                     })
-                                    
                                 }
                             })
                         }
