@@ -41,8 +41,9 @@ class UsernameAlert: MPViewController, MPTextFieldDelegate {
         //Unwind to Login
         self.account.username = self.usernameTextField.text
         self.account.userLevel = .User
-        FirebaseHelper().saveAccount(account: self.account)
-        performSegue(withIdentifier: loggedInUnwindSegueIdentifier, sender: nil)
+        self.account.save { (completed) in
+            self.performSegue(withIdentifier: loggedInUnwindSegueIdentifier, sender: nil)
+        }
     }
     
     func mpTextFieldShouldReturn(textField: MPTextField) {

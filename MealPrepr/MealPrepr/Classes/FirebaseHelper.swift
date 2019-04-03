@@ -162,7 +162,8 @@ class FirebaseHelper {
                     recipe.reviewCount = value.count
                     let review = Review()
                     
-                    let reviewer = Account(UID: reviewerGUID, accountDelegate: review)
+                    //let reviewer = Account(UID: reviewerGUID, accountDelegate: review)
+                    let reviewer = AccountModel(id: reviewerGUID)
                     
                     review.guid = guid
                     review.reviewDetail = reviewDetail
@@ -409,9 +410,9 @@ class FirebaseHelper {
         }
     }
     
-    public func saveRecipeToCategory(account: Account, category: String?, recipe: Recipe) {
-        if let UID = account.UID, let GUID = recipe.GUID, let c = category {
-            let path = "Accounts/\(UID)/SavedRecipes/\(GUID)"
+    public func saveRecipeToCategory(account: AccountModel, category: String?, recipe: Recipe) {
+        if let id = account.id, let GUID = recipe.GUID, let c = category {
+            let path = "Accounts/\(id)/SavedRecipes/\(GUID)"
             database.child(path).setValue(c)
         } else if let UID = account.UID, let GUID = recipe.GUID {
             let path = "Accounts/\(UID)/SavedRecipes/\(GUID)"
@@ -499,11 +500,11 @@ class FirebaseHelper {
         }
     }
     
-    public func saveCategory(account: Account) {
-        if let UID = account.UID {
-            let path = "Accounts/\(UID)/Categories"
+    public func saveCategory(account: AccountModel) {
+        if let id = account.id {
+            let path = "Accounts/\(id)/Categories"
             account.savingCategories()
-            database.child(path).setValue(account.recipeCategories)
+            database.child(path).setValue(account.categories)
             account.savedCategories()
         }
     }
@@ -526,9 +527,9 @@ class FirebaseHelper {
         }
     }
     
-    public func loadRecipesForCategory(account: Account, category: String, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
-        if let UID = account.UID {
-            let path = "Accounts/\(UID)/SavedRecipes"
+    public func loadRecipesForCategory(account: AccountModel, category: String, completionHandler: @escaping (_ isResponse : [Recipe]) -> Void) {
+        if let id = account.id {
+            let path = "Accounts/\(id)/SavedRecipes"
             if category == allCategoriesString {
                 database.child(path).observeSingleEvent(of: .value) { (snapshot) in
                     self.recipesFromSnapshot(snapshot: snapshot, completionHandler: { (recipes) in
@@ -547,9 +548,9 @@ class FirebaseHelper {
         }
     }
     
-    public func getCategoryForRecipe(recipe: Recipe, account: Account, completionHandler: @escaping (_ isResponse : String?) -> Void) {
-        if let recipeGUID = recipe.GUID, let accountGUID = account.UID {
-            let path = "Accounts/\(accountGUID)/SavedRecipes/\(recipeGUID)"
+    public func getCategoryForRecipe(recipe: Recipe, account: AccountModel, completionHandler: @escaping (_ isResponse : String?) -> Void) {
+        if let recipeGUID = recipe.GUID, let accountId = account.id {
+            let path = "Accounts/\(accountId)/SavedRecipes/\(recipeGUID)"
             database.child(path).observeSingleEvent(of: .value) { (snapshot) in
                 if let value = snapshot.value as? String {
                     completionHandler(value)

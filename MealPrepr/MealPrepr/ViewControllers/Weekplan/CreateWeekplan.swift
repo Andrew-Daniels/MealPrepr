@@ -96,7 +96,7 @@ class CreateWeekplan: MPViewController, UICollectionViewDelegate, UICollectionVi
                         }
                     }
                     if !saved {
-                        self.weekplan.owner = self.account.UID
+                        self.weekplan.owner = self.account.id
                         let _ = self.weekplan.save { (saved) in
                             if saved {
                                 self.finishLoading(completionHandler: { (finished) in

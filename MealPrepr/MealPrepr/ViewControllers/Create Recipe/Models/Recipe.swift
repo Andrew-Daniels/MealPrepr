@@ -314,7 +314,7 @@ class Recipe {
         }
     }
     
-    func getCategory(account: Account, completionHandler: @escaping (_ isResponse : String?) -> Void) -> String? {
+    func getCategory(account: AccountModel, completionHandler: @escaping (_ isResponse : String?) -> Void) -> String? {
         if let c = category {
             return c
         } else {

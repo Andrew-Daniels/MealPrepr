@@ -12,7 +12,7 @@ import Foundation
 class Review: AccountDelegate {
     
     var guid: String!
-    var reviewer: Account!
+    var reviewer: AccountModel!
     var reviewDetail: String!
     var recipeGUID: String!
     var dateCreated: Date?
@@ -45,7 +45,7 @@ class Review: AccountDelegate {
         
     }
     
-    init(reviewer: Account, reviewDetail: String, recipeGUID: String) {
+    init(reviewer: AccountModel, reviewDetail: String, recipeGUID: String) {
         self.reviewer = reviewer
         self.reviewDetail = reviewDetail
         self.recipeGUID = recipeGUID

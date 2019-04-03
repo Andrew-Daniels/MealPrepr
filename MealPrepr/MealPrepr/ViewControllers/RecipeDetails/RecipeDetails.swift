@@ -206,7 +206,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
             }
             
             flag = recipe.flags.first { (f) -> Bool in
-                return f.issuer.UID == self.account.UID
+                return f.issuer.UID == self.account.id
             }
             
             let _ = recipe.getCategory(account: self.account) { (category) in
@@ -328,7 +328,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     
     func setupBarButtons() {
         
-        let isOwnerOfRecipe = account.UID == self.recipe.creatorUID || account.userLevel == .Admin
+        let isOwnerOfRecipe = account.id == self.recipe.creatorUID || account.userLevel == .Admin
         
         favoritesBtn = UIBarButtonItem(title: nil, style: .done, target: self, action: #selector(favoritesBtnClicked(_:)))
         favoritesBtn?.image = UIImage(named: "Favorite_White")?.withRenderingMode(.alwaysTemplate)
@@ -422,7 +422,7 @@ class RecipeDetails: MPViewController, CategorySelectorDelegate, FlagSelectorDel
     func flagSelected() {
         
         flag = recipe.flags.first { (f) -> Bool in
-            return f.issuer.UID == self.account.UID
+            return f.issuer.UID == self.account.id
         }
         
         flagBtn?.tintColor = flag != nil ? redColor : UIColor.white

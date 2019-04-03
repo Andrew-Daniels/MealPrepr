@@ -13,7 +13,7 @@ class Flag {
     
     var uid: String?
     var date: Date!
-    var issuer: Account!
+    var issuer: AccountModel!
     var reason: String!
     var recipeGUID: String!
     

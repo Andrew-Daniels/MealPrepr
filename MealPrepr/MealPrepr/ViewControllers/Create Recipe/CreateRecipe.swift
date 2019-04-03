@@ -321,7 +321,7 @@ class CreateRecipe: MPViewController, MPTextFieldDelegate {
                     r.update(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos)
                     recipeToSave = r
                 } else {
-                    recipeToSave = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.UID)
+                    recipeToSave = Recipe(title: title!, calServing: calories!, numServings: servings!, ingredients: ingredients, utensils: utensils, instructions: instructions, photos: photos, creator: account.id)
                 }
                 
                 //self.startLoading(withText: "Saving")

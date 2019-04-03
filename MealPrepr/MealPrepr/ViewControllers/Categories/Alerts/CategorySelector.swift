@@ -49,7 +49,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
             cell.accessoryType = cell.cancelImageView != nil && cell.cancelImageView.isHidden ? .disclosureIndicator : .none
         } else {
             if indexPath.row > 0 {
-                category = self.account.recipeCategories[indexPath.row - 1]
+                category = self.account.categories[indexPath.row - 1]
             }
         }
         
@@ -61,7 +61,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
         var category: String? = "All"
         
         if !showsAll {
-            category = self.account.recipeCategories[indexPath.row]
+            category = self.account.categories[indexPath.row]
             
             if let r = recipe, r.getCategory() != category {
                 r.setCategory(category: category)
@@ -71,7 +71,7 @@ class CategorySelector: MPViewController, UITableViewDelegate, UITableViewDataSo
             }
         } else {
             if indexPath.row > 0 {
-                category = self.account.recipeCategories[indexPath.row - 1]
+                category = self.account.categories[indexPath.row - 1]
             }
         }
         

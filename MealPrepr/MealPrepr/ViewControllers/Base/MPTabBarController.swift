@@ -10,7 +10,7 @@ import UIKit
 
 class MPTabBarController: UITabBarController, ConnectionErrorViewDelegate {
 
-    var account: Account!
+    var account: AccountModel!
     private var defaultTabBarOrigin: CGPoint!
     var connectionErrorView: ConnectionErrorView!
     
